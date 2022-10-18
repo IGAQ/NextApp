@@ -1,6 +1,6 @@
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import { FlexBox, Wrapper } from '../styles/globals';
+import { FlexBox,ModalBackdrop, Wrapper } from '../styles/globals';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
@@ -8,6 +8,7 @@ import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
+import NewPost from '../comps/modals/newPost';
 
 
 
@@ -31,16 +32,27 @@ export default function Homepage(props){
         const handlePageChange = (event, newPage) => {
                 setPage(newPage);                  // setTimeout(() =>{
         }
+
+        function closePostModal(){
+                setPostModal(false);
+        }
+
+        function openPostModal(){
+                setPostModal(true);
+        }
                 
         const r = useRouter();
         const pathname = r.pathname;
         const currentPage = getPageIndex(pathname);
-        const [page, setPage] = useState(currentPage);
-        console.log(currentPage + " " + page + " " + pathname);
-        
+        const [page, setPage] = useState(0);
+        const [postModal, setPostModal] = useState(false);
+
+
         return(
                 <Wrapper>
                         <FlexBox>Notifications</FlexBox>
+                        {postModal && <NewPost onClick = {closePostModal}/>}
+                        {postModal && <ModalBackdrop onClick = {closePostModal}/>}
                         <BottomNavigation
                                 value={page}
                                 onChange={handlePageChange}
@@ -55,7 +67,7 @@ export default function Homepage(props){
                                     }}>
                                 <BottomNavigationAction value = '/homepage' label="Home" icon={<HomeRoundedIcon /> } onClick={()=>r.push("/homepage")}/>
                                 <BottomNavigationAction value = '/resources' label="Resources" icon={<ImportContactsRoundedIcon />} onClick={()=>r.push("/resources")}/>
-                                <BottomNavigationAction label=" " icon={<AddRoundedIcon />} />
+                                <BottomNavigationAction label=" " icon={<AddRoundedIcon />} onClick = {openPostModal} />
                                 <BottomNavigationAction value = '/notifications' label="Notifications" icon={<NotificationsNoneRoundedIcon />}onClick={()=>r.push("/notifications")}/>
                                 <BottomNavigationAction label="Profile" value = '/profile' icon={<PersonOutlineRoundedIcon />}onClick={()=>r.push("/profile")} />
                          </BottomNavigation>
