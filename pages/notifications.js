@@ -10,8 +10,21 @@ import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneR
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
 import NewPost from '../comps/modals/newPost';
 
+import test_database from '../comps/database/test_database';
+import AvatarDiv from '../comps/AvatarDiv';
+import { Typography } from '@mui/material';
 
+function NotificationBox (props){
+        return(
+                <FlexBox>
+                        <AvatarDiv> </AvatarDiv>
+                        <Typography > </Typography>
+                </FlexBox>
 
+           
+        )
+        
+}
 export default function Homepage(props){
        
         function getPageIndex(route) {
