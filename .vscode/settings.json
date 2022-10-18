@@ -1,5 +1,7 @@
 {
-        "vscode-pets.position": "explorer",
-        "vscode-pets.petType": "cat",
-        "vscode-pets.petColor": "gray"
+    "vscode-pets.position": "panel",
+    "vscode-pets.petColor": "green",
+    "vscode-pets.petSize": "large",
+    "vscode-pets.petType": "snake",
+    "vscode-pets.theme": "beach"
 }
