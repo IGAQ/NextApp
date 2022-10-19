@@ -8,13 +8,13 @@ import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDiss
 import CommentIcon from '@mui/icons-material/Comment';
 import CardHeader from '@mui/material/CardHeader';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import Tag from '../base/tags';
-import Profile from '../base/avatars';
+import PostTag from '../PostTag';
+import ProfileIcon from '../ProfileIcon';
 import { useState, useEffect } from 'react';
 import { Backdrop, Button } from '@mui/material';
 import { useRouter } from 'next/router';
 
-export default function SCard (props){
+export default function BaseCard (props){
     console.log(props);
     // const postList = props.posts;
     const r = useRouter()
@@ -32,8 +32,8 @@ export default function SCard (props){
                     <CardContent>
                         <CardHeader
                             avatar={
-                                    <Profile>
-                                    </Profile>
+                                    <ProfileIcon>
+                                    </ProfileIcon>
                                 }
                                 action={
                                 <IconButton aria-label="settings">
@@ -57,7 +57,7 @@ export default function SCard (props){
                         <CardActions>
                             {
                             post.postTags.map((tag) => (
-                            <Tag text={tag.tagName} tagcolor={tag.tagColor}></Tag>
+                            <PostTag text={tag.tagName} tagcolor={tag.tagColor}></PostTag>
                             ))}
                         </CardActions>
                         <CardActions disableSpacing>

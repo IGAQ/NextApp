@@ -8,8 +8,8 @@ import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
-import NewPost from '../components/modals/newPost';
-import SCard from '../components/SCard';
+import NewPost from '../components/NewPostModal';
+import BaseCard from '../components/BaseCard';
 import axios from 'axios';
 
 
@@ -63,7 +63,7 @@ export default function Homepage(props){
                 <Wrapper width='0' height='0'>
                         <FlexBox justify = 'flex-start' dir = 'column' align = 'flex-start' flex = '0'> Queery of the day </FlexBox>
                         {/* <FlexBox flex = '6'>homepage feed!! </FlexBox> */}
-                        <SCard posts = {props.posts}/>
+                        <BaseCard posts = {props.posts}/>
 
                         {postModal && <NewPost onClick = {closePostModal}/>}
                         {postModal && <ModalBackdrop onClick = {closePostModal}/>}

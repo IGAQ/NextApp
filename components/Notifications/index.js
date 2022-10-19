@@ -1,12 +1,12 @@
-import AvatarDiv from '../avatars';
+import ProfileIcon from '../ProfileIcon';
 import { Typography } from '@mui/material';
-import { FlexBox } from '../../../styles/globals';
+import { FlexBox } from '../../styles/globals';
 
 export function NotificationBox(props){
 
         return(
                 <FlexBox bgColor= "#FFF9F2" dir = "row">
-                        <AvatarDiv> http://placekitten.com/10/10</AvatarDiv>
+                        <ProfileIcon> http://placekitten.com/10/10</ProfileIcon>
                         <Typography> Ace replied to your message</Typography>
                 </FlexBox>
         )

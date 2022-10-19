@@ -12,7 +12,7 @@ width: fit-content;
   const small = { width: 25, height: 25 };
   const large = { width: 50, height: 50 };
 
-export default function Profile({
+export default function ProfileIcon({
   AvaPic = "DF", 
   clr ="deepPurple", 
   size=small, 
