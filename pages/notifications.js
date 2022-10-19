@@ -66,11 +66,11 @@ export default function Homepage(props){
                                         <NotificationBox/>
                                         <NotificationBox/>
                                         <NotificationBox/>
-
                                 </FlexBox>
                         </FlexBox>
-                        {postModal && <NewPost onClick = {closePostModal}/>}
-                        {postModal && <ModalBackdrop onClick = {closePostModal}/>}
+                           {postModal && <NewPost onClick = {closePostModal}/>}
+                        {postModal && <ModalBackdrop onClick = {closePostModal}/>}     
+                        
                         <BottomNavigation
                                 value={page}
                                 onChange={handlePageChange}
