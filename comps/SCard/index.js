@@ -12,14 +12,25 @@ import Tag from '../base/tags';
 import Profile from '../base/avatars';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { Backdrop, Button } from '@mui/material';
+import { useRouter } from 'next/router';
+import { positions } from '@mui/system';
 
 export default function SCard (props){
     console.log(props);
     // const postList = props.posts;
+    const r = useRouter
+    const [readMore, setReadMore] = useState(false);
+
+    const handleReadMore = () => {
+        if (props.post.postContent.length > 100) {
+            setReadMore(true);
+        }
+    };
 
     return (
         props.posts.map((post) => (
-                <Card sx={{ minWidth: 275 }}>
+                <Card sx={{ minWidth: 275, width: "80%", marginTop:"0.5em", }}>
                     <CardContent>
                         <CardHeader
                             avatar={
@@ -37,9 +48,12 @@ export default function SCard (props){
                             <Typography variant="h5" component="div">
                                 {post.postTitle}
                             </Typography>          
-                            <Typography variant="body2">
+                            <Typography variant="body2" sx={{  lineHeight: "1.5em", maxHeight: "4.2em", overflow: "hidden" }}>
                                 {post.postContent}
                             </Typography>
+                            {readMore === true && <Button variant='text' sx={{marginTop: "-1.5em", color: "grey", float:"right", background:"white"}} onClick={()=>{
+                                r.push(`/post/${post.id}`)
+                            }}>...Read More</Button>}
                     </CardContent>
                         <CardActions>
                             {
