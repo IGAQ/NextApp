@@ -1,4 +1,3 @@
-import { buttonGroupClasses } from "@mui/material";
 import styled from "styled-components";
 
     const TagDiv = styled.div`
@@ -9,19 +8,23 @@ import styled from "styled-components";
     border-radius: 20px;
     padding: 5px 10px;
     margin: 5px;
-    width: 5em;
-    height: 2em;
+    min-width: 3em;
+    height: 1.5em;
+    position: relative;
+    bottom: 0;
+    left: 0;
     `;
 
 export default function Tag ({
     text = "Tag",
+    bgcolor = "blue",
 }){
 
     return (
-        <TagDiv>
-            <h4>
+        <TagDiv bgcolor={bgcolor}>
+            <div>
                 {text}
-            </h4>
+            </div>
         </TagDiv>
     )
 }
