@@ -10,6 +10,7 @@ import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneR
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
 import NewPost from '../comps/modals/newPost';
 import SCard from '../comps/SCard';
+import axios from 'axios';
 
 
 export default function Homepage(props){
@@ -62,7 +63,7 @@ export default function Homepage(props){
                 <Wrapper>
                         {/* <FlexBox justify = 'flex-start' dir = 'column' align = 'flex-start' flex = '1'> Queery of the day </FlexBox> */}
                         {/* <FlexBox flex = '6'>homepage feed!! </FlexBox> */}
-                        <SCard/>
+                        <SCard posts = {props.posts}/>
 
                         {postModal && <NewPost onClick = {closePostModal}/>}
                         {postModal && <ModalBackdrop onClick = {closePostModal}/>}
@@ -88,3 +89,12 @@ export default function Homepage(props){
                 </Wrapper>
         )
 }
+
+export async function getServerSideProps(context) {
+        const res = await axios.get('http://localhost:8080/posts');
+        const posts = res.data;
+        console.log(res.data);
+        return {
+          props: {posts}, // will be passed to the page component as props
+        }
+      }

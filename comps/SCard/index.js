@@ -10,10 +10,15 @@ import CardHeader from '@mui/material/CardHeader';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Tag from '../base/tags';
 import Profile from '../base/avatars';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
-export default function SCard (){
+export default function SCard (props){
+    console.log(props);
+    // const postList = props.posts;
 
     return (
+        props.posts.map((post) => (
                 <Card sx={{ minWidth: 275 }}>
                     <CardContent>
                         <CardHeader
@@ -26,20 +31,21 @@ export default function SCard (){
                                     <MoreVertIcon fontSize='small'/>
                                 </IconButton>
                                 }
-                                title="Username"
-                                subheader="Date posted"
+                                title={post.authorUser.username}
+                                subheader={new Date(post.updatedAt).toLocaleString()}
                         />
                             <Typography variant="h5" component="div">
-                                Post Title
+                                {post.postTitle}
                             </Typography>          
                             <Typography variant="body2">
-                                Subtext Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+                                {post.postContent}
                             </Typography>
                     </CardContent>
                         <CardActions>
-                            <Tag text="Gay" bgcolor="yellow"></Tag> 
-                            <Tag text="Casual" bgcolor='green'></Tag>
-                            <Tag text="General" bgcolor='pink'></Tag>
+                            {
+                            post.postTags.map((tag) => (
+                            <Tag text={tag.tagName} bgcolor="yellow"></Tag>
+                            ))}
                         </CardActions>
                         <CardActions disableSpacing>
                             <IconButton aria-label="add to favorites">           
@@ -61,5 +67,17 @@ export default function SCard (){
 
                         </CardActions>
                         </Card>
+        
+        
+        ))
     )
 }
+
+// export async function getServerSideProps(context) {
+//     const res = await axios.get('http://localhost:8080/api/posts');
+//     const posts = res.data;
+//     console.log(res);
+//     return {
+//       props: {posts}, // will be passed to the page component as props
+//     }
+//   }
