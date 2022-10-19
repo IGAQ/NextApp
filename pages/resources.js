@@ -51,7 +51,7 @@ export default function Homepage(props){
                                 value={page}
                                 onChange={handlePageChange}
                                 sx={{
-                                        position: "absolute", bottom: "0", width: "100vw", zindex: 2,
+                                        position: "fixed", bottom: "0", width: "100vw", zindex: 2,
                                         "& .MuiBottomNavigationAction-root, .Mui-selected, svg": {
                                                 color: "#131313"},
                                         "& .Mui-selected, .Mui-selected > svg": {

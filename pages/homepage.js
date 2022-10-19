@@ -56,7 +56,7 @@ export default function Homepage(props){
         const pathname = r.pathname;
         const currentPage = getPageIndex(pathname);
         const [page, setPage] = useState(0);
-        const [postModal, setPostModal] = useState(false);
+        const [ postModal, setPostModal] = useState(false);
         
         return(
                 <Wrapper>
@@ -69,7 +69,7 @@ export default function Homepage(props){
                                 value={page}
                                 onChange={handlePageChange}
                                 sx={{
-                                        position: "absolute", bottom: "0", width: "100vw", zindex: 2,
+                                        position: "fixed", bottom: "0", width: "100vw", zindex: 2,
                                         "& .MuiBottomNavigationAction-root, .Mui-selected, svg": {
                                                 color: "#131313"},
                                         "& .Mui-selected, .Mui-selected > svg": {

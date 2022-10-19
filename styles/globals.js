@@ -18,9 +18,9 @@ export const Box = styled(FlexBox)`
 
 background: ${props => props.bgColor||"#FFF8EC"};
 border-radius: ${props => props.borderRadius||"25px"}; 
-max-width: 75%;
+max-width: ${props => props.maxWidth||"75%"};
 min-width: ${props => props.minWidth||"150px"};
-position: fixed;
+position: ${props => props.position||"static"};
 z-index: 4;
 border:${props => props.border||"none"};
 padding:${props => props.padding||"10px"};
@@ -42,18 +42,18 @@ background-color: #3F3924C9;
 overflow: ${props => props.overflow || "hidden"};
 `;
 
-export const navTheme =  createTheme({
-components:{
-        BottomNavigationAction: {
-                styleOverrides:{
-                        root:{
-                                // color: '#131313',
-                                '&. Mui-selected': {
-                                        color: '#FF758C'
-                                }
-                        }
-                }
-        }
+// export const navTheme =  createTheme({
+// components:{
+//         BottomNavigationAction: {
+//                 styleOverrides:{
+//                         root:{
+//                                 // color: '#131313',
+//                                 '&. Mui-selected': {
+//                                         color: '#FF758C'
+//                                 }
+//                         }
+//                 }
+//         }
         
-}
-});
+// }
+// });

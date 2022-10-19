@@ -1,6 +1,6 @@
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import { FlexBox,ModalBackdrop, Wrapper } from '../styles/globals';
+import { FlexBox,ModalBackdrop,Box, Wrapper } from '../styles/globals';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
@@ -10,23 +10,14 @@ import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneR
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
 import NewPost from '../comps/modals/newPost';
 
-import test_database from '../comps/database/test_database';
-import AvatarDiv from '../comps/AvatarDiv';
+import {notifications} from './test/test_datasets.js';
 import { Typography } from '@mui/material';
+import { NotificationBox } from '../comps/base/notifications';
 
-function NotificationBox (props){
-        return(
-                <FlexBox>
-                        <AvatarDiv> </AvatarDiv>
-                        <Typography > </Typography>
-                </FlexBox>
 
-           
-        )
-        
-}
 export default function Homepage(props){
-       
+        
+        
         function getPageIndex(route) {
                 if (route === '/homepage'){
                         return 0;
@@ -43,7 +34,7 @@ export default function Homepage(props){
 
 
         const handlePageChange = (event, newPage) => {
-                setPage(newPage);                  // setTimeout(() =>{
+                setPage(newPage);       
         }
 
         function closePostModal(){
@@ -60,17 +51,32 @@ export default function Homepage(props){
         const [page, setPage] = useState(0);
         const [postModal, setPostModal] = useState(false);
 
-
+// THIS PAGE IS NOT DYNAMIC/DONE YET PLEASE REVISIT
         return(
                 <Wrapper>
-                        <FlexBox>Notifications</FlexBox>
+                        <FlexBox align = "stretch" >
+                                <Typography variant="h1" align = 'center'>Notifications</Typography>
+                                <FlexBox align = "stretch">
+                                        <Typography variant="h5" align = 'left'>New</Typography>
+                                        <NotificationBox/>
+                                        <NotificationBox/>
+                                </FlexBox>
+                                <br/>
+                                <FlexBox align = "stretch">       
+                                        <Typography variant="h5" align = 'left'>Old</Typography>
+                                        <NotificationBox/>
+                                        <NotificationBox/>
+                                        <NotificationBox/>
+
+                                </FlexBox>
+                        </FlexBox>
                         {postModal && <NewPost onClick = {closePostModal}/>}
                         {postModal && <ModalBackdrop onClick = {closePostModal}/>}
                         <BottomNavigation
                                 value={page}
                                 onChange={handlePageChange}
                                 sx={{
-                                        position: "absolute", bottom: "0", width: "100vw", zindex: 2,
+                                        position: "fixed", bottom: "0", width: "100vw", zIndex: 2,
                                         "& .MuiBottomNavigationAction-root, .Mui-selected, svg": {
                                                 color: "#131313"},
                                         "& .Mui-selected, .Mui-selected > svg": {
