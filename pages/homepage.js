@@ -9,7 +9,7 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
 import NewPost from '../comps/modals/newPost';
-
+import SCard from '../comps/SCard';
 
 
 export default function Homepage(props){
@@ -60,8 +60,10 @@ export default function Homepage(props){
         
         return(
                 <Wrapper>
-                        <FlexBox justify = 'flex-start' dir = 'column' align = 'flex-start' flex = '1'> Queery of the day</FlexBox>
-                        <FlexBox flex = '6'>homepage feed!! </FlexBox>
+                        {/* <FlexBox justify = 'flex-start' dir = 'column' align = 'flex-start' flex = '1'> Queery of the day </FlexBox> */}
+                        {/* <FlexBox flex = '6'>homepage feed!! </FlexBox> */}
+                        <SCard/>
+
                         {postModal && <NewPost onClick = {closePostModal}/>}
                         {postModal && <ModalBackdrop onClick = {closePostModal}/>}
 

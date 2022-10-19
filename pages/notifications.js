@@ -59,7 +59,6 @@ export default function Homepage(props){
                                 <FlexBox align = "stretch">
                                         <Typography variant="h5" align = 'left'>New</Typography>
                                         <NotificationBox/>
-                                        <NotificationBox/>
                                 </FlexBox>
                                 <br/>
                                 <FlexBox align = "stretch">       

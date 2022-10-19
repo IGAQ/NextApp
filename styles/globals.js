@@ -18,8 +18,10 @@ export const Box = styled(FlexBox)`
 
 background: ${props => props.bgColor||"#FFF8EC"};
 border-radius: ${props => props.borderRadius||"25px"}; 
+max-width: 75%;
 max-width: ${props => props.maxWidth||"75%"};
 min-width: ${props => props.minWidth||"150px"};
+position: fixed;
 position: ${props => props.position||"static"};
 z-index: 4;
 border:${props => props.border||"none"};

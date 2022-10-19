@@ -6,7 +6,6 @@ import { deepOrange, deepPurple } from "@mui/material/colors";
 const AvatarDiv = styled.div`
 border-radius: 100%;
 padding: 10px;
-margin: 10px;
 background-image: url(${props=>props.bgimage || "http://placekitten.com/50/50"});
 width: fit-content;
 `;
