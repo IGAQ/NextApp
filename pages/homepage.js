@@ -60,8 +60,8 @@ export default function Homepage(props){
         const [ postModal, setPostModal] = useState(false);
         
         return(
-                <Wrapper>
-                        {/* <FlexBox justify = 'flex-start' dir = 'column' align = 'flex-start' flex = '1'> Queery of the day </FlexBox> */}
+                <Wrapper width='0' height='0'>
+                        <FlexBox justify = 'flex-start' dir = 'column' align = 'flex-start' flex = '0'> Queery of the day </FlexBox>
                         {/* <FlexBox flex = '6'>homepage feed!! </FlexBox> */}
                         <SCard posts = {props.posts}/>
 
