@@ -4,7 +4,7 @@ import styled from "styled-components";
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: ${props=>props.bgcolor || "blue"};
+    background-color: ${props=>props.taggcolor || "#C2ADFF"};
     border-radius: 20px;
     padding: 5px 10px;
     margin: 5px;
@@ -17,11 +17,11 @@ import styled from "styled-components";
 
 export default function Tag ({
     text = "Tag",
-    bgcolor = "blue",
+    tagcolor = "#C2ADFF",
 }){
 
     return (
-        <TagDiv bgcolor={bgcolor}>
+        <TagDiv bgcolor={tagcolor}>
             <div>
                 {text}
             </div>

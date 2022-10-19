@@ -10,16 +10,14 @@ import CardHeader from '@mui/material/CardHeader';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Tag from '../base/tags';
 import Profile from '../base/avatars';
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Backdrop, Button } from '@mui/material';
 import { useRouter } from 'next/router';
-import { positions } from '@mui/system';
 
 export default function SCard (props){
     console.log(props);
     // const postList = props.posts;
-    const r = useRouter
+    const r = useRouter()
     const [readMore, setReadMore] = useState(false);
 
     const handleReadMore = () => {
@@ -51,14 +49,15 @@ export default function SCard (props){
                             <Typography variant="body2" sx={{  lineHeight: "1.5em", maxHeight: "4.2em", overflow: "hidden" }}>
                                 {post.postContent}
                             </Typography>
-                            {readMore === true && <Button variant='text' sx={{marginTop: "-1.5em", color: "grey", float:"right", background:"white"}} onClick={()=>{
+                            {readMore === true && <Button variant='text' sx={{marginTop: "-1.5em", color: "grey", float:"right", background:"white"}} 
+                            onClick={()=>{
                                 r.push(`/post/${post.id}`)
                             }}>...Read More</Button>}
                     </CardContent>
                         <CardActions>
                             {
                             post.postTags.map((tag) => (
-                            <Tag text={tag.tagName} bgcolor="yellow"></Tag>
+                            <Tag text={tag.tagName} tagcolor={tag.tagColor}></Tag>
                             ))}
                         </CardActions>
                         <CardActions disableSpacing>
