@@ -8,11 +8,11 @@ import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
-import NewPost from '../comps/modals/newPost';
+import NewPost from '../components/modals/newPost';
 
 import {notifications} from './test/test_datasets.js';
 import { Typography } from '@mui/material';
-import { NotificationBox } from '../comps/base/notifications';
+import { NotificationBox } from '../components/base/notifications';
 
 
 export default function Homepage(props){

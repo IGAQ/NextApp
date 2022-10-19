@@ -8,7 +8,7 @@ import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
-import NewPost from '../comps/modals/newPost';
+import NewPost from '../components/modals/newPost';
 
 
 

@@ -1,5 +1,5 @@
-import Tag from "../../comps/base/tags";
-import Profile from "../../comps/base/avatars";
+import Tag from "../../components/base/tags";
+import Profile from "../../components/base/avatars";
 
 export default function Testing (){
     return (
