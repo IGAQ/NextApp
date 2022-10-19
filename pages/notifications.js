@@ -8,11 +8,11 @@ import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
-import NewPost from '../components/modals/newPost';
+import NewPost from '../components/NewPostModal';
 
 import {notifications} from './test/test_datasets.js';
 import { Typography } from '@mui/material';
-import { NotificationBox } from '../components/base/notifications';
+import { NotificationBox } from '../components/Notifications';
 
 
 export default function Homepage(props){
@@ -53,7 +53,7 @@ export default function Homepage(props){
 
 // THIS PAGE IS NOT DYNAMIC/DONE YET PLEASE REVISIT
         return(
-                <Wrapper>
+                <Wrapper width='0' height='0'>
                         <FlexBox align = "stretch" >
                                 <Typography variant="h1" align = 'center'>Notifications</Typography>
                                 <FlexBox align = "stretch">

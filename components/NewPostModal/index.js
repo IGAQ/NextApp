@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import { FlexBox, ModalBox } from "../../../styles/globals";
+import { FlexBox, ModalBox } from "../../styles/globals";
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/router';
 import  { Box, Button, TextField } from '@mui/material';

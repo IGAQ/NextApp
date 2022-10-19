@@ -15,7 +15,7 @@ import styled from "styled-components";
     left: 0;
     `;
 
-export default function Tag ({
+export default function PostTag ({
     text = "Tag",
     tagcolor = "#C2ADFF",
 }){
