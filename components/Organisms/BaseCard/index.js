@@ -8,8 +8,8 @@ import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDiss
 import CommentIcon from '@mui/icons-material/Comment';
 import CardHeader from '@mui/material/CardHeader';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import PostTag from '../../Atoms/PostTag';
-import ProfileIcon from '../../Atoms/ProfileIcon';
+import { PostTag } from '../../Atoms/PostTag';
+import { ProfileIcon } from '../../Atoms/ProfileIcon';
 import { useState, useEffect } from 'react';
 import { Backdrop, Button } from '@mui/material';
 import { useRouter } from 'next/router';
@@ -33,8 +33,7 @@ export function BaseCard (props){
                 <CardContent>
                     <CardHeader
                         avatar={
-                            <ProfileIcon>
-                            </ProfileIcon>
+                            <ProfileIcon />
                         }
                         action={
                             <IconButton aria-label="settings">
