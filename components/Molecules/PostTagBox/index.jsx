@@ -6,6 +6,7 @@ const PostTagBoxDiv = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+    margin-bottom: 10px;
     `;
 
 export function PostTagBox({ text, tagBgColor, tagColor }) {

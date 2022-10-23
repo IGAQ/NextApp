@@ -9,11 +9,11 @@ const PostFooterDiv = styled.div`
     justify-content: space-between;
     `;
 
-export function PostComments({ comment }) {
+export function PostComments({ numComments }) {
     return (
         <PostFooterDiv>
             <CommentsIcon />
-            <PostCommentsText comment={comment} />
+            <PostCommentsText numComments={numComments} />
         </PostFooterDiv>
     );
 }

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const PostContentDiv = styled.div`
-    font-size: .875rem;
+    font-size: .9rem;
     font-weight: 400;
     line-height: 1.5rem;
     max-height: 4.2em;

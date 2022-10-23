@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { PostCommentsText } from './index';
+import { OTDTitle } from './index';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    title: 'Post/Atoms/Comments',
-    component: PostCommentsText,
+    title: 'OTD/Atoms/Title',
+    component: OTDTitle,
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -13,15 +13,15 @@ export default {
 };
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args) => <PostCommentsText {...args} />;
+const Template = (args) => <OTDTitle {...args} />;
 
-export const One = Template.bind({});
+export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-One.args = {
-    numComments: '1',
+Default.args = {
+    title: 'Queery of the Day',
 };
 
-export const AnotherOne = Template.bind({});
-AnotherOne.args = {
-    numComments: '11',
+export const Story = Template.bind({});
+Story.args = {
+    title: 'Story of the Day', 
 };
