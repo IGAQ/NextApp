@@ -8,30 +8,15 @@ import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
-import NewPost from '../components/NewPostModal';
+import {NewPostModal} from '../components/Organisms/NewPostModal';
+import { NotificationBox } from '../components/Molecules/NotificationBox';
+import { Text } from '../components/Atoms/Text';
+import {Spacer} from '../components/Atoms/Spacer';
 
-import {notifications} from './test/test_datasets.js';
-import { Typography } from '@mui/material';
-import { NotificationBox } from '../components/Notifications';
-
-
-export default function Homepage(props){
-        
-        
-    function getPageIndex(route) {
-        if (route === '/homepage'){
-            return 0;
-        } else if (route === '/resources'){     
-            return 1;
-        } else if (route === '/notifications'){
-            return 2;
-        } else if (route === '/profile'){
-            return 3;
-        } else{
-            return 0;
-        }
-    }
-
+export default function Notifications(props){
+    const r = useRouter();
+    const [page, setPage] = useState(0);
+    const [postModal, setPostModal] = useState(false);
 
     const handlePageChange = (event, newPage) => {
         setPage(newPage);       
@@ -45,30 +30,22 @@ export default function Homepage(props){
         setPostModal(true);
     }
                 
-    const r = useRouter();
-    const pathname = r.pathname;
-    const currentPage = getPageIndex(pathname);
-    const [page, setPage] = useState(0);
-    const [postModal, setPostModal] = useState(false);
-
-    // THIS PAGE IS NOT DYNAMIC/DONE YET PLEASE REVISIT
     return(
-        <Wrapper width='0' height='0'>
+        <Wrapper align = "stretch">
             <FlexBox align = "stretch" >
-                <Typography variant="h1" align = 'center'>Notifications</Typography>
+                <Text as = "h1" weight = "600" size = "2.5rem" textAlign = "center" text  = "Notifications"/>
                 <FlexBox align = "stretch">
-                    <Typography variant="h5" align = 'left'>New</Typography>
+                    <Text weight = "500" size = "1.25rem" textAlign = "left" text  = "New"/>
                     <NotificationBox/>
                 </FlexBox>
-                <br/>
                 <FlexBox align = "stretch">       
-                    <Typography variant="h5" align = 'left'>Old</Typography>
+                    <Text weight = "500" size = "1.25rem" textAlign = "left" text  = "Old"/>
                     <NotificationBox/>
                     <NotificationBox/>
                     <NotificationBox/>
                 </FlexBox>
             </FlexBox>
-            {postModal && <NewPost onClick = {closePostModal}/>}
+            {postModal && <NewPostModal onClick = {closePostModal}/>}
             {postModal && <ModalBackdrop onClick = {closePostModal}/>}     
                         
             <BottomNavigation
@@ -90,8 +67,6 @@ export default function Homepage(props){
                 <BottomNavigationAction label="Profile" value = '/profile' icon={<PersonOutlineRoundedIcon />}onClick={()=>r.push('/profile')} />
             </BottomNavigation>
         </Wrapper>
-
-
     );
 
 

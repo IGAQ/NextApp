@@ -13,8 +13,9 @@ import ProfileIcon from '../../Atoms/ProfileIcon';
 import { useState, useEffect } from 'react';
 import { Backdrop, Button } from '@mui/material';
 import { useRouter } from 'next/router';
+import {Text} from '../../Atoms/Text';
 
-export default function BaseCard (props){
+export function BaseCard (props){
     console.log(props);
     // const postList = props.posts;
     const r = useRouter();
@@ -45,10 +46,13 @@ export default function BaseCard (props){
                     />
                     <Typography variant="h5" component="div">
                         {post.postTitle}
-                    </Typography>          
+                    </Typography>
+                    {/* <Text size='1.5rem' weight = "600" text = {post.postTitle} ></Text>           */}
                     <Typography variant="body2" sx={{  lineHeight: '1.5em', maxHeight: '4.2em', overflow: 'hidden' }}>
                         {post.postContent}
                     </Typography>
+                    {/* <Text size='1rem' text = {post.postContent} lineHeight =  '1.5em' overflow = "hidden"></Text>           */}
+
                     {readMore === true && <Button variant='text' sx={{marginTop: '-1.5em', color: 'grey', float:'right', background:'white'}} 
                         onClick={()=>{
                             r.push(`/post/${post.id}`);
@@ -67,6 +71,9 @@ export default function BaseCard (props){
                     <Typography sx={{ fontSize: 13 }} color="text.secondary">
                                                 #
                     </Typography>
+                    {/* <Text size='0.75rem' text = "#" color="text.secondary"></Text>           */}
+
+                    
                     <IconButton aria-label="share"> 
                                        
                         <SentimentVeryDissatisfiedIcon />
@@ -76,6 +83,8 @@ export default function BaseCard (props){
                         <Typography sx={{ fontSize: 13 }} color="text.secondary">
                                                 # Comments
                         </Typography>
+                        {/* <Text size='0.75rem' text = "# Comments" color="text.secondary"></Text>           */}
+
                     </IconButton>
 
                 </CardActions>

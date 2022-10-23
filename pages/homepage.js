@@ -8,7 +8,7 @@ import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
-import NewPost from '../components/NewPostModal';
+import NewPostModal from '../components/Organisms/NewPostModal';
 import BaseCard from '../components/Organisms/BaseCard';
 import axios from 'axios';
 
@@ -62,10 +62,9 @@ export default function Homepage(props){
     return(
         <Wrapper width='0' height='0'>
             <FlexBox justify = 'flex-start' dir = 'column' align = 'flex-start' flex = '0'> Queery of the day </FlexBox>
-            {/* <FlexBox flex = '6'>homepage feed!! </FlexBox> */}
             <BaseCard posts = {props.posts}/>
 
-            {postModal && <NewPost onClick = {closePostModal}/>}
+            {postModal && <NewPostModal onClick = {closePostModal}/>}
             {postModal && <ModalBackdrop onClick = {closePostModal}/>}
 
             <BottomNavigation

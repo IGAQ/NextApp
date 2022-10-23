@@ -1,13 +1,13 @@
-import ProfileIcon from '../ProfileIcon';
-import { Typography } from '@mui/material';
-import { FlexBox } from '../../styles/globals';
+import ProfileIcon from '../../Atoms/ProfileIcon';
+import { Text } from '../../Atoms/Text';
+import { FlexBox } from '../../../styles/globals';
 
 export function NotificationBox(props){
 
     return(
         <FlexBox bgColor= "#FFF9F2" dir = "row">
-            <ProfileIcon> http://placekitten.com/10/10</ProfileIcon>
-            <Typography> Ace replied to your message</Typography>
+            <ProfileIcon></ProfileIcon>
+            <Text size = "1rem" margin = "25px" text = " Ace replied to your message"></Text>
         </FlexBox>
     );
 

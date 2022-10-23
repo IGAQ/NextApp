@@ -8,11 +8,11 @@ import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
-import NewPost from '../components/NewPostModal';
+import {NewPostModal }from '../components/Organisms/NewPostModal';
 
 
 
-export default function Homepage(props){
+export default function Resources(props){
 
     function getPageIndex(route) {
         switch (route) {
@@ -45,7 +45,7 @@ export default function Homepage(props){
     return(
         <Wrapper>
             <FlexBox>resources </FlexBox>
-            {postModal && <NewPost onClick = {closePostModal}/>}
+            {postModal && <NewPostModal onClick = {closePostModal}/>}
             {postModal && <ModalBackdrop onClick = {closePostModal}/>}
             <BottomNavigation
                 value={page}
