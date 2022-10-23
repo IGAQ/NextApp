@@ -33,7 +33,8 @@ export function BaseCard (props){
                 <CardContent>
                     <CardHeader
                         avatar={
-                            <ProfileIcon />
+                            <ProfileIcon>
+                            </ProfileIcon>
                         }
                         action={
                             <IconButton aria-label="settings">
