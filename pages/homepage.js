@@ -9,7 +9,7 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
 import NewPost from '../components/NewPostModal';
-import BaseCard from '../components/BaseCard';
+import BaseCard from '../components/Organisms/BaseCard';
 import axios from 'axios';
 
 

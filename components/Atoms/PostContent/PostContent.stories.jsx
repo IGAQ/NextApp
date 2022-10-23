@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { PostTag } from './index';
+import { PostContent } from './index';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    title: 'Post/Atoms/Tag',
-    component: PostTag,
+    title: 'Post/Atoms/Content',
+    component: PostContent,
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -13,19 +13,15 @@ export default {
 };
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args) => <PostTag {...args} />;
+const Template = (args) => <PostContent {...args} />;
 
-export const Serious = Template.bind({});
+export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Serious.args = {
-    text: 'Serious',
-    tagBgColor: '#C2ADFF',
-    tagColor: 'white',
+Default.args = {
+    content: 'Some default post text',
 };
 
-export const Casual = Template.bind({});
-Casual.args = {
-    text: 'Casual',
-    tagBgColor: '#C2ADFF',
-    tagColor: 'white',
+export const Test = Template.bind({});
+Test.args = {
+    content: 'Testing different post text that can be passed through with lorum ipsum to see max length', 
 };

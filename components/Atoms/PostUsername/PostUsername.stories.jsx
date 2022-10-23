@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { PostTag } from './index';
+import { PostUsername } from './index';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    title: 'Post/Atoms/Tag',
-    component: PostTag,
+    title: 'Post/Atoms/Username',
+    component: PostUsername,
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -13,19 +13,15 @@ export default {
 };
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args) => <PostTag {...args} />;
+const Template = (args) => <PostUsername {...args} />;
 
-export const Serious = Template.bind({});
+export const Base = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Serious.args = {
-    text: 'Serious',
-    tagBgColor: '#C2ADFF',
-    tagColor: 'white',
+Base.args = {
+    username: 'BaseTest',
 };
 
-export const Casual = Template.bind({});
-Casual.args = {
-    text: 'Casual',
-    tagBgColor: '#C2ADFF',
-    tagColor: 'white',
+export const Test = Template.bind({});
+Test.args = {
+    username: 'A different test',
 };

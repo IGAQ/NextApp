@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import * as global from '../../../styles/globals.css';
 
 const TagDiv = styled.div`
     display: flex;
@@ -11,6 +10,7 @@ const TagDiv = styled.div`
     line-height: 100px;
     text-align: center;
     margin: 5px;
+    margin-left: 0;
     max-width: 5em;
     font-size: 1em;
     height: 1.5em;
