@@ -8,8 +8,8 @@ import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
-import NewPostModal from '../components/Organisms/NewPostModal';
-import BaseCard from '../components/Organisms/BaseCard';
+import { NewPostModal } from '../components/Organisms/NewPostModal';
+import { BaseCard } from '../components/Organisms/BaseCard';
 import axios from 'axios';
 
 
