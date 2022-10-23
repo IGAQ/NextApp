@@ -8,21 +8,13 @@ import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
-import NewPost from '../components/NewPostModal';
+import {NewPostModal} from '../components/Organisms/NewPostModal';
 
 
-
-export default function Homepage(props){
-
-    function getPageIndex(route) {
-        switch (route) {
-        case '/homepage': return 0;
-        case '/resources': return 1;
-        case '/notifications': return 2;
-        case '/profile': return 3;
-        default: return 0;
-        }
-    }
+export default function Profile(props){
+    const r = useRouter();
+    const [page, setPage] = useState(0);
+    const [postModal, setPostModal] = useState(false);
 
     const handlePageChange = (event, newPage) => {
         setPage(newPage);                 
@@ -36,16 +28,11 @@ export default function Homepage(props){
         setPostModal(true);
     }
 
-    const r = useRouter();
-    const pathname = r.pathname;
-    const currentPage = getPageIndex(pathname);
-    const [page, setPage] = useState(0);
-    const [postModal, setPostModal] = useState(false);
 
     return(
         <Wrapper>
             <FlexBox>Profile </FlexBox>
-            {postModal && <NewPost onClick = {closePostModal}/>}
+            {postModal && <NewPostModal onClick = {closePostModal}/>}
             {postModal && <ModalBackdrop onClick = {closePostModal}/>}
             <BottomNavigation
                 value={page}

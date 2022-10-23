@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import * as global from '../../../styles/globals.css';
 
 const TagDiv = styled.div`
     display: flex;
