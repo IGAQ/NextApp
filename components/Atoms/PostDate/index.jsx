@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import moment from 'moment';
 
 const PostDateDiv = styled.div`
     font-size: 1rem;
@@ -9,8 +10,9 @@ const PostDateDiv = styled.div`
     
 
 export function PostDate ({date = '1666321046'}) {
-
-    const dt = new Date(date * 1000).toLocaleString();
+    const dateObj = new Date(date*1000).toLocaleDateString('en-US', {year: 'numeric', month: 'numeric', day: 'numeric'});
+    console.log(dateObj);
+    const dt = moment(dateObj, 'MM/DD/YYYY').fromNow(); 
     return (
         <PostDateDiv>
             {dt}
