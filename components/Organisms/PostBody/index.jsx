@@ -10,12 +10,12 @@ align-items: flex-start;
 justify-content: center;
 `;
 
-export function PostBody ({title, content, text, tagBgColor, tagColor}) {
+export function PostBody ({title, content, tags}) {
     return (
         <PostBodyDiv>
             <PostTitle title={title}/>
             <PostContent content={content}/>
-            <PostTagBox text={text} tagBgColor={tagBgColor} tagColor={tagColor}/>
+            <PostTagBox tags={tags}/>
         </PostBodyDiv>
     );
 }
