@@ -7,8 +7,6 @@ export function OTBase(){
             slidePerView={1}
             onSwiper={(swiper) => console.log(swiper)}
             spaceBetween={30}
-            height={300}
-            width={300}
         >
             <SwiperSlide>
                 <OTDCard />

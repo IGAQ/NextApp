@@ -15,7 +15,14 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => <PostSettingsText {...args} />;
 
-export const Default = Template.bind({});
+export const Report = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
+Report.args = {
+    setType: 'Report',
+};
+
+export const Save = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Save.args = {
+    setType: 'Save',
 };

@@ -10,6 +10,7 @@ const SettingsModalDiv = styled.div`
     postion: absolute;
     top: 0;
     right: 0;
+    width: 15%;
     `;
 
 export function PostSettingsModal() {

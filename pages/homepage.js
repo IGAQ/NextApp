@@ -11,6 +11,7 @@ import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
 import NewPostModal from '../components/Organisms/NewPostModal';
 import BaseCard from '../components/Organisms/BaseCard';
 import axios from 'axios';
+import OTDBase from '../components/Templates/OTDBase';
 
 
 export default function Homepage(props){
@@ -62,8 +63,20 @@ export default function Homepage(props){
     return(
         <Wrapper width='0' height='0'>
             <FlexBox justify = 'flex-start' dir = 'column' align = 'flex-start' flex = '0'> Queery of the day </FlexBox>
-            <BaseCard posts = {props.posts}/>
-
+            {/* <BaseCard posts = {props.posts}/> */}
+            {/* props.posts.map((post) => ( */}
+            <OTDBase 
+                username={post.AuthorUser.username} 
+                date={post.udatedAt} 
+                title={post.postTitle}
+                content={post.postContent}
+                text={post.tagName}
+                tagBgColor={post.tagColor}
+                tagTextColor={post.tagTextColor}
+                score={post.score}
+                numComments={post.comments}
+            />
+            {/* )) */}
             {postModal && <NewPostModal onClick = {closePostModal}/>}
             {postModal && <ModalBackdrop onClick = {closePostModal}/>}
 

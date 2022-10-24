@@ -18,4 +18,7 @@ const Template = (args) => <PostTagBox {...args} />;
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
+    text: 'Tag',
+    tagBgColor: '#C2ADFF',
+    tagTextColor: '#ffffff',
 };

@@ -12,12 +12,12 @@ const OTDCardDiv = styled.div`
     width: 80%;
     `;
 
-export function OTDCard(){
+export function OTDCard({ title, prompt, replies, answer, setAnswer }) {
     return (
         <OTDCardDiv>
-            <OTDTitle />
-            <OTDPrompt />
-            <OTDReplies />
+            <OTDTitle title={title} />
+            <OTDPrompt prompt={prompt} />
+            <OTDReplies replies={replies} />
             <OTDAnswerInp />
         </OTDCardDiv>
     );

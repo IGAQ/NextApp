@@ -5,6 +5,7 @@ const OTDRepliesDiv = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: .8em;
     ;`;
 
 export function OTDReplies({ replies = 0 }) {

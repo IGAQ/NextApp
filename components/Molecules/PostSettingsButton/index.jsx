@@ -7,6 +7,8 @@ const SettingsButtonDiv = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+    border: 1px solid black;
+    width: 100%;
     `;
 
 export function PostSettingsButton({ setType, icon }) {

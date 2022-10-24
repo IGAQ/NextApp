@@ -18,4 +18,5 @@ const Template = (args) => <PostScore {...args} />;
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
+    score: '1',
 };

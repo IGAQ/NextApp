@@ -5,9 +5,10 @@ const TitleDiv = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    font-weight: 700;
+    font-weight: 300;
     font-size: 50px;
     font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
     `;
 
 export function OTDTitle({ title='Queery of the Day' }) {

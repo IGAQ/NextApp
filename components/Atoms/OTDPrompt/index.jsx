@@ -8,6 +8,8 @@ const OTDPromptDiv = styled.div`
     justify-content: center;
     font-weight: 400;
     font-size: 20px;
+    margin-top: 2em;
+    margin-bottom: 2em;
     `;
 
 export function OTDPrompt({ prompt='Do you have a same-gender crush? Who?' }) {
