@@ -8,58 +8,16 @@ import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
-import NewPostModal from '../components/Organisms/NewPostModal';
-import BaseCard from '../components/Organisms/BaseCard';
+import { NewPostModal } from '../components/Organisms/NewPostModal';
+import { BaseCard } from '../components/Organisms/BaseCard';
 import axios from 'axios';
 import OTDBase from '../components/Templates/OTDBase';
 
 
 export default function Homepage(props){
 
-    function getPageIndex(route) {
-        // switch (route) {
-        //   case '/homepage': return 0;
-        //   case '/resources': return 1;
-        //   case '/notifications': return 2;
-        //   case '/profile': return 3;
-        //   default: return 0;
-        // }
-
-        if (route === '/homepage'){
-            return 0;
-        } else if (route === '/resources'){     
-            return 1;
-        } else if (route === '/notifications'){
-            return 2;
-        } else if (route === '/profile'){
-            return 3;
-        } else{
-            return 0;
-        }
-
-    }
-
-    const handlePageChange = (event, newPage) => {
-        // const path = event.target.getAttribute('value');
-        // console.log("value from event :"+ path);
-        // r.push(path);
-        setPage(newPage);             
-    };
-
-    function closePostModal(){
-        setPostModal(false);
-    }
-
-    function openPostModal(){
-        setPostModal(true);
-    }
-        
     const r = useRouter();
-    const pathname = r.pathname;
-    const currentPage = getPageIndex(pathname);
-    const [page, setPage] = useState(0);
-    const [ postModal, setPostModal] = useState(false);
-        
+    
     return(
         <Wrapper width='0' height='0'>
             <FlexBox justify = 'flex-start' dir = 'column' align = 'flex-start' flex = '0'> Queery of the day </FlexBox>
