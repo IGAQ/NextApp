@@ -11,8 +11,7 @@ import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
 import { NewPostModal } from '../components/Organisms/NewPostModal';
 import { BaseCard } from '../components/Organisms/BaseCard';
 import axios from 'axios';
-import OTDBase from '../components/Templates/OTDBase';
-
+import NewPost from '../components/Templates/NewPost';
 
 export default function Homepage(props){
 
@@ -23,7 +22,7 @@ export default function Homepage(props){
             <FlexBox justify = 'flex-start' dir = 'column' align = 'flex-start' flex = '0'> Queery of the day </FlexBox>
             {/* <BaseCard posts = {props.posts}/> */}
             {/* props.posts.map((post) => ( */}
-            <OTDBase 
+            <NewPost
                 username={post.AuthorUser.username} 
                 date={post.udatedAt} 
                 title={post.postTitle}
