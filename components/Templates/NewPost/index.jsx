@@ -13,12 +13,12 @@ const PostDiv = styled.div`
     border: 1px solid #e6e6e6;
     `;
 
-export function NewPost({ username, date, title, content, text, tagBgColor, tagColor, score, comment }) {
+export function NewPost({ username, date, title, content, text, tagBgColor, tagColor, score, numComments }) {
     return (
         <PostDiv>
             <PostHeader username={username} date={date} />
             <PostBody title={title} content={content} text={text} tagBgColor={tagBgColor} tagColor={tagColor} />
-            <PostFooter score={score} comment={comment} />
+            <PostFooter score={score} numComments={numComments} />
         </PostDiv>
     );
 }

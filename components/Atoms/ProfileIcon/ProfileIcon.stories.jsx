@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ProfileIcon from './index';
+import {ProfileIcon} from './index';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -19,11 +19,9 @@ export const Base = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Base.args = {
     size: 'Serious',
-    AvaPic: 'BS',
 };
 
 export const Test = Template.bind({});
 Test.args = {
     size: 'Casual',
-    AvaPic: 'TS',
 };

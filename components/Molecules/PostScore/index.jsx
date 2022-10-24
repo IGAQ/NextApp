@@ -5,10 +5,11 @@ const PostFooterDiv = styled.div`
     display: flex; 
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    width: 10%;
 `;
 
-export function PostScore({ score }) {
+export function PostScore({ score = 0 }) {
     return (
         <PostFooterDiv>
             <PostReaction vote="Like" onClick = {() => {score + 1;}} />

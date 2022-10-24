@@ -6,7 +6,10 @@ const PostDateDiv = styled.div`
     color: #000;
     `;
 
+    
+
 export function PostDate ({date = '1666321046'}) {
+
     const dt = new Date(date * 1000).toLocaleString();
     return (
         <PostDateDiv>

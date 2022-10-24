@@ -5,18 +5,15 @@ import { deepOrange } from '@mui/material/colors';
 const AvatarDiv = styled.div`
 border-radius: 100%;
 padding: 10px;
-// background-image: url(${props=>props.bgimage || 'PrideFlag.svg'});
-background-size: cover;
-background-image: url('PrideFlag.svg');
+background-image: url(${props=>props.bgimage || '/defaultFlag.svg'});
 width: fit-content;
 display: flex;
 flex: 0 0 auto;
+margin-right: .5rem;
 `;
 
 export function ProfileIcon({
-    AvaPic = 'DF', 
-    // size='', 
-    ...props}) {
+    AvaPic = '/DefaultProfile.svg'}) {
 
 
   
@@ -24,10 +21,8 @@ export function ProfileIcon({
     return (
         <AvatarDiv>
             <Avatar
-                // src={AvaPic}
-                sx={{ bgcolor: deepOrange[500]}}
+                src={AvaPic}
             >
-                DD
             </Avatar>
         </AvatarDiv>
     );

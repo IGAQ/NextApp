@@ -15,13 +15,12 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => <PostBody {...args} />;
 
-export const Like = Template.bind({});
+export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Like.args = {
-    vote: 'Like',
-};
-
-export const Dislike = Template.bind({});
-Dislike.args = {
-    vote: 'Dislike',
+Default.args = {
+    title: 'Post Title',
+    content: 'Post Content',
+    text: 'Text',
+    tagBgColor: '#C2ADFF',
+    tagTextColor: 'white',
 };

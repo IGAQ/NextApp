@@ -11,11 +11,11 @@ const PostFooterDiv = styled.div`
     width: 100%;
 `;
 
-export function PostFooter({ score, comment }) {
+export function PostFooter({ score, numComments }) {
     return (
         <PostFooterDiv>
             <PostScore score={score} />
-            <PostComments comment={comment} />
+            <PostComments numComments={numComments} />
         </PostFooterDiv>
     );
 }

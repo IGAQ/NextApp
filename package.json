@@ -27,6 +27,7 @@
     "react-icons": "^4.6.0",
     "storybook-addon-next": "^1.6.9",
     "styled-components": "^5.3.6",
+    "swiper": "^8.4.4",
     "webpack": "^5.74.0"
   },
   "devDependencies": {

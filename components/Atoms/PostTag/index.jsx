@@ -6,7 +6,7 @@ const TagDiv = styled.div`
     align-items: center;
     background-color: ${props => props.tagBgColor || '#C2ADFF'};
     border-radius: 20px;
-    padding: 5px 10px;
+    padding: 5px 20px;
     line-height: 100px;
     text-align: center;
     margin: 5px;
