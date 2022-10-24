@@ -9,10 +9,12 @@ const PostTagBoxDiv = styled.div`
     margin-bottom: 10px;
     `;
 
-export function PostTagBox({ text, tagBgColor, tagColor }) {
+export function PostTagBox({ tags }) {
     return (
         <PostTagBoxDiv>
-            <PostTag text={text} tagBgColor={tagBgColor} tagColor={tagColor} />
+            {tags.map((tag) => (
+                <PostTag key={tag.tagId} text={tag.tagName} tagBgColor={tag.tagColor}/>
+            ))}
         </PostTagBoxDiv>
     );
 }
