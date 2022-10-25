@@ -3,9 +3,12 @@ import { Navigation } from 'swiper';
 import { OTDCard } from '../../Organisms/OTDCard';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { queeryQuestions } from '../../../data/qotd';
 
-export function OTDBase({title, prompt, replies, qotdData}){
+export function OTDBase({title, prompt, replies}){
+    console.log(queeryQuestions);
     return (
+        
         <Swiper
             slidePerView={1}
             centeredSlides={true}
@@ -16,9 +19,9 @@ export function OTDBase({title, prompt, replies, qotdData}){
             loop={true}
         >
             <SwiperWrapper>
-                {qotdData.map((qotd) => (
-                    <SwiperSlide key = {qotd}>
-                        <OTDCard  title="Queery of the day" prompt={qotd.queeryQuestions} replies={replies}/>
+                {queeryQuestions.map((qotd) => (
+                    <SwiperSlide key = {qotd.id}>
+                        <OTDCard  title="Queery of the day" prompt={qotd.question} replies={replies}/>
                     </SwiperSlide>
                 ))
                 }

@@ -3,23 +3,27 @@ import axios from 'axios';
 import {NewPost} from '../components/Templates/NewPost';
 import { OTDBase } from '../components/Templates/OTDBase';
 import { Spacer } from '../components/Atoms/Spacer';
+import { queeryQuestions } from '../data/qotd';
 
 export default function Homepage(props){
 
     
     return(
         <div>
-            <OTDBase />
+            <OTDBase queeryQuestions={queeryQuestions.question} />
             {/* <BaseCard posts = {props.posts}/> */}
             {props.posts.map((post) => (
-                <NewPost
-                    key = {post.postId}
-                    username={post.authorUser.username} 
-                    date={post.createdAt} 
-                    title={post.postTitle}
-                    content={post.postContent}
-                    tags={post.postTags}
-                />
+                <>
+                    <NewPost
+                        key = {post.postId}
+                        username={post.authorUser.username} 
+                        date={post.createdAt} 
+                        title={post.postTitle}
+                        content={post.postContent}
+                        tags={post.postTags}
+                    />
+                    <Spacer size={10} />
+                </>
             ))}
             {/* {postModal && <NewPostModal onClick = {closePostModal}/>}
             {postModal && <ModalBackdrop onClick = {closePostModal}/>} */}

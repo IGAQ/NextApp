@@ -6,13 +6,14 @@ import Image from 'next/image';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Pagination } from 'swiper';
+import { Logo } from '../../Atoms/Logo';
+import { Spacer } from '../../Atoms/Spacer';
 
 const PostDiv = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #FFFFFF;
+align-items: center;
+display: flex;
+flex-direction: column; 
+justify-content: center;
 `;
 
 const ImageDiv = styled.div`
@@ -27,35 +28,37 @@ const ImageDiv = styled.div`
 
 export function Splash({ title, content }) {
     return (
-        <PostDiv>
-            <OTDTitle title="I got a queery" />
+        <>
+            <PostDiv>
+                <Logo />
+                <OTDTitle title="I got a queery" fontSize="2em"/>
+                <Spacer size="20" />
+            </PostDiv>
             <Swiper
                 slidePerView={1}
                 centeredSlides={true}
                 pagination={true}
                 modules={[Pagination]}
-                height={500}
-                width={500}
             >
                 <SwiperSlide>
                     <ImageDiv>
-                        <img src="https://picsum.photos/200/300" width={200} height={200} alt="Image 1" />
+                        <img src="/Login_Carousel.png" width={200} height={200} alt="Image 1" />
                         <PostContent content="Safely ask a question (“Queery”) or share a story with like-minded LGBTQA+ users seeking to share experiences." />
                     </ImageDiv>
                 </SwiperSlide>
                 <SwiperSlide>
                     <ImageDiv>
-                        <img src="https://picsum.photos/200/300" width={200} height={200} alt="Image 2" />
+                        <img src="/Login_Carousel-1.png" width={200} height={200} alt="Image 2" />
                         <PostContent content="Access curated resources such as informative articles about LGBTQA+ related content." />
                     </ImageDiv>
                 </SwiperSlide>
                 <SwiperSlide>
                     <ImageDiv>
-                        <img src="https://picsum.photos/200/300" width={200} height={200} alt="Image 3" />
+                        <img src="/Login_Carousel-2.png" width={200} height={200} alt="Image 3" />
                         <PostContent content="Customize your profile and easily view your saved articles and saved posts." />
                     </ImageDiv>
                 </SwiperSlide>
             </Swiper>   
-        </PostDiv>
+        </>
     );
 }
