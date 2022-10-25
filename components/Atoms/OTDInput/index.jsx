@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
 const OTDInputField = styled.input`
-    width: 60%;
-    height: 1rem;
-    border: 1px solid #000000;
+    width: 100%;
+    height: 2rem;
     border-radius: 5px;
     padding: 0.5rem;
+    border: transparent;
+    &:focus {
+        onover: expand height;
+    }
     `;
 
 export function OTDInput({ placeholder = '', type = 'text', onChange = () => { } }) {

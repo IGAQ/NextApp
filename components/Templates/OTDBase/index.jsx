@@ -4,7 +4,7 @@ import { OTDCard } from '../../Organisms/OTDCard';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-export function OTDBase({title, prompt, replies}){
+export function OTDBase({title, prompt, replies, qotdData}){
     return (
         <Swiper
             slidePerView={1}
@@ -13,14 +13,15 @@ export function OTDBase({title, prompt, replies}){
             onSwiper={(swiper) => console.log(swiper)}
             spaceBetween={30}
             navigation={true}
+            loop={true}
         >
             <SwiperWrapper>
-                <SwiperSlide>
-                    <OTDCard title={title} prompt={prompt} replies={replies}/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <OTDCard title={title} prompt={prompt} replies={replies}/>
-                </SwiperSlide>
+                {qotdData.map((qotd) => (
+                    <SwiperSlide key = {qotd}>
+                        <OTDCard  title="Queery of the day" prompt={qotd.queeryQuestions} replies={replies}/>
+                    </SwiperSlide>
+                ))
+                }
             </SwiperWrapper>
         </Swiper>
     );
