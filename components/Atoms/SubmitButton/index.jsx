@@ -22,18 +22,19 @@ align-items: center;
 
 export function StyledSubmitButton({
     text = 'Submit',
-}){
-    return(
-        <StyledSubBtn type = "submit" sx = {{
+}) {
+    return (
+        <StyledSubBtn type="submit" sx={{
             '&:hover': {
                 backgroundColor: '#C23950',
             },
         }}>
-            <Text size = "1.25rem" text = {text} color = "white"></Text>
-            <Spacer axis="horizontal" size={15}/>
-            <SendRoundedIcon 
-                sx ={{
-                    color: 'white'}}/>
+            <Text size="1.25rem" text={text} color="white"></Text>
+            <Spacer axis="horizontal" size={15} />
+            <SendRoundedIcon
+                sx={{
+                    color: 'white'
+                }} />
         </StyledSubBtn>
     );
 } 
