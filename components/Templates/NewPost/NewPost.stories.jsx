@@ -19,12 +19,17 @@ export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
     username: 'Username',
-    date: '1666321046',
     title: 'Title',
     content: 'Content',
-    text: 'Tag',
-    tagBgColor: '#C2ADFF',
-    tagTextColor: 'white',
     score: '0',
     numComment: '0',
+    posts: [
+        { postId: 1,
+            postTitle: 'Test',
+            postContent: 'Test',
+            createdAt: '1635170171',
+            updatedAt: '1635170171',
+            postTags: [{tagName:'serious'}, {tagName:'advice'}],
+            authorUser: {username: 'test'},
+        }],
 };

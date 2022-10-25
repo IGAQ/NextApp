@@ -1,3 +1,4 @@
+import { fontSize } from '@mui/system';
 import styled from 'styled-components';
 
 const TitleDiv = styled.div`
@@ -6,12 +7,12 @@ const TitleDiv = styled.div`
     align-items: center;
     justify-content: flex-start;
     font-weight: 300;
-    font-size: 50px;
-    font-family: 'Amatic SC', cursive;
+    font-size: ${props => props.fontSize || '50px'};
+    font-family: 'AmaticSC-Bold'; 
     text-transform: uppercase;
     `;
 
-export function OTDTitle({ title='Queery of the Day' }) {
+export function OTDTitle({ title='Queery of the Day'}) {
     return (
         <TitleDiv>
             {title}
