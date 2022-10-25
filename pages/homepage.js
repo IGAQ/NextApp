@@ -1,26 +1,14 @@
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { FlexBox, ModalBackdrop, Wrapper } from '../styles/globals';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded';
-import AddRoundedIcon from '@mui/icons-material/AddRounded';
-import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
-import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
-import { NewPostModal } from '../components/Organisms/NewPostModal';
-import { BaseCard } from '../components/Organisms/BaseCard';
 import axios from 'axios';
 import {NewPost} from '../components/Templates/NewPost';
-import { PostTagBox } from '../components/Molecules/PostTagBox';
+import { OTDBase } from '../components/Templates/OTDBase';
 
 export default function Homepage(props){
 
-    const r = useRouter();
     
     return(
-        <Wrapper width='0' height='0'>
-            <FlexBox justify = 'flex-start' dir = 'column' align = 'flex-start' flex = '0'> Queery of the day </FlexBox>
+        <div>
+            <OTDBase />
             {/* <BaseCard posts = {props.posts}/> */}
             {props.posts.map((post) => (
                 <NewPost
@@ -34,7 +22,7 @@ export default function Homepage(props){
             ))}
             {/* {postModal && <NewPostModal onClick = {closePostModal}/>}
             {postModal && <ModalBackdrop onClick = {closePostModal}/>} */}
-        </Wrapper>
+        </div>
     );
 }
 

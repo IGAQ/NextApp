@@ -4,13 +4,13 @@ const PostContentDiv = styled.div`
     font-size: .9rem;
     font-weight: 400;
     line-height: 1.5rem;
-    max-height: 4.2em;
+    max-height: ${props => props.maxHeight ||  '4.2em'};
     overflow: hidden;
     `;
 
-export function PostContent ({content = 'Content'}) {
+export function PostContent ({content = 'Content', maxHeight = 'auto'}) {
     return (
-        <PostContentDiv>
+        <PostContentDiv maxHeight={maxHeight}>
             {content}
         </PostContentDiv>
     );
