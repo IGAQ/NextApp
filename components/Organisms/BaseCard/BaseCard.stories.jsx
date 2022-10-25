@@ -18,4 +18,12 @@ const Template = (args) => <BaseCard {...args} />;
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
+    posts: [
+        { postId: 1, 
+        postTitle: 'test', 
+        postContent: 'test', 
+        updatedAt: '1378571974', 
+        postTags: [{tagName:'serious'}, {tagName:'advice'}], 
+        authorUser: {username: 'test'} 
+    }],
 };
