@@ -20,10 +20,10 @@ export const Default = Template.bind({});
 Default.args = {
     posts: [
         { postId: 1, 
-        postTitle: 'test', 
-        postContent: 'test', 
-        updatedAt: '1378571974', 
-        postTags: [{tagName:'serious'}, {tagName:'advice'}], 
-        authorUser: {username: 'test'} 
+        postTitle: 'Question about sexuality', 
+        postContent: 'Is there a sexuality for ONLY having sexual attraction of the opposite gender you feel like you are at the moment?', 
+        updatedAt: '2022.10.24', 
+        postTags: [{tagName:'queery'}, {tagName:'casual'}], 
+        authorUser: {username: 'dubumelts'}, 
     }],
 };
