@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const PostSettingDiv = styled.div`  
     display: flex;
-    position: absolute;
+    position: relative;
     right: 0;
     top: 1em;
     flex-direction: row;

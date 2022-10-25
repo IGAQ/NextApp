@@ -9,7 +9,10 @@ const OTDCardDiv = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    background-color: #FFB6C3;
+    border-radius: 1rem;
+    margin: 1rem;
+    padding: 1rem;
     `;
 
 export function OTDCard({ title, prompt, replies, answer, setAnswer }) {

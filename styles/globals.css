@@ -68,3 +68,8 @@ textarea{
     background: black;
   }
 }
+
+.swiper {
+  max-width: 50em;
+  
+}

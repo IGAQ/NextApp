@@ -1,11 +1,8 @@
-import { NewPost } from '../../components/Templates/NewPost';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { OTDBase } from '../../components/Templates/OTDBase';
 
-export default function Testing (){
+export default function Test(){
     return (
-        <div>
-            <OTDBase />
-            <NewPost />
-        </div>
+        <OTDBase />
     );
 }

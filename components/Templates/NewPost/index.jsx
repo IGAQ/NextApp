@@ -1,6 +1,7 @@
 import { PostHeader } from '../../Organisms/PostHeader';
 import { PostBody } from '../../Organisms/PostBody';
 import { PostFooter } from '../../Organisms/PostFooter';
+import { PostSettingsButton } from '../../Molecules/PostSettingsButton';
 import styled from 'styled-components';
 
 const PostDiv = styled.div`
@@ -11,6 +12,8 @@ const PostDiv = styled.div`
     width: 100%;
     padding: 1rem;
     border: 1px solid #e6e6e6;
+    background-color: #fff;
+    max-width: 50em;
     `;
 
 export function NewPost({ username, date, title, content, tags, score, numComments }) {
