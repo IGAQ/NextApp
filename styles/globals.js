@@ -19,7 +19,7 @@ box-shadow:${props => props.boxShadow|| 'none'};
 export const Wrapper = styled(FlexBox)`
 width:100vw;
 height:100vh;
-margin-bottom: 95px;
+margin-bottom: 75px;
 `;
 export const ModalBackdrop = styled.div`
 background-color: #3F3924C9;
