@@ -19,9 +19,9 @@ flex-wrap:${props => props.flexWrap || 'nowrap'};
 
 //Reusuable Wrapper for all the pages
 export const Wrapper = styled(FlexBox)`
-width:100vw;
-height:100vh;
-margin-bottom: 75px;
+// width:100vw;
+// height:100vh;
+// margin-bottom: 75px;
 `;
 export const ModalBackdrop = styled.div`
 background-color: #3F3924C9;

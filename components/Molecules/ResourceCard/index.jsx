@@ -26,10 +26,9 @@ export function ResourceCard ({title, content, tags}){
             <FlexBox bgColor = "#FFF" padding = "15px 60px">
                 <StyledSave size = {25} onClick = {handleSave}/>
                 <PostTitle title={title} style = {{ alignSelf: 'flex-start'}}/>
-                <PostContent content = {content} onClick={()=>{}}/>
+                <PostContent maxHeight = "4.5em" content = {content} onClick={()=>{}}/>
                 <ContentButton onClick={()=>{}}/>
                 <Spacer axis="vertical" size={10}/> 
-
                 <PostTagBox tags = {tags}/>
                 <Spacer axis="vertical" size={10}/> 
             </FlexBox>
