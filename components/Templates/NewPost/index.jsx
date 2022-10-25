@@ -11,9 +11,9 @@ const PostDiv = styled.div`
     justify-content: center;
     width: 100%;
     padding: 1rem;
-    border: 1px solid #e6e6e6;
     background-color: #fff;
     max-width: 50em;
+    margin: auto;
     `;
 
 export function NewPost({ username, date, title, content, tags, score, numComments }) {

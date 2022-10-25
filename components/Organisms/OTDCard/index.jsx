@@ -13,6 +13,7 @@ const OTDCardDiv = styled.div`
     border-radius: 1rem;
     margin: 1rem;
     padding: 1rem;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     `;
 
 export function OTDCard({ title, prompt, replies, answer, setAnswer }) {
