@@ -76,7 +76,7 @@ export function MobileNav() {
     return (
         <>
             {postModal && <NewPostModal onClick = {closePostModal}/>}
-            {postModal && <ModalBackdrop onClick = {closePostModal}/>}
+            {/* {postModal && <ModalBackdrop onClick = {closePostModal}/>} */}
             <NavBase>
                 <Link href='/homepage' scroll = {false}>
                     <StyledLink className = {r.pathname == '/homepage' ? styles.activePage :' '}>

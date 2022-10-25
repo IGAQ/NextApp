@@ -10,8 +10,22 @@ import axios from 'axios';
 export default function NewQueeryPage(props) {
     const [postTags, setPostTags] = useState([]);
  
-    function handleQueerySubmit(postTitle, postContent, postTags){
- 
+    async function handleQueerySubmit(postTitle, postContent, postTagIds, postTone, anonymous){
+        const post = {
+            postTitle: postTitle,
+            postContent: postContent,
+            PostTagIds: [...postTagIds, postTone],
+            anonymous: anonymous,
+            postTypeId: '95aaf886-064e-44b3-906f-3a7798945b7b',   
+        };
+        try {
+            await axios.post('/api/post', post);
+            return true;
+        }
+        catch (error) {
+            return false;
+        }
+
     }
  
  
@@ -30,7 +44,7 @@ export default function NewQueeryPage(props) {
             <PostTitle title = "Post a Queery"/>
             <FlexBox bgColor = "#FFF9F2" padding = "25px 50px" margin = "0" align = "stretch" flex = "1">
                 <Spacer axis="vertical" size={25}/>
-                <PostForm></PostForm>
+                <PostForm handleSubmit={handleQueerySubmit}></PostForm>
             </FlexBox>
         </Wrapper>
     );

@@ -13,6 +13,8 @@ border-radius: ${props => props.borderRadius||'0px'};
 padding:${props => props.padding||'0'};
 margin:${props => props.margin||'0'};
 box-shadow:${props => props.boxShadow|| 'none'};
+gap:${props => props.gap};
+flex-wrap:${props => props.flexWrap || 'nowrap'};
 `;
 
 //Reusuable Wrapper for all the pages
@@ -28,5 +30,6 @@ background-color: #3F3924C9;
   height: 100vh;
   position: fixed;
   top: 0%;
+  left: 0%;
 overflow: ${props => props.overflow || 'hidden'};
 `;

@@ -14,16 +14,18 @@ font-size: 1rem;
     border-bottom: 2px solid #C2395000;
 }
 `;
+
 export function TextInput({
     type = 'text',
     placeholder = 'Placeholder',
     label = 'Label',
     name = 'name',
+    ...props
 }){
     return (
         <>
             <label htmlFor = {name}> {label}</label>
-            <InputBox required name = {name} id = {name} type={type} placeholder={placeholder} />
+            <InputBox required name = {name} id = {name} type={type} placeholder={placeholder} {...props} />
         </>
     );
 };

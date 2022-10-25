@@ -11,7 +11,7 @@ background: ${props => props.bgColor||'#FFF8EC'};
 border-radius: ${props => props.borderRadius||'25px'}; 
 max-width: ${props => props.maxWidth||'75%'};
 min-width: ${props => props.minWidth||'150px'};
-position: ${props => props.position||'static'};
+position: ${props => props.position||'fixed'};
 z-index: 10;
 top: 50%;
 border:${props => props.border||'none'};

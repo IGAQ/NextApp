@@ -15,7 +15,7 @@ export function NewPostModal(props) {
 
     return(
         <Wrapper>
-            <ModalBox border ="5px solid #FF758C" minWidth="50%" padding = "25px 50px 50px 50px" align = "stretch" position = "fixed" borderRadius = "20px"
+            <ModalBox border ="5px solid #FF758C" minWidth="50%" padding = "25px 50px 50px 50px" align = "stretch" borderRadius = "20px"
                 initial= {{y:500}}
                 animate = {{y:-300, opacity:1}} 
                 transiton={{duration: 100, delay:500}}

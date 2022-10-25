@@ -8,22 +8,31 @@ import { postTags } from '../../../data/tags';
 import { MantineProvider } from '@mantine/core';
 import { StyledSubmitButton } from '../../../components/Atoms/SubmitButton';
 import { LabelledSwitch } from '../../../components/Molecules/LabelledSwitch';
-import { FlexBox } from '../../../styles/globals';
+import { FlexBox, ModalBackdrop } from '../../../styles/globals';
 import { useState } from 'react';
+import { ContentCheckModal } from '../ContentCheckModal';
 
-export function PostForm (props){
-    const [text, setText] = useState('');
+export function PostForm ({handleSubmit, props}){
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
     const [tone, setTone] = useState('casual');
-    const [tag, setTag] = useState('General');
+    const [tag, setTag] = useState('');
     const [anonymous, setAnonymous] = useState(false);
-    
-    function handleSubmit(e)
-    {
-        e.preventDefault();
-        console.log('some stuff');
-    };
 
-          
+    const [showError, setShowError] = useState(false);
+
+    async function handleCheckSubmission(){
+        if (await handleSubmit(title, content, tone, tag, anonymous)){
+
+        } else {
+            setShowError(true);
+        }
+    }
+
+    function closeContentCheckModal(){
+        setShowError(false);
+    }
+
     return(
         <MantineProvider 
             theme = {{
@@ -33,11 +42,12 @@ export function PostForm (props){
                     'storyPurple':['#eee4ff','#c6b3ff','#a880fd', '#924efc', '#821dfb','#7906e2','#6a03b0','#54017e', '#38004d','#17001d'],
                 },
             }}>
-            <form onSubmit = {handleSubmit}>
+            {!(showError) && <ContentCheckModal onClick = {closeContentCheckModal}/>}
+            <form onSubmit = {()=> handleCheckSubmission()}>
                 <FlexBox align ="stretch">
-                    <TextInput name = "title" label = "Post title" id = "title" placeholder = "Enter your title"/>
+                    <TextInput onChange={(e) => setTitle(e.target.value)} text = {title} name = "title" label = "Post title" id = "title" placeholder = "Enter your title"/>
                     <Spacer axis="vertical" size={25}/>
-                    <MaxTextArea name = "text" id = "text" text = {text} setText = {setText} label = "Queery" placeholder = "Enter your queery" maxLength = "250"  />
+                    <MaxTextArea onChange={(e) => setContent(e.target.value)}name = "content" id = "content" text = {content}  label = "Queery" placeholder = "Enter your queery" maxLength = "250"  />
                     <Spacer axis="vertical" size={25}/>
                     <Breakline/>
                     <Spacer axis="vertical" size={25}/>

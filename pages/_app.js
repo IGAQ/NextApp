@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import { MobileNav } from '../components/Organisms/MobileNav/MobileNav';
 import { useRouter } from 'next/router';
+import { Spacer } from '../components/Atoms/Spacer';
 
 function MyApp({ Component, pageProps }) {
     const r = useRouter();
@@ -17,6 +18,7 @@ function MyApp({ Component, pageProps }) {
         <>
             <Component {...pageProps} />
             {/* {<showBottomNav && MobileNav/>} */}
+            <Spacer axis="vertical" size={55}/>
             <MobileNav/>
         </>
     );
