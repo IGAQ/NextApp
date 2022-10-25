@@ -1,1 +1,41 @@
-import Text from '../../Atoms/Text';import { PostTag } from '../../Atoms/PostTag';import {BsBookmark} from 'react-icons/bs';import { FlexBox } from '../../../styles/globals';import { resources } from '../../../data/resources';import { Backdrop, Button } from '@mui/material';import { Spacer } from '../../Atoms/Spacer';import { useState } from 'react';export function ResourceCard (props){    const [readMore, setReadMore] = useState(false);           const handleReadMore = () => {        if (props.resource.text.length > 100) {            setReadMore(true);        }    };    return(        <FlexBox></FlexBox>    //  resources.map((resource)=>(    //      <FlexBox key = {resource.title} bgColor = "#FFF">    //          <Text text = {resource.title}/>    //          <Spacer axis="vertical" size={25}/>    //          <Text text = {resource.text}/>    //          {readMore === true && <Button variant='text' sx={{marginTop: '-1.5em', color: 'grey', float:'right', background:'white'}}     //              onClick={()=>{    //                  r.push(`/post/${resource.title}`);    //              }}>...Read More</Button>}    //          <Spacer axis="vertical" size={25}/>    //          <FlexBox>    //              <PostTag></PostTag>    //          </FlexBox>                  //      </FlexBox>    //  ))                  );}
+import {FiBookmark} from 'react-icons/fi';
+import { FlexBox } from '../../../styles/globals';
+import { Spacer } from '../../Atoms/Spacer';
+import { PostTitle } from '../../Atoms/PostTitle';
+import { PostContent } from '../../Atoms/PostContent';
+import { PostTagBox } from '../../Molecules/PostTagBox';
+import { ContentButton } from '../../Atoms/ContentButton';
+import styled from 'styled-components';
+import { useState } from 'react';
+
+const StyledSave = styled(FiBookmark)`
+position: relative;
+top: 3%;
+left: 50%;
+    `;
+
+export function ResourceCard ({title, content, tags}){
+    const [isSaved, setIsSaved] = useState(false);
+
+    const handleSave = () => {
+        setIsSaved(!isSaved);
+    };
+
+    return(
+        <>
+            <FlexBox bgColor = "#FFF" padding = "15px 60px">
+                <StyledSave size = {25} onClick = {handleSave}/>
+                <PostTitle title={title} style = {{ alignSelf: 'flex-start'}}/>
+                <PostContent maxHeight = "4.5em" content = {content} onClick={()=>{}}/>
+                <ContentButton onClick={()=>{}}/>
+                <Spacer axis="vertical" size={10}/> 
+                <PostTagBox tags = {tags}/>
+                <Spacer axis="vertical" size={10}/> 
+            </FlexBox>
+            <Spacer axis="vertical" size={25}/> 
+        </>
+              
+
+    );
+}
+
