@@ -6,9 +6,9 @@ const OTDInputField = styled.input`
     border-radius: 5px;
     padding: 0.5rem;
     border: transparent;
-    &:focus {
-        onover: expand height;
-    }
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     `;
 
 export function OTDInput({ placeholder = '', type = 'text', onChange = () => { } }) {
