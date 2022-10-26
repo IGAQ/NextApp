@@ -2,6 +2,9 @@
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
+    env: {
+        API_SERVER_URL: process.env.API_SERVER_URL,
+    },
     async rewrites() {
         return [
             {
@@ -16,4 +19,5 @@ module.exports = {
     compiler: {
         styledComponents: true,
     },
+    env: nextConfig.env,
 };
