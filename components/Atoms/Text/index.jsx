@@ -12,7 +12,7 @@ const Header = styled.p`
        `;
 
 export function Text({  
-    size = '2rem',
+    size = '1.90rem',
     color = 'black',
     weight = '400',
     text = 'Heading',

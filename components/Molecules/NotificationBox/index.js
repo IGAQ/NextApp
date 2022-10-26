@@ -2,16 +2,12 @@ import { ProfileIcon } from '../../Atoms/ProfileIcon';
 import { Text } from '../../Atoms/Text';
 import { FlexBox } from '../../../styles/globals';
 
-export function NotificationBox(props){
+export function NotificationBox({AvaPic, text}){
 
     return(
-        <FlexBox bgColor= "#FFF9F2" dir = "row">
-            <ProfileIcon />
-            <Text size = "1rem" margin = "25px" text = " Ace replied to your message"></Text>
+        <FlexBox justify = "flex-start" bgColor= "#FFF9F2" dir = "row">
+            <ProfileIcon AvaPic={AvaPic}/>
+            <Text text = {text} size = "1rem" margin = "25px" ></Text>
         </FlexBox>
     );
-
-    //{props.avatar}
-    //{props.name} " " + {props.message}
-    //if (props.time) {props.time} > 4 hours?? or just new notifications that havent been checked on last page load or something
 }

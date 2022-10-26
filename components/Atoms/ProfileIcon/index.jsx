@@ -8,15 +8,11 @@ background-image: url(${props=>props.bgimage || '/PrideFlag.svg'});
 width: fit-content;
 display: flex;
 flex: 0 0 auto;
-margin-right: .5rem;
+margin-right: ${props => props.marginRight || '.5rem'};
 `;
 
 export function ProfileIcon({
     AvaPic = '/DefaultProfile.svg'}) {
-
-
-  
-
     return (
         <AvatarDiv>
             <Avatar

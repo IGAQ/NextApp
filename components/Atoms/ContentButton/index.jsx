@@ -4,12 +4,18 @@ import styled from 'styled-components';
 const StyledButton = styled.button`
 margin: -1.5em 0 0 0; 
 background-color: ${props => props.backgroundColor || '#ffffffed'};
-width: ${props => props.width || '100%'};
+width: fit-content;
 outline: none; 
 border: none;
-padding: 1em 0 0 0;
+align-self: flex-end;
+padding: 0.35em 10px 0 35px;
 font-family: 'Heebo', sans-serif;
 color: #747474;
+font-weight: 500;
+
+'&:hover': {
+    color: #ff758c;
+}
 `;
 
 
