@@ -13,9 +13,9 @@ const SettingsButtonDiv = styled.div`
     border-radius: 5px;
     `;
 
-export function PostSettingsButton({ setType, icon }) {
+export function PostSettingsButton({ setType, icon, ...otherPropsForDiv }) {
     return (
-        <SettingsButtonDiv>
+        <SettingsButtonDiv {...otherPropsForDiv}>
             <PostSettingsIcons icon={icon} />
             <PostSettingsText setType={setType} />
         </SettingsButtonDiv>

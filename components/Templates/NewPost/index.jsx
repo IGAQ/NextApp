@@ -32,10 +32,6 @@ export function NewPost({ postId, username, date, title, content, tags, score, n
 
     const [showSettings, setShowSettings] = useState(false);
 
-    function closeResortModal() {
-        setReportOpen(false);
-    }
-
     function handleSettings() {
         setShowSettings(true);
     }
