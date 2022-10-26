@@ -7,11 +7,10 @@ const TagDiv = styled.div`
     background-color: ${props => props.tagBgColor || '#C2ADFF'};
     border-radius: 20px;
     padding: 5px 20px;
-    line-height: 100px;
+    min-width: fit-content;
     text-align: center;
     margin: 5px;
     margin-left: 0;
-    max-width: 5em;
     font-size: 1em;
     height: 1.5em;
     position: relative;
@@ -28,9 +27,7 @@ export function PostTag ({
 
     return (
         <TagDiv tagBgColor={tagBgColor} tagColor={tagColor}>
-            <div>
-                {text}
-            </div>
+            {text}
         </TagDiv>
     );
 }
