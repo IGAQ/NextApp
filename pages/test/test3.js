@@ -12,7 +12,7 @@ export default function Test3(){
 
     return (
         <>
-            <h1>authenticated now.</h1>
+            <h1>you should see the stringified user. that measn you are authenticated. refresh the page if you dont see. otherwise, it's bug.</h1>
             <code>
                 { JSON.stringify(user, undefined, 4) }
             </code>

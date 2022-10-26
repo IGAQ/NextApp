@@ -2,6 +2,7 @@ import { PostContent } from '../../Atoms/PostContent';
 import { PostTitle } from '../../Atoms/PostTitle';
 import { PostTagBox } from '../../Molecules/PostTagBox';
 import styled from 'styled-components';
+import {useRouter} from 'next/router';
 
 const PostBodyDiv = styled.div`
 display: flex;
@@ -10,10 +11,11 @@ align-items: flex-start;
 justify-content: center;
 `;
 
-export function PostBody ({title, content, tags}) {
+export function PostBody ({postId, title, content, tags}) {
+    const router = useRouter();
     return (
         <PostBodyDiv>
-            <PostTitle title={title}/>
+            <PostTitle title={title} onClick={() => router.push('/homepage/' + postId)}/>
             <PostContent content={content}/>
             <PostTagBox tags={tags}/>
         </PostBodyDiv>

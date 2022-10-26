@@ -1,11 +1,11 @@
-import { FlexBox, ModalBackdrop, Wrapper } from '../styles/globals';
+import { FlexBox, ModalBackdrop, Wrapper } from '../../styles/globals';
 import { useRouter } from 'next/router';
-import { Spacer } from '../components/Atoms/Spacer';
-import { ResourceCard } from '../components/Molecules/ResourceCard';
-import { PostTitle } from '../components/Molecules/PostTitle';
-import { Button } from '../components/Atoms/Button';
-import { resources } from '../data/resources';
-import { SearchAndFilter } from '../components/Organisms/SearchAndFilter';
+import { Spacer } from '../../components/Atoms/Spacer';
+import { ResourceCard } from '../../components/Molecules/ResourceCard';
+import { PostTitle } from '../../components/Molecules/PostTitle';
+import { Button } from '../../components/Atoms/Button';
+import { resources } from '../../data/resources';
+import { SearchAndFilter } from '../../components/Organisms/SearchAndFilter';
 
 export default function Resources(props){
     const r = useRouter();

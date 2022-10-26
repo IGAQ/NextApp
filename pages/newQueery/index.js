@@ -1,25 +1,21 @@
-import { FlexBox, Wrapper } from '../styles/globals';
-import { useState } from 'react';
-import { Text } from '../components/Atoms/Text';
-import { Spacer } from '../components/Atoms/Spacer';
-import { PostForm } from '../components/Organisms/PostForm';
-import { PostTitle } from '../components/Molecules/PostTitle';
-import { useEffect } from 'react';
+import { FlexBox, Wrapper } from '../../styles/globals';
+import { Spacer } from '../../components/Atoms/Spacer';
+import { PostForm } from '../../components/Organisms/PostForm';
+import { PostTitle } from '../../components/Molecules/PostTitle';
 import axios from 'axios';
-import * as storage from '../lib/storage'; 
-import {API_SERVER, JWT_TOKEN_LOCAL_STORAGE_KEY} from '../lib/constants';
+import * as storage from '../../lib/storage';
+import {API_SERVER, JWT_TOKEN_LOCAL_STORAGE_KEY} from '../../lib/constants';
 
 
-export async function getStaticProps(){
+export async function getStaticProps() {
     const res = await axios.get(`${API_SERVER}/postTags`);
-    const postTags = res.data;
+    const postTags = res.data.filter((tag) => tag.tagName.toLowerCase() !== 'serious' && tag.tagName.toLowerCase() !== 'casual');
     return{
         props:{postTags},
     }; 
 }
 
 export default function NewQueeryPage({postTags}) {
-    console.log(postTags);
 
     async function handleQueerySubmit(postTitle, postContent, postTagId, postTone, anonymous){
         const post = {
@@ -31,12 +27,12 @@ export default function NewQueeryPage({postTags}) {
         };
 
         try {
-            await axios.post('/api/posts/create', post ,{
+            let result = await axios.post('/api/posts/create', post ,{
                 headers: {
                     Authorization: `Bearer ${storage.getFromStorage(JWT_TOKEN_LOCAL_STORAGE_KEY)}`,
                 },
             });
-            return true;
+            return result.data;
         }
         catch (error) {
             return false;

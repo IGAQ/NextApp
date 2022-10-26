@@ -1,17 +1,17 @@
 import { TextInput } from '../../Atoms/TextInput';
-import { Spacer } from '../../../components/Atoms/Spacer';
-import { MaxTextArea } from '../../../components/Molecules/MaxTextArea';
-import { Breakline } from '../../../components/Atoms/Breakline';
-import { RadioGroup } from '../../../components/Molecules/RadioGroup';
-import { ChipGroup } from '../../../components/Molecules/ChipGroup';
-import { postTags } from '../../../data/tags';
+import { Spacer } from '../../Atoms/Spacer';
+import { MaxTextArea } from '../../Molecules/MaxTextArea';
+import { Breakline } from '../../Atoms/Breakline';
+import { RadioGroup } from '../../Molecules/RadioGroup';
+import { ChipGroup } from '../../Molecules/ChipGroup';
 import { MantineProvider } from '@mantine/core';
-import { StyledSubmitButton } from '../../../components/Atoms/SubmitButton';
-import { LabelledSwitch } from '../../../components/Molecules/LabelledSwitch';
+import { StyledSubmitButton } from '../../Atoms/SubmitButton';
+import { LabelledSwitch } from '../../Molecules/LabelledSwitch';
 import { FlexBox, ModalBackdrop } from '../../../styles/globals';
 import { useState } from 'react';
 import { ContentCheckModal } from '../ContentCheckModal';
 import { SubmissionModal } from '../SubmissionModal';
+import {useRouter} from 'next/router';
 
 export function PostForm ({handleSubmit, props, postTags}){
     const [title, setTitle] = useState('');
@@ -21,12 +21,17 @@ export function PostForm ({handleSubmit, props, postTags}){
     const [anonymous, setAnonymous] = useState(false);
     const [showError, setShowError] = useState(false);
 
+    const [showSubmissionModal, setShowSubmissionModal] = useState(false);
+    const [createdPostId, setCreatedPostId] = useState(null);
 
+    const router = useRouter();
 
     async function handleCheckSubmission(e){
         e.preventDefault();
-        if (await handleSubmit(title, content, tag, tone, anonymous)){
-            <SubmissionModal/>;
+        let createdPost = await handleSubmit(title, content, tag, tone, anonymous);
+        if (createdPost) {
+            setShowSubmissionModal(true);
+            setCreatedPostId(createdPost.postId);
         } else {
             setShowError(true);
         }
@@ -46,6 +51,8 @@ export function PostForm ({handleSubmit, props, postTags}){
                 },
             }}>
             {/* <ContentCheckModal/> */}
+
+            {(showSubmissionModal) && <SubmissionModal postId={createdPostId}/>}
 
             {(showError) && <ContentCheckModal onClick = {closeContentCheckModal}/>}
             <form onSubmit = {(e)=> handleCheckSubmission(e)}>

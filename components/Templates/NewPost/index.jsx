@@ -26,7 +26,7 @@ justify-content: space-between;
 width: 100%;
     `;
 
-export function NewPost({ username, date, title, content, tags, score, numComments }) {
+export function NewPost({ postId, username, date, title, content, tags, score, numComments }) {
 
     const [showSettings, setShowSettings] = useState(false);
 
@@ -36,7 +36,7 @@ export function NewPost({ username, date, title, content, tags, score, numCommen
                 <PostHeader username={username} date={date} />
                 {showSettings ? <PostSettingsModal /> : <PostSetting onClick={() => setShowSettings(true)} />}
             </Toprightdiv>
-            <PostBody title={title} content={content} tags={tags} />
+            <PostBody postId={postId} title={title} content={content} tags={tags} />
             <PostFooter score={score} numComments={numComments} />
         </PostDiv>
     );

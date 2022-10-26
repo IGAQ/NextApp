@@ -9,7 +9,7 @@ background-color: ${props => props.backgroundColor || '#FF758C'};
 color: ${props => props.color || '#FFF'};
 padding: ${props => props.padding || '0.75em 1.25em'};
 width: ${props =>props.size === 'short' ? '3rem' : props.size === 'long' ? '20em': '10rem'};
-min-width: 2rem
+min-width: 2rem;
 font-family: 'Heebo', sans-serif;
 font-weight: 600;
 `;
