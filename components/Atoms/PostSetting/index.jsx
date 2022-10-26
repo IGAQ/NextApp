@@ -4,18 +4,15 @@ import styled from 'styled-components';
 
 const PostSettingDiv = styled.div`  
     display: flex;
-    position: relative;
-    right: 0;
-    top: 1em;
     flex-direction: row;
-    align-items: flex-end;
-    justify-content: flex-end;
+    align-items: flex-start;
+    justify-content: flex-start;
     `;
 
-export function PostSetting({onClick = () => {}}) {
+export function PostSetting({onClick}) {
 
     return (
-        <PostSettingDiv>
+        <PostSettingDiv onClick={onClick}>
             <IconButton aria-label="settings">
                 <MoreVertIcon fontSize='medium'/>
             </IconButton>

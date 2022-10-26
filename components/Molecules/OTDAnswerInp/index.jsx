@@ -1,6 +1,8 @@
 import { OTDInput } from '../../Atoms/OTDInput';
 import { OTDButton } from '../../Atoms/OTDButton';
 import styled from 'styled-components';
+import { ModalBox } from '../../Atoms/ModalBox';
+import { useState } from 'react';
 
 const OTDAnswerInpDiv = styled.div`
     display: flex;
@@ -13,17 +15,24 @@ const ButtonInside = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-left: -4.5em;
     `;
     
 
-export function OTDAnswerInp() {
+export function OTDAnswerInp(props) {
     return (
         <OTDAnswerInpDiv>
             <OTDInput />
             <ButtonInside>
-                <OTDButton />
+                <OTDButton {...props}/>
             </ButtonInside>
+        </OTDAnswerInpDiv>
+    );
+}
+
+export function Answered() {
+    return (
+        <OTDAnswerInpDiv>
+            Thank you for answering this queery!
         </OTDAnswerInpDiv>
     );
 }

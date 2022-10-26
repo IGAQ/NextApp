@@ -4,20 +4,16 @@ import styled from 'styled-components';
 const SettingsModalDiv = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
     background-color: #FFFFFF;
-    postion: absolute;
-    top: 0;
-    right: 0;
-    width: 15%;
+    width: 6em;
+    height: 3em;
     `;
 
 export function PostSettingsModal() {
     return (
         <SettingsModalDiv>
             <PostSettingsButton />
-            <PostSettingsButton setType="Save" icon="SaveIcon.svg" />
+            <PostSettingsButton setType="Save" icon="SaveIcon.svg" on />
         </SettingsModalDiv>
     );
 }
