@@ -33,7 +33,7 @@ export function StyledSubmitButton({
             <Spacer axis="horizontal" size={15} />
             <SendRoundedIcon
                 sx={{
-                    color: 'white'
+                    color: 'white',
                 }} />
         </StyledSubBtn>
     );

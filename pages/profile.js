@@ -1,6 +1,5 @@
 
 import { FlexBox, Wrapper } from '../styles/globals';
-import { useRouter } from 'next/router';
 import { Spacer } from '../components/Atoms/Spacer';
 import { HamburgerIcon } from '../components/Atoms/HamburgerIcon';
 import { PostTitle } from '../components/Molecules/PostTitle';
@@ -9,6 +8,7 @@ import {Badge} from '../components/Atoms/Badge';
 import { Button } from '../components/Atoms/Button';
 import { ProfileIcon } from '../components/Atoms/ProfileIcon';
 import { PostTag } from '../components/Atoms/PostTag';
+import { BadgeShowcase } from '../components/Molecules/BadgeShowcase';
 export default function Profile(props){    
     return(
         <Wrapper align = "stretch" justify = "center">
@@ -42,18 +42,7 @@ export default function Profile(props){
                     <Button size= "long" label = "Saved posts"/>
                 </FlexBox>
             </FlexBox>
-            <FlexBox dir = "column" padding = "15px 0 0 0 ">
-                <Text size = "1rem" weight = "600" text = "My badge showcase"></Text>
-                <FlexBox dir = "row" flexWrap = "wrap" gap = "1rem">
-                    <Badge/>
-                    <Badge/>
-                    <Badge/>
-                    <Badge/>
-                    <Badge/>
-                    <Badge/>
-                    <Badge/>
-                </FlexBox>
-            </FlexBox>
+            <BadgeShowcase/>
         </Wrapper>
 
 
