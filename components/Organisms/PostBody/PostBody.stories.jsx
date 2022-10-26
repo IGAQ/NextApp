@@ -20,13 +20,6 @@ export const Default = Template.bind({});
 Default.args = {
     title: 'Post Title',
     content: 'Post Content',
-    posts: [
-        { postId: 1,
-            postTitle: 'Test',
-            postContent: 'Test',
-            createdAt: '1635170171',
-            updatedAt: '1635170171',
-            postTags: [{tagName:'serious'}, {tagName:'advice'}],
-            authorUser: {username: 'test'},
-        }],
+    postId: '1',
+    tags: [{tagName:'serious'}, {tagName:'advice'}],
 };
