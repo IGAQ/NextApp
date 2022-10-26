@@ -19,10 +19,10 @@ export function ReportModal(props) {
                     <Spacer axis="vertical" size={15}/>
                     <Text textAlign = "center" size = "1rem" text =  "Our moderators will review this post. "></Text>
                     <Spacer axis="vertical" size={25}/>
-                    <Button size = "short" label = "Okay!" onClick = {props.onClick}> </Button>
+                    <Button size = "short" label = "Okay!" onClick = {props.onClose}> </Button>
                 </FlexBox>
             </ModalBox>
-            <ModalBackdrop onClick = {props.onClick}/>
+            <ModalBackdrop onClick = {props.onClose}/>
         </FlexBox>
     );
 }
