@@ -20,5 +20,5 @@ export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
     width: '100%',
-    margin: '0 0 15px 0'
+    margin: '0 0 15px 0',
 };

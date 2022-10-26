@@ -44,5 +44,5 @@ Default.args = {
             tagName: 'Gay',
             tagId: '3',
             tagColor: '#FF758c',
-        }]
+        }],
 };

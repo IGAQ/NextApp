@@ -26,5 +26,5 @@ Default.args = {
             tagId: '',
             tagColor: ''
         }
-    ]
+    ],
 }

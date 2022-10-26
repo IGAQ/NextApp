@@ -24,5 +24,5 @@ Default.args = {
     name: 'name',
     label: 'label',
     rows: '5',
-    placeholder: 'placeholder'
+    placeholder: 'placeholder',
 };
