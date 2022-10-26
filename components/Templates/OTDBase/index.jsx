@@ -1,4 +1,4 @@
-import { Swiper, SwiperSlide, SwiperWrapper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import { OTDCard } from '../../Organisms/OTDCard';
 import 'swiper/css';
@@ -18,14 +18,14 @@ export function OTDBase({title, prompt, replies}){
             navigation={true}
             loop={true}
         >
-            <SwiperWrapper>
+            <>
                 {queeryQuestions.map((qotd) => (
                     <SwiperSlide key = {qotd.id}>
                         <OTDCard  title="Queery of the day" prompt={qotd.question} replies={replies}/>
                     </SwiperSlide>
                 ))
                 }
-            </SwiperWrapper>
+            </>
         </Swiper>
     );
 }
