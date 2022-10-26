@@ -38,13 +38,13 @@ export function Splash() {
                 <Spacer size="20" />
             </PostDiv>
             <Swiper
-                slidePerView={1}
+                slidesPerView={1}
                 centeredSlides={true}
                 pagination={true}
                 modules={[Pagination]}
                 autoplay={{delay: 1000}}
                 loop={true}
-                navigation={true}
+                // navigation={true}
             >
                 <SwiperSlide>
                     <ImageDiv>
