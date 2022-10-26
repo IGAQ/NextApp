@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { StyledSubmitButton } from './index';
+import { SearchBar } from './index';
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    title: 'Atoms/StyledSubmitButton',
-    component: StyledSubmitButton,
+    title: 'Molecules/SearchBar',
+    component: SearchBar,
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -14,11 +13,9 @@ export default {
 };
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args) => <StyledSubmitButton {...args} />;
+const Template = (args) => <SearchBar {...args} />;
 
-export const Primary = Template.bind({});
+export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-
+Default.args = {
 };
-
