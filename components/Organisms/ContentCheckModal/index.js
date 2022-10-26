@@ -21,7 +21,7 @@ export function ContentCheckModal(props) {
                     <Spacer axis="vertical" size={5}/>
                     <Text textAlign = "center" size = "1rem" text =  "Please rephrase your post and try again."></Text>
                     <Spacer axis="vertical" size={25}/>
-                    <Button size = "long" label = "Rephrase post" onClick = {props.onClick}> </Button>
+                    <Button size = "short" label = "Rephrase post" onClick = {props.onClick}> </Button>
                 </FlexBox>       
             </ModalBox>  
             <ModalBackdrop onClick = {props.onClick}/>
