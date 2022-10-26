@@ -8,9 +8,9 @@ const PostTitleDiv = styled.div`
     margin-top: .6em;
     `;
 
-export function PostTitle ({title = 'Title'}) {
+export function PostTitle ({title = 'Title', ...otherProps}) {
     return (
-        <PostTitleDiv>
+        <PostTitleDiv {...otherProps}>
             {title}
         </PostTitleDiv>
     );

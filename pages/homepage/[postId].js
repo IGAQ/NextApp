@@ -1,16 +1,13 @@
 import axios from "axios";
-import { Spacer } from "../../components/Atoms/Spacer";
 import { NewPost } from "../../components/Templates/NewPost";
-import { OTDBase } from "../../components/Templates/OTDBase";
-import { queeryQuestions } from "../../data/qotd";
-import { FlexBox, ModalBackdrop, Wrapper } from "../../styles/globals";
+import {API_SERVER} from '../../lib/constants';
 
 export default function Post({ post }) {
     return (
         <div>
             <NewPost
                 key={post.postId}
-                username={post.authorUser.username}
+                username={post.authorUser?.username ?? "Anonymous"}
                 date={post.createdAt}
                 title={post.postTitle}
                 content={post.postContent}
@@ -21,7 +18,7 @@ export default function Post({ post }) {
 }
 
 export async function getServerSideProps({ params }) {
-    const res = await axios.get(`http://localhost:8080/posts/${params.postId}`);
+    const res = await axios.get(`${API_SERVER}/posts/${params.postId}`);
     const post = res.data;
     return {
         props: { post }, // will be passed to the page component as props

@@ -1,15 +1,14 @@
-
-import { FlexBox, Wrapper } from '../styles/globals';
-import { Spacer } from '../components/Atoms/Spacer';
-import { HamburgerIcon } from '../components/Atoms/HamburgerIcon';
-import { PostTitle } from '../components/Molecules/PostTitle';
-import { Text } from '../components/Atoms/Text';
-import {Badge} from '../components/Atoms/Badge';
-import { Button } from '../components/Atoms/Button';
-import { ProfileIcon } from '../components/Atoms/ProfileIcon';
-import { PostTag } from '../components/Atoms/PostTag';
-import { BadgeShowcase } from '../components/Molecules/BadgeShowcase';
-export default function Profile(props){    
+import { FlexBox, Wrapper } from '../../styles/globals';
+import { Spacer } from '../../components/Atoms/Spacer';
+import { HamburgerIcon } from '../../components/Atoms/HamburgerIcon';
+import { PostTitle } from '../../components/Molecules/PostTitle';
+import { Text } from '../../components/Atoms/Text';
+import {Badge} from '../../components/Atoms/Badge';
+import { Button } from '../../components/Atoms/Button';
+import { ProfileIcon } from '../../components/Atoms/ProfileIcon';
+import { PostTag } from '../../components/Atoms/PostTag';
+import { BadgeShowcase } from '../../components/Molecules/BadgeShowcase';
+export default function Profile({}){
     return(
         <Wrapper align = "stretch" justify = "center">
             <HamburgerIcon/>

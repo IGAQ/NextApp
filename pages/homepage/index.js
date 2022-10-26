@@ -1,4 +1,3 @@
-import { FlexBox, ModalBackdrop, Wrapper } from '../styles/globals';
 import axios from 'axios';
 import {NewPost} from '../../components/Templates/NewPost';
 import { OTDBase } from '../../components/Templates/OTDBase';
@@ -8,7 +7,6 @@ import {API_SERVER} from '../../lib/constants';
 
 export default function Homepage(props){
 
-    
     return(
         <div>
             <OTDBase queeryQuestions={queeryQuestions.question} />
@@ -17,7 +15,8 @@ export default function Homepage(props){
                 <>
                     <NewPost
                         key = {post.postId}
-                        username={post.authorUser.username} 
+                        postId={post.postId}
+                        username={post.authorUser?.username ?? "Anonymous"}
                         date={post.createdAt} 
                         title={post.postTitle}
                         content={post.postContent}

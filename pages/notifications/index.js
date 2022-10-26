@@ -1,8 +1,8 @@
-import { FlexBox, Wrapper } from '../styles/globals';
+import { FlexBox, Wrapper } from '../../styles/globals';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { NotificationBox } from '../components/Molecules/NotificationBox';
-import { Text } from '../components/Atoms/Text';
+import { NotificationBox } from '../../components/Molecules/NotificationBox';
+import { Text } from '../../components/Atoms/Text';
 
 export default function Notifications(props){
     const r = useRouter();
@@ -12,7 +12,7 @@ export default function Notifications(props){
     return(
         <Wrapper align = "stretch">
             <FlexBox align = "stretch" >
-                <Text as = "h1" weight = "600" size = "2.5rem" textAlign = "center" text  = "Notifications"/>
+                <Text as = "h1" weight = "600" size = "2.5rem" textAlign = "center" text  = "Index"/>
                 <FlexBox align = "stretch">
                     <Text weight = "500" size = "1.25rem" textAlign = "left" text  = "New"/>
                     <NotificationBox/>

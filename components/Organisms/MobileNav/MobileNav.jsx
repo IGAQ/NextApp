@@ -86,7 +86,7 @@ export function MobileNav() {
                     Home
                     </StyledLink>
                 </Link>
-                <Link href='/resources' scroll = {false}>
+                <Link href='/resources/index' scroll = {false}>
                     <StyledLink className = {r.pathname == '/resources' ? styles.activePage :' '}>
                         <IconHolder>
                             <ImBooks size = {28}/>
@@ -100,7 +100,7 @@ export function MobileNav() {
                     </IconHolder>
                     {/* <Spacer axis="vertical" size={10}/> */}
                 </Middle>
-                <Link href='/notifications' scroll = {false}>
+                <Link href='/notifications/' scroll = {false}>
                     <StyledLink className = {r.pathname == '/notifications' ? styles.activePage :' '}>
                         <IconHolder margin = "0 0 4px 0">
                             <FaBell size = {22}/>
@@ -108,7 +108,7 @@ export function MobileNav() {
                     Notifications
                     </StyledLink>
                 </Link>
-                <Link href='/profile' scroll = {false}>
+                <Link href='/profile/' scroll = {false}>
                     <StyledLink className = {r.pathname == '/profile' ? styles.activePage :' '}>
                         <IconHolder>
                             <BsPersonFill size = {28}/>
