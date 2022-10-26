@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import useSWR from 'swr';
+import Router from 'next/router';
 import * as storage from '../storage';
 import {JWT_TOKEN_LOCAL_STORAGE_KEY} from '../constants';
 
 const fetcher = (url) => {
     return fetch(url, {
-        method: 'GET',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
@@ -14,7 +15,13 @@ const fetcher = (url) => {
     })
         .then((r) => r.json())
         .then((data) => {
+            if (data?.statusCode <= 200 || data?.statusCode >= 299) {
+                return null;
+            }
             return { user: data ?? null };
+        })
+        .catch((error) => {
+            return null;
         });
 };
 
