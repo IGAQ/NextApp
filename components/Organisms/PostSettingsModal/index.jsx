@@ -16,9 +16,9 @@ export function PostSettingsModal(props) {
 
     return (
         <>
-            {reportOpen && <ReportModal/>}
+            {reportOpen && <ReportModal onClose={() => setReportOpen(false)} />}
             <SettingsModalDiv>
-                <PostSettingsButton onClick = {()=> setReportOpen(true)}/>
+                <PostSettingsButton onOpen = {()=> setReportOpen(true)} />
                 <PostSettingsButton setType="Save" icon="SaveIcon.svg" on />
             </SettingsModalDiv>
         </>
