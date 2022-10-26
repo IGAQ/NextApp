@@ -1,5 +1,4 @@
 import { createStyles, Chip } from '@mantine/core';
-import { NoEncryption } from '@mui/icons-material';
 import { FlexBox } from '../../../styles/globals';
 import { Text } from '../../Atoms/Text';
 
@@ -36,16 +35,18 @@ const useStyles = createStyles((theme, _params, getRef) => ({
     },
 }));
 
-export function ChipGroup({tag, setTag, tagData, color}) {
+
+export function ChipGroup({ onChange, postTags}) {
     const { classes } = useStyles();
+    console.log(postTags);
 
     return (
         <>
             <Text text = "Choose a tag" size = "1rem" textAlign='left' margin='0 0 10px 0'/>
             <FlexBox>
-                <Chip.Group required  multiple = {false} onChange = {setTag} position="center">
-                    {tagData.map((tag) => {
-                        return <Chip key = {tag} value = {tag}  classNames = {classes}>{tag}</Chip>;
+                <Chip.Group required  multiple = {false} onChange = {onChange} position="center">
+                    {postTags.map((tag) => {
+                        return <Chip key = {tag.tagId} value = {tag.tagId}  classNames = {classes}>{tag.tagName}</Chip>;
                     })
                     }
                 </Chip.Group>

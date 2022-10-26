@@ -19,20 +19,20 @@ border-radius: 6px;
 `;
 
 export function MaxTextArea({
-    text, setText,
+    text,
     maxLength = '250',
     name = 'name',
     label = 'label',
     rows = '5',
     placeholder = 'placeholder',
+    onChange,
 }){
     const max= maxLength;
     const tooLong = '';
 
     const handleChange = (e) => {
         const { value } = e.target;
-        setText(value.slice(0, max));
-        
+        onChange(e);
         if (value.length > max) {
             //Change this to a toast message
             alert('Looks like your queery is too long!');

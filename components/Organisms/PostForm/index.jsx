@@ -11,19 +11,22 @@ import { LabelledSwitch } from '../../../components/Molecules/LabelledSwitch';
 import { FlexBox, ModalBackdrop } from '../../../styles/globals';
 import { useState } from 'react';
 import { ContentCheckModal } from '../ContentCheckModal';
+import { SubmissionModal } from '../SubmissionModal';
 
-export function PostForm ({handleSubmit, props}){
+export function PostForm ({handleSubmit, props, postTags}){
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [tone, setTone] = useState('casual');
     const [tag, setTag] = useState('');
     const [anonymous, setAnonymous] = useState(false);
-
     const [showError, setShowError] = useState(false);
 
-    async function handleCheckSubmission(){
-        if (await handleSubmit(title, content, tone, tag, anonymous)){
 
+
+    async function handleCheckSubmission(e){
+        e.preventDefault();
+        if (await handleSubmit(title, content, tag, tone, anonymous)){
+            <SubmissionModal/>;
         } else {
             setShowError(true);
         }
@@ -42,8 +45,10 @@ export function PostForm ({handleSubmit, props}){
                     'storyPurple':['#eee4ff','#c6b3ff','#a880fd', '#924efc', '#821dfb','#7906e2','#6a03b0','#54017e', '#38004d','#17001d'],
                 },
             }}>
-            {!(showError) && <ContentCheckModal onClick = {closeContentCheckModal}/>}
-            <form onSubmit = {()=> handleCheckSubmission()}>
+            {/* <ContentCheckModal/> */}
+
+            {(showError) && <ContentCheckModal onClick = {closeContentCheckModal}/>}
+            <form onSubmit = {(e)=> handleCheckSubmission(e)}>
                 <FlexBox align ="stretch">
                     <TextInput onChange={(e) => setTitle(e.target.value)} text = {title} name = "title" label = "Post title" id = "title" placeholder = "Enter your title"/>
                     <Spacer axis="vertical" size={25}/>
@@ -54,7 +59,7 @@ export function PostForm ({handleSubmit, props}){
                     <FlexBox>
                         <RadioGroup tone = {tone} setTone = {setTone} />
                         <Spacer axis="vertical" size={35}/>
-                        <ChipGroup tag = {tag} setTag = {setTag} tagData = { postTags } />
+                        <ChipGroup tag = {tag} onChange = {setTag} tagData = { postTags } />
                         <Spacer axis="vertical" size={35}/>
                         <LabelledSwitch checked = {anonymous} setChecked = {()=> setAnonymous(!anonymous)} label = 'Post anonymously' ></LabelledSwitch>
                     </FlexBox>

@@ -4,9 +4,8 @@ import { ModalBox } from '../../Atoms/ModalBox';
 import { Text } from '../../Atoms/Text';
 import { Button } from '../../Atoms/Button';
 import { Spacer } from '../../Atoms/Spacer';
-import { HelpCenterOutlined } from '@mui/icons-material';
 
-export function ContentCheckModal({onClick}) {
+export function ContentCheckModal(props) {
 
     return(
         <FlexBox>
@@ -22,10 +21,10 @@ export function ContentCheckModal({onClick}) {
                     <Spacer axis="vertical" size={5}/>
                     <Text textAlign = "center" size = "1rem" text =  "Please rephrase your post and try again."></Text>
                     <Spacer axis="vertical" size={25}/>
-                    <Button width = "long" label = "Rephrase post" onClick = {console.log('hjey')}> </Button>
+                    <Button width = "long" label = "Rephrase post" onClick = {props.onClick}> </Button>
                 </FlexBox>       
             </ModalBox>  
-            <ModalBackdrop onClick = {onClick}/>
+            <ModalBackdrop onClick = {props.onClick}/>
         </FlexBox>
     );
     
