@@ -86,7 +86,7 @@ export function MobileNav() {
                     Home
                     </StyledLink>
                 </Link>
-                <Link href='/resources/index' scroll = {false}>
+                <Link href='/resources' scroll = {false}>
                     <StyledLink className = {r.pathname == '/resources' ? styles.activePage :' '}>
                         <IconHolder>
                             <ImBooks size = {28}/>
