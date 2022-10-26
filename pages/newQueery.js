@@ -7,24 +7,25 @@ import { PostTitle } from '../components/Molecules/PostTitle';
 import { useEffect } from 'react';
 import axios from 'axios';
 import * as storage from '../lib/storage'; 
-import {JWT_TOKEN_LOCAL_STORAGE_KEY} from '../lib/constants';
+import {API_SERVER, JWT_TOKEN_LOCAL_STORAGE_KEY} from '../lib/constants';
 
 
 export async function getStaticProps(){
-    const res = await axios.get('http://216.19.190.177:63520/postTags');
+    const res = await axios.get(`${API_SERVER}/postTags`);
     const postTags = res.data;
     return{
         props:{postTags},
     }; 
 }
 
-export default function NewQueeryPage(props) {
+export default function NewQueeryPage({postTags}) {
+    console.log(postTags);
 
-    async function handleQueerySubmit(postTitle, postContent, postTagIds, postTone, anonymous){
+    async function handleQueerySubmit(postTitle, postContent, postTagId, postTone, anonymous){
         const post = {
             postTitle: postTitle,
             postContent: postContent,
-            postTagIds: [...postTagIds, postTone],
+            postTagIds: [postTagId, postTone],
             anonymous: anonymous,
             postTypeId: '95aaf886-064e-44b3-906f-3a7798945b7b',   
         };
@@ -48,7 +49,7 @@ export default function NewQueeryPage(props) {
             <PostTitle title = "Post a Queery"/>
             <FlexBox bgColor = "#FFF9F2" padding = "25px 50px" margin = "0" align = "stretch" flex = "1">
                 <Spacer axis="vertical" size={25}/>
-                <PostForm handleSubmit={handleQueerySubmit} postTags = {props.postTags}></PostForm>
+                <PostForm handleSubmit={handleQueerySubmit} postTags = {postTags}></PostForm>
             </FlexBox>
         </Wrapper>
     );

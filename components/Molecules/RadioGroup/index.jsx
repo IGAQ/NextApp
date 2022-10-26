@@ -15,8 +15,8 @@ export function RadioGroup({tone, setTone}){
                 withAsterisk
                 required
             >
-                <Radio color = 'queeryPink.3' value="casual" label="Casual" />
-                <Radio color = 'queeryPink.3' value="serious" label="Serious" />
+                <Radio color = 'queeryPink.3' value="2a598b96-b878-4575-9601-180b3ac135e9" label="Casual" />
+                <Radio color = 'queeryPink.3' value="79d8aca0-b08d-4910-9629-487567f9ab1c" label="Serious" />
             </Radio.Group>
         </FlexBox>
     );

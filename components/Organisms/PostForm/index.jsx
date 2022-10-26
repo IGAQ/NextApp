@@ -59,7 +59,7 @@ export function PostForm ({handleSubmit, props, postTags}){
                     <FlexBox>
                         <RadioGroup tone = {tone} setTone = {setTone} />
                         <Spacer axis="vertical" size={35}/>
-                        <ChipGroup tag = {tag} onChange = {setTag} tagData = { postTags } />
+                        <ChipGroup onChange = {setTag} postTags = { postTags } />
                         <Spacer axis="vertical" size={35}/>
                         <LabelledSwitch checked = {anonymous} setChecked = {()=> setAnonymous(!anonymous)} label = 'Post anonymously' ></LabelledSwitch>
                     </FlexBox>
