@@ -1,10 +1,10 @@
 import { FlexBox, ModalBackdrop, Wrapper } from '../styles/globals';
 import axios from 'axios';
-import {NewPost} from '../components/Templates/NewPost';
-import { OTDBase } from '../components/Templates/OTDBase';
-import { Spacer } from '../components/Atoms/Spacer';
-import { queeryQuestions } from '../data/qotd';
-import {API_SERVER} from '../lib/constants';
+import {NewPost} from '../../components/Templates/NewPost';
+import { OTDBase } from '../../components/Templates/OTDBase';
+import { Spacer } from '../../components/Atoms/Spacer';
+import { queeryQuestions } from '../../data/qotd';
+import {API_SERVER} from '../../lib/constants';
 
 export default function Homepage(props){
 
