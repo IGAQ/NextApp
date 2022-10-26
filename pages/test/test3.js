@@ -8,6 +8,8 @@ export default function Test3(){
 
     auth.login("john", "john");
 
+    // auth.logout()
+
     return (
         <>
             <h1>authenticated now.</h1>
