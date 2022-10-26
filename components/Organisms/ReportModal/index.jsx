@@ -1,11 +1,12 @@
-import { Button } from '../../Atoms/Button';
+import styled from 'styled-components';
+import { FlexBox, ModalBackdrop} from '../../../styles/globals';
 import { ModalBox } from '../../Atoms/ModalBox';
-import Link from 'next/link';
 import { Text } from '../../Atoms/Text';
+import { Button } from '../../Atoms/Button';
 import { Spacer } from '../../Atoms/Spacer';
-import { FlexBox, ModalBackdrop } from '../../../styles/globals';
 
-export function SubmissionModal({ postId }) {
+
+export function ReportModal(props) {
     return (
         <FlexBox>
             <ModalBox border ="5px solid #FF758C" minWidth="50%" padding = "50px 50px 50px 50px" align = "stretch" borderRadius = "20px"
@@ -14,16 +15,14 @@ export function SubmissionModal({ postId }) {
                 transiton={{duration: 100, delay:500}}
                 exit={{y:1000, opacity: 0}}>
                 <FlexBox>
-                    <Text weight = "700" color = "#FF758C" text = "Congratulations!"></Text>
+                    <Text textAlign = "center" weight = "600" size = "1.25rem" color = "#FF758C" text = "Thank you! You've reported this post."></Text>
                     <Spacer axis="vertical" size={15}/>
-                    <Text textAlign = "center" size = "1.25rem" text =  "Looks like you successfully posted a queery."></Text>
+                    <Text textAlign = "center" size = "1rem" text =  "Our moderators will review this post. "></Text>
                     <Spacer axis="vertical" size={25}/>
-                    <Link href={'/homepage/' + postId}>
-                        <Button label = "Take me to my post" ></Button>
-                    </Link>
+                    <Button size = "short" label = "Okay!" onClick = {props.onClick}> </Button>
                 </FlexBox>
             </ModalBox>
-            <ModalBackdrop />
+            <ModalBackdrop onClick = {props.onClick}/>
         </FlexBox>
     );
 }

@@ -8,6 +8,7 @@ import { Background } from '../../styles/globals';
 import { SearchAndFilter } from '../../components/Organisms/SearchAndFilter';
 import { Space, Tabs } from '@mantine/core';
 import styled from 'styled-components';
+import { ReportModal } from '../../components/Organisms/ReportModal';
 
 export const StickyDiv = styled.div`
     position: sticky;
@@ -18,10 +19,7 @@ export const StickyDiv = styled.div`
     margin: auto;
 `;
 
-
-
 export default function Homepage(props) {
-
     return (
         <Background>
             <OTDBase queeryQuestions={queeryQuestions.question} />
@@ -36,7 +34,6 @@ export default function Homepage(props) {
                     </Tabs.List>
                 </Tabs>
             </StickyDiv>
-            {/* <BaseCard posts = {props.posts}/> */}
             {props.posts.map((post) => (
                 <>
                     <NewPost
@@ -51,8 +48,6 @@ export default function Homepage(props) {
                     <Spacer size={10} />
                 </>
             ))}
-            {/* {postModal && <NewPostModal onClick = {closePostModal}/>}
-            {postModal && <ModalBackdrop onClick = {closePostModal}/>} */}
         </Background>
     );
 }

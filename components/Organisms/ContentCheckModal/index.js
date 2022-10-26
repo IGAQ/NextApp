@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FlexBox, ModalBackdrop, Wrapper } from '../../../styles/globals';
+import { FlexBox, ModalBackdrop} from '../../../styles/globals';
 import { ModalBox } from '../../Atoms/ModalBox';
 import { Text } from '../../Atoms/Text';
 import { Button } from '../../Atoms/Button';
@@ -21,7 +21,7 @@ export function ContentCheckModal(props) {
                     <Spacer axis="vertical" size={5}/>
                     <Text textAlign = "center" size = "1rem" text =  "Please rephrase your post and try again."></Text>
                     <Spacer axis="vertical" size={25}/>
-                    <Button width = "long" label = "Rephrase post" onClick = {props.onClick}> </Button>
+                    <Button size = "long" label = "Rephrase post" onClick = {props.onClick}> </Button>
                 </FlexBox>       
             </ModalBox>  
             <ModalBackdrop onClick = {props.onClick}/>

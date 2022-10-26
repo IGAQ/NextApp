@@ -1,5 +1,7 @@
 import { PostSettingsButton } from '../../Molecules/PostSettingsButton';
 import styled from 'styled-components';
+import { ReportModal } from '../ReportModal';
+import { useState } from 'react';
 
 const SettingsModalDiv = styled.div`
     display: flex;
@@ -9,11 +11,16 @@ const SettingsModalDiv = styled.div`
     height: 3em;
     `;
 
-export function PostSettingsModal() {
+export function PostSettingsModal(props) {
+    const [reportOpen, setReportOpen] = useState(false);
+
     return (
-        <SettingsModalDiv>
-            <PostSettingsButton />
-            <PostSettingsButton setType="Save" icon="SaveIcon.svg" on />
-        </SettingsModalDiv>
+        <>
+            {reportOpen && <ReportModal/>}
+            <SettingsModalDiv >
+                <PostSettingsButton onClick = {()=> setReportOpen(true)}/>
+                <PostSettingsButton setType="Save" icon="SaveIcon.svg" on />
+            </SettingsModalDiv>
+        </>
     );
 }

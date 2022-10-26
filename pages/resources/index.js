@@ -15,9 +15,9 @@ export default function Resources(props){
             <Spacer axis="vertical" size={25}/>
             <FlexBox align = "stretch" flex = "1" bgColor = "#fff9f2">
                 <FlexBox  margin= "10px 0 0 0" dir = "row" padding = "15px 0" justify-content = "space-between" bgColor = "#FFF" boxShadow = "0 2px 4px -1px rgb(117 37 37 / 35%)">
-                    <Button length = "short" label = "LGBTQA+ Terms" backgroundColor="#8054ff"/>
+                    <Button size = "short" label = "LGBTQA+ Terms" backgroundColor="#8054ff"/>
                     <Spacer axis="horizontal" size={15}/>
-                    <Button length = "short" label = "LGBTQA+ Flags" backgroundColor="#8054ff"/>
+                    <Button size = "short" label = "LGBTQA+ Flags" backgroundColor="#8054ff"/>
                 </FlexBox>
                 <Spacer axis="vertical" size={25}/>
                 <FlexBox  margin = "0" align = "stretch" flex = "1">
