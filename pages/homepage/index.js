@@ -15,6 +15,7 @@ export default function Homepage(props) {
                 <>
                     <NewPost
                         key={post.postId}
+                        postId={post.postId}
                         username={post.authorUser?.username ?? 'Anonymous'}
                         date={post.createdAt}
                         title={post.postTitle}
