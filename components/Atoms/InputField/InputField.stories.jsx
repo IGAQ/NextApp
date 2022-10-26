@@ -22,5 +22,5 @@ Primary.args = {
     type: 'text',
     placeholder: 'Placeholder',
     label: 'Label',
-    id: 'id'
+    id: 'id',
 };
