@@ -8,8 +8,6 @@ import { resources } from '../../data/resources';
 import { SearchAndFilter } from '../../components/Organisms/SearchAndFilter';
 
 export default function Resources(props){
-    const r = useRouter();
-
     return(
         <Wrapper align = "stretch" bgColor = "#FFEAD4"> 
             <PostTitle title = "Resources"/>

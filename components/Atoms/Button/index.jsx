@@ -8,10 +8,11 @@ border-radius: 0.5em;
 background-color: ${props => props.backgroundColor || '#FF758C'};
 color: ${props => props.color || '#FFF'};
 padding: ${props => props.padding || '0.75em 1.25em'};
-width: ${props =>props.size === 'short' ? '3rem' : props.size === 'long' ? '20em': '10rem'};
-min-width: 2rem;
+width: ${props =>props.size === 'short' ? '5rem' : props.size === 'long' ? '25em': '10rem'};
+min-width: fit-content;
 font-family: 'Heebo', sans-serif;
 font-weight: 600;
+margin : ${props => props.margin || '0'};
 `;
 
 export const Button = ({ length, bgColor, padding, color, label, ...props }) => {
