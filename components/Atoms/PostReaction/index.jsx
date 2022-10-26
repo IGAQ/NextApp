@@ -3,17 +3,17 @@ import InsertEmoticon from '@mui/icons-material/InsertEmoticon';
 import SentimentVeryDissatisfied from '@mui/icons-material/SentimentVeryDissatisfied';
 
 
-export function PostReaction({vote, onClick = () => {}}) {
+export function PostReaction({vote, onClick, color}) {
     if (vote === 'Like') {
         return (
-            <IconButton>
-                <InsertEmoticon />
+            <IconButton onClick={onClick}>
+                <InsertEmoticon color={color} />
             </IconButton>
         );
     } else {
         return (
-            <IconButton>
-                <SentimentVeryDissatisfied />
+            <IconButton onClick={onClick}>
+                <SentimentVeryDissatisfied color={color}/>
             </IconButton>
         );
     

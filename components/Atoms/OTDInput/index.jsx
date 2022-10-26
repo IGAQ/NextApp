@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
-const OTDInputField = styled.input`
+const OTDInputField = styled.textarea`
     width: 100%;
-    height: 2rem;
     border-radius: 5px;
-    padding: 0.5rem;
     border: transparent;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: auto;
+    word-wrap: break-word;
+    word-break: break-all;
+    resize: vertical;
     `;
 
 export function OTDInput({ placeholder = '', type = 'text', onChange = () => { } }) {
