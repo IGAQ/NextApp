@@ -33,3 +33,7 @@ background-color: #3F3924C9;
   left: 0%;
 overflow: ${props => props.overflow || 'hidden'};
 `;
+
+export const Background = styled.div`
+background-color: #FFEAD4;
+`;
