@@ -17,14 +17,32 @@ const Template = (args) => <PostTagBox {...args} />;
 
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
+// Default.args = {
+//     posts: [
+//         { postId: 1,
+//             postTitle: 'Test',
+//             postContent: 'Test',
+//             createdAt: '136246246',
+//             postTags: [{tagName:'serious'}, {tagName:'advice'}],
+//             authorUser: {username: 'test'},
+//         },
+//     ],
+// };
 Default.args = {
-    posts: [
-        { postId: 1,
-            postTitle: 'Test',
-            postContent: 'Test',
-            createdAt: '136246246',
-            postTags: [{tagName:'serious'}, {tagName:'advice'}],
-            authorUser: {username: 'test'},
+    tags: [
+        {
+            tagName: 'CmgOut',
+            tagId: '1',
+            tagColor: '#FF758c',
         },
-    ],
+        {
+            tagName: 'Culture',
+            tagId: '2',
+            tagColor: '#FF758c',
+        },
+        {
+            tagName: 'Gay',
+            tagId: '3',
+            tagColor: '#FF758c',
+        }]
 };
