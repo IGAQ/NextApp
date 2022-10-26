@@ -23,13 +23,6 @@ Default.args = {
     content: 'Content',
     score: '0',
     numComment: '0',
-    posts: [
-        { postId: 1,
-            postTitle: 'Test',
-            postContent: 'Test',
-            createdAt: '1635170171',
-            updatedAt: '1635170171',
-            postTags: [{tagName:'serious'}, {tagName:'advice'}],
-            authorUser: {username: 'test'},
-        }],
+    postId: '1',
+    tags: [{tagName:'serious'}, {tagName:'advice'}],
 };

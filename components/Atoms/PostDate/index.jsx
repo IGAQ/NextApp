@@ -9,8 +9,8 @@ const PostDateDiv = styled.div`
 
     
 
-export function PostDate ({date = '1666321046'}) {
-    const dateObj = new Date(date).toLocaleDateString('en-US', {year: 'numeric', month: 'numeric', day: 'numeric'});
+export function PostDate ({date = 1666321046}) {
+    const dateObj = new Date(Number(date)).toLocaleDateString('en-US', {year: 'numeric', month: 'numeric', day: 'numeric'});
     const dt = moment(dateObj, 'MM/DD/YYYY').fromNow(); 
     return (
         <PostDateDiv>

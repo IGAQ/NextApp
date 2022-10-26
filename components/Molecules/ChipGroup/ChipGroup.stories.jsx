@@ -18,6 +18,8 @@ const Template = (args) => <ChipGroup {...args} />;
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
+    postTags: [{tagName:'serious'}, {tagName:'advice'}],
+    onChange : () => {},
 };
 
 export const Selected = Template.bind({});
