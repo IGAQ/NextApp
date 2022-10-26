@@ -12,8 +12,8 @@ const OTDCardDiv = styled.div`
     align-items: center;
     background-color: #FFB6C3;
     border-radius: 1rem;
-    margin: 1rem;
-    padding: 1rem;
+    margin: 2rem;
+    padding: 2rem;
     padding-bottom: 1.5rem;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     `;

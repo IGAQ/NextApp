@@ -5,7 +5,7 @@ import { Spacer } from '../../Atoms/Spacer';
 
 export function SearchAndFilter(){
     return (
-        <FlexBox dir = "row" justify-content = "space-between" align = "center" >
+        <FlexBox dir = "row" justify-content = "space-between" align = "center" margin = "auto" max-width="50em" >
             <SearchBar/> 
             <Spacer axis="horizontal" size={15}/>          
             <FilterIcon/>

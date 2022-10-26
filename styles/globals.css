@@ -95,3 +95,8 @@ textarea{
   stroke: transparent !important;
   left: 20px !important;
 }
+
+.tabs ul li {
+  background: white;
+  
+}
