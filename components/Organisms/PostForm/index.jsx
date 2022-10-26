@@ -20,11 +20,8 @@ export function PostForm ({handleSubmit, props, postTags}){
     const [tag, setTag] = useState('');
     const [anonymous, setAnonymous] = useState(false);
     const [showError, setShowError] = useState(false);
-
     const [showSubmissionModal, setShowSubmissionModal] = useState(false);
     const [createdPostId, setCreatedPostId] = useState(null);
-
-    const router = useRouter();
 
     async function handleCheckSubmission(e){
         e.preventDefault();
@@ -50,8 +47,7 @@ export function PostForm ({handleSubmit, props, postTags}){
                     'storyPurple':['#eee4ff','#c6b3ff','#a880fd', '#924efc', '#821dfb','#7906e2','#6a03b0','#54017e', '#38004d','#17001d'],
                 },
             }}>
-            {/* <ContentCheckModal/> */}
-
+                
             {(showSubmissionModal) && <SubmissionModal postId={createdPostId}/>}
 
             {(showError) && <ContentCheckModal onClick = {closeContentCheckModal}/>}

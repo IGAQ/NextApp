@@ -54,8 +54,6 @@ padding: 12px 14px 10px;
 
 export function MobileNav() {
     const r = useRouter();
-    const {events} = useRouter;
-
     const [postModal, setPostModal] = useState(false);
 
     function closePostModal(){
