@@ -39,23 +39,25 @@ export function Splash({ title, content }) {
                 centeredSlides={true}
                 pagination={true}
                 modules={[Pagination]}
+                onSwiper={(swiper) => console.log(swiper)}
+                autoplay={{delay: 1000}}
             >
                 <SwiperSlide>
                     <ImageDiv>
-                        <img src="/Login_Carousel.png" width={200} height={200} alt="Image 1" />
-                        <PostContent content="Safely ask a question (“Queery”) or share a story with like-minded LGBTQA+ users seeking to share experiences." />
+                        <Image src="/Login_Carousel.png" width={300} height={300} alt="Image 1" />
+                        <PostContent textAlign="center" content="Safely ask a question (“Queery”) or share a story with like-minded LGBTQA+ users seeking to share experiences." />
                     </ImageDiv>
                 </SwiperSlide>
                 <SwiperSlide>
                     <ImageDiv>
-                        <img src="/Login_Carousel-1.png" width={200} height={200} alt="Image 2" />
-                        <PostContent content="Access curated resources such as informative articles about LGBTQA+ related content." />
+                        <Image src="/Login_Carousel-1.png" width={300} height={300} alt="Image 2" />
+                        <PostContent textAlign="center" text-align="center" content="Access curated resources such as informative articles about LGBTQA+ related content." />
                     </ImageDiv>
                 </SwiperSlide>
                 <SwiperSlide>
                     <ImageDiv>
-                        <img src="/Login_Carousel-2.png" width={200} height={200} alt="Image 3" />
-                        <PostContent content="Customize your profile and easily view your saved articles and saved posts." />
+                        <Image src="/Login_Carousel-2.png" width={300} height={300} alt="Image 3" />
+                        <PostContent textAlign="center" content="Customize your profile and easily view your saved articles and saved posts." />
                     </ImageDiv>
                 </SwiperSlide>
             </Swiper>   

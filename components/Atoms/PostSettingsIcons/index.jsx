@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const SettingsIcons = styled.div`
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1rem;
+    height: 1rem;
     background-image: url(${props => props.icon || '/ReportIcon.svg'});
     background-size: contain;
     background-repeat: no-repeat;
