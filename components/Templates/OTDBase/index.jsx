@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import { queeryQuestions } from '../../../data/qotd';
 
 export function OTDBase({title, prompt, replies}){
-    console.log(queeryQuestions);
+    console.debug('queeryQuestions', queeryQuestions);
     return (
         
         <Swiper

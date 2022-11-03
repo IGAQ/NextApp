@@ -16,17 +16,21 @@ const fetcher = (url) => {
         .then((r) => r.json())
         .then((data) => {
             if (data?.statusCode <= 200 || data?.statusCode >= 299) {
-                return null;
+                return error;
             }
             return { user: data ?? null };
         })
         .catch((error) => {
-            return null;
+            return error;
         });
 };
 
+const defaultUseUserProps = {
+    redirectTo: null,  // redirect to this if path is not null
+    redirectIfFound: false, // if true, redirect to `redirectTo` if the user was found; if false, redirect to `redirectTo` if no user was found
+};
 
-export function useUser({ redirectTo, redirectIfFound } = {}) {
+export function useUser({ redirectTo, redirectIfFound } = defaultUseUserProps) {
     const { data, error } = useSWR('/api/auth/authenticate', fetcher);
     const user = data?.user;
     const finished = Boolean(data);
@@ -44,5 +48,5 @@ export function useUser({ redirectTo, redirectIfFound } = {}) {
         }
     }, [redirectTo, redirectIfFound, finished, hasUser]);
 
-    return error ? null : user;
+    return [error ? null : user, finished];
 }

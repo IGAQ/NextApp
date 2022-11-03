@@ -38,7 +38,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
 
 export function ChipGroup({ onChange, postTags}) {
     const { classes } = useStyles();
-    console.log(postTags);
+    console.debug('postTags', postTags);
 
     return (
         <>
