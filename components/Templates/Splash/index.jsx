@@ -67,7 +67,7 @@ export function Splash() {
             </Swiper>
             <PostDiv>
                 <Spacer size="40"/>
-                <Button size='long' label="Login" onClick = {() => r.push('/test/test3')}/>
+                <Button size='long' label="Login" onClick = {() => r.push('/test/temporaryLogin')}/>
                 <Spacer size="20"/>
                 <Button size='long' label="Sign up" />
             </PostDiv>
