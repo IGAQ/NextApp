@@ -1,8 +1,9 @@
 import * as auth from '../../lib/auth';
 import { useUser } from '../../lib/hooks/useUser';
 import {useEffect, useState} from 'react';
+import Link from 'next/link';
 
-export default function Test3() {
+export default function TemporaryLogin() {
     const [isLoading, setIsLoading] = useState(true);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -36,6 +37,7 @@ export default function Test3() {
         <div style={styles.div}>
             <h1 style={styles.headerTag}>Temporary Login Page</h1>
             <LogginStatus/>
+            <Link href='/'><a style={styles.backLink}>Go Back</a></Link>
         </div>
     );
 }
@@ -49,6 +51,8 @@ const styles = {
         backgroundColor: '#1d1d1d',
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'center',
+
     },
     headerTag: {
         padding: '1rem',
@@ -62,5 +66,16 @@ const styles = {
         color: 'pink',
         fontWeight: 'bold',
         textAlign: 'center',
+    },
+    backLink: {
+        color: 'white',
+        borderRadius: '0.5rem',
+        backgroundColor: 'pink',
+        width: 'fit-content',
+        textDecoration: 'none',
+        textAlign: 'center',
+        padding: '0.2rem 1.5rem',
+        margin: '1rem',
+        fontSize: '1.5rem',
     },
 };
