@@ -23,6 +23,7 @@ export default function TemporaryLogin() {
                         if (result) {
                             r.reload();
                         } else {
+                            setIsLoading(false);
                             console.error('Login failed', result);
                         }
                     }
@@ -41,7 +42,7 @@ export default function TemporaryLogin() {
         if (isLoggedIn) {
             return <P>Logged in <br /> Hi, { user.username } 😀</P>;
         }
-        return <P>Not logged in 😭</P>;
+        return <P>Can&apos;t log in 😭</P>;
     };
 
     return (
