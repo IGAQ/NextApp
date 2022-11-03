@@ -2,23 +2,34 @@ import * as auth from '../../lib/auth';
 import { useUser } from '../../lib/hooks/useUser';
 import {useEffect, useState} from 'react';
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 
 export default function TemporaryLogin() {
+    const r = useRouter();
     const [isLoading, setIsLoading] = useState(true);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const user = useUser();
-
-    console.debug('test ', user);
+    const [user, userAuthLoaded] = useUser();
 
     useEffect(() => {
         (async function () {
-            const result = await auth.login('john', 'john');
-            console.debug('result', result);
-            setIsLoggedIn(!!result);
-            setIsLoading(false);
+            if (isLoading) {
+                if (userAuthLoaded && !!(user?.userId)) {
+                    setIsLoggedIn(true);
+                    setIsLoading(false);
+                } else {
+                    if (userAuthLoaded) {
+                        const result = await auth.login('john', 'john');
+                        if (result) {
+                            r.reload();
+                        } else {
+                            console.error('Login failed', result);
+                        }
+                    }
+                }
+            }
         })();
-    }, []);
+    }, [isLoading, userAuthLoaded]);
 
     // auth.logout()
 
@@ -28,7 +39,7 @@ export default function TemporaryLogin() {
             return <P>Loading... 🤔</P>;
         }
         if (isLoggedIn) {
-            return <P>Logged in 😀</P>;
+            return <P>Logged in <br /> Hi, { user.username } 😀</P>;
         }
         return <P>Not logged in 😭</P>;
     };

@@ -11,6 +11,7 @@ import { Background } from '../../../styles/globals';
 import { Button }   from '../../Atoms/Button';
 import { SplashImg } from '../../Atoms/SplashImg';
 import { useRouter } from 'next/router';
+import {useUser} from '../../../lib/hooks/useUser';
 
 const PostDiv = styled.div`
 align-items: center;
@@ -30,6 +31,8 @@ const ImageDiv = styled.div`
 
 export function Splash() {
     const r = useRouter();
+    const [user, userAuthLoaded] = useUser();
+
     return (
         <Background height="100vh">
             <PostDiv>
@@ -66,10 +69,35 @@ export function Splash() {
                 </SwiperSlide>
             </Swiper>
             <PostDiv>
-                <Spacer size="40"/>
-                <Button size='long' label="Login" onClick = {() => r.push('/test/temporaryLogin')}/>
-                <Spacer size="20"/>
-                <Button size='long' label="Sign up" />
+                {
+                    userAuthLoaded ?
+                        (
+                            <>
+                                {
+                                    !!(user?.userId) ?
+                                        (
+                                            <>
+                                                <OTDTitle title={`Welcome, ${user.username}!`} fontSize="1.6em"/>
+                                                <Spacer size="20"/>
+                                                <Button size='long' onClick = {() => r.push('/test/temporaryLogout')} label="Logout" />
+                                            </>
+                                        ) :
+                                        (
+                                            <>
+                                                <Spacer size="40"/>
+                                                <Button size='long' label="Login" onClick = {() => r.push('/test/temporaryLogin')}/>
+                                                <Spacer size="20"/>
+                                                <Button size='long' label="Sign up" />
+                                            </>
+                                        )
+                                }
+
+                            </>
+                        ) :
+                        (
+                            <p>Loading...</p>
+                        )
+                }
             </PostDiv>
         </Background>
     );
