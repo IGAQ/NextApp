@@ -28,7 +28,6 @@ export default function TemporaryLogout() {
                     )
             }
             <Link href='/'><a style={styles.backLink}>Go Back</a></Link>
-
         </div>
     );
 }
