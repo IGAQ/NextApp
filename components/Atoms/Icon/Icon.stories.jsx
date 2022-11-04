@@ -32,10 +32,12 @@ const story = {
         },
         size: {
             control: 'text',
+            defaultValue: '1',
             description: 'Size of the icon in rem',
         },
         cssTransform: {
             control: 'text',
+            defaultValue: 'none',
             description: 'CSS transform property https://developer.mozilla.org/en-US/docs/Web/CSS/transform',
         },
     },
@@ -48,6 +50,4 @@ const Template = (args) => <Icon {...args} />;
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-    primary: true,
-    label: 'Icon',
 };

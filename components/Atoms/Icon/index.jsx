@@ -9,7 +9,6 @@ const StyledIcon = styled.div`
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 0.5rem;
     transform: ${props => props.cssTransform || 'none'};
 `;
 
