@@ -1,5 +1,5 @@
-import axios from "axios";
-import { NewPost } from "../../components/Templates/NewPost";
+import axios from 'axios';
+import { NewPost } from '../../components/Templates/NewPost';
 import { API_SERVER } from '../../lib/constants';
 
 export default function Post({ post }) {
@@ -7,7 +7,7 @@ export default function Post({ post }) {
         <div>
             <NewPost
                 key={post.postId}
-                username={post.authorUser?.username ?? "Anonymous"}
+                username={post.authorUser?.username ?? 'Anonymous'}
                 date={post.createdAt}
                 title={post.postTitle}
                 content={post.postContent}
