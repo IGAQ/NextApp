@@ -8,8 +8,8 @@ const StyledScrollToTopButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 6rem;
+    right: 1rem;
     border: none;
     outline: none;
     border-radius: 50%;

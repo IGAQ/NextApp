@@ -10,6 +10,7 @@ const StyledIcon = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     transform: ${props => props.cssTransform || 'none'};
+    //filter: invert(100%) sepia(0%) saturate(18%) hue-rotate(30deg) brightness(106%) contrast(106%);
 `;
 
 export function Icon({icon = '/ReportIcon.svg', size, cssTransform, ...props}) {

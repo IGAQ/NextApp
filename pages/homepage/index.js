@@ -8,7 +8,8 @@ import { Background } from '../../styles/globals';
 import { SearchAndFilter } from '../../components/Organisms/SearchAndFilter';
 import { Space, Tabs } from '@mantine/core';
 import styled from 'styled-components';
-import { ReportModal } from '../../components/Organisms/ReportModal';
+import {ScrollToTopButton} from '../../components/Atoms/ScrollToTopButton';
+import {useEffect, useState} from 'react';
 
 export const StickyDiv = styled.div`
     position: sticky;
@@ -20,14 +21,32 @@ export const StickyDiv = styled.div`
 `;
 
 export default function Homepage(props) {
+    const [scrolledEnough, setScrolledEnough] = useState(false);
+
+    const handleScroll = () => {
+        if (window.scrollY > 100) {
+            setScrolledEnough(true);
+        } else {
+            setScrolledEnough(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <Background>
+            <ScrollToTopButton isVisible={scrolledEnough} />
             <OTDBase queeryQuestions={queeryQuestions.question} />
             <StickyDiv>
                 <Spacer size={15} />
                 <SearchAndFilter />
                 <Spacer size={10} />
-                <Tabs color="pink" defaultValue="Queeries" backgroundColor="white">
+                <Tabs color="pink" defaultValue="Queeries">
                     <Tabs.List grow>
                         <Tabs.Tab value="Queeries"> Queeries </Tabs.Tab>
                         <Tabs.Tab value="Stories">Stories </Tabs.Tab>
