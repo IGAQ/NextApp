@@ -14,21 +14,19 @@ import TemporaryLogin from '../test/temporaryLogin';
 
 export async function getStaticProps() {
     const res = await axios.get(`${API_SERVER}/postTags`);
-    const postTags = res.data.filter((tag) => tag.tagName.toLowerCase() !== 'serious' && tag.tagName.toLowerCase() !== 'casual');
     return {
-        props: {postTags},
+        props: {postTags: res.data},
     };
 }
 
 export default function NewQueeryPage({postTags}) {
-    const router = useRouter();
     const [user, userAuthLoaded] = useUser({redirectTo: '/test/temporaryLogin'});
 
     async function handleQueerySubmit(postTitle, postContent, postTagId, postTone, anonymous) {
         const post = {
             postTitle: postTitle,
             postContent: postContent,
-            postTagIds: [postTagId, postTone],
+            postTagNames: [postTagId, postTone],
             anonymous: anonymous,
             postTypeName: 'queery',
         };
