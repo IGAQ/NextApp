@@ -15,7 +15,7 @@ export const StickyDiv = styled.div`
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color: #FFEAD4;
+    background-color: #DFEEFF;
     max-width: 50em;
     margin: auto;
 `;

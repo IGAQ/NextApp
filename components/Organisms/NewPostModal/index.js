@@ -12,6 +12,10 @@ export function NewPostModal(props) {
         {props.onClick;}
         r.push('/newQueery');
     }
+    function handleStory(){
+        {props.onClick;}
+        r.push('/newStory');
+    }
 
     return(
         <Wrapper>
@@ -33,7 +37,7 @@ export function NewPostModal(props) {
                     <Text textAlign = "center" size = "0.75rem"  text  = "Post a question"/>
                 </FlexBox>
                                 
-                <FlexBox bgColor = "#FFEAD4" minWidth="50%" padding = "25px 15px" borderRadius = "10px"  boxShadow = "0px 4px 8px -1px rgb(117 37 37 / 35%)">
+                <FlexBox bgColor = "#FFEAD4" minWidth="50%" padding = "25px 15px" borderRadius = "10px"  boxShadow = "0px 4px 8px -1px rgb(117 37 37 / 35%)" onClick = {handleStory}>
                     <Text weight = "500"  textAlign = "center" size = "1.5rem" color = "#FF758C" text  = "I got a story!"/>
                     <Text textAlign = "center" size = "0.75rem"  text  = "Post a story or experience"/>
                 </FlexBox>

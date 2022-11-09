@@ -15,17 +15,29 @@ export async function getStaticProps() {
     }; 
 }
 
-export default function NewQueeryPage({postTags}) {
+export default function NewStoryPage({postTags}) {
 
-    async function handleQueerySubmit(postTitle, postContent, postTagId, postTone, anonymous){
+    async function handleStorySubmit(postTitle, postContent, postTagId, postTone, anonymous){
         const post = {
             postTitle: postTitle,
             postContent: postContent,
             postTagIds: [postTagId, postTone],
             anonymous: anonymous,
-            postTypeId: '95aaf886-064e-44b3-906f-3a7798945b7b',   
+            // postTypeId: '95aaf886-064e-44b3-906f-3a7798945b7b',   
         };
 
+        //check here with fullstack
+        // try {
+        //     let result = await axios.post('/api/story/create', post ,{
+        //         headers: {
+        //             Authorization: `Bearer ${storage.getFromStorage(JWT_TOKEN_LOCAL_STORAGE_KEY)}`,
+        //         },
+        //     });
+        //     return result.data;
+        // }
+        // catch (error) {
+        //     return false;
+        // }
         try {
             let result = await axios.post('/api/posts/create', post ,{
                 headers: {
@@ -41,13 +53,13 @@ export default function NewQueeryPage({postTags}) {
     }
   
     return (
-        <Wrapper align = "stretch" bgColor = "#FFB6C3">
+        <Wrapper align = "stretch" bgColor = "#C2ADff">
             <Spacer axis="vertical" size={15}/>
-            <PostTitle title = "Post a Queery"/>
+            <PostTitle title = "Post a Story"/>
             <Spacer axis="vertical" size={25}/>
             <FlexBox bgColor = "#DFEEFF" padding = "25px 50px" margin = "0" align = "stretch" flex = "1">
                 <Spacer axis="vertical" size={25}/>
-                <PostForm type = "post" handleSubmit={handleQueerySubmit} postTags = {postTags}></PostForm>
+                <PostForm type = "story" handleSubmit={handleStorySubmit} postTags = {postTags}></PostForm>
                 <Spacer axis="vertical" size={25}/>
             </FlexBox>
         </Wrapper>
