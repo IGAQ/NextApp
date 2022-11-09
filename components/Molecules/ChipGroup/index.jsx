@@ -1,6 +1,7 @@
 import { createStyles, Chip } from '@mantine/core';
 import { FlexBox } from '../../../styles/globals';
 import { Text } from '../../Atoms/Text';
+import {capitalizeFirstLetter} from '../../../lib/utils';
 
 const useStyles = createStyles((theme, _params, getRef) => ({
 
@@ -45,9 +46,10 @@ export function ChipGroup({ onChange, postTags}) {
             <Text text = "Choose a tag" size = "1rem" textAlign='left' margin='0 0 10px 0'/>
             <FlexBox>
                 <Chip.Group required  multiple = {false} onChange = {onChange} position="center">
-                    {postTags.map((tag) => {
-                        return <Chip key = {tag.tagId} value = {tag.tagId}  classNames = {classes}>{tag.tagName}</Chip>;
-                    })
+                    {
+                        postTags.map((tag) => {
+                            return <Chip key = {tag.tagName} value = {tag.tagName}  classNames = {classes}>{capitalizeFirstLetter(tag.tagName)}</Chip>;
+                        })
                     }
                 </Chip.Group>
             </FlexBox>

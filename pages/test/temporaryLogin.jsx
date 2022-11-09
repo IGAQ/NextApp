@@ -19,7 +19,7 @@ export default function TemporaryLogin() {
                     setIsLoading(false);
                 } else {
                     if (userAuthLoaded) {
-                        const result = await auth.login('john', 'john');
+                        const result = await auth.login('ilia', 'ilia');
                         if (result) {
                             r.reload();
                         } else {
