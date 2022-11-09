@@ -9,15 +9,15 @@ import { SearchAndFilter } from '../../components/Organisms/SearchAndFilter';
 
 export default function Resources(props){
     return(
-        <Wrapper align = "stretch" bgColor = "#FFEAD4"> 
+        <Wrapper align = "stretch" bgColor = "#A5CEFF"> 
             <PostTitle title = "Resources"/>
             <SearchAndFilter/>
-            <Spacer axis="vertical" size={25}/>
-            <FlexBox align = "stretch" flex = "1" bgColor = "#fff9f2">
+            <Spacer axis="vertical" size={55}/>
+            <FlexBox align = "stretch" flex = "1" bgColor = "#DFEEFF">
                 <FlexBox  margin= "10px 0 0 0" dir = "row" padding = "15px 0" justify-content = "space-between" bgColor = "#FFF" boxShadow = "0 2px 4px -1px rgb(117 37 37 / 35%)">
-                    <Button size = "short" label = "LGBTQA+ Terms" backgroundColor="#8054ff"/>
+                    <Button size = "short" color = "#000000" label = "LGBTQA+ Terms" backgroundColor="#A5CEFF"/>
                     <Spacer axis="horizontal" size={15}/>
-                    <Button size = "short" label = "LGBTQA+ Flags" backgroundColor="#8054ff"/>
+                    <Button size = "short" color = "#000000" label = "LGBTQA+ Flags" backgroundColor="#A5CEFF"/>
                 </FlexBox>
                 <Spacer axis="vertical" size={25}/>
                 <FlexBox  margin = "0" align = "stretch" flex = "1">

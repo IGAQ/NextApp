@@ -10,10 +10,11 @@ import { ProfileBio } from '../../components/Molecules/ProfileBio';
 
 export default function Profile(props){
     return(
-        <Wrapper align = "stretch" justify = "center">
+        <Wrapper align = "stretch" justify = "center" bgColor = "#A5CEFF">
             <HamburgerIcon/>
             <PostTitle title = "Profile"/>
-            <FlexBox padding = "25px 0px" align = "center" bgColor = "#fff9f2">
+            <Spacer axis="vertical" size={45}/>
+            <FlexBox padding = "25px 0px" align = "center" bgColor = "#DFEEFF">
                 <ProfileIcon marginRight = '0'/>
                 <Text text = "John" weight = "600" size = "1.5rem"/>
                 <Spacer axis="vertical" size={15}/>

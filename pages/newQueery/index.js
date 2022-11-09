@@ -55,11 +55,12 @@ export default function NewQueeryPage({postTags}) {
             {!user ? (
                 <TemporaryLogin/>
             ) : (
-                <Wrapper align="stretch" bgColor="#FFB6C3">
-                    <PostTitle title="Post a Queery"/>
-                    <FlexBox bgColor="#FFF9F2" padding="25px 50px" margin="0" align="stretch" flex="1">
+                <Wrapper align = "stretch" bgColor = "#FFB6C3">
+                    <PostTitle title = "Post a Queery"/>
+                    <FlexBox bgColor = "#DFEEFF" padding = "25px 50px" margin = "0" align = "stretch" flex = "1">
                         <Spacer axis="vertical" size={25}/>
-                        <PostForm handleSubmit={handleQueerySubmit} postTags={postTags}></PostForm>
+                        <PostForm type = "post" handleSubmit={handleQueerySubmit} postTags={postTags}></PostForm>
+                        <Spacer axis="vertical" size={25}/>
                     </FlexBox>
                 </Wrapper>
             )

@@ -22,7 +22,7 @@ width: 100vw;
 bottom: 0;
 padding: 15px 25px 10px;
 z-index: 15;
-background-color: #FFF9F2;
+background-color: #F5F5F5;
 box-shadow: 0px 7px 15px 3px rgb(117 37 37 / 35%);
 border-radius: 10px 10px 0px 0px;
 `;

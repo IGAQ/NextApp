@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Icon = styled(GiHamburgerMenu)`
 position: relative;
 top: 35px;
-left: 90%;
+left: 85%;
 `;
 export function HamburgerIcon(){
     return(
