@@ -1,55 +1,70 @@
-import { FlexBox, Wrapper } from '../../styles/globals';
-import { Spacer } from '../../components/Atoms/Spacer';
-import { PostForm } from '../../components/Organisms/PostForm';
-import { PostTitle } from '../../components/Molecules/PostTitle';
+import {FlexBox, Wrapper} from '../../styles/globals';
+import {Spacer} from '../../components/Atoms/Spacer';
+import {PostForm} from '../../components/Organisms/PostForm';
+import {PostTitle} from '../../components/Molecules/PostTitle';
 import axios from 'axios';
 import * as storage from '../../lib/storage';
 import {API_SERVER, JWT_TOKEN_LOCAL_STORAGE_KEY} from '../../lib/constants';
+import {useUser} from '../../lib/hooks/useUser';
+import {useRouter} from 'next/router';
+import {Loader} from '../../components/Atoms/Loader';
+import React from 'react';
+import TemporaryLogin from '../test/temporaryLogin';
 
 
 export async function getStaticProps() {
     const res = await axios.get(`${API_SERVER}/postTags`);
-    const postTags = res.data.filter((tag) => tag.tagName.toLowerCase() !== 'serious' && tag.tagName.toLowerCase() !== 'casual');
-    return{
-        props:{postTags},
-    }; 
+    return {
+        props: {postTags: res.data},
+    };
 }
 
 export default function NewQueeryPage({postTags}) {
+    const [user, userAuthLoaded] = useUser({redirectTo: '/test/temporaryLogin'});
 
-    async function handleQueerySubmit(postTitle, postContent, postTagId, postTone, anonymous){
+    async function handleQueerySubmit(postTitle, postContent, postTagId, postTone, anonymous) {
         const post = {
             postTitle: postTitle,
             postContent: postContent,
-            postTagIds: [postTagId, postTone],
+            postTagNames: [postTagId, postTone],
             anonymous: anonymous,
-            postTypeId: '95aaf886-064e-44b3-906f-3a7798945b7b',   
+            postTypeName: 'queery',
         };
 
         try {
-            let result = await axios.post('/api/posts/create', post ,{
+            let result = await axios.post('/api/posts/create', post, {
                 headers: {
                     Authorization: `Bearer ${storage.getFromStorage(JWT_TOKEN_LOCAL_STORAGE_KEY)}`,
                 },
             });
             return result.data;
-        }
-        catch (error) {
-            return false;
+        } catch (error) {
+            const result = error.response?.data ?? undefined;
+            if (!result) {
+                console.error(error);
+                return {message: 'An unknown error occurred.', statusCode: 500};
+            }
+
+            return result;
         }
 
     }
-  
-    return (
-        <Wrapper align = "stretch" bgColor = "#FFB6C3">
-            <Spacer axis="vertical" size={15}/>
-            <PostTitle title = "Post a Queery"/>
-            <Spacer axis="vertical" size={25}/>
-            <FlexBox bgColor = "#DFEEFF" padding = "25px 50px" margin = "0" align = "stretch" flex = "1">
-                <Spacer axis="vertical" size={25}/>
-                <PostForm type = "post" handleSubmit={handleQueerySubmit} postTags = {postTags}></PostForm>
-                <Spacer axis="vertical" size={25}/>
-            </FlexBox>
-        </Wrapper>
+
+    return !userAuthLoaded ? <Loader/> : (
+        <>
+            {!user ? (
+                <TemporaryLogin/>
+            ) : (
+                <Wrapper align = "stretch" bgColor = "#FFB6C3">
+                    <PostTitle title = "Post a Queery"/>
+                    <FlexBox bgColor = "#DFEEFF" padding = "25px 50px" margin = "0" align = "stretch" flex = "1">
+                        <Spacer axis="vertical" size={25}/>
+                        <PostForm type = "post" handleSubmit={handleQueerySubmit} postTags={postTags}></PostForm>
+                        <Spacer axis="vertical" size={25}/>
+                    </FlexBox>
+                </Wrapper>
+            )
+            }
+        </>
     );
 }

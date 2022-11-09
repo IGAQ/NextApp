@@ -9,7 +9,7 @@ import { StyledSubmitButton } from '../../Atoms/SubmitButton';
 import { LabelledSwitch } from '../../Molecules/LabelledSwitch';
 import { FlexBox } from '../../../styles/globals';
 import { useState } from 'react';
-import { ContentCheckModal } from '../ContentCheckModal';
+import {ContentCheckModal, defaultProps, moderationFailedProps, unknownErrorProps} from '../ContentCheckModal';
 import { SubmissionModal } from '../SubmissionModal';
 
 export function PostForm ({handleSubmit, props, postTags,type}){
@@ -18,23 +18,30 @@ export function PostForm ({handleSubmit, props, postTags,type}){
     const [tone, setTone] = useState('casual');
     const [tag, setTag] = useState('');
     const [anonymous, setAnonymous] = useState(false);
-    const [showError, setShowError] = useState(false);
+
     const [showSubmissionModal, setShowSubmissionModal] = useState(false);
+
+    const [modalError, setModalError] = useState(false);
+
     const [createdPostId, setCreatedPostId] = useState(null);
 
-    async function handleCheckSubmission(e){
+    async function handleCheckSubmission(e) {
         e.preventDefault();
-        let createdPost = await handleSubmit(title, content, tag, tone, anonymous);
-        if (createdPost) {
-            setShowSubmissionModal(true);
-            setCreatedPostId(createdPost.postId);
+        let result = await handleSubmit(title, content, tag, tone, anonymous);
+        if (result.statusCode !== undefined) {
+            if (result.statusCode === 500) {
+                setModalError(() => { return {...unknownErrorProps};});
+            } else {
+                setModalError(() => { return {...moderationFailedProps};});
+            }
         } else {
-            setShowError(true);
+            setShowSubmissionModal(true);
+            setCreatedPostId(result.postId);
         }
     }
 
-    function closeContentCheckModal(){
-        setShowError(false);
+    function closeContentCheckModal() {
+        setModalError(() => false);
     }
 
     if( type === 'post'){
@@ -50,7 +57,7 @@ export function PostForm ({handleSubmit, props, postTags,type}){
                     
                 {(showSubmissionModal) && <SubmissionModal postId={createdPostId}/>}
 
-                {(showError) && <ContentCheckModal onClick = {closeContentCheckModal}/>}
+                {(modalError) && <ContentCheckModal onClick={closeContentCheckModal} {...modalError}/>}
                 <form onSubmit = {(e)=> handleCheckSubmission(e)}>
                     <FlexBox align ="stretch">
                         <TextInput onChange={(e) => setTitle(e.target.value)} text = {title} name = "title" label = "Post title" id = "title" placeholder = "Enter your title"/>
