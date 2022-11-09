@@ -96,7 +96,7 @@ export function PostForm ({handleSubmit, props, postTags,type}){
             
                 {(showSubmissionModal) && <SubmissionModal postId={createdPostId}/>}
 
-                {(showError) && <ContentCheckModal onClick = {closeContentCheckModal}/>}
+                {(modalError) && <ContentCheckModal onClick={closeContentCheckModal} {...modalError}/>}
                 <form onSubmit = {(e)=> handleCheckSubmission(e)}>
                     <FlexBox align ="stretch">
                         <TextInput onChange={(e) => setTitle(e.target.value)} borderBottom = "2px solid #C2ADff" boxShadow = "0 0 2px 2px #38004d" text = {title} name = "title" label = "Story title" id = "title" placeholder = "Enter your title"/>
