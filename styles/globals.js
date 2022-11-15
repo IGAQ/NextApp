@@ -15,6 +15,8 @@ margin:${props => props.margin||'0'};
 box-shadow:${props => props.boxShadow|| 'none'};
 gap:${props => props.gap};
 flex-wrap:${props => props.flexWrap || 'nowrap'};
+margin-left:${props => props.marginLeft};
+max-width:${props => props.maxWidth};
 `;
 
 //Reusuable Wrapper for all the pages
@@ -35,6 +37,6 @@ overflow: ${props => props.overflow || 'hidden'};
 `;
 
 export const Background = styled.div`
-background-color: #DFEEFF;
+background-color: ${props => props.color || '#DFEEFF'} ;
 height: ${props => props.height};
 `;
