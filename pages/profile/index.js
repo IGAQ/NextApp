@@ -3,7 +3,7 @@ import { Spacer } from '../../components/Atoms/Spacer';
 import { HamburgerIcon } from '../../components/Atoms/HamburgerIcon';
 import { PostTitle } from '../../components/Molecules/PostTitle';
 import { Text } from '../../components/Atoms/Text';
-import { Button } from '../../components/Atoms/Button';
+import { Button } from '../../components/Atoms/Buttons/Button';
 import { ProfileIcon } from '../../components/Atoms/ProfileIcon';
 import { BadgeShowcase } from '../../components/Molecules/BadgeShowcase';
 import { ProfileBio } from '../../components/Molecules/ProfileBio';

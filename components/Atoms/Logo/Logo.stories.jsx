@@ -1,22 +1,44 @@
 import React from 'react';
 
-import { Logo } from './index';
+import {Logo} from './index';
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
     title: 'Atoms/Logo',
     component: Logo,
-    // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
-        backgroundColor: { control: 'color' },
+        imageSrc: {
+            control: 'text',
+            defaultValue: '/IGAQLogo.svg',
+        },
+        imageAlt: {
+            control: 'text',
+            defaultValue: 'IGAQ Logo',
+        },
+        imageWidth: {
+            control: 'text',
+            defaultValue: '250',
+            description: 'Width of the image in pixels',
+        },
+        imageHeight: {
+            control: 'text',
+            defaultValue: '250',
+            description: 'Height of the image in pixels',
+        },
+        containerHeight: {
+            control: 'text',
+            defaultValue: '10',
+            description: 'Height of the container in em',
+        },
+        containerWidth: {
+            control: 'text',
+            defaultValue: '10',
+            description: 'Width of the container in em',
+        },
     },
 };
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => <Logo {...args} />;
 
 export const Default = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-    text: 'Answer',
 };

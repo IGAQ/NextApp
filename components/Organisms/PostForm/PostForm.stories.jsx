@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PostForm } from './index';
+import {PostForm} from './index';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -8,7 +8,7 @@ export default {
     component: PostForm,
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
-        backgroundColor: { control: 'color' },
+        backgroundColor: {control: 'color'},
     },
 };
 
@@ -17,5 +17,4 @@ const Template = (args) => <PostForm {...args} />;
 
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-};
+Default.args = {};

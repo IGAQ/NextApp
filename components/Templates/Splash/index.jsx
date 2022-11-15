@@ -8,7 +8,7 @@ import { Pagination } from 'swiper';
 import { Logo } from '../../Atoms/Logo';
 import { Spacer } from '../../Atoms/Spacer';
 import { Background } from '../../../styles/globals';
-import { Button }   from '../../Atoms/Button';
+import { Button }   from '../../Atoms/Buttons/Button';
 import { SplashImg } from '../../Atoms/SplashImg';
 import { useRouter } from 'next/router';
 import {useUser} from '../../../lib/hooks/useUser';

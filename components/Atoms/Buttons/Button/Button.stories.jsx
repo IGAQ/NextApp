@@ -1,15 +1,14 @@
 import React from 'react';
 
-import { Button } from './index';
+import {Button} from './index';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    title: 'Example/Button',
+    title: 'Atoms/Buttons/Button',
     component: Button,
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
-        backgroundColor: { control: 'color' },
+        backgroundColor: {control: 'color'},
     },
 };
 

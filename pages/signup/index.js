@@ -1,6 +1,6 @@
 import { FlexBox, Wrapper } from '../../styles/globals';
-import { Button } from '../../components/Atoms/Button';
-import { UserTextInput } from '../../components/Atoms/UserTextInput'
+import { Button } from '../../components/Atoms/Buttons/Button';
+import { UserTextInput } from '../../components/Atoms/UserTextInput';
 import { Spacer } from '../../components/Atoms/Spacer';
 import { Banner } from '../../components/Atoms/Banner';
 
@@ -21,5 +21,5 @@ export default function Signup() {
                 </FlexBox>
             </FlexBox>
         </Wrapper>
-    )
+    );
 }

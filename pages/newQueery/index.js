@@ -6,7 +6,6 @@ import axios from 'axios';
 import * as storage from '../../lib/storage';
 import {API_SERVER, JWT_TOKEN_LOCAL_STORAGE_KEY} from '../../lib/constants';
 import {useUser} from '../../lib/hooks/useUser';
-import {useRouter} from 'next/router';
 import {Loader} from '../../components/Atoms/Loader';
 import React from 'react';
 import TemporaryLogin from '../test/temporaryLogin';
@@ -59,7 +58,7 @@ export default function NewQueeryPage({postTags}) {
                     <PostTitle title = "Post a Queery"/>
                     <FlexBox bgColor = "#DFEEFF" padding = "25px 50px" margin = "0" align = "stretch" flex = "1">
                         <Spacer axis="vertical" size={25}/>
-                        <PostForm type = "post" handleSubmit={handleQueerySubmit} postTags={postTags}></PostForm>
+                        <PostForm type = "post" onSubmit={handleQueerySubmit} postTags={postTags}></PostForm>
                         <Spacer axis="vertical" size={25}/>
                     </FlexBox>
                 </Wrapper>

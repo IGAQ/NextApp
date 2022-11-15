@@ -1,12 +1,12 @@
-import { Text } from '../../Atoms/Text';
-import { Radio } from '@mantine/core';
-import { FlexBox } from '../../../styles/globals';
+import {Text} from '../../Atoms/Text';
+import {Radio} from '@mantine/core';
+import {FlexBox} from '../../../styles/globals';
 
-export function RadioGroup({tone, setTone}){
+export function RadioGroup({tone, setTone}) {
 
-    return(
+    return (
         <FlexBox>
-            <Text text = "Set the tone" size = "1rem" textAlign='left'/>
+            <Text text="Set the tone" size="1rem" textAlign='left'/>
             <Radio.Group
                 value={tone}
                 onChange={setTone}
@@ -15,8 +15,8 @@ export function RadioGroup({tone, setTone}){
                 withAsterisk
                 required
             >
-                <Radio color = 'queeryPink.3' value="casual" label="Casual" />
-                <Radio color = 'queeryPink.3' value="serious" label="Serious" />
+                <Radio color='queeryPink.3' value="casual" label="Casual"/>
+                <Radio color='queeryPink.3' value="serious" label="Serious"/>
             </Radio.Group>
         </FlexBox>
     );

@@ -1,8 +1,8 @@
-import{ BsSliders} from 'react-icons/bs';
+import {BsSliders} from 'react-icons/bs';
 
 
-export function FilterIcon(){
-    return(
-        <BsSliders size = {25}/>
+export function FilterIcon() {
+    return (
+        <BsSliders size={25}/>
     );
 }

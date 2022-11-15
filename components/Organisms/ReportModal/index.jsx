@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { FlexBox, ModalBackdrop} from '../../../styles/globals';
 import { ModalBox } from '../../Atoms/ModalBox';
 import { Text } from '../../Atoms/Text';
-import { Button } from '../../Atoms/Button';
+import { Button } from '../../Atoms/Buttons/Button';
 import { Spacer } from '../../Atoms/Spacer';
 
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Text } from '../Text';
+import { Text } from '../../Text';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
-import { Spacer } from '../Spacer';
+import { Spacer } from '../../Spacer';
 import { Button } from '@mantine/core';
 
 const StyledSubBtn = styled.button`

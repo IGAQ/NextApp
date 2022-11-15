@@ -1,20 +1,20 @@
-import { createStyles, Chip } from '@mantine/core';
-import { FlexBox } from '../../../styles/globals';
-import { Text } from '../../Atoms/Text';
+import {createStyles, Chip} from '@mantine/core';
+import {FlexBox} from '../../../styles/globals';
+import {Text} from '../../Atoms/Text';
 import {capitalizeFirstLetter} from '../../../lib/utils';
 
 const useStyles = createStyles((theme, _params, getRef) => ({
 
     label: {
         color: theme.white,
-    
-        '&[data-variant = "outline"]':{
+
+        '&[data-variant = "outline"]': {
             backgroundColor: theme.black,
             '&:hover': {
                 backgroundColor: theme.colors.queeryPink[4],
             },
         },
-        '&[data-checked][data-variant="outline"]':{
+        '&[data-checked][data-variant="outline"]': {
             borderColor: 'transparent',
         },
         '&[data-checked]': {
@@ -24,31 +24,32 @@ const useStyles = createStyles((theme, _params, getRef) => ({
             '&, &:hover': {
                 backgroundColor: theme.colors.queeryPink[2],
             },
-  
+
             [`& .${getRef('iconWrapper')}`]: {
                 color: theme.black,
             },
         },
     },
-  
+
     iconWrapper: {
         ref: getRef('iconWrapper'),
     },
 }));
 
 
-export function ChipGroup({ onChange, postTags}) {
-    const { classes } = useStyles();
+export function ChipGroup({onChange, postTags}) {
+    const {classes} = useStyles();
     console.debug('postTags', postTags);
 
     return (
         <>
-            <Text text = "Choose a tag" size = "1rem" textAlign='left' margin='0 0 10px 0'/>
+            <Text text="Choose a tag" size="1rem" textAlign='left' margin='0 0 10px 0'/>
             <FlexBox>
-                <Chip.Group required  multiple = {false} onChange = {onChange} position="center">
+                <Chip.Group required multiple={false} onChange={onChange} position="center">
                     {
                         postTags.map((tag) => {
-                            return <Chip key = {tag.tagName} value = {tag.tagName}  classNames = {classes}>{capitalizeFirstLetter(tag.tagName)}</Chip>;
+                            return <Chip key={tag.tagName} value={tag.tagName}
+                                classNames={classes}>{capitalizeFirstLetter(tag.tagName)}</Chip>;
                         })
                     }
                 </Chip.Group>
