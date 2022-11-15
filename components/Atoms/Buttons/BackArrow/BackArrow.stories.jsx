@@ -3,7 +3,7 @@ import React from 'react';
 import {BackArrow} from './index';
 
 export default {
-    title: 'Atoms/BackArrow',
+    title: 'Atoms/Buttons/BackArrow',
     component: BackArrow,
     argTypes: {
         backgroundColor: {control: 'color'},

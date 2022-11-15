@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { OTDAnswerInp, Answered } from '../../Molecules/OTDAnswerInp';
-import { OTDReplies } from '../../Atoms/OTDReplies';
-import { OTDPrompt } from '../../Atoms/OTDPrompt';
-import { OTDTitle } from '../../Atoms/OTDTitle';
+import { OTDReplies } from '../../Atoms/OfTheDay/OTDReplies';
+import { OTDPrompt } from '../../Atoms/OfTheDay/OTDPrompt';
+import { OTDTitle } from '../../Atoms/OfTheDay/OTDTitle';
 import { useState } from 'react';
 
 const OTDCardDiv = styled.div`

@@ -3,7 +3,7 @@ import React from 'react';
 import { OTDButton } from './index';
 
 export default {
-    title: 'OTD/Atoms/Button',
+    title: 'Atoms/Buttons/OTDButton',
     component: OTDButton,
     argTypes: {
         backgroundColor: { control: 'color' },

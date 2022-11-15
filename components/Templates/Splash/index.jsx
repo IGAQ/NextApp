@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { PostContent } from '../../Atoms/PostContent';
-import { OTDTitle } from '../../Atoms/OTDTitle';
+import { OTDTitle } from '../../Atoms/OfTheDay/OTDTitle';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';

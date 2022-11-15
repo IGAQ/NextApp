@@ -1,5 +1,5 @@
-import { OTDInput } from '../../Atoms/OTDInput';
-import { OTDButton } from '../../Atoms/OTDButton';
+import { OTDInput } from '../../Atoms/Inputs/OTDInput';
+import { OTDButton } from '../../Atoms/Buttons/OTDButton';
 import styled from 'styled-components';
 import { ModalBox } from '../../Atoms/ModalBox';
 import { useState } from 'react';

@@ -4,7 +4,7 @@ import { OTDInput } from './index';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    title: 'OTD/Atoms/Input',
+    title: 'Atoms/Inputs/OTDInput',
     component: OTDInput,
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {

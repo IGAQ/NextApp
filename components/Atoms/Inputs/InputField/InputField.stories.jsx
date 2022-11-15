@@ -3,7 +3,7 @@ import React from 'react';
 import {TextInput} from './index';
 
 export default {
-    title: 'Atoms/TextInput',
+    title: 'Atoms/Inputs/TextInput',
     component: TextInput,
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
