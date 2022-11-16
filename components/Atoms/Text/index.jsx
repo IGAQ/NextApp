@@ -1,17 +1,18 @@
 import styled from 'styled-components';
 
 const Header = styled.p`
-       font-size: ${props => props.size };
+       font-size: ${props => props.size};
        color: ${props => props.color};
        font-family: 'Heebo', sans-serif;
        font-Weight: ${props => props.weight};
-       text-align: ${props => props.textAlign };
+       text-align: ${props => props.textAlign};
        display: ${props => props.display};
        margin: ${props => props.margin};
        padding: ${props => props.padding};
+       overflow-wrap: anywhere;
        `;
 
-export function Text({  
+export function Text({
     size = '1.90rem',
     color = 'black',
     weight = '400',
@@ -24,7 +25,7 @@ export function Text({
     padding = '0',
 }) {
     return (
-        <Header padding = {padding} lineHeight = {lineHeight} overflow = {overflow} size = {size} color = {color} weight = {weight} margin = {margin} display = {display} textAlign = {textAlign}>
+        <Header padding={padding} lineHeight={lineHeight} overflow={overflow} size={size} color={color} weight={weight} margin={margin} display={display} textAlign={textAlign}>
             {text}
         </Header>
     );

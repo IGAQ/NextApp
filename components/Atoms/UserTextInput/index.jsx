@@ -11,16 +11,19 @@ display: inline-block;
 border: 1px solid #ccc;
 border-radius: 4px;
 box-sizing: border-box;
+padding: ${props => props.padding};
+
 `
 export function UserTextInput({
     type = 'text',
     placeholder = 'Placeholder',
     label = 'Label',
+    padding = '',
 }) {
     return (
         <>
             <UserTextLabel>{label}</UserTextLabel>
-            <UserTextInputField type={type} placeholder={placeholder} />
+            <UserTextInputField padding={padding} type={type} placeholder={placeholder} />
         </>
     );
 }
