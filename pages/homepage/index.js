@@ -38,6 +38,29 @@ export default function Homepage(props) {
         };
     }, []);
 
+    // const [search, setSearch] = useState('');
+    // const [filter, setFilter] = useState('All');
+    // const [filteredPosts, setFilteredPosts] = useState([]);
+    const [activeTab, setActiveTab] = useState('Queery');
+    const [posts, setPosts] = useState([]); 
+   
+
+
+
+    useEffect(() => {
+        (async function() {
+            if (activeTab === 'Queery') {
+                const response = await axios.get(`${API_SERVER}/api/posts/queery`);
+                props.setPosts(response.data);
+            }
+            if (activeTab === 'Story') {
+                const response = await axios.get(`${API_SERVER}/api/posts/story`);
+                props.setPosts(response.data);
+            }
+        })();
+    }
+    );
+
     return (
         <Background>
             <ScrollToTopButton isVisible={scrolledEnough} />
@@ -48,25 +71,45 @@ export default function Homepage(props) {
                 <Spacer size={10} />
                 <Tabs color="pink" defaultValue="Queeries">
                     <Tabs.List grow>
-                        <Tabs.Tab value="Queeries"> Queeries </Tabs.Tab>
-                        <Tabs.Tab value="Stories">Stories </Tabs.Tab>
+                        <Tabs.Tab value="Queeries" onClick={()=>setActiveTab('Queery')}> Queeries </Tabs.Tab>
+                        <Tabs.Tab value="Stories" onClick={()=>setActiveTab('Story')}>Stories </Tabs.Tab>
                     </Tabs.List>
                 </Tabs>
             </StickyDiv>
-            {props.posts.map((post) => (
-                <>
-                    <NewPost
-                        key={post.postId}
-                        postId={post.postId}
-                        username={post.authorUser?.username ?? 'Anonymous'}
-                        date={post.createdAt}
-                        title={post.postTitle}
-                        content={post.postContent}
-                        tags={post.postTags}
-                    />
-                    <Spacer size={10} />
-                </>
-            ))}
+            <Tabs.Panel value="Queeries">
+                {props.posts.map((post) => (
+                    <>
+                        <NewPost
+                            key={post.postId}
+                            postId={post.postId}
+                            postType={post.postType ?? 'Queery'}
+                            username={post.authorUser?.username ?? 'Anonymous'}
+                            date={post.createdAt}
+                            title={post.postTitle}
+                            content={post.postContent}
+                            tags={post.postTags}
+                        />
+                        <Spacer size={10} />
+                    </>
+                ))}
+            </Tabs.Panel>
+            <Tabs.Panel value="Stories">
+                {props.posts.map((post) => (
+                    <>
+                        <NewPost
+                            key={post.postId}
+                            postId={post.postId}
+                            postType={post.postType ?? 'Story'}
+                            username={post.authorUser?.username ?? 'Anonymous'}
+                            date={post.createdAt}
+                            title={post.postTitle}
+                            content={post.postContent}
+                            tags={post.postTags}
+                        />
+                        <Spacer size={10} />
+                    </>
+                ))}
+            </Tabs.Panel>
         </Background>
     );
 }
