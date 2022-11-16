@@ -9,6 +9,7 @@ const Header = styled.p`
   display: ${props => props.display};
   margin: ${props => props.margin};
   padding: ${props => props.padding};
+  overflow-wrap: anywhere;
 `;
 
 export function Text({
