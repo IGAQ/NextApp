@@ -1,4 +1,4 @@
-import { CustomProfile } from '../../components/Templates/Common/CustomProfile';
+import { CustomProfile } from '../../components/Templates/Common/CustomProf';
 
 export default function ProfileSet() {
     return (
