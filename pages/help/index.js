@@ -1,7 +1,7 @@
 import { FlexBox, Wrapper } from '../../styles/globals';
-import { Spacer } from '../../components/Atoms/Spacer';
-import { PostTitle } from '../../components/Molecules/PostTitle';
-import { BackArrow } from '../../components/Atoms/BackArrow';
+import { Spacer } from '../../components/Atoms/Common/Spacer';
+import { PostTitle } from '../../components/Molecules/Post/PostTitle';
+import { BackArrow } from '../../components/Atoms/Common/Buttons/BackArrow';
 import { HelpButton } from '../../components/Atoms/Common/Buttons/HelpButton';
 
 
