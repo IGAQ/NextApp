@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Icon} from '../../Icons/Icon';
+import {Icon} from '../../Common/Icons/Icon';
 
 const SettingsIcons = styled(Icon)`
   background-position: unset;

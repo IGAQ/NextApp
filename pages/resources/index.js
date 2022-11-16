@@ -1,10 +1,10 @@
 import {FlexBox, ModalBackdrop, Wrapper} from '../../styles/globals';
-import {Spacer} from '../../components/Atoms/Spacer';
-import {ResourceCard} from '../../components/Molecules/ResourceCard';
+import {Spacer} from '../../components/Atoms/Common/Spacer';
+import {ResourceCard} from '../../components/Molecules/Common/ResourceCard';
 import {PostTitle} from '../../components/Molecules/Post/PostTitle';
-import {Button} from '../../components/Atoms/Buttons/Button';
+import {Button} from '../../components/Atoms/Common/Buttons/Button';
 import {resources} from '../../data/resources';
-import {SearchAndFilter} from '../../components/Organisms/SearchAndFilter';
+import {SearchAndFilter} from '../../components/Organisms/Common/SearchAndFilter';
 
 export default function Resources(props) {
     return (

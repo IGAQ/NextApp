@@ -1,0 +1,5 @@
+.activePage {
+    color: #ff758c;
+    transition: all 600ms cubic-bezier(.47, 1.64, .41, .8);
+    transform: scale(1.1);
+}

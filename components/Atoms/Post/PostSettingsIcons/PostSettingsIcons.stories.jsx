@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {PostSettingsIcons} from './index';
-import IconStories from '../../Icons/Icon/Icon.stories';
+import IconStories from '../../Common/Icons/Icon/Icon.stories';
 
 const argTypes = Object.keys(IconStories.argTypes).reduce((acc, key) => {
     if (key !== 'icon') {

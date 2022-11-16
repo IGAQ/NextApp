@@ -1,11 +1,11 @@
 import {FlexBox, Wrapper} from '../../styles/globals';
-import {Spacer} from '../../components/Atoms/Spacer';
-import {PostForm} from '../../components/Organisms/PostForm';
+import {Spacer} from '../../components/Atoms/Common/Spacer';
+import {PostForm} from '../../components/Organisms/Post/PostForm';
 import {PostTitle} from '../../components/Molecules/Post/PostTitle';
 import axios from 'axios';
 import * as storage from '../../lib/storage';
 import {API_SERVER, JWT_TOKEN_LOCAL_STORAGE_KEY} from '../../lib/constants';
-import {Loader} from '../../components/Atoms/Loader';
+import {Loader} from '../../components/Atoms/Common/Loader';
 import TemporaryLogin from '../test/temporaryLogin';
 import React from 'react';
 import {useUser} from '../../lib/hooks/useUser';

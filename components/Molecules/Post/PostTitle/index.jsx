@@ -1,6 +1,6 @@
 import {FlexBox} from '../../../../styles/globals';
-import {Text} from '../../../Atoms/Text';
-import {Spacer} from '../../../Atoms/Spacer';
+import {Text} from '../../../Atoms/Common/Text';
+import {Spacer} from '../../../Atoms/Common/Spacer';
 
 export function PostTitle({title}) {
     return (
