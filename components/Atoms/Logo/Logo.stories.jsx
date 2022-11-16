@@ -40,5 +40,4 @@ export default {
 const Template = (args) => <Logo {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-};
+Default.args = {};

@@ -3,24 +3,24 @@ import styled from 'styled-components';
 import {Icon} from '../Icons/Icon';
 
 const StyledScrollToTopButton = styled.button`
-    position: fixed;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    bottom: 6rem;
-    right: 1rem;
-    border: none;
-    outline: none;
-    border-radius: 50%;
-    background-color: #FF758C;
-    color: #FFF;
-    width: 3rem;
-    height: 3rem;
-    margin : 0;
-    cursor: pointer;
-    padding: initial;
-    z-index: 100;
+  position: fixed;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 6rem;
+  right: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  background-color: #FF758C;
+  color: #FFF;
+  width: 3rem;
+  height: 3rem;
+  margin: 0;
+  cursor: pointer;
+  padding: initial;
+  z-index: 100;
 `;
 
 export function ScrollToTopButton({isVisible, ...otherProps}) {
@@ -34,8 +34,9 @@ export function ScrollToTopButton({isVisible, ...otherProps}) {
     };
 
     return (
-        <StyledScrollToTopButton {...otherProps} style={{ display: isVisible ? 'flex' : 'none' }} onClick={() => handleClick()}>
-            <Icon icon={'/arrow.svg'} size={1} cssTransform={'rotate(0.25turn)'} />
+        <StyledScrollToTopButton {...otherProps} style={{display: isVisible ? 'flex' : 'none'}}
+            onClick={() => handleClick()}>
+            <Icon icon={'/arrow.svg'} size={1} cssTransform={'rotate(0.25turn)'}/>
         </StyledScrollToTopButton>
     );
 }

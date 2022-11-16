@@ -1,19 +1,18 @@
 import React from 'react';
 
-import { ScrollToTopButton } from './index';
+import {ScrollToTopButton} from './index';
 
-const story = {
+export default {
     title: 'Atoms/ScrollToTopButton',
     component: ScrollToTopButton,
     argTypes: {
-        isVisible: { control: 'boolean', defaultValue: true },
+        isVisible: {control: 'boolean', defaultValue: true},
     },
 };
-export default story;
 
 const Template = (args) => <ScrollToTopButton {...args} />;
 
-export const Primary = Template.bind({ isVisible: true });
+export const Primary = Template.bind({isVisible: true});
 Primary.args = {
     primary: true,
 };
