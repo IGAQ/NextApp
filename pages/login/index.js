@@ -1,6 +1,6 @@
 import { FlexBox, Wrapper } from '../../styles/globals';
 import { Button } from '../../components/Atoms/Button';
-import { UserTextInput } from '../../components/Atoms/UserTextInput'
+import { UserTextInput } from '../../components/Atoms/UserTextInput';
 import { Spacer } from '../../components/Atoms/Spacer';
 import { Banner } from '../../components/Atoms/Banner';
 import { Text } from '../../components/Atoms/Text';
@@ -21,5 +21,5 @@ export default function Login() {
                 </FlexBox>
             </FlexBox>
         </Wrapper>
-    )
+    );
 }
