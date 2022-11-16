@@ -1,10 +1,10 @@
 import {FiBookmark} from 'react-icons/fi';
 import { FlexBox } from '../../../styles/globals';
 import { Spacer } from '../../Atoms/Spacer';
-import { PostTitle } from '../../Atoms/PostTitle';
-import { PostContent } from '../../Atoms/PostContent';
+import { PostTitle } from '../../Atoms/Post/PostTitle';
+import { PostContent } from '../../Atoms/Post/PostContent';
 import { PostTagBox } from '../../Molecules/PostTagBox';
-import { ContentButton } from '../../Atoms/ContentButton';
+import { ContentButton } from '../../Atoms/Post/ContentButton';
 import styled from 'styled-components';
 import { useState } from 'react';
 

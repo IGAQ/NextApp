@@ -1,5 +1,5 @@
-import { PostContent } from '../../Atoms/PostContent';
-import { PostTitle } from '../../Atoms/PostTitle';
+import { PostContent } from '../../Atoms/Post/PostContent';
+import { PostTitle } from '../../Atoms/Post/PostTitle';
 import { PostTagBox } from '../../Molecules/PostTagBox';
 import styled from 'styled-components';
 import {useRouter} from 'next/router';

@@ -1,4 +1,4 @@
-import { PostReaction } from '../../Atoms/PostReaction';
+import { PostReaction } from '../../Atoms/Post/PostReaction';
 import styled from 'styled-components';
 import { useState } from 'react';
 

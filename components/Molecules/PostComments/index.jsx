@@ -1,5 +1,5 @@
-import { PostCommentsText } from '../../Atoms/PostCommentsText';
-import { CommentsIcon } from '../../Atoms/CommentsIcon';
+import { PostCommentsText } from '../../Atoms/Post/PostCommentsText';
+import { CommentsIcon } from '../../Atoms/Post/CommentsIcon';
 import styled from 'styled-components';
 
 const PostFooterDiv = styled.div`

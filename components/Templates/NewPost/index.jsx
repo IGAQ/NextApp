@@ -3,7 +3,7 @@ import { PostBody } from '../../Organisms/PostBody';
 import { PostFooter } from '../../Organisms/PostFooter';
 import {PostSettingsModal} from '../../Organisms/PostSettingsModal';
 import styled from 'styled-components';
-import { PostSetting } from '../../Atoms/PostSetting';
+import { PostSetting } from '../../Atoms/Post/PostSetting';
 import { useState } from 'react';
 import { ReportModal } from '../../Organisms/ReportModal';
 import { Spacer } from '../../Atoms/Spacer';

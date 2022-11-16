@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
+import {getFilterFromHex} from '../../../lib/colorsHelper';
 
 const StyledIcon = styled.div`
   width: ${props => `${props.size}rem` || '1rem'};
@@ -10,10 +11,10 @@ const StyledIcon = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   transform: ${props => props.cssTransform || 'none'};
-  //filter: invert(100%) sepia(0%) saturate(18%) hue-rotate(30deg) brightness(106%) contrast(106%);
+  ${props => getFilterFromHex(props.colorHexCode ?? '#000')}
 `;
 
-export function Icon({icon = '/ReportIcon.svg', size, cssTransform, ...props}) {
+export function Icon({icon = '/ReportIcon.svg', size, cssTransform, colorHexCode, ...props}) {
     return (
         <StyledIcon icon={icon} size={size} cssTransform={cssTransform} {...props} />
     );

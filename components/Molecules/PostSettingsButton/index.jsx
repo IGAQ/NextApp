@@ -1,5 +1,5 @@
-import { PostSettingsIcons } from '../../Atoms/PostSettingsIcons';
-import { PostSettingsText } from '../../Atoms/PostSettingsText';
+import { PostSettingsIcons } from '../../Atoms/Post/PostSettingsIcons';
+import { PostSettingsText } from '../../Atoms/Post/PostSettingsText';
 import styled from 'styled-components';
 
 const SettingsButtonDiv = styled.div`

@@ -8,7 +8,7 @@ const TitleDiv = styled.div`
     justify-content: flex-start;
     font-weight: 300;
     font-size: ${props => props.fontSize || '50px'};
-    font-family: 'AmaticSC-Bold'; 
+    font-family: 'AmaticSC-Bold',serif; 
     text-transform: uppercase;
     `;
 

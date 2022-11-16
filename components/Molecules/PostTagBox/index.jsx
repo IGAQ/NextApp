@@ -1,4 +1,4 @@
-import { PostTag } from '../../Atoms/PostTag';
+import { PostTag } from '../../Atoms/Post/PostTag';
 import styled from 'styled-components';
 
 const PostTagBoxDiv = styled.div`

@@ -1,6 +1,6 @@
 import { FlexBox } from '../../../styles/globals';
 import { Text } from '../../Atoms/Text';
-import { PostTag } from '../../Atoms/PostTag';
+import { PostTag } from '../../Atoms/Post/PostTag';
 import { Badge} from '../../Atoms/Badge';
 import { Spacer } from '../../Atoms/Spacer';
 

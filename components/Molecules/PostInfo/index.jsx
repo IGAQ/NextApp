@@ -1,5 +1,5 @@
-import { PostUsername } from '../../Atoms/PostUsername';
-import { PostDate } from '../../Atoms/PostDate';
+import { PostUsername } from '../../Atoms/Post/PostUsername';
+import { PostDate } from '../../Atoms/Post/PostDate';
 import styled from 'styled-components';
 
 const PostInfoDiv = styled.div`

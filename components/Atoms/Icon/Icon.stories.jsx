@@ -40,10 +40,16 @@ export default {
             defaultValue: 'none',
             description: 'CSS transform property https://developer.mozilla.org/en-US/docs/Web/CSS/transform',
         },
+        colorHexCode: {
+            control: 'color',
+            defaultValue: '#000000',
+        },
     },
 };
 
 const Template = (args) => <Icon {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+    colorHexCode: '#da0000',
+};
