@@ -1,9 +1,9 @@
 import { FlexBox, Wrapper } from '../../styles/globals';
-import { Button } from '../../components/Atoms/Button';
-import { UserTextInput } from '../../components/Atoms/UserTextInput'
-import { Spacer } from '../../components/Atoms/Spacer';
-import { BackArrow } from '../../components/Atoms/BackArrow';
-import { PostTitle } from '../../components/Molecules/PostTitle';
+import { Button } from '../../components/Atoms/Common/Buttons/Button';
+import { UserTextInput } from '../../components/Atoms/Common/Inputs/UserTextInput';
+import { Spacer } from '../../components/Atoms/Common/Spacer';
+import { BackArrow } from '../../components/Atoms/Common/Buttons/BackArrow';
+import { PostTitle } from '../../components/Molecules/Post/PostTitle';
 
 export default function ChangePassword() {
     return (
