@@ -2,7 +2,7 @@ import { FlexBox, Wrapper } from '../../styles/globals';
 import { Spacer } from '../../components/Atoms/Spacer';
 import { PostTitle } from '../../components/Molecules/PostTitle';
 import { BackArrow } from '../../components/Atoms/BackArrow';
-import { HelpButton } from '../../components/Atoms/HelpButton';
+import { HelpButton } from '../../components/Atoms/Common/Buttons/HelpButton';
 
 
 export default function Help() {
@@ -31,5 +31,5 @@ export default function Help() {
                 </FlexBox>
             </FlexBox>
         </Wrapper>
-    )
+    );
 }

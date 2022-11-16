@@ -1,8 +1,8 @@
 import '../styles/globals.css';
-import { MobileNav } from '../components/Organisms/MobileNav/MobileNav';
+import { MobileNav } from '../components/Organisms/Common/MobileNav/MobileNav';
 import { useRouter } from 'next/router';
-import { Spacer } from '../components/Atoms/Spacer';
-import { Loader } from '../components/Atoms/Loader';
+import { Spacer } from '../components/Atoms/Common/Spacer';
+import { Loader } from '../components/Atoms/Common/Loader';
 import Router from 'next/router';
 import React from 'react';
 

@@ -1,8 +1,8 @@
 import { FlexBox, Wrapper } from '../../styles/globals';
-import { Button } from '../../components/Atoms/Button';
-import { UserTextInput } from '../../components/Atoms/UserTextInput'
-import { Spacer } from '../../components/Atoms/Spacer';
-import { Banner } from '../../components/Atoms/Banner';
+import { Button } from '../../components/Atoms/Common/Buttons/Button';
+import { UserTextInput } from '../../components/Atoms/Common/Inputs/UserTextInput';
+import { Spacer } from '../../components/Atoms/Common/Spacer';
+import { Banner } from '../../components/Atoms/Common/Banner';
 
 export default function Signup() {
     return (
@@ -21,5 +21,5 @@ export default function Signup() {
                 </FlexBox>
             </FlexBox>
         </Wrapper>
-    )
+    );
 }

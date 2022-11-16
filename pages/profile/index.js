@@ -1,12 +1,12 @@
 import { FlexBox, Wrapper } from '../../styles/globals';
-import { Spacer } from '../../components/Atoms/Spacer';
-import { HamburgerIcon } from '../../components/Atoms/HamburgerIcon';
-import { PostTitle } from '../../components/Molecules/PostTitle';
-import { Text } from '../../components/Atoms/Text';
-import { Button } from '../../components/Atoms/Button';
-import { ProfileIcon } from '../../components/Atoms/ProfileIcon';
-import { BadgeShowcase } from '../../components/Molecules/BadgeShowcase';
-import { ProfileBio } from '../../components/Molecules/ProfileBio';
+import { Spacer } from '../../components/Atoms/Common/Spacer';
+import { HamburgerIcon } from '../../components/Atoms/Common/Icons/HamburgerIcon';
+import { PostTitle } from '../../components/Molecules/Post/PostTitle';
+import { Text } from '../../components/Atoms/Common/Text';
+import { Button } from '../../components/Atoms/Common/Buttons/Button';
+import { ProfileIcon } from '../../components/Atoms/Common/Icons/ProfileIcon';
+import { BadgeShowcase } from '../../components/Molecules/Common/BadgeShowcase';
+import { ProfileBio } from '../../components/Molecules/Common/ProfileBio';
 
 export default function Profile(props){
     return(
