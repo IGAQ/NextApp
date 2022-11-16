@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { NewPost } from '../../components/Templates/NewPost';
+import { NewPost } from '../../components/Templates/Post/NewPost';
 import { API_SERVER } from '../../lib/constants';
 
 export default function Post({ post }) {

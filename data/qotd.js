@@ -5,6 +5,6 @@ export const queeryQuestions = [
     {question: 'Do you have a same-gender crush? Who?', id: 4},
     {question: 'Have you ever “kissed the homies goodnight” literally?', id: 5},
     {question: 'What is your favorite queer TV show?', id: 6},
-    {question: 'What is your favorite queer video game?',   id: 7},
+    {question: 'What is your favorite queer video game?', id: 7},
 ];
 

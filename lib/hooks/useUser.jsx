@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 import useSWR from 'swr';
 import Router from 'next/router';
 import * as storage from '../storage';
@@ -18,7 +18,7 @@ const fetcher = (url) => {
             if (data?.statusCode <= 200 || data?.statusCode >= 299) {
                 return error;
             }
-            return { user: data ?? null };
+            return {user: data ?? null};
         })
         .catch((error) => {
             return error;
@@ -30,8 +30,8 @@ const defaultUseUserProps = {
     redirectIfFound: false, // if true, redirect to `redirectTo` if the user was found; if false, redirect to `redirectTo` if no user was found
 };
 
-export function useUser({ redirectTo, redirectIfFound } = defaultUseUserProps) {
-    const { data, error } = useSWR('/api/auth/authenticate', fetcher);
+export function useUser({redirectTo, redirectIfFound} = defaultUseUserProps) {
+    const {data, error} = useSWR('/api/auth/authenticate', fetcher);
     const user = data?.user;
     const finished = Boolean(data);
     const hasUser = Boolean(user);

@@ -1,4 +1,4 @@
-import {Splash} from '../components/Templates/Splash';
+import {Splash} from '../components/Templates/Common/Splash';
 
 export default function Home() {
     return (
