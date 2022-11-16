@@ -1,6 +1,6 @@
 import React from 'react';
-
-import {Loader} from './index';
+import IGAQLoader from '../../../../public/IGAQ_loader.json';
+import { Loader } from './index';
 
 export default {
     title: 'Atoms/Common/Loader',
