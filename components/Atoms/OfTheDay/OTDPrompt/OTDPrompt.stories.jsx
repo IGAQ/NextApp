@@ -3,7 +3,7 @@ import React from 'react';
 import { OTDPrompt } from './index';
 
 export default {
-    title: 'Atoms/OfTheDay/OTDPrompt',
+    title: 'Atoms/OfTheDay/Prompt',
     component: OTDPrompt,
     argTypes: {
         prompt: { control: 'text' },

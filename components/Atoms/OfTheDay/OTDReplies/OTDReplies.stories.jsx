@@ -3,7 +3,7 @@ import React from 'react';
 import {OTDReplies} from './index';
 
 export default {
-    title: 'Atoms/OfTheDay/OTDReplies',
+    title: 'Atoms/OfTheDay/Replies',
     component: OTDReplies,
     argTypes: {
         replies: {control: 'number'},

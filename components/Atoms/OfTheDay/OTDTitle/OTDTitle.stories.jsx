@@ -3,7 +3,7 @@ import React from 'react';
 import {OTDTitle} from './index';
 
 export default {
-    title: 'Atoms/OfTheDay/OTDTitle',
+    title: 'Atoms/OfTheDay/Title',
     component: OTDTitle,
     argTypes: {
         title: {control: 'text'},

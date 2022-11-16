@@ -1,4 +1,4 @@
-import { OTDInput } from '../../Atoms/Inputs/OTDInput';
+import { OTDInput } from '../../Atoms/OfTheDay/OTDInput';
 import { OTDButton } from '../../Atoms/OfTheDay/OTDButton';
 import styled from 'styled-components';
 import { ModalBox } from '../../Atoms/ModalBox';
