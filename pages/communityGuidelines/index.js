@@ -1,8 +1,8 @@
 import { FlexBox, Wrapper } from '../../styles/globals';
-import { Spacer } from '../../components/Atoms/Spacer';
-import { Text } from '../../components/Atoms/Text';
-import { PostTitle } from '../../components/Molecules/PostTitle';
-import { BackArrow } from '../../components/Atoms/BackArrow';
+import { Spacer } from '../../components/Atoms/Common/Spacer';
+import { Text } from '../../components/Atoms/Common/Text';
+import { PostTitle } from '../../components/Molecules/Post/PostTitle';
+import { BackArrow } from '../../components/Atoms/Common/Buttons/BackArrow';
 
 export default function CommunityGuidelines() {
     return (
