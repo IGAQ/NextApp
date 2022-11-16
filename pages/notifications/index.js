@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { NotificationBox } from '../../components/Molecules/NotificationBox';
 import { Text } from '../../components/Atoms/Text';
 import styled from 'styled-components';
-import { PostTitle } from '../../components/Molecules/PostTitle';
+import { PostTitle } from '../../components/Molecules/Post/PostTitle';
 
 const NotificationDiv = styled(FlexBox)`
     width: 100%;

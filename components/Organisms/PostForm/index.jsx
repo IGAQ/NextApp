@@ -1,4 +1,4 @@
-import {TextInput} from '../../Atoms/TextInput';
+import {TextInput} from '../../Atoms/Inputs/TextInput';
 import {Spacer} from '../../Atoms/Spacer';
 import {MaxTextArea} from '../../Molecules/MaxTextArea';
 import {Breakline} from '../../Atoms/Breakline';

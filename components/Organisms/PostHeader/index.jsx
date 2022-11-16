@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import {ProfileIcon} from '../../Atoms/ProfileIcon';
-import { PostInfo } from '../../Molecules/PostInfo';
+import {ProfileIcon} from '../../Atoms/Icons/ProfileIcon';
+import { PostInfo } from '../../Molecules/Post/PostInfo';
 
 
 const PostHeaderDiv = styled.div`

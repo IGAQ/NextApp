@@ -1,4 +1,4 @@
-import { PostSettingsButton } from '../../Molecules/PostSettingsButton';
+import { PostSettingsButton } from '../../Molecules/Post/PostSettingsButton';
 import styled from 'styled-components';
 import { ReportModal } from '../ReportModal';
 import { useState } from 'react';

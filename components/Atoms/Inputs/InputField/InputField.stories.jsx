@@ -3,7 +3,7 @@ import React from 'react';
 import {TextInput} from './index';
 
 export default {
-    title: 'Atoms/Inputs/TextInput',
+    title: 'Atoms/Inputs/InputField',
     component: TextInput,
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
@@ -13,8 +13,8 @@ export default {
 
 const Template = (args) => <TextInput {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Default = Template.bind({});
+Default.args = {
     type: 'text',
     placeholder: 'Placeholder',
     label: 'Label',

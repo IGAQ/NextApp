@@ -1,5 +1,5 @@
-import { PostScore } from '../../Molecules/PostScore';
-import { PostComments } from '../../Molecules/PostComments';
+import { PostScore } from '../../Molecules/Post/PostScore';
+import { PostComments } from '../../Molecules/Post/PostComments';
 import styled from 'styled-components';
 
 

@@ -1,10 +1,10 @@
 import { FlexBox, Wrapper } from '../../styles/globals';
 import { Spacer } from '../../components/Atoms/Spacer';
-import { HamburgerIcon } from '../../components/Atoms/HamburgerIcon';
-import { PostTitle } from '../../components/Molecules/PostTitle';
+import { HamburgerIcon } from '../../components/Atoms/Icons/HamburgerIcon';
+import { PostTitle } from '../../components/Molecules/Post/PostTitle';
 import { Text } from '../../components/Atoms/Text';
 import { Button } from '../../components/Atoms/Buttons/Button';
-import { ProfileIcon } from '../../components/Atoms/ProfileIcon';
+import { ProfileIcon } from '../../components/Atoms/Icons/ProfileIcon';
 import { BadgeShowcase } from '../../components/Molecules/BadgeShowcase';
 import { ProfileBio } from '../../components/Molecules/ProfileBio';
 

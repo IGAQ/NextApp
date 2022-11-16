@@ -1,16 +1,14 @@
 import React from 'react';
 
-import { BadgeShowcase } from './index';
+import {BadgeShowcase} from './index';
 
 export default {
     title: 'Molecules/BadgeShowcase',
     component: BadgeShowcase,
-    argTypes: {
-    },
+    argTypes: {},
 };
 
 const Template = (args) => <BadgeShowcase {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-};
+Default.args = {};

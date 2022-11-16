@@ -3,7 +3,6 @@ import {Radio} from '@mantine/core';
 import {FlexBox} from '../../../styles/globals';
 
 export function RadioGroup({tone, setTone}) {
-
     return (
         <FlexBox>
             <Text text="Set the tone" size="1rem" textAlign='left'/>

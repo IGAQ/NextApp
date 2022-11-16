@@ -1,7 +1,7 @@
 import {FlexBox, Wrapper} from '../../styles/globals';
 import {Spacer} from '../../components/Atoms/Spacer';
 import {PostForm} from '../../components/Organisms/PostForm';
-import {PostTitle} from '../../components/Molecules/PostTitle';
+import {PostTitle} from '../../components/Molecules/Post/PostTitle';
 import axios from 'axios';
 import * as storage from '../../lib/storage';
 import {API_SERVER, JWT_TOKEN_LOCAL_STORAGE_KEY} from '../../lib/constants';

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { OTDAnswerInp, Answered } from '../../Molecules/OTDAnswerInp';
+import { OTDAnswerInp, Answered } from '../../Molecules/OfTheDay/OTDAnswerInp';
 import { OTDReplies } from '../../Atoms/OfTheDay/OTDReplies';
 import { OTDPrompt } from '../../Atoms/OfTheDay/OTDPrompt';
 import { OTDTitle } from '../../Atoms/OfTheDay/OTDTitle';

@@ -1,5 +1,5 @@
 import { SearchBar } from '../../Molecules/SearchBar';
-import { FilterIcon } from '../../Atoms/FilterIcon';
+import { FilterIcon } from '../../Atoms/Icons/FilterIcon';
 import { FlexBox } from '../../../styles/globals';
 import { Spacer } from '../../Atoms/Spacer';
 

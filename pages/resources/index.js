@@ -1,7 +1,7 @@
 import {FlexBox, ModalBackdrop, Wrapper} from '../../styles/globals';
 import {Spacer} from '../../components/Atoms/Spacer';
 import {ResourceCard} from '../../components/Molecules/ResourceCard';
-import {PostTitle} from '../../components/Molecules/PostTitle';
+import {PostTitle} from '../../components/Molecules/Post/PostTitle';
 import {Button} from '../../components/Atoms/Buttons/Button';
 import {resources} from '../../data/resources';
 import {SearchAndFilter} from '../../components/Organisms/SearchAndFilter';

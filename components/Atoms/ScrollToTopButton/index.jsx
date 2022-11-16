@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {Icon} from '../Icon';
+import {Icon} from '../Icons/Icon';
 
 const StyledScrollToTopButton = styled.button`
     position: fixed;
