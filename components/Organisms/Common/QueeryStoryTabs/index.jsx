@@ -3,6 +3,7 @@ import {NewPost} from '../../../Templates/Post/NewPost';
 import {Spacer} from '../../../Atoms/Common/Spacer';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import {InPageLoader} from '../../../Atoms/Common/Loader';
 
 export function QueeryStoryTabs({}) {
     const [activeTab, setActiveTab] = useState('queery');
@@ -37,7 +38,7 @@ export function QueeryStoryTabs({}) {
 
             <Tabs.Panel value="queery">
                 {queeries === null ? (
-                    <div>Loading Queeries...</div>
+                    <InPageLoader/>
                 ) :
                     (
                         queeries.map((queery) => (
@@ -60,7 +61,7 @@ export function QueeryStoryTabs({}) {
             </Tabs.Panel>
             <Tabs.Panel value="story">
                 {stories === null ? (
-                    <div>Loading stories...</div>
+                    <InPageLoader/>
                 ) : (
                     stories.map((story) => (
 
