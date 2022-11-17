@@ -23,10 +23,11 @@ export function Text({
     lineHeight = 'inherit',
     overflow = 'visible',
     padding = '0',
+    ...otherProps
 }) {
     return (
         <Header padding={padding} lineHeight={lineHeight} overflow={overflow} size={size} color={color} weight={weight}
-            margin={margin} display={display} textAlign={textAlign}>
+            margin={margin} display={display} textAlign={textAlign} {...otherProps}>
             {text}
         </Header>
     );

@@ -18,7 +18,6 @@ margin : ${props => props.margin || '0'};
 export const Button = ({ length, bgColor, padding, colour, label, ...props }) => {
     return (
         <StyledButton
-
             {...props}
         >
             {label}
