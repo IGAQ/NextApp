@@ -1,25 +1,25 @@
-import { FlexBox, Wrapper } from '../../styles/globals';
-import { Button } from '../../components/Atoms/Common/Buttons/Button';
-import { UserTextInput } from '../../components/Atoms/Common/Inputs/UserTextInput';
-import { Spacer } from '../../components/Atoms/Common/Spacer';
+import { Wrapper } from '../../styles/globals';
 import { Banner } from '../../components/Atoms/Common/Banner';
-import { Text } from '../../components/Atoms/Common/Text';
+import {LoginForm} from '../../components/Organisms/Auth/LoginForm';
+import {login} from '../../lib/auth';
+import {useRouter} from 'next/router';
 
 export default function Login() {
+    const router = useRouter();
+    const handleLogin = async ({username, password}) => {
+        const result = await login(username, password);
+        if (!result) {
+            console.error('Login failed');
+            return;
+        }
+        console.log('Login success');
+        await router.push('/');
+    };
+
     return (
         <Wrapper align='stretch' justify='center'>
             <Banner bannerBgColor='#A5CEFF' bannerTitle='Welcome back!' />
-            <FlexBox align='center' bgColor='white'>
-                <FlexBox align='flex-start' bgColor='white'>
-                    <Spacer axis='vertical' size={40} />
-                    <UserTextInput type='text' label='Username' placeholder='Username' />
-                    <Spacer axis='vertical' size={20} />
-                    <UserTextInput type='password' label='Password' placeholder='Password' />
-                    <Text text='Forgot Password?' size='0.8em' padding='0em 0em 0em 14rem'></Text>
-                    <Spacer axis='vertical' size={30} />
-                    <Button size='long' label='Login' />
-                </FlexBox>
-            </FlexBox>
+            <LoginForm onLogin={handleLogin} />
         </Wrapper>
     );
 }

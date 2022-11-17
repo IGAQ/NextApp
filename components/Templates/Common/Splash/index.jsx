@@ -90,7 +90,7 @@ export function Splash() {
                                             <>
                                                 <Spacer size="40"/>
                                                 <Button size='long' label="Login"
-                                                    onClick={() => r.push('/test/temporaryLogin')}/>
+                                                    onClick={() => r.push('/login')}/>
                                                 <Spacer size="20"/>
                                                 <Button size='long' label="Sign up"/>
                                             </>

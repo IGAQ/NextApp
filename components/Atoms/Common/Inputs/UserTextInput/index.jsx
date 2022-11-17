@@ -19,11 +19,12 @@ export function UserTextInput({
     placeholder = 'Placeholder',
     label = 'Label',
     padding = '12px 20px',
+    ...otherProps
 }) {
     return (
         <>
             <UserTextLabel>{label}</UserTextLabel>
-            <UserTextInputField padding={padding} type={type} placeholder={placeholder}/>
+            <UserTextInputField padding={padding} type={type} placeholder={placeholder} {...otherProps} />
         </>
     );
 }
