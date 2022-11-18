@@ -5,7 +5,10 @@ export default (req, res) => httpProxyMiddleware(req, res, {
     // You can use the `http-proxy` option
     target: process.env.API_SERVER_URL ?? API_SERVER,
     // In addition, you can use the `pathRewrite` option provided by `next-http-proxy`
-    pathRewrite: {
-        '^/api': process.env.API_SERVER_URL ?? API_SERVER,
-    },
+    pathRewrite: [
+        {
+            patternStr: '^/api',
+            replaceStr: process.env.API_SERVER_URL ?? API_SERVER,
+        },
+    ],
 });
