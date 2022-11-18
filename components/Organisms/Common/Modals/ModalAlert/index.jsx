@@ -6,15 +6,21 @@ import {Button} from '../../../../Atoms/Common/Buttons/Button';
 import {Spacer} from '../../../../Atoms/Common/Spacer';
 
 export const unknownErrorProps = {
+    modalBoxPadding: '25px 50px 50px 50px',
+
     title: 'Oops!',
     content: 'Something went wrong. Please try again later.',
+    enableMoreText: true,
     moreText: 'Please try again later.',
     buttonText: 'Okay',
 };
 
 export const moderationFailedProps = {
+    modalBoxPadding: '25px 50px 50px 50px',
+
     title: 'Oops!',
     content: 'Looks like you tried to post something that doesn\'t fit within our community guidelines!',
+    enableMoreText: true,
     moreText: 'Please rephrase your post and try again.',
     buttonText: 'Rephrase post',
 };
