@@ -55,12 +55,3 @@ export default function Homepage(props) {
         </Background>
     );
 }
-
-export async function getServerSideProps(context) {
-    const res = await axios.get(`${API_SERVER}/posts`);
-    const posts = res.data;
-    console.log(res.data);
-    return {
-        props: {posts}, // will be passed to the page component as props
-    };
-}
