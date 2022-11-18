@@ -92,7 +92,8 @@ export function Splash() {
                                                 <Button size='long' label="Login"
                                                     onClick={() => r.push('/login')}/>
                                                 <Spacer size="20"/>
-                                                <Button size='long' label="Sign up"/>
+                                                <Button size='long' label="Sign up"
+                                                    onClick={() => r.push('/signup')}/>
                                             </>
                                         )
                                 }

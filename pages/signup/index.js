@@ -12,7 +12,6 @@ export default function Signup() {
     const router = useRouter();
     const [, userAuthLoaded] = useUser({redirectTo: '/', redirectIfFound: true});
 
-
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
 
