@@ -8,8 +8,7 @@ import {API_SERVER, JWT_TOKEN_LOCAL_STORAGE_KEY} from '../../lib/constants';
 import {useUser} from '../../lib/hooks/useUser';
 import {Loader} from '../../components/Atoms/Common/Loader';
 import React from 'react';
-import TemporaryLogin from '../test/temporaryLogin';
-
+import Login from '../login';
 
 export async function getStaticProps() {
     const res = await axios.get(`${API_SERVER}/postTags`);
@@ -19,7 +18,7 @@ export async function getStaticProps() {
 }
 
 export default function NewQueeryPage({postTags}) {
-    const [user, userAuthLoaded] = useUser({redirectTo: '/test/temporaryLogin'});
+    const [user, userAuthLoaded] = useUser({redirectTo: '/login'});
 
     async function handleQueerySubmit(postTitle, postContent, postTagId, postTone, anonymous) {
         const post = {
@@ -51,19 +50,14 @@ export default function NewQueeryPage({postTags}) {
 
     return !userAuthLoaded ? <Loader/> : (
         <>
-            {!user ? (
-                <TemporaryLogin/>
-            ) : (
-                <Wrapper align = "stretch" bgColor = "#FFB6C3">
-                    <PostTitle title = "Post a Queery"/>
-                    <FlexBox bgColor = "#DFEEFF" padding = "25px 50px" margin = "0" align = "stretch" flex = "1">
-                        <Spacer axis="vertical" size={25}/>
-                        <PostForm type = "post" onSubmit={handleQueerySubmit} postTags={postTags}></PostForm>
-                        <Spacer axis="vertical" size={25}/>
-                    </FlexBox>
-                </Wrapper>
-            )
-            }
+            <Wrapper align = "stretch" bgColor = "#FFB6C3">
+                <PostTitle title = "Post a Queery"/>
+                <FlexBox bgColor = "#DFEEFF" padding = "25px 50px" margin = "0" align = "stretch" flex = "1">
+                    <Spacer axis="vertical" size={25}/>
+                    <PostForm type = "post" onSubmit={handleQueerySubmit} postTags={postTags}></PostForm>
+                    <Spacer axis="vertical" size={25}/>
+                </FlexBox>
+            </Wrapper>
         </>
     );
 }
