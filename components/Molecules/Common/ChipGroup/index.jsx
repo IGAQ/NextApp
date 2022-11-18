@@ -47,7 +47,7 @@ export function ChipGroup({onChange, postTags}) {
             <FlexBox>
                 <Chip.Group required multiple={false} onChange={onChange} position="center">
                     {
-                        postTags.map((tag) => {
+                        postTags.filter(pt => !['serious', 'casual'].includes(pt.tagName)).map((tag) => {
                             return <Chip key={tag.tagName} value={tag.tagName}
                                 classNames={classes}>{capitalizeFirstLetter(tag.tagName)}</Chip>;
                         })
