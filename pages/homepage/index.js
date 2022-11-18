@@ -13,11 +13,13 @@ import {QueeryStoryTabs} from '../../components/Organisms/Common/QueeryStoryTabs
 
 export const StickyDiv = styled.div`
   position: sticky;
+  position: -webkit-sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
   background-color: #DFEEFF;
   max-width: 50em;
   margin: auto;
+  padding-bottom: 1em;
 `;
 
 export default function Homepage(props) {
@@ -49,9 +51,9 @@ export default function Homepage(props) {
             <StickyDiv>
                 <Spacer size={15}/>
                 <SearchAndFilter/>
-                <Spacer size={10}/>
-                <QueeryStoryTabs />
             </StickyDiv>
+            <Spacer size={10}/>
+            <QueeryStoryTabs />
         </Background>
     );
 }
