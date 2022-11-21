@@ -6,7 +6,7 @@ border: none;
 outline: none;
 border-radius: 0.5em;
 background-color: ${props => props.backgroundColor || '#FF758C'};
-color: ${props => props.color || '#FFF'};
+color: ${props => props.color || '#FFFFFF'};
 padding: ${props => props.padding || '0.75em 1.25em'};
 width: ${props => props.size === 'short' ? '5rem' : props.size === 'long' ? '25em' : '10rem'};
 min-width: fit-content;
@@ -18,6 +18,7 @@ margin : ${props => props.margin || '0'};
 export const Button = ({ length, bgColor, padding, colour, label, ...props }) => {
     return (
         <StyledButton
+            type = "submit"
             {...props}
         >
             {label}

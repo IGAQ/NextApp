@@ -10,11 +10,11 @@ const PostHeaderDiv = styled.div`
   justify-content: center;
 `;
 
-export function PostHeader({username, date}) {
+export function PostHeader({weight, username, date}) {
     return (
         <PostHeaderDiv>
             <ProfileIcon bgimage='PrideFlag.svg'/>
-            <PostInfo username={username} date={date}/>
+            <PostInfo weight = {weight} username={username} date={date}/>
         </PostHeaderDiv>
     );
 }

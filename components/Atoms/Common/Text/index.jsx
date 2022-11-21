@@ -9,7 +9,7 @@ const Header = styled.p`
   display: ${props => props.display};
   margin: ${props => props.margin};
   padding: ${props => props.padding};
-  overflow-wrap: anywhere;
+  width: ${props => props.width};
 `;
 
 export function Text({
@@ -23,10 +23,11 @@ export function Text({
     lineHeight = 'inherit',
     overflow = 'visible',
     padding = '0',
+    width = 'auto',
     ...otherProps
 }) {
     return (
-        <Header padding={padding} lineHeight={lineHeight} overflow={overflow} size={size} color={color} weight={weight}
+        <Header width={width} padding={padding} lineHeight={lineHeight} overflow={overflow} size={size} color={color} weight={weight}
             margin={margin} display={display} textAlign={textAlign} {...otherProps}>
             {text}
         </Header>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const InputBox = styled.input`
+export const InputBox = styled.input`
 font-family: 'Heebo', sans-serif;
 padding: ${props => props.padding || '10px 10px 10px 15px'};
 border: none;

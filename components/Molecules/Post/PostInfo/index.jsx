@@ -9,10 +9,10 @@ const PostInfoDiv = styled.div`
   justify-content: center;
 `;
 
-export function PostInfo({username, date}) {
+export function PostInfo({weight, username, date}) {
     return (
         <PostInfoDiv>
-            <PostUsername username={username}/>
+            <PostUsername weight = {weight} username={username}/>
             <PostDate date={date}/>
         </PostInfoDiv>
     );

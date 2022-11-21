@@ -14,15 +14,10 @@ padding:${props => props.padding||'0'};
 margin:${props => props.margin||'0'};
 box-shadow:${props => props.boxShadow|| 'none'};
 gap:${props => props.gap};
-flex-wrap:${props => props.flexWrap || 'nowrap'};
+flex-wrap:${props => props.flexWrap};
+min-width:${props => props.minWidth};
 `;
 
-//Reusuable Wrapper for all the pages
-export const Wrapper = styled(FlexBox)`
-// width:100vw;
-// height:100vh;
-// margin-bottom: 75px;
-`;
 export const ModalBackdrop = styled.div`
 background-color: #3F3924C9;
   z-index: 9;
