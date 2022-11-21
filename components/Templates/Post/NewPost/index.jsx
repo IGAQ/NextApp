@@ -27,7 +27,7 @@ const Toprightdiv = styled.div`
   width: 100%;
 `;
 
-export function NewPost({postId, username, date, title, content, tags, score, numComments}) {
+export function NewPost({postId, username, date, title, content, tags, score, numComments, onClick}) {
 
     const [showSettings, setShowSettings] = useState(false);
 
@@ -44,7 +44,7 @@ export function NewPost({postId, username, date, title, content, tags, score, nu
                 </Toprightdiv>
                 <PostBody postId={postId} title={title} content={content} tags={tags}/>
                 <Spacer axis="vertical" size={5}/>
-                <PostFooter score={score} numComments={numComments}/>
+                <PostFooter score={score} numComments={numComments} onClick ={onClick}/>
             </PostDiv>
             <Spacer axis="vertical" size={15}/>
         </>

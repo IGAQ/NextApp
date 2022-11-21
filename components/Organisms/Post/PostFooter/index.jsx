@@ -10,11 +10,11 @@ const PostFooterDiv = styled.div`
   width: 100%;
 `;
 
-export function PostFooter({score, numComments}) {
+export function PostFooter({score, numComments, onClick}) {
     return (
         <PostFooterDiv>
             <PostScore score={score}/>
-            <PostComments numComments={numComments}/>
+            <PostComments numComments={numComments} onClick = {onClick}/>
         </PostFooterDiv>
     );
 }

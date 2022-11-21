@@ -101,6 +101,10 @@ textarea{
   
 }
 
+.child{
+  margin-left: 1em;
+}
+
 @keyframes spin {
   0% {
    -webkit-transform: rotate(0deg);

@@ -9,10 +9,10 @@ const PostFooterDiv = styled.div`
   justify-content: space-between;
 `;
 
-export function PostComments({numComments}) {
+export function PostComments({numComments, onClick}) {
     return (
         <PostFooterDiv>
-            <CommentsIcon/>
+            <CommentsIcon onClick = {onClick}/>
             <PostCommentsText numComments={numComments}/>
         </PostFooterDiv>
     );
