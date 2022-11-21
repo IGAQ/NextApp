@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import IGAQLoader from '../../../../public/IGAQ_loader.json';
+import Lottie from 'lottie-react';
 
 const OutsideLoader = styled.div`
   position: fixed;
@@ -50,13 +52,22 @@ const LoaderDiv = styled.div`
   border: 10px solid #ccc;
 `;
 
-export function Loader() {
+export function InPageLoader() {
     return (
         <OutsideLoader>
             <LoaderColor>
                 <InsiderLoader/>
                 <LoaderDiv/>
             </LoaderColor>
+        </OutsideLoader>
+    );
+}
+
+
+export function Loader() {
+    return (
+        <OutsideLoader>
+            <Lottie animationData={IGAQLoader} loop={true} />
         </OutsideLoader>
     );
 }

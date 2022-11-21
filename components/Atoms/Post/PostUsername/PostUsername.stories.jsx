@@ -3,7 +3,7 @@ import React from 'react';
 import {PostUsername} from './index';
 
 export default {
-    title: 'Atoms/Post/Username',
+    title: 'Atoms/Post/InputArea',
     component: PostUsername,
     argTypes: {
         username: {

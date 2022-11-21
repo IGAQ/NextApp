@@ -9,13 +9,14 @@ import {StyledSubmitButton} from '../../../Atoms/Common/Buttons/SubmitButton';
 import {LabelledSwitch} from '../../../Molecules/Common/LabelledSwitch';
 import {FlexBox} from '../../../../styles/globals';
 import {useState} from 'react';
-import {ContentCheckModal, defaultProps, moderationFailedProps, unknownErrorProps} from '../../Common/Modals/ContentCheckModal';
-import {SubmissionModal} from '../../Common/Modals/SubmissionModal';
+import {ModalAlert, moderationFailedProps, unknownErrorProps} from '../../Common/Modals/ModalAlert';
+import {Button} from '../../../Atoms/Common/Buttons/Button';
+import Link from 'next/link';
 
 const queeryPinkColors = ['#ffe2e9', '#ffb2bf', '#ff758c', '#fe4e6a', '#C23950', '#e40b27', '#b2041f', '#800015', '#4e000c', '#1f0002'];
 const storyPurpleColors = ['#eee4ff', '#c6b3ff', '#a880fd', '#924efc', '#821dfb', '#7906e2', '#6a03b0', '#54017e', '#38004d', '#17001d'];
 
-export function PostForm({onSubmit, props, postTags, type}) {
+export function PostForm({onSubmit, postTags, type}) {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [tone, setTone] = useState('casual');
@@ -62,9 +63,29 @@ export function PostForm({onSubmit, props, postTags, type}) {
                     },
                 }}>
 
-                {(showSubmissionModal) && <SubmissionModal postId={createdPostId}/>}
+                {(showSubmissionModal) && (
+                    <ModalAlert
+                        CustomButton={() => (
+                            <Link href={'/homepage/' + createdPostId}>
+                                <Button label="Take me to my post"></Button>
+                            </Link>
+                        )}
 
-                {(modalError) && <ContentCheckModal onClick={closeContentCheckModal} {...modalError}/>}
+                        modalBoxPadding={'50px'}
+                        title={'Congratulations!'}
+                        titleColor={'#FF758C'}
+                        titleTextWeight={'700'}
+
+                        content={'Looks like you successfully posted a queery.'}
+                        contentTextSize={'1.25rem'}
+
+                        enableMoreText={false}
+
+                        buttonText={'Take me to my post'}
+                    />
+                )}
+
+                {(modalError) && <ModalAlert onClick={closeContentCheckModal} {...modalError}/>}
                 <form onSubmit={(e) => handleCheckSubmission(e)}>
                     <FlexBox align="stretch">
                         <TextInput onChange={(e) => setTitle(e.target.value)} text={title} name="title"
@@ -104,9 +125,29 @@ export function PostForm({onSubmit, props, postTags, type}) {
                     },
                 }}>
 
-                {(showSubmissionModal) && <SubmissionModal postId={createdPostId}/>}
+                {(showSubmissionModal) && (
+                    <ModalAlert
+                        CustomButton={() => (
+                            <Link href={'/homepage/' + createdPostId}>
+                                <Button label="Take me to my post"></Button>
+                            </Link>
+                        )}
 
-                {(modalError) && <ContentCheckModal onClick={closeContentCheckModal} {...modalError}/>}
+                        modalBoxPadding={'50px'}
+                        title={'Congratulations!'}
+                        titleColor={'#FF758C'}
+                        titleTextWeight={'700'}
+
+                        content={'Looks like you successfully posted a story.'}
+                        contentTextSize={'1.25rem'}
+
+                        enableMoreText={false}
+
+                        buttonText={'Take me to my post'}
+                    />
+                )}
+
+                {(modalError) && <ModalAlert onClick={closeContentCheckModal} {...modalError}/>}
                 <form onSubmit={(e) => handleCheckSubmission(e)}>
                     <FlexBox align="stretch">
                         <TextInput onChange={(e) => setTitle(e.target.value)} borderBottom="2px solid #C2ADff"
