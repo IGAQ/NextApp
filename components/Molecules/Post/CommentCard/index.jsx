@@ -1,17 +1,18 @@
 
+import { useState } from 'react';
 import styled from 'styled-components';
 import { FlexBox } from '../../../../styles/globals';
-import { PostUsername } from '../../../Atoms/Post/PostUsername';
+import timeAgo from '../../../../utils/timeAgo';
 import { ProfileIcon } from '../../../Atoms/Common/Icons/ProfileIcon';
-import { PostDate } from '../../../Atoms/Post/PostDate';
 import { Spacer } from '../../../Atoms/Common/Spacer';
 import { Text } from '../../../Atoms/Common/Text';
+import { PostDate } from '../../../Atoms/Post/PostDate';
+import { PostSetting } from '../../../Atoms/Post/PostSetting';
+import { PostUsername } from '../../../Atoms/Post/PostUsername';
 import { PostFooter } from '../../../Organisms/Post/PostFooter';
-import { useState } from 'react';
-import { CommentPrompt } from '../CommentPrompt';
 import { PostHeader } from '../../../Organisms/Post/PostHeader';
 import { PostSettingsModal } from '../../../Organisms/Post/PostSettingsModal';
-import { PostSetting } from '../../../Atoms/Post/PostSetting';
+import { CommentPrompt } from '../CommentPrompt';
 
 
 const WrappedFlexBox = styled(FlexBox)`
@@ -29,7 +30,7 @@ const ChildCard = styled(CommentCard)`
 margin-left: 1.5rem;
 `;
 
-export function CommentCard({comment, parentId, firstParent, props}) {
+export function CommentCard({comment, firstParent, props}) {
     const [createPrompt, setCommentPrompt] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
 
@@ -47,7 +48,7 @@ export function CommentCard({comment, parentId, firstParent, props}) {
                 id = {comment.id}
                 className = {firstParent ? 'child' : ''}>
                 <WrappedFlexBox dir = "row" justify = "space-between">
-                    <PostHeader weight = "400" username = {comment.username} date = {comment.date} />
+                    <PostHeader weight = "400" username = {comment.authorUser.username} date = {timeAgo(comment.createdAt)} />
                     {showSettings ? <PostSettingsModal/> : <PostSetting onClick={() => handleSettings()}/>}
                 </WrappedFlexBox>
                 <Spacer size={25} />
@@ -56,7 +57,7 @@ export function CommentCard({comment, parentId, firstParent, props}) {
                 </FlexBox>
                 <Spacer size={25} />
                 <FlexBox>
-                    <PostFooter score = {comment.score} numComments = {comment.numComments} onClick = {togglePrompt}/>
+                    <PostFooter score = {comment.totalVotes} numComments = {comment.numComments} onClick = {togglePrompt}/>
                     <Spacer size={10} />
                 </FlexBox>
                 {createPrompt && <CommentPrompt 
@@ -76,7 +77,6 @@ export function CommentCard({comment, parentId, firstParent, props}) {
                         ))}
                     </FlexBox>
                 )}
-
             </FlexBox>
         </StyledCard>
     );
