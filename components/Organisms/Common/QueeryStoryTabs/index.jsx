@@ -52,6 +52,7 @@ export function QueeryStoryTabs({}) {
                                     title={queery.postTitle}
                                     content={queery.postContent}
                                     tags={queery.postTags}
+                                    score={queery.totalVotes}
                                 />
                                 <Spacer size={10}/>
                             </>
@@ -75,6 +76,7 @@ export function QueeryStoryTabs({}) {
                                 title={story.postTitle}
                                 content={story.postContent}
                                 tags={story.postTags}
+                                score={story.totalVotes}
                             />
                             <Spacer size={10}/>
                         </>

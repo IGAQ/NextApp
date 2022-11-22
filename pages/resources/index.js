@@ -1,4 +1,4 @@
-import {FlexBox, ModalBackdrop } from '../../styles/globals';
+import {FlexBox} from '../../styles/globals';
 import {Spacer} from '../../components/Atoms/Common/Spacer';
 import {ResourceCard} from '../../components/Molecules/Common/ResourceCard';
 import {PostTitle} from '../../components/Molecules/Post/PostTitle';
