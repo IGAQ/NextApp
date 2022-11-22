@@ -1,13 +1,13 @@
 import React from 'react';
 
-import {HelpButton} from './index';
+import { HelpButton } from './index';
 
 export default {
-    title: 'Atoms/HelpButton',
+    title: 'Atoms/Common/Buttons/HelpButton',
     component: HelpButton,
     argTypes: {
-        headingtext: {control: 'text'},
-        descriptiontext: {control: 'text'},
+        headingtext: { control: 'text' },
+        descriptiontext: { control: 'text' },
     },
 };
 
