@@ -4,7 +4,7 @@ import {LoginForm} from '../../components/Organisms/Auth/LoginForm';
 import {login} from '../../lib/auth';
 import {useRouter} from 'next/router';
 import {useUser} from '../../lib/hooks/useUser';
-import {Loader} from '@mantine/core';
+import { PageLoader } from '../../components/Atoms/Common/Loader';
 
 export default function Login() {
     const [, userAuthLoaded] = useUser({redirectTo: '/', redirectIfFound: true});
@@ -20,7 +20,7 @@ export default function Login() {
     };
 
     return !userAuthLoaded ? (
-        <Loader/>
+        <PageLoader/>
     ) : (
         <FlexBox align='stretch' justify='center'>
             <Banner bannerBgColor='#A5CEFF' bannerTitle='Welcome back!'/>

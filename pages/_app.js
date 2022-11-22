@@ -2,7 +2,7 @@ import '../styles/globals.css';
 import { MobileNav } from '../components/Organisms/Common/MobileNav/MobileNav';
 import { useRouter } from 'next/router';
 import { Spacer } from '../components/Atoms/Common/Spacer';
-import { Loader } from '../components/Atoms/Common/Loader';
+import { PageLoader } from '../components/Atoms/Common/Loader';
 import Router from 'next/router';
 import React from 'react';
 
@@ -40,7 +40,7 @@ function MyApp({ Component, pageProps }) {
     return ( 
         <>
             {loading ? (
-                <Loader />
+                <PageLoader />
             ) : (
                 <>
                     <Component {...pageProps} />

@@ -6,7 +6,7 @@ import axios from 'axios';
 import * as storage from '../../lib/storage';
 import {API_SERVER, JWT_TOKEN_LOCAL_STORAGE_KEY} from '../../lib/constants';
 import {useUser} from '../../lib/hooks/useUser';
-import {Loader} from '../../components/Atoms/Common/Loader';
+import {PageLoader} from '../../components/Atoms/Common/Loader';
 import React from 'react';
 import Login from '../login';
 
@@ -48,7 +48,7 @@ export default function NewQueeryPage({postTags}) {
 
     }
 
-    return !userAuthLoaded ? <Loader/> : (
+    return !userAuthLoaded ? <PageLoader/> : (
         <>
             <FlexBox align = "stretch" bgColor = "#FFB6C3">
                 <PostTitle title = "Post a Queery"/>
