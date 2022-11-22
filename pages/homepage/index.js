@@ -14,7 +14,7 @@ import {UserContext} from '../../lib/contexts';
 export const StickyDiv = styled.div`
   position: sticky;
   position: -webkit-sticky;
-  top: 0;
+  top: ${(props) => props.top}px;
   z-index: 2;
   background-color: #DFEEFF;
   max-width: 50em;
@@ -53,7 +53,7 @@ export default function Homepage(props) {
             <Background>
                 <ScrollToTopButton isVisible={scrolledEnough}/>
                 <OTDBase queeryQuestions={queeryQuestions.question}/>
-                <StickyDiv>
+                <StickyDiv top={0}>
                     <Spacer size={15}/>
                     <SearchAndFilter/>
                 </StickyDiv>
