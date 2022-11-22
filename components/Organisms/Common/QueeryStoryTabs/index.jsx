@@ -4,7 +4,6 @@ import {Spacer} from '../../../Atoms/Common/Spacer';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {InPageLoader} from '../../../Atoms/Common/Loader';
-import {SearchAndFilter} from '../SearchAndFilter';
 import {StickyDiv} from '../../../../pages/homepage';
 
 export function QueeryStoryTabs({}) {
