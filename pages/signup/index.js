@@ -1,4 +1,4 @@
-import {Wrapper} from '../../styles/globals';
+import {FlexBox} from '../../styles/globals';
 import {Banner} from '../../components/Atoms/Common/Banner';
 import {RegisterForm} from '../../components/Organisms/Auth/RegisterForm';
 import {register} from '../../lib/auth';
@@ -32,7 +32,7 @@ export default function Signup() {
     return !userAuthLoaded ? (
         <Loader/>
     ) : (
-        <Wrapper align='stretch' justify='center'>
+        <FlexBox align='stretch' justify='center'>
             {error && (
                 <ModalAlert
                     onClick={() => setError(null)}
@@ -52,6 +52,6 @@ export default function Signup() {
             )}
             <Banner bannerTitle='Join our safe space!'/>
             <RegisterForm onRegister={handleRegister}/>
-        </Wrapper>
+        </FlexBox>
     );
 }

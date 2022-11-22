@@ -1,4 +1,4 @@
-import { FlexBox, Wrapper } from '../../styles/globals';
+import { FlexBox } from '../../styles/globals';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { NotificationBox } from '../../components/Molecules/Common/NotificationBox';

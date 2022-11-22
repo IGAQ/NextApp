@@ -1,4 +1,4 @@
-import { FlexBox, Wrapper } from '../../styles/globals';
+import { FlexBox } from '../../styles/globals';
 import { Spacer } from '../../components/Atoms/Common/Spacer';
 import { PostTitle } from '../../components/Molecules/Post/PostTitle';
 import { BackArrow } from '../../components/Atoms/Common/Buttons/BackArrow';
@@ -7,7 +7,7 @@ import { HelpButton } from '../../components/Atoms/Common/Buttons/HelpButton';
 
 export default function Help() {
     return (
-        <Wrapper align='stretch' justify='center' bgColor='white'>
+        <FlexBox align='stretch' justify='center' bgColor='white'>
             <BackArrow />
             <FlexBox align='center' bgColor='white'>
                 <PostTitle title='Help' />
@@ -30,6 +30,6 @@ export default function Help() {
                     <Spacer axis='vertical' size={20} />
                 </FlexBox>
             </FlexBox>
-        </Wrapper>
+        </FlexBox>
     );
 }
