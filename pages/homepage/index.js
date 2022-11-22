@@ -8,7 +8,7 @@ import {ScrollToTopButton} from '../../components/Atoms/Common/ScrollToTopButton
 import React, {useEffect, useState} from 'react';
 import {QueeryStoryTabs} from '../../components/Organisms/Common/QueeryStoryTabs';
 import {useUser} from '../../lib/hooks/useUser';
-import {Loader} from '../../components/Atoms/Common/Loader';
+import {PageLoader} from '../../components/Atoms/Common/Loader';
 import {UserContext} from '../../lib/contexts';
 
 export const StickyDiv = styled.div`
@@ -47,7 +47,7 @@ export default function Homepage(props) {
     // const [filteredPosts, setFilteredPosts] = useState([]);
 
     return !userAuthLoaded ? (
-        <Loader/>
+        <PageLoader/>
     ) : (
         <UserContext.Provider value={user}>
             <Background>

@@ -1,14 +1,13 @@
 import React from 'react';
-import IGAQLoader from '../../../../public/IGAQ_loader.json';
-import { Loader } from './index';
+import { InPageLoader, PageLoader } from './index';
 
 export default {
     title: 'Atoms/Common/Loader',
-    component: Loader,
+    component: PageLoader,
     argTypes: {},
 };
 
-const Template = (args) => <Loader {...args} />;
+const Template = (args) => <PageLoader {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
