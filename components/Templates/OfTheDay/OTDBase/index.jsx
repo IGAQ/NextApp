@@ -4,28 +4,62 @@ import { OTDCard } from '../../../Organisms/OfTheDay/OTDCard';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { queeryQuestions } from '../../../../data/qotd';
+import { Carousel } from '@mantine/carousel';
 
 export function OTDBase({title, prompt, replies}){
     console.debug('queeryQuestions', queeryQuestions);
     return (
-        
-        <Swiper
-            slidePerView={1}
-            centeredSlides={true}
-            modules={[Navigation]}
-            onSwiper={(swiper) => console.log(swiper)}
-            spaceBetween={30}
-            navigation={true}
-            loop={true}
+        <Carousel 
+            slideGap='md'
+            slidesPerView={1}
+            controlsPosition="outside"
+            controls="arrows"
+            arrowsColor="gray"
+            arrowsSize="lg"
+            arrowsClassName="mantine-arrow"
+            arrowsStyle={{ backgroundColor: 'white' }}
+            arrowsRadius="md"
+            arrowsShadow="sm"
+            loop
+            mx='auto'
+            sx={{ maxWidth: 730 }}
         >
             <>
                 {queeryQuestions.map((qotd) => (
-                    <SwiperSlide key = {qotd.id}>
+                    <Carousel.Slide key = {qotd.id}>
                         <OTDCard  title="Queery of the day" prompt={qotd.question} replies={replies}/>
-                    </SwiperSlide>
+                    </Carousel.Slide>
                 ))
                 }
             </>
-        </Swiper>
+        </Carousel>
+    );
+}
+
+export function StoryOTD({title, prompt, replies}){
+    console.debug('queeryQuestions', queeryQuestions);
+    return (
+        <Carousel 
+            slideGap='md'
+            slidesPerView={1}
+            controlsPosition="outside"
+            controls="arrows"
+            arrowsColor="gray"
+            arrowsSize="lg"
+            arrowsClassName="mantine-arrow"
+            arrowsStyle={{ backgroundColor: 'white' }}
+            arrowsRadius="md"
+            arrowsShadow="sm"
+            loop
+        >
+            <>
+                {queeryQuestions.map((sotd) => (
+                    <Carousel.Slide key = {sotd.id}>
+                        <OTDCard  title="Story of the day" prompt={sotd.question} replies={replies}/>
+                    </Carousel.Slide>
+                ))
+                }
+            </>
+        </Carousel>
     );
 }

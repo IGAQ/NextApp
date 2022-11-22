@@ -4,6 +4,7 @@ import {Spacer} from '../../../Atoms/Common/Spacer';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {InPageLoader} from '../../../Atoms/Common/Loader';
+import { StickyDiv } from '../../../../pages/homepage';
 
 export function QueeryStoryTabs({}) {
     const [activeTab, setActiveTab] = useState('queery');
@@ -24,13 +25,13 @@ export function QueeryStoryTabs({}) {
                 }
             } catch (error) {
                 debugger;
-                console.error(error);
+                console.error(error); 
             }
         })();
     }, [activeTab]);
 
     return (
-        <Tabs color="pink" value={activeTab} onTabChange={setActiveTab}>
+        <Tabs color="pink" value={activeTab} onTabChange={setActiveTab} styles={{ tab: {'&[data-active]': {background: '#ffb6c3'}}}} >
             <Tabs.List grow>
                 <Tabs.Tab value="queery"> Queeries </Tabs.Tab>
                 <Tabs.Tab value="story">Stories </Tabs.Tab>

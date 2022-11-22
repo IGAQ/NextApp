@@ -10,14 +10,14 @@ const OTDCardDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #FFB6C3;
+  background-color: ${props => props.color || '#FFB6C3'};
   border-radius: 1rem;
   margin: 2rem;
   padding: 2rem 0 1.5rem 0;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
 `;
 
-export function OTDCard({title, prompt, replies, answer, setAnswer}) {
+export function OTDCard({title, prompt, replies, answer, setAnswer, color}) {
     const [showAnswer, setShowAnswer] = useState(false);
     const [showReplies, setShowReplies] = useState(0);
     return (
