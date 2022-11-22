@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import {Text} from '../../Text';
-import {Spacer} from '../../Spacer';
+import { Text } from '../../Text';
+import { Spacer } from '../../Spacer';
+import { useRouter } from 'next/router';
 
 const HelpDiv = styled.div`
   padding: 2em 1em 7em 2em;
@@ -14,11 +15,14 @@ const HelpDiv = styled.div`
 export function HelpButton({
     headingtext = 'heading',
     descriptiontext = 'Placeholder',
+    helppush = '/',
 }) {
+    const r = useRouter();
+
     return (
-        <HelpDiv>
+        <HelpDiv onClick={() => r.push(helppush)}>
             <Text text={headingtext} weight='600' size='1.3rem'></Text>
-            <Spacer axis='vertical' size={15}/>
+            <Spacer axis='vertical' size={15} />
             <Text text={descriptiontext} size='0.9rem'></Text>
         </HelpDiv>
     );
