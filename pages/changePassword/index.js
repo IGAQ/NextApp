@@ -22,6 +22,6 @@ export default function ChangePassword() {
                     <Button size='long' color='white' backgroundColor='#E02947' label='Change Password' />
                 </FlexBox>
             </FlexBox>
-        </Wrapper>
-    )
+        </Wrapper> 
+    );
 }

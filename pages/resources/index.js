@@ -1,4 +1,4 @@
-import {FlexBox, ModalBackdrop, Wrapper} from '../../styles/globals';
+import {FlexBox} from '../../styles/globals';
 import {Spacer} from '../../components/Atoms/Common/Spacer';
 import {ResourceCard} from '../../components/Molecules/Common/ResourceCard';
 import {PostTitle} from '../../components/Molecules/Post/PostTitle';
@@ -8,7 +8,7 @@ import {SearchAndFilter} from '../../components/Organisms/Common/SearchAndFilter
 
 export default function Resources(props) {
     return (
-        <Wrapper align="stretch" bgColor="#A5CEFF">
+        <FlexBox align="stretch" bgColor="#A5CEFF">
             <PostTitle title="Resources"/>
             <SearchAndFilter/>
             <Spacer axis="vertical" size={55}/>
@@ -33,7 +33,7 @@ export default function Resources(props) {
             </FlexBox>
             <Spacer axis="vertical" size={25}/>
 
-        </Wrapper>
+        </FlexBox>
 
 
     );
