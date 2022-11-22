@@ -4,6 +4,7 @@ import {Spacer} from '../../../Atoms/Common/Spacer';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {InPageLoader} from '../../../Atoms/Common/Loader';
+import {StickyDiv} from '../../../../pages/homepage';
 
 export function QueeryStoryTabs({}) {
     const [activeTab, setActiveTab] = useState('queery');
@@ -31,10 +32,12 @@ export function QueeryStoryTabs({}) {
 
     return (
         <Tabs color="pink" value={activeTab} onTabChange={setActiveTab}>
-            <Tabs.List grow>
-                <Tabs.Tab value="queery"> Queeries </Tabs.Tab>
-                <Tabs.Tab value="story">Stories </Tabs.Tab>
-            </Tabs.List>
+            <StickyDiv top={69}>
+                <Tabs.List grow>
+                    <Tabs.Tab value="queery"> Queeries </Tabs.Tab>
+                    <Tabs.Tab value="story">Stories </Tabs.Tab>
+                </Tabs.List>
+            </StickyDiv>
 
             <Tabs.Panel value="queery">
                 {queeries === null ? (

@@ -6,9 +6,9 @@ const UserName = styled.div`
   color: #000;
 `;
 
-export function PostUsername({username = 'Username', props}) {
+export function PostUsername({username = 'Username', weight, size}) {
     return (
-        <UserName>
+        <UserName weight={weight} size={size}>
             {username}
         </UserName>
     );
