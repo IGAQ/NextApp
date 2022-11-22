@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { ABCSelect } from '../../../Atoms/Common/ABCselect';
 
 export function Flags(props) {
-    const { flags } = props;
+    // const { flags } = props;
     return (
         <Background>
             <ABCSelect />
@@ -23,7 +23,7 @@ export function Flags(props) {
 }
 
 export function Terms(props) {
-    const { terms } = props;
+    // const { terms } = props;
     return (
         <Background>
             <ABCSelect />
