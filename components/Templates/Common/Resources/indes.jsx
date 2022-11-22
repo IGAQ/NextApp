@@ -8,7 +8,8 @@ export function Flags(props) {
     return (
         <Background>
             <ABCSelect />
-            <div className="flags">
+            Flags
+            {/* <div className="flags">
                 {flags.map(flag => (
                     <div className="flag" key={flag}>
                         <LetterSection letter={flag.firstLetter} />
@@ -16,7 +17,7 @@ export function Flags(props) {
                         <Image src={`https://www.countryflags.io/${flag}/flat/64.png`} alt={flag} />
                     </div>
                 ))}
-            </div>
+            </div> */}
         </Background>
     );
 }
@@ -26,7 +27,8 @@ export function Terms(props) {
     return (
         <Background>
             <ABCSelect />
-            <div className="terms">
+            Terms
+            {/* <div className="terms">
                 {terms.map(term => (
                     <div className="term" key={term}>
                         <LetterSection letter={term.firstLetter} />
@@ -34,7 +36,7 @@ export function Terms(props) {
                         <termDescription>{term.description}</termDescription>
                     </div>
                 ))}
-            </div>
+            </div> */}
         </Background>
     );
 }
