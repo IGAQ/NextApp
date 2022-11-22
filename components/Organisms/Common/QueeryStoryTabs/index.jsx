@@ -26,13 +26,13 @@ export function QueeryStoryTabs({}) {
                 }
             } catch (error) {
                 debugger;
-                console.error(error);
+                console.error(error); 
             }
         })();
     }, [activeTab]);
 
     return (
-        <Tabs color="pink" value={activeTab} onTabChange={setActiveTab}>
+        <Tabs color="pink" value={activeTab} onTabChange={setActiveTab} styles={{ tab: {'&[data-active]': {background: '#ffb6c3'}}}}>
             <StickyDiv top={69}>
                 <Tabs.List grow>
                     <Tabs.Tab value="queery"> Queeries </Tabs.Tab>

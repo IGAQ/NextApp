@@ -96,6 +96,14 @@ textarea{
   left: 20px !important;
 }
 
+.swiper-slide-active span{
+  border: gold 5px solid !important;
+  border-radius: 50%;
+}
+.swiper-slide-active div{
+  border: gold 5px solid !important;
+}
+
 .tabs ul li {
   background: white;
   

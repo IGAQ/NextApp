@@ -16,6 +16,7 @@ box-shadow:${props => props.boxShadow|| 'none'};
 gap:${props => props.gap};
 flex-wrap:${props => props.flexWrap};
 min-width:${props => props.minWidth};
+max-width:${props => props.maxWidth};
 `;
 
 export const ModalBackdrop = styled.div`
