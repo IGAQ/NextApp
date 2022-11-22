@@ -1,4 +1,4 @@
-import {FlexBox } from '../../styles/globals';
+import {FlexBox} from '../../styles/globals';
 import {Spacer} from '../../components/Atoms/Common/Spacer';
 import {PostForm} from '../../components/Organisms/Post/PostForm';
 import {PostTitle} from '../../components/Molecules/Post/PostTitle';

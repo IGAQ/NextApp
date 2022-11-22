@@ -4,7 +4,8 @@ import {Spacer} from '../../../Atoms/Common/Spacer';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {InPageLoader} from '../../../Atoms/Common/Loader';
-import { StickyDiv } from '../../../../pages/homepage';
+import {SearchAndFilter} from '../SearchAndFilter';
+import {StickyDiv} from '../../../../pages/homepage';
 
 export function QueeryStoryTabs({}) {
     const [activeTab, setActiveTab] = useState('queery');
@@ -31,11 +32,13 @@ export function QueeryStoryTabs({}) {
     }, [activeTab]);
 
     return (
-        <Tabs color="pink" value={activeTab} onTabChange={setActiveTab} styles={{ tab: {'&[data-active]': {background: '#ffb6c3'}}}} >
-            <Tabs.List grow>
-                <Tabs.Tab value="queery"> Queeries </Tabs.Tab>
-                <Tabs.Tab value="story">Stories </Tabs.Tab>
-            </Tabs.List>
+        <Tabs color="pink" value={activeTab} onTabChange={setActiveTab} styles={{ tab: {'&[data-active]': {background: '#ffb6c3'}}}}>
+            <StickyDiv top={69}>
+                <Tabs.List grow>
+                    <Tabs.Tab value="queery"> Queeries </Tabs.Tab>
+                    <Tabs.Tab value="story">Stories </Tabs.Tab>
+                </Tabs.List>
+            </StickyDiv>
 
             <Tabs.Panel value="queery">
                 {queeries === null ? (
@@ -53,6 +56,7 @@ export function QueeryStoryTabs({}) {
                                     title={queery.postTitle}
                                     content={queery.postContent}
                                     tags={queery.postTags}
+                                    score={queery.totalVotes}
                                 />
                                 <Spacer size={10}/>
                             </>
@@ -76,6 +80,7 @@ export function QueeryStoryTabs({}) {
                                 title={story.postTitle}
                                 content={story.postContent}
                                 tags={story.postTags}
+                                score={story.totalVotes}
                             />
                             <Spacer size={10}/>
                         </>

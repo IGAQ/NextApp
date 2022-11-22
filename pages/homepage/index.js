@@ -1,20 +1,20 @@
-import axios from 'axios';
 import {Spacer} from '../../components/Atoms/Common/Spacer';
-import {NewPost} from '../../components/Templates/Post/NewPost';
 import {OTDBase} from '../../components/Templates/OfTheDay/OTDBase';
 import {queeryQuestions} from '../../data/qotd';
-import {API_SERVER} from '../../lib/constants';
 import {Background} from '../../styles/globals';
 import {SearchAndFilter} from '../../components/Organisms/Common/SearchAndFilter';
 import styled from 'styled-components';
 import {ScrollToTopButton} from '../../components/Atoms/Common/ScrollToTopButton';
 import React, {useEffect, useState} from 'react';
 import {QueeryStoryTabs} from '../../components/Organisms/Common/QueeryStoryTabs';
+import {useUser} from '../../lib/hooks/useUser';
+import {Loader} from '../../components/Atoms/Common/Loader';
+import {UserContext} from '../../lib/contexts';
 
 export const StickyDiv = styled.div`
   position: sticky;
   position: -webkit-sticky;
-  top: 0;
+  top: ${(props) => props.top}px;
   z-index: 2;
   background-color: #DFEEFF;
   max-width: 50em;
@@ -23,6 +23,8 @@ export const StickyDiv = styled.div`
 `;
 
 export default function Homepage(props) {
+    const [user, userAuthLoaded] = useUser();
+
     const [scrolledEnough, setScrolledEnough] = useState(false);
 
     const handleScroll = () => {
@@ -44,16 +46,20 @@ export default function Homepage(props) {
     // const [filter, setFilter] = useState('All');
     // const [filteredPosts, setFilteredPosts] = useState([]);
 
-    return (
-        <Background>
-            <ScrollToTopButton isVisible={scrolledEnough}/>
-            <OTDBase queeryQuestions={queeryQuestions.question}/>
-            <StickyDiv>
-                <Spacer size={15}/>
-                <SearchAndFilter/>
-            </StickyDiv>
-            <Spacer size={10}/>
-            <QueeryStoryTabs />
-        </Background>
+    return !userAuthLoaded ? (
+        <Loader/>
+    ) : (
+        <UserContext.Provider value={user}>
+            <Background>
+                <ScrollToTopButton isVisible={scrolledEnough}/>
+                <OTDBase queeryQuestions={queeryQuestions.question}/>
+                <StickyDiv top={0}>
+                    <Spacer size={15}/>
+                    <SearchAndFilter/>
+                </StickyDiv>
+                <Spacer size={10}/>
+                <QueeryStoryTabs/>
+            </Background>
+        </UserContext.Provider>
     );
 }

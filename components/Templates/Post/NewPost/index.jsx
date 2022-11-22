@@ -44,7 +44,7 @@ export function NewPost({postId, username, date, title, content, tags, score, nu
                 </Toprightdiv>
                 <PostBody postId={postId} title={title} content={content} tags={tags}/>
                 <Spacer axis="vertical" size={5}/>
-                <PostFooter score={score} numComments={numComments} onClick ={onClick}/>
+                <PostFooter postId={postId} score={score} numComments={numComments} onClick ={onClick}/>
             </PostDiv>
             <Spacer axis="vertical" size={15}/>
         </>
