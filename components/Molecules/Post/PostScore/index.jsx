@@ -34,10 +34,13 @@ export function PostScore({ postId, score }) {
             setScoreState(scoreState - 1);
             return;
         }
-
-        setUpvoted(true);
-        setDownvoted(false);
-        setScoreState(prevState => prevState + 1);
+        if (downvoted) {
+            // cancel downvote, if downvoted
+            setDownvoted(false);
+            setScoreState(prevState => prevState + 1);
+        } else {
+            setUpvoted(true);
+        }
     }
 
     async function handleDownVote() {
@@ -54,9 +57,13 @@ export function PostScore({ postId, score }) {
             setScoreState(scoreState + 1);
             return;
         }
-        setDownvoted(true);
-        setUpvoted(false);
-        setScoreState(prevState => prevState - 1);
+        if (upvoted) {
+            // cancel upvote
+            setUpvoted(false);
+            setScoreState(prevState => prevState - 1);
+        } else {
+            setDownvoted(true);
+        }
     }
 
     return (
