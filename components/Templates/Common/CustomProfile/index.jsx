@@ -14,19 +14,19 @@ import {ProfileBadge} from '../../../Atoms/Common/Badge';
 export function CustomProfile() {
     return (
         <Background height='100%'>
-            <FlexBox dir='row' justify='space-between'>
+            <FlexBox dir='row' justify='space-between' maxWidth='50rem' margin='auto'>
                 <BackArrow/>
                 <div>
                     Skip for now
                 </div>
             </FlexBox>
             <form>
-                <FlexBox align='flex-start' marginLeft='3em'>
+                <FlexBox align='flex-start' marginLeft='3em' maxWidth='50rem' margin='auto'>
                     <PostTitle title='Introduce yourself!'/>
                     <input type='text' name='bio' placeholder='Write your bio...' size="40" height={'100px'}/>
                 </FlexBox>
                 <div>
-                    <FlexBox align='flex-start' marginLeft='3em'>
+                    <FlexBox align='flex-start' maxWidth='50rem' margin='auto'>
                         <PostTitle title='Avatar Selection'/>
                     </FlexBox>
                     <Background color='#FFF'>
@@ -73,9 +73,12 @@ export function CustomProfile() {
                     </Background>
                 </div>
                 <div>
-                    <FlexBox align='center' justify='space-between' marginLeft='3em' dir='row'>
+                    <FlexBox align='center' justify='space-between' dir='row' maxWidth='50rem' margin='auto'>
                         <PostTitle title='Pronoun Badge'/>
-                        <StyledSwitch></StyledSwitch>
+                        <FlexBox dir='row'>
+                            <StyledSwitch></StyledSwitch>
+                            Hide Pronoun
+                        </FlexBox>
                     </FlexBox>
                     <Background color='#fff'>
                         <Swiper
@@ -120,7 +123,7 @@ export function CustomProfile() {
                     </Background>
                 </div>
                 <div>
-                    <FlexBox align='center' justify='space-between' marginLeft='3em' dir='row'>
+                    <FlexBox align='center' justify='space-between' maxWidth='50rem' margin='auto' dir='row'>
                         <PostTitle title='Openness Badge'/>
                         <FlexBox dir='row'>
                             <StyledSwitch></StyledSwitch>
@@ -170,11 +173,14 @@ export function CustomProfile() {
                     </Background>
                 </div>
                 <div>
-                    <FlexBox align='center' justify='space-between' marginLeft='3em' dir='row'>
+                    <FlexBox align='center' justify='space-between' maxWidth='50rem' margin='auto' dir='row'>
                         <PostTitle title='Sexuality'></PostTitle>
-                        <StyledSwitch></StyledSwitch>
+                        <FlexBox dir='row'>
+                            <StyledSwitch></StyledSwitch>
+                        Hide Sexuality
+                        </FlexBox>
                     </FlexBox>
-                    <FlexBox align='flex-start' marginLeft='3em'>
+                    <FlexBox align='flex-start' maxWidth='50rem' margin='auto'>
                         <input list='sexuality' name='sexuality' title='Sexuality'/>
                         <datalist id='sexuality'>
                             {/* this needs to get mapped  */}
