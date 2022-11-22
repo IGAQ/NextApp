@@ -1,4 +1,4 @@
-import { FlexBox, Wrapper } from '../../styles/globals';
+import { FlexBox } from '../../styles/globals';
 import { Button } from '../../components/Atoms/Common/Buttons/Button';
 import { UserTextInput } from '../../components/Atoms/Common/Inputs/UserTextInput';
 import { Spacer } from '../../components/Atoms/Common/Spacer';
@@ -7,7 +7,7 @@ import { PostTitle } from '../../components/Molecules/Post/PostTitle';
 
 export default function ChangePassword() {
     return (
-        <Wrapper align='stretch' justify='center'>
+        <FlexBox align='stretch' justify='center'>
             <BackArrow />
             <FlexBox align='center' bgColor='white'>
                 <PostTitle title='Change Password' />
@@ -22,6 +22,6 @@ export default function ChangePassword() {
                     <Button size='long' color='white' backgroundColor='#E02947' label='Change Password' />
                 </FlexBox>
             </FlexBox>
-        </Wrapper> 
+        </FlexBox>
     );
 }

@@ -1,5 +1,5 @@
-import moment from 'moment';
 import styled from 'styled-components';
+import timeAgo from '../../../../utils/timeAgo';
 
 const PostDateDiv = styled.div`
   font-size: 1rem;
@@ -8,13 +8,8 @@ const PostDateDiv = styled.div`
 `;
 
     
-export function PostDate({date = 1666321046}) {
-    const dateObj = new Date(Number(date)).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-    });
-    const dt = moment(dateObj, 'MM/DD/YYYY').fromNow();
+export function PostDate({date}) {
+    const dt = timeAgo(date);
     return (
         <PostDateDiv>
             {dt}
