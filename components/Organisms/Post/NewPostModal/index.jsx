@@ -1,5 +1,5 @@
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import {FlexBox, Wrapper} from '../../../../styles/globals';
+import {FlexBox } from '../../../../styles/globals';
 import {ModalBox} from '../../../Atoms/Common/ModalBox';
 import {useRouter} from 'next/router';
 import {Text} from '../../../Atoms/Common/Text';
@@ -24,7 +24,7 @@ export function NewPostModal(props) {
     }
 
     return (
-        <Wrapper>
+        <FlexBox>
             <ModalBox border="5px solid #FF758C" minWidth="50%" padding="25px 50px 50px 50px" align="stretch"
                 borderRadius="20px"
                 initial={{y: 500}}
@@ -52,6 +52,6 @@ export function NewPostModal(props) {
                 </FlexBox>
             </ModalBox>
             <ModalBackdrop onClick={props.onClick}/>
-        </Wrapper>
+        </FlexBox>
     );
 }

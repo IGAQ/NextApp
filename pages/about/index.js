@@ -1,4 +1,4 @@
-import { FlexBox, Wrapper } from '../../styles/globals';
+import { FlexBox } from '../../styles/globals';
 import { Spacer } from '../../components/Atoms/Common/Spacer';
 import { Text } from '../../components/Atoms/Common/Text';
 import { PostTitle } from '../../components/Molecules/Post/PostTitle';
@@ -8,7 +8,7 @@ import Image from 'next/image';
 export default function About() {
 
     return (
-        <Wrapper align='stretch' justify='center' bgColor='white'>
+        <FlexBox align='stretch' justify='center' bgColor='white'>
             <BackArrow />
             <FlexBox align='center' bgColor='white'>
                 <PostTitle title='About Us' />
@@ -52,6 +52,6 @@ export default function About() {
                     <Spacer axis='vertical' size={90} />
                 </FlexBox>
             </FlexBox>
-        </Wrapper>
-    )
+        </FlexBox>
+    );
 }

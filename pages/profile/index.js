@@ -1,4 +1,4 @@
-import { FlexBox, Wrapper } from '../../styles/globals';
+import { FlexBox } from '../../styles/globals';
 import { Spacer } from '../../components/Atoms/Common/Spacer';
 import { HamburgerIcon } from '../../components/Atoms/Common/Icons/HamburgerIcon';
 import { PostTitle } from '../../components/Molecules/Post/PostTitle';
@@ -10,7 +10,7 @@ import { ProfileBio } from '../../components/Molecules/Common/ProfileBio';
 
 export default function Profile(props){
     return(
-        <Wrapper align = "stretch" justify = "center" bgColor = "#A5CEFF">
+        <FlexBox align = "stretch" justify = "center" bgColor = "#A5CEFF">
             <HamburgerIcon/>
             <PostTitle title = "Profile"/>
             <Spacer axis="vertical" size={45}/>
@@ -31,7 +31,7 @@ export default function Profile(props){
             <Spacer axis="vertical" size={15}/>
             <BadgeShowcase/>
             <Spacer axis="vertical" size={55}/>
-        </Wrapper>
+        </FlexBox>
 
 
     );

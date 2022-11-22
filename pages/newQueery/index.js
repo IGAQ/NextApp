@@ -1,4 +1,4 @@
-import {FlexBox, Wrapper} from '../../styles/globals';
+import {FlexBox } from '../../styles/globals';
 import {Spacer} from '../../components/Atoms/Common/Spacer';
 import {PostForm} from '../../components/Organisms/Post/PostForm';
 import {PostTitle} from '../../components/Molecules/Post/PostTitle';
@@ -50,14 +50,14 @@ export default function NewQueeryPage({postTags}) {
 
     return !userAuthLoaded ? <Loader/> : (
         <>
-            <Wrapper align = "stretch" bgColor = "#FFB6C3">
+            <FlexBox align = "stretch" bgColor = "#FFB6C3">
                 <PostTitle title = "Post a Queery"/>
                 <FlexBox bgColor = "#DFEEFF" padding = "25px 50px" margin = "0" align = "stretch" flex = "1">
                     <Spacer axis="vertical" size={25}/>
                     <PostForm type = "post" onSubmit={handleQueerySubmit} postTags={postTags}></PostForm>
                     <Spacer axis="vertical" size={25}/>
                 </FlexBox>
-            </Wrapper>
+            </FlexBox>
         </>
     );
 }

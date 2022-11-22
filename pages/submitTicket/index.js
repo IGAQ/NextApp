@@ -1,4 +1,4 @@
-import { FlexBox, Wrapper } from '../../styles/globals';
+import { FlexBox } from '../../styles/globals';
 import { Button } from '../../components/Atoms/Common/Buttons/Button';
 import { UserTextInput } from '../../components/Atoms/Common/Inputs/UserTextInput';
 import { Spacer } from '../../components/Atoms/Common/Spacer';
@@ -8,7 +8,7 @@ import { BackArrow } from '../../components/Atoms/Common/Buttons/BackArrow';
 
 export default function SubmitTicket() {
     return (
-        <Wrapper align='stretch' justify='center' bgColor='#DFEEFF'>
+        <FlexBox align='stretch' justify='center' bgColor='#DFEEFF'>
             <BackArrow />
             <FlexBox align='center' bgColor='#DFEEFF'>
                 <PostTitle title='Submit a Ticket' />
@@ -31,6 +31,6 @@ export default function SubmitTicket() {
 
                 </FlexBox>
             </FlexBox>
-        </Wrapper>
-    )
+        </FlexBox>
+    );
 }

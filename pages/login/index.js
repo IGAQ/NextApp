@@ -1,4 +1,4 @@
-import { Wrapper } from '../../styles/globals';
+import { FlexBox } from '../../styles/globals';
 import { Banner } from '../../components/Atoms/Common/Banner';
 import {LoginForm} from '../../components/Organisms/Auth/LoginForm';
 import {login} from '../../lib/auth';
@@ -17,9 +17,9 @@ export default function Login() {
     };
 
     return (
-        <Wrapper align='stretch' justify='center'>
+        <FlexBox align='stretch' justify='center'>
             <Banner bannerBgColor='#A5CEFF' bannerTitle='Welcome back!' />
             <LoginForm onLogin={handleLogin} />
-        </Wrapper>
+        </FlexBox>
     );
 }

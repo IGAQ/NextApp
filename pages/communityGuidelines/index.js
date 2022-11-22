@@ -1,4 +1,4 @@
-import { FlexBox, Wrapper } from '../../styles/globals';
+import { FlexBox } from '../../styles/globals';
 import { Spacer } from '../../components/Atoms/Common/Spacer';
 import { Text } from '../../components/Atoms/Common/Text';
 import { PostTitle } from '../../components/Molecules/Post/PostTitle';
@@ -6,7 +6,7 @@ import { BackArrow } from '../../components/Atoms/Common/Buttons/BackArrow';
 
 export default function CommunityGuidelines() {
     return (
-        <Wrapper align='stretch' justify='center' bgColor='white'>
+        <FlexBox align='stretch' justify='center' bgColor='white'>
             <BackArrow />
             <FlexBox align='center' bgColor='white'>
                 <PostTitle title='Community Guidelines' />
@@ -81,6 +81,6 @@ export default function CommunityGuidelines() {
                     <Spacer axis='vertical' size={40} />
                 </FlexBox>
             </FlexBox>
-        </Wrapper>
-    )
+        </FlexBox>
+    );
 }

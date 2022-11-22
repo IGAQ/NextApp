@@ -1,4 +1,4 @@
-import {FlexBox, Wrapper} from '../../styles/globals';
+import {FlexBox } from '../../styles/globals';
 import {Spacer} from '../../components/Atoms/Common/Spacer';
 import {PostForm} from '../../components/Organisms/Post/PostForm';
 import {PostTitle} from '../../components/Molecules/Post/PostTitle';
@@ -45,7 +45,7 @@ export default function NewStoryPage({postTags}) {
 
     return !userAuthLoaded ? <Loader/> : (
         <>
-            <Wrapper align="stretch" bgColor="#C2ADff">
+            <FlexBox align="stretch" bgColor="#C2ADff">
                 <Spacer axis="vertical" size={15}/>
                 <PostTitle title="Post a Story"/>
                 <Spacer axis="vertical" size={25}/>
@@ -54,7 +54,7 @@ export default function NewStoryPage({postTags}) {
                     <PostForm type="story" onSubmit={handleStorySubmit} postTags={postTags}></PostForm>
                     <Spacer axis="vertical" size={25}/>
                 </FlexBox>
-            </Wrapper>
+            </FlexBox>
         </>
     );
 }
