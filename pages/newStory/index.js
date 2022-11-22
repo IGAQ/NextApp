@@ -5,7 +5,7 @@ import {PostTitle} from '../../components/Molecules/Post/PostTitle';
 import axios from 'axios';
 import * as storage from '../../lib/storage';
 import {API_SERVER, JWT_TOKEN_LOCAL_STORAGE_KEY} from '../../lib/constants';
-import {Loader} from '../../components/Atoms/Common/Loader';
+import {PageLoader} from '../../components/Atoms/Common/Loader';
 import React from 'react';
 import {useUser} from '../../lib/hooks/useUser';
 
@@ -43,7 +43,7 @@ export default function NewStoryPage({postTags}) {
 
     }
 
-    return !userAuthLoaded ? <Loader/> : (
+    return !userAuthLoaded ? <PageLoader/> : (
         <>
             <FlexBox align="stretch" bgColor="#C2ADff">
                 <Spacer axis="vertical" size={15}/>

@@ -6,7 +6,7 @@ import {useState} from 'react';
 import {ModalAlert} from '../../components/Organisms/Common/Modals/ModalAlert';
 import {useRouter} from 'next/router';
 import {useUser} from '../../lib/hooks/useUser';
-import {Loader} from '../../components/Atoms/Common/Loader';
+import {PageLoader} from '../../components/Atoms/Common/Loader';
 
 export default function Signup() {
     const router = useRouter();
@@ -30,7 +30,7 @@ export default function Signup() {
     };
 
     return !userAuthLoaded ? (
-        <Loader/>
+        <PageLoader/>
     ) : (
         <FlexBox align='stretch' justify='center'>
             {error && (
