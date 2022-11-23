@@ -6,6 +6,17 @@ I Got A Queery (IGAQ) provides a safe space for the members of the LGBTQ+ commun
 
 ![IGAQ Mockups](https://user-images.githubusercontent.com/91351147/202382084-1be51ba4-3478-443e-922a-2099512b8fd3.png)
 
+# Our Team Members
+- [William Chu](https://github.com/williamchuu) - UX/UI Designer & Graphic Designer 
+- [Madison Cafik-Irwin](https://github.com/MadiMagpie) - UX/UI Designer & Front End Developer 
+- [Melysa Nguyen](https://github.com/melysan) - UX/UI Designer & Graphic Designer 
+- [Terrence Paiement](https://github.com/Roncyboy) - Front End Developer 
+- [Ilia Abedianamiri](https://github.com/iliaamiri) - Full Stack Developer
+- [Ian Chao](https://github.com/iantelli) - Full Stack Developer
+- [Sean Ng](https://github.com/23o4i7) - Full Stack Developer
+
+
+
 # How to Run the App
 
 ## Prerequisites
