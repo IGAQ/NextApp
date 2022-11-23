@@ -1,6 +1,7 @@
 import {Spacer} from '../../components/Atoms/Common/Spacer';
-import {OTDBase} from '../../components/Templates/OfTheDay/OTDBase';
+import {OTDBase, StoryOTD} from '../../components/Templates/OfTheDay/OTDBase';
 import {queeryQuestions} from '../../data/qotd';
+import { storyQuestions } from '../../data/sotd';
 import {Background} from '../../styles/globals';
 import {SearchAndFilter} from '../../components/Organisms/Common/SearchAndFilter';
 import styled from 'styled-components';

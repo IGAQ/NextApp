@@ -90,34 +90,25 @@ export function CustomProfile() {
                             modules={[Navigation]}
                         >
                             <SwiperSlide>
-                                <input type='hidden' id='him' name='pronoun' value='him'/>
-                                <label htmlFor='him'>
-                                    <ProfileBadge> He/Him </ProfileBadge>
-                                </label>
+                                <Image src='/HeHim.svg' alt='He/Him' width={100} height={100}/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <input type='hidden' id='her' name='pronoun' value='her'/>
-                                <label htmlFor='her'>
-                                    <ProfileBadge> She/Her </ProfileBadge>
-                                </label>
+                                <Image src='/SheHer.svg' alt='She/Her' width={100} height={100}/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <input type='hidden' id='them' name='pronoun' value='them'/>
-                                <label htmlFor='them'>
-                                    <ProfileBadge> They/Them </ProfileBadge>
-                                </label>
+                                <Image src='/TheyThem.svg' alt='They/Them' width={100} height={100}/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <input type='hidden' id='zim' name='pronoun' value='zim'/>
-                                <label htmlFor='zim'>
-                                    <ProfileBadge> Zie/Zim </ProfileBadge>
-                                </label>
+                                <Image src='/VeVer.svg' alt='Ve/Ver' width={100} height={100}/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <input type='hidden' id='em' name='pronoun' value='em'/>
-                                <label htmlFor='em'>
-                                    <ProfileBadge> E/Em </ProfileBadge>
-                                </label>
+                                <Image src='/XeXem.svg' alt='Xe/Xem' width={100} height={100}/>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Image src='/ZeZie.svg' alt='Ze/Zie' width={100} height={100}/>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Image src='/PronounNA.svg' alt='NA' width={100} height={100}/>
                             </SwiperSlide>
                         </Swiper>
                     </Background>
@@ -140,34 +131,22 @@ export function CustomProfile() {
                             modules={[Navigation]}
                         >
                             <SwiperSlide>
-                                <input type='hidden' id='comingOut' name='avatar' value='comingOut'/>
-                                <label htmlFor='comingOut'>
-                                    <ProfileBadge color='#C2ADFF'>Coming Out</ProfileBadge>
-                                </label>
+                                <Image src='/FullyOut.svg' alt='FullyOut' width={100} height={100}/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <input type='hidden' id='out' name='avatar' value='out'/>
-                                <label htmlFor='out'>
-                                    <ProfileBadge color='#C2ADFF'>Out</ProfileBadge>
-                                </label>
+                                <Image src='/NotOut.svg' alt='NotOut' width={100} height={100}/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <input type='hidden' id='questioning' name='avatar' value='questioning'/>
-                                <label htmlFor='questioning'>
-                                    <ProfileBadge color='#C2ADFF'>Questioning</ProfileBadge>
-                                </label>
+                                <Image src='/OutToFew.svg' alt='OutToFew' width={100} height={100}/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <input type='hidden' id='notOut' name='avatar' value='notOut'/>
-                                <label htmlFor='notOut'>
-                                    <ProfileBadge color='#C2ADFF'>Not Out</ProfileBadge>
-                                </label>
+                                <Image src='/SemiOut.svg' alt='SemiOut' width={100} height={100}/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <input type='hidden' id='ally' name='avatar' value='ally'/>
-                                <label htmlFor='ally'>
-                                    <ProfileBadge color='#C2ADFF'>Ally</ProfileBadge>
-                                </label>
+                                <Image src='/Ally.svg' alt='Ally' width={100} height={100}/>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Image src='/OpennessNA.svg' alt='NA' width={100} height={100}/>
                             </SwiperSlide>
                         </Swiper>
                     </Background>
