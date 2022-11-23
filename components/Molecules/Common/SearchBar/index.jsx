@@ -10,7 +10,7 @@ const BarBase = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0 10px 0 0;
+  padding: 0 10px 0 10px;
   width: 65%;
 `;
 

@@ -9,7 +9,7 @@ import { InPageLoader } from '../../../Atoms/Common/Loader';
 import { useRouter } from 'next/router';
 
 
-export function OTDBase({title, prompt, replies, activeTab}){
+export function OTDBase({activeTab}){
     const [showQueery, setShowQueery] = useState([]);
     const [showStory, setShowStory] = useState([]);
     const r = useRouter();
@@ -55,14 +55,14 @@ export function OTDBase({title, prompt, replies, activeTab}){
                     mx='auto'
                     sx={{ maxWidth: 730 }}
                 >
-                    {activeTab === 'queery' && showQueery.map((qotd) => (
-                        <Carousel.Slide key = {qotd.postId}>
-                            <OTDCard  title="Queery of the day" prompt={qotd.postTitle} onClick={()=>r.push(`/homepage/${qotd.postId}`)} replies='1'/>
+                    {activeTab === 'queery' && showQueery.map((queeryOfTheDay) => (
+                        <Carousel.Slide key = {queeryOfTheDay.postId}>
+                            <OTDCard  title="Queery of the day" prompt={queeryOfTheDay.postTitle} onClick={()=>r.push(`/homepage/${queeryOfTheDay.postId}`)} replies={queeryOfTheDay.totalComments}/>
                         </Carousel.Slide>
                     ))}
-                    {activeTab === 'story' && showStory.map((sotd) => (
-                        <Carousel.Slide key={sotd.postId}>
-                            <OTDCard color='#C2ADFF' title="Story of the day" prompt={sotd.postTitle} onClick={()=>r.push(`/homepage/${sotd.postId}`)} replies='0'/>
+                    {activeTab === 'story' && showStory.map((storyOfTheDay) => (
+                        <Carousel.Slide key={storyOfTheDay.postId}>
+                            <OTDCard color='#C2ADFF' title="Story of the day" prompt={storyOfTheDay.postTitle} onClick={()=>r.push(`/homepage/${storyOfTheDay.postId}`)} replies={storyOfTheDay.totalComments}/>
                         </Carousel.Slide>
                     ))} 
                 </Carousel>
