@@ -7,7 +7,8 @@ import {CommentCard} from '../../components/Molecules/Post/CommentCard';
 import {Spacer} from '../../components/Atoms/Common/Spacer';
 import * as postService from '../../lib/postService';
 import {useRouter} from 'next/router';
-import styled from 'styled-components';
+import {PostContext, UserActionsHandlersContext} from '../../lib/contexts';
+import {InPageLoader} from '../../components/Atoms/Common/Loader';
 
 export default function Post({post}) {
     const router = useRouter();
@@ -15,11 +16,12 @@ export default function Post({post}) {
     const [comments, setComments] = useState([]);
 
     const [createPrompt, setCommentPrompt] = useState(false);
+    
     const togglePrompt = () => setCommentPrompt(!createPrompt);
 
     const handleCommentClick = async ({commentId}) => {
         // redirect to the comment thread.
-        await router.push(`/homepage/${post.id}/comment/${commentId}`);
+        await router.push(`/homepage/${post.postId}/comment/${commentId}`);
     };
 
     useEffect(() => {
@@ -46,42 +48,35 @@ export default function Post({post}) {
         const flattenedComments = flatComments(comments);
         for (let comment of flattenedComments) {
             result.push(
-                <CommentCard
-                    key={comment.commentId}
-                    comment={comment}
-                    onClick={handleCommentClick}
-                    nestedLevel={comment.nestedLevel}
-                />
+                <PostContext.Provider key={comment.commentId} value={comment}>
+                    <UserActionsHandlersContext.Provider value={{handleCommentClick}}>
+                        <CommentCard
+                            onClick={handleCommentClick}
+                            nestedLevel={comment.nestedLevel}
+                        />
+                    </UserActionsHandlersContext.Provider>
+                </PostContext.Provider>
             );
         }
         return result;
     };
 
-    const testComment = {
-        username: 'John',
-        date: '3 hours ago',
-        content: 'testing 123 pls work',
-        id: 1,
-        score: 12,
-    };
-
     return (
         <>
             <div>
-                <NewPost
-                    key={post.postId}
-                    username={post.authorUser?.username ?? 'Anonymous'}
-                    date={post.createdAt}
-                    title={post.postTitle}
-                    content={post.postContent}
-                    tags={post.postTags}
-                    onClick={togglePrompt}
-                />
+                <PostContext.Provider value={post}>
+                    <UserActionsHandlersContext.Provider value={{
+                        handleClickOnPost: togglePrompt,
+                        handleCommentClick: handleCommentClick,
+                    }}>
+                        <NewPost/>
+                    </UserActionsHandlersContext.Provider>
+                </PostContext.Provider>
             </div>
             {createPrompt && <CommentPrompt username={post.authorUser?.username ?? 'Anonymous'}/>}
 
             {isLoadingComments ? (
-                <div>Loading the comments...</div>
+                <InPageLoader/>
             ) : (
                 renderComments()
             )}

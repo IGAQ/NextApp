@@ -10,11 +10,19 @@ import {ProfileBio} from '../../components/Molecules/Common/ProfileBio';
 import { Drawer, Group } from '@mantine/core';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import {useUser} from '../../lib/hooks/useUser';
+import {InPageLoader} from '../../components/Atoms/Common/Loader';
+import React from 'react';
 
 export default function Profile(props) {
+    const [, userAuthLoaded] = useUser({redirectTo: '/login'});
+
     const [drawerOpened, setDrawerOpened] = useState(false);
     const r = useRouter();
-    return (
+    
+    return !userAuthLoaded ? (
+        <InPageLoader/>
+    ) : (
         <FlexBox align="stretch" justify="center" bgColor="#A5CEFF">
             <Drawer
                 opened={drawerOpened}

@@ -2,7 +2,7 @@ import {PostReaction} from '../../../Atoms/Post/PostReaction';
 import styled from 'styled-components';
 import * as votingService from '../../../../lib/votingService';
 import {useContext, useState} from 'react';
-import {UserContext} from '../../../../lib/contexts';
+import {PostContext, UserContext} from '../../../../lib/contexts';
 import {useRouter} from 'next/router';
 
 const PostFooterDiv = styled.div`
@@ -13,12 +13,14 @@ const PostFooterDiv = styled.div`
   width: 10%;
 `;
 
-export function PostScore({ postId, score }) {
+export function PostScore() {
+    const post = useContext(PostContext);
+
     const router = useRouter();
     const user = useContext(UserContext);
-    const [scoreState, setScoreState] = useState(score);
-    const [upvoted, setUpvoted] = useState(false);
-    const [downvoted, setDownvoted] = useState(false);
+    const [scoreState, setScoreState] = useState(post.totalVotes);
+    const [upvoted, setUpvoted] = useState(post.userVote && post.userVote === 'UPVOTES');
+    const [downvoted, setDownvoted] = useState(post.userVote && post.userVote === 'DOWN_VOTES');
 
     async function handleUpVote() {
         if (!user) {
@@ -26,20 +28,20 @@ export function PostScore({ postId, score }) {
             return;
         }
         // tell backend but don't bother waiting for response
-        const _ = votingService.votePost(postId, true);
+        const _ = votingService.votePost(post.postId, true);
 
         if (upvoted) {
             // cancel upvote, if upvoted
             setUpvoted(false);
-            setScoreState(scoreState - 1);
-            return;
-        }
-        if (downvoted) {
+            setScoreState(prevState => prevState - 1);
+        } else if (downvoted) {
             // cancel downvote, if downvoted
             setDownvoted(false);
-            setScoreState(prevState => prevState + 1);
+            setUpvoted(true);
+            setScoreState(prevState => prevState + 2);
         } else {
             setUpvoted(true);
+            setScoreState(prevState => prevState + 1);
         }
     }
 
@@ -49,20 +51,20 @@ export function PostScore({ postId, score }) {
             return;
         }
         // tell backend but don't bother waiting for response
-        const _ = votingService.votePost(postId, false);
+        const _ = votingService.votePost(post.postId, false);
 
         if (downvoted) {
             // cancel downvote, if downvoted
             setDownvoted(false);
-            setScoreState(scoreState + 1);
-            return;
-        }
-        if (upvoted) {
+            setScoreState(prevState => prevState + 1);
+        } else if (upvoted) {
             // cancel upvote
             setUpvoted(false);
-            setScoreState(prevState => prevState - 1);
+            setDownvoted(true);
+            setScoreState(prevState => prevState - 2);
         } else {
             setDownvoted(true);
+            setScoreState(prevState => prevState - 1);
         }
     }
 
