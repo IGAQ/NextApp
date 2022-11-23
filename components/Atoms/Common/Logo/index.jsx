@@ -23,7 +23,7 @@ export function Logo(props = defaultProps) {
     const {imageSrc, containerHeight, containerWidth, imageHeight, imageWidth, imageAlt} = props;
     return (
         <LogoDiv height={containerHeight} width={containerWidth}>
-            <Image src={imageSrc} width={imageWidth} height={imageHeight} alt={imageAlt}/>
+            <Image src='/IGAQLogo.svg' width='100px' height='100px' alt={imageAlt}/>
         </LogoDiv>
     );
 }

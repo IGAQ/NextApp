@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {Text} from '../../../Atoms/Common/Text';
 import {BiSearch} from 'react-icons/bi';
+import { Input } from '@mantine/core';
 
 const BarBase = styled.div`
   background-color: #FFFFFF;
@@ -16,7 +17,7 @@ const BarBase = styled.div`
 export function SearchBar() {
     return (
         <BarBase>
-            <Text padding="10px 3rem 10px 19px" size="0.75em" color="#989898" text="Search topics you want to read"/>
+            <Input variant="unstyled" placeholder="Search topics you want to read"/>
             <BiSearch size={25} alignSelf="flex-end"/>
         </BarBase>
     );

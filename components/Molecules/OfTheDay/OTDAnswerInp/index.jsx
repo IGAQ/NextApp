@@ -33,3 +33,10 @@ export function Answered() {
         </OTDAnswerInpDiv>
     );
 }
+
+export function StoryInput() {
+    return (
+        <>
+        </>
+    );
+}

@@ -4,7 +4,6 @@ import {Spacer} from '../../../Atoms/Common/Spacer';
 import {PostTitle} from '../../../Atoms/Post/PostTitle';
 import {PostContent} from '../../../Atoms/Post/PostContent';
 import {PostTagBox} from '../../Post/PostTagBox';
-import {ContentButton} from '../../../Atoms/Post/ContentButton';
 import styled from 'styled-components';
 import {useState} from 'react';
 
@@ -27,8 +26,6 @@ export function ResourceCard({title, content, tags}) {
                 <StyledSave size={25} onClick={handleSave}/>
                 <PostTitle title={title} style={{alignSelf: 'flex-start'}}/>
                 <PostContent maxHeight="4.5em" content={content} onClick={() => {
-                }}/>
-                <ContentButton onClick={() => {
                 }}/>
                 <Spacer axis="vertical" size={10}/>
                 <PostTagBox tags={tags}/>

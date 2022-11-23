@@ -19,8 +19,8 @@ const StyledButton = styled.button`
 `;
 
 
-export function ContentButton({onClick}) {
+export function ContentButton({onClick, buttonText='Show More'}) {
     return (
-        <StyledButton onClick={onClick}>READ MORE</StyledButton>
+        <StyledButton onClick={onClick}>{buttonText}</StyledButton>
     );
 }

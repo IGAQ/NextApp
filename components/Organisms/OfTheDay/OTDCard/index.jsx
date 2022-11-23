@@ -29,3 +29,14 @@ export function OTDCard({title, prompt, replies, answer, setAnswer, color}) {
         </OTDCardDiv>
     );
 }
+
+export function OTDStory({title, prompt, replies, answer, setAnswer, color}) {
+    const [showReplies, setShowReplies] = useState(0);
+    return (
+        <OTDCardDiv color={color}>
+            <OTDTitle title={title}/>
+            <OTDPrompt prompt={prompt}/>
+            <OTDReplies replies={showReplies}/>
+        </OTDCardDiv>
+    );
+}

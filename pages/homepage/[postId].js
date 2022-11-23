@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {NewPost} from '../../components/Templates/Post/NewPost';
+import {SingleNewPost, NewPost} from '../../components/Templates/Post/NewPost';
 import {API_SERVER} from '../../lib/constants';
 import {useEffect, useState} from 'react';
 import {CommentPrompt} from '../../components/Molecules/Post/CommentPrompt';
@@ -30,7 +30,7 @@ export default function Post({post}) {
             setComments([...comments]);
             setIsLoadingComments(false);
         })();
-    }, []);
+    }, [post.postId]);
 
     const flatComments = (comments, nestedLevel = 0) => {
         return comments.reduce((acc, comment) => {
@@ -69,7 +69,7 @@ export default function Post({post}) {
                         handleClickOnPost: togglePrompt,
                         handleCommentClick: handleCommentClick,
                     }}>
-                        <NewPost/>
+                        <SingleNewPost/>
                     </UserActionsHandlersContext.Provider>
                 </PostContext.Provider>
             </div>
