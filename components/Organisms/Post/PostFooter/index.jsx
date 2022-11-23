@@ -1,6 +1,8 @@
 import {PostScore} from '../../../Molecules/Post/PostScore';
 import {PostComments} from '../../../Molecules/Post/PostComments';
 import styled from 'styled-components';
+import {useContext} from 'react';
+import {PostContext} from '../../../../lib/contexts';
 
 const PostFooterDiv = styled.div`
   display: flex;
@@ -10,11 +12,11 @@ const PostFooterDiv = styled.div`
   width: 100%;
 `;
 
-export function PostFooter({postId, score, numComments, onClick}) {
+export function PostFooter() {
     return (
         <PostFooterDiv>
-            <PostScore postId={postId} score={score}/>
-            <PostComments numComments={numComments} onClick = {onClick}/>
+            <PostScore />
+            <PostComments />
         </PostFooterDiv>
     );
 }

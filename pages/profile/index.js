@@ -7,9 +7,16 @@ import {Button} from '../../components/Atoms/Common/Buttons/Button';
 import {ProfileIcon} from '../../components/Atoms/Common/Icons/ProfileIcon';
 import {BadgeShowcase} from '../../components/Molecules/Common/BadgeShowcase';
 import {ProfileBio} from '../../components/Molecules/Common/ProfileBio';
+import {useUser} from '../../lib/hooks/useUser';
+import {InPageLoader} from '../../components/Atoms/Common/Loader';
+import React from 'react';
 
 export default function Profile(props) {
-    return (
+    const [, userAuthLoaded] = useUser({redirectTo: '/login'});
+
+    return !userAuthLoaded ? (
+        <InPageLoader/>
+    ) : (
         <FlexBox align="stretch" justify="center" bgColor="#A5CEFF">
             <HamburgerIcon/>
             <PostTitle title="Profile"/>

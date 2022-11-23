@@ -1,7 +1,6 @@
-import {useState} from 'react';
+import {useContext, useState} from 'react';
 import styled from 'styled-components';
 import {FlexBox} from '../../../../styles/globals';
-import timeAgo from '../../../../utils/timeAgo';
 import {Spacer} from '../../../Atoms/Common/Spacer';
 import {Text} from '../../../Atoms/Common/Text';
 import {PostSetting} from '../../../Atoms/Post/PostSetting';
@@ -9,6 +8,7 @@ import {PostFooter} from '../../../Organisms/Post/PostFooter';
 import {PostHeader} from '../../../Organisms/Post/PostHeader';
 import {PostSettingsModal} from '../../../Organisms/Post/PostSettingsModal';
 import {CommentPrompt} from '../CommentPrompt';
+import {PostContext, UserActionsHandlersContext} from '../../../../lib/contexts';
 
 
 const WrappedFlexBox = styled(FlexBox)`
@@ -29,7 +29,10 @@ const StyledCard = styled.div`
   border-radius: 8px;
 `;
 
-export function CommentCard({comment, nestedLevel= 0, onClick, ...props}) {
+export function CommentCard({nestedLevel= 0, ...props}) {
+    const comment = useContext(PostContext);
+    const {handleCommentClick} = useContext(UserActionsHandlersContext);
+
     const [createPrompt, setCommentPrompt] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
 
@@ -47,7 +50,7 @@ export function CommentCard({comment, nestedLevel= 0, onClick, ...props}) {
                     {showSettings ? <PostSettingsModal/> : <PostSetting onClick={() => handleSettings()}/>}
                 </WrappedFlexBox>
                 <Spacer size={25}/>
-                <Text size={1} text={comment.commentContent} onClick={onClick}/>
+                <Text size={1} text={comment.commentContent} onClick={handleCommentClick}/>
                 <Spacer size={25}/>
                 <FlexBox>
                     <PostFooter score={comment.totalVotes} numComments={comment.childComments?.length ?? 0} onClick={togglePrompt}/>

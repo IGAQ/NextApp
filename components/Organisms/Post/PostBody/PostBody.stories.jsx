@@ -8,7 +8,6 @@ export default {
     argTypes: {
         title: {control: 'text'},
         content: {control: 'text'},
-        postId: {control: 'text'},
         tags: {control: 'array'},
     },
 };
@@ -19,6 +18,5 @@ export const Default = Template.bind({});
 Default.args = {
     title: 'Post Title',
     content: 'Post Content',
-    postId: '1',
     tags: [{tagName: 'serious'}, {tagName: 'advice'}],
 };

@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import { queeryQuestions } from '../../../../data/qotd';
 import { Carousel } from '@mantine/carousel';
 
-export function OTDBase({title, prompt, replies}){
+export function OTDBase({title, prompt, replies, activeTab}){
     console.debug('queeryQuestions', queeryQuestions);
     return (
         <Carousel 
