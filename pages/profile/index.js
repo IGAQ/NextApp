@@ -49,22 +49,19 @@ export default function Profile(props) {
             <PostTitle title="Profile"/>
             <Spacer axis="vertical" size={45}/>
             <FlexBox padding="25px 0px" align="center" bgColor="#DFEEFF">
-                <ProfileIcon marginRight='0'/>
-                <Text text="John" weight="600" size="1.5rem"/>
-                <Spacer axis="vertical" size={15}/>
-                <ProfileBio/>
-                <Spacer axis="vertical" size={25}/>
+                <ProfileBio />
+                <Spacer axis="vertical" size={25} />
                 <FlexBox>
-                    <Button size="long" label="View post history"/>
-                    <Spacer axis="vertical" size={25}/>
-                    <Button size="long" label="Saved resources"/>
-                    <Spacer axis="vertical" size={25}/>
-                    <Button size="long" label="Saved posts"/>
+                    <Button size="long" label="View Post History" />
+                    <Spacer axis="vertical" size={25} />
+                    <Button size="long" label="Saved Resources" />
+                    <Spacer axis="vertical" size={25} />
+                    <Button size="long" label="Saved Posts" />
                 </FlexBox>
             </FlexBox>
-            <Spacer axis="vertical" size={15}/>
-            <BadgeShowcase/>
-            <Spacer axis="vertical" size={55}/>
+            <Spacer axis="vertical" size={15} />
+            <BadgeShowcase />
+            <Spacer axis="vertical" size={55} />
         </FlexBox>
 
 
