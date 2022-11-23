@@ -16,8 +16,9 @@ const OTDButtonDiv = styled.div`
 
 export function OTDButton({text = 'Answer', onClick}) {
     return (
-        <OTDButtonDiv onClick={onClick}>
-            {text}
-        </OTDButtonDiv>
+        <></>
+        // <OTDButtonDiv onClick={onClick}>
+        //     {text}
+        // </OTDButtonDiv>
     );
 }

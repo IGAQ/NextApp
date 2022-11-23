@@ -17,15 +17,13 @@ const OTDCardDiv = styled.div`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
 `;
 
-export function OTDCard({title, prompt, replies, answer, setAnswer, color}) {
+export function OTDCard({title, prompt, replies, answer, setAnswer, color, onClick}) {
     const [showAnswer, setShowAnswer] = useState(false);
-    const [showReplies, setShowReplies] = useState(0);
     return (
         <OTDCardDiv color={color}>
             <OTDTitle title={title}/>
             <OTDPrompt prompt={prompt}/>
-            <OTDReplies replies={showReplies}/>
-            {showAnswer ? <Answered/> : <OTDAnswerInp onClick={() => setShowAnswer(true) & setShowReplies(+1)}/>}
+            <OTDReplies replies={replies} onClick={onClick}/>
         </OTDCardDiv>
     );
 }
