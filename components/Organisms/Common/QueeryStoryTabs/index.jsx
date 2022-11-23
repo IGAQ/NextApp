@@ -4,14 +4,13 @@ import {Spacer} from '../../../Atoms/Common/Spacer';
 import React, {useEffect, useState} from 'react';
 import {InPageLoader} from '../../../Atoms/Common/Loader';
 import {StickyDiv} from '../../../../pages/homepage';
-import {PostContext, UserActionsHandlersContext} from '../../../../lib/contexts';
+import {QueeryStoryStateContext, PostContext, UserActionsHandlersContext} from '../../../../lib/contexts';
 import * as postService from '../../../../lib/postService';
+import { useContext } from 'react';
 
 export function QueeryStoryTabs({onActiveTabChange}) {
+    const {setStories, setQueeries, stories, queeries} = useContext(QueeryStoryStateContext);
     const [activeTab, setActiveTab] = useState('queery');
-
-    const [stories, setStories] = useState(null);
-    const [queeries, setQueeries] = useState(null);
 
     const handleClickOnPost = (postId, postType) => {
         console.log('clicked on post', postId, postType);
