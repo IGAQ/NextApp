@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
+
 export const StyledCircle = styled.div`
   border-radius: 100%;
   background-color: #393939;
   width: 3rem;
   height: 3rem;
-`;
+  content:url(${props => props.badge || '/SheHer.svg'});
+  `;
 
 export const ProfileBadge = styled.div`
   height: 5.5em;
@@ -19,8 +21,11 @@ export const ProfileBadge = styled.div`
 `;
 
 
-export function Badge() {
-    return (
-        <StyledCircle/>
-    );
+
+export function Badge({
+  badge = '/PrideFlag.svg'
+}) {
+  return (
+    <StyledCircle badge={badge}></StyledCircle>
+  );
 }
