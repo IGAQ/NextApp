@@ -24,9 +24,9 @@ export function ProfileBio() {
                 </FlexBox>
                 <Spacer axis='vertical' size={30} />
                 <FlexBox dir='row' flexWrap='wrap' justify='space-around' bgColor='#ffffff' padding='1rem 2rem 1rem 2rem' borderRadius='0.5rem'>
-                    <Badge />
-                    <Badge />
-                    <Badge />
+                    <Badge badge='/PrideFlag.svg' />
+                    <Badge badge='/HeHim.svg' />
+                    <Badge badge='/OutToFew.svg' />
                 </FlexBox>
             </FlexBox>
         </>
