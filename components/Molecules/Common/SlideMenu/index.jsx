@@ -15,12 +15,13 @@ const SlideMenuBase = styled(motion.div)`
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  min-width: 50em;
+  min-width: 20em;
+  left: 1.5em;
   background-color: #FFFFFF;
   padding: 2rem;
   z-index: 15;
   position: absolute;
-  top: 0.99em;
+  top: 0.8em;
 `;
 
 export function SlideMenu({currentTab, onClick}) {
