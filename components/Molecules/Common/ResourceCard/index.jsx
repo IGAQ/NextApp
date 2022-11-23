@@ -6,6 +6,8 @@ import {PostContent} from '../../../Atoms/Post/PostContent';
 import {PostTagBox} from '../../Post/PostTagBox';
 import styled from 'styled-components';
 import {useState} from 'react';
+import {useRouter} from 'next/router';
+import { resources } from '../../../../data/resources';
 
 const StyledSave = styled(FiBookmark)`
   position: relative;
@@ -13,7 +15,8 @@ const StyledSave = styled(FiBookmark)`
   left: 50%;
 `;
 
-export function ResourceCard({title, content, tags}) {
+export function ResourceCard({title, content, tags, onClick}) {
+    const r = useRouter();
     const [isSaved, setIsSaved] = useState(false);
 
     const handleSave = () => {
@@ -24,9 +27,8 @@ export function ResourceCard({title, content, tags}) {
         <>
             <FlexBox bgColor="#FFF" padding="15px 60px">
                 <StyledSave size={25} onClick={handleSave}/>
-                <PostTitle title={title} style={{alignSelf: 'flex-start'}}/>
-                <PostContent maxHeight="4.5em" content={content} onClick={() => {
-                }}/>
+                <PostTitle title={title} style={{alignSelf: 'flex-start'}} onClick = {onClick}/>
+                <PostContent maxHeight="4.5em" content={content} onClick={onClick}/>
                 <Spacer axis="vertical" size={10}/>
                 <PostTagBox tags={tags}/>
                 <Spacer axis="vertical" size={10}/>
