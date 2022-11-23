@@ -97,11 +97,11 @@ export default function Homepage(props) {
         <UserContext.Provider value={user}>
             <FilterContext.Provider value={{handleAppliedFilters, filters, setFilters}}>
                 <Background>
-                    <ScrollToTopButton isVisible={scrolledEnough}/>
-                    <OTDBase activeTab={activeTab}/>
                     <StickyDiv top={0} zIndex={4}>
                         {filterMenu && <SlideMenu onClick={handleCloseFilter} currentTab={activeTab}/>}
                     </StickyDiv>
+                    <ScrollToTopButton isVisible={scrolledEnough}/>
+                    <OTDBase activeTab={activeTab}/>
                     <StickyDiv top={0}>
                         <Spacer size={15}/>
                         <UserActionsHandlersContext.Provider value={{handleOpenFilter}}>
