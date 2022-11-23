@@ -128,10 +128,11 @@ textarea{
   }
 }
 
-#mantine-r0-tab-story[data-active="true"] {
+#mantine-r0-tab-story[data-active="true"], 
+#mantine-r1-tab-story[data-active="true"], 
+#mantine-r2-tab-story[data-active="true"], 
+#mantine-r3-tab-story[data-active="true"], 
+#mantine-r4-tab-story[data-active="true"],
+#mantine-r5-tab-story[data-active="true"]{
   background-color: #C2ADFF !important;
-}
-
-#mantine-r0-tab-queery[data-active="true"] {
-  background-color: #ffb6c3 !important;
 }

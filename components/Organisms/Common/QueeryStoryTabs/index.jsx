@@ -66,7 +66,7 @@ export function QueeryStoryTabs({onActiveTabChange}) {
             </Tabs.Panel>
             <Tabs.Panel value="story">
                 {stories === null ? (
-                    <InPageLoader/>
+                    <InPageLoader color='grape'/>
                 ) : (
                     stories.map((story) => (
                         <PostContext.Provider key={story.postId} value={story}>

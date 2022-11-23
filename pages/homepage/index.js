@@ -1,7 +1,5 @@
 import {Spacer} from '../../components/Atoms/Common/Spacer';
 import {OTDBase, StoryOTD} from '../../components/Templates/OfTheDay/OTDBase';
-import {queeryQuestions} from '../../data/qotd';
-import { storyQuestions } from '../../data/sotd';
 import {Background} from '../../styles/globals';
 import {SearchAndFilter} from '../../components/Organisms/Common/SearchAndFilter';
 import styled from 'styled-components';
@@ -39,7 +37,6 @@ export default function Homepage(props) {
     };
 
     const handleActiveTabChange = (tab) => {
-        console.log(tab);
         setActiveTab(tab);
     };
 
@@ -60,7 +57,7 @@ export default function Homepage(props) {
         <UserContext.Provider value={user}>
             <Background>
                 <ScrollToTopButton isVisible={scrolledEnough}/>
-                <OTDBase activeTab={activeTab} queeryQuestions={queeryQuestions.question}/>
+                <OTDBase activeTab={activeTab}/>
                 <StickyDiv top={0}>
                     <Spacer size={15}/>
                     <SearchAndFilter/>
