@@ -4,12 +4,13 @@ import {Spacer} from '../../../Atoms/Common/Spacer';
 import React, {useEffect, useState} from 'react';
 import {InPageLoader} from '../../../Atoms/Common/Loader';
 import {StickyDiv} from '../../../../pages/homepage';
-import {QueeryStoryStateContext, PostContext, UserActionsHandlersContext} from '../../../../lib/contexts';
+import {PostContext, UserActionsHandlersContext} from '../../../../lib/contexts';
 import * as postService from '../../../../lib/postService';
-import { useContext } from 'react';
 
-export function QueeryStoryTabs({onActiveTabChange}) {
-    const {setStories, setQueeries, stories, queeries} = useContext(QueeryStoryStateContext);
+export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
+    const [stories, setStories] = useState(null);
+    const [queeries, setQueeries] = useState(null);
+
     const [activeTab, setActiveTab] = useState('queery');
 
     const handleClickOnPost = (postId, postType) => {
@@ -21,15 +22,48 @@ export function QueeryStoryTabs({onActiveTabChange}) {
     };
 
     useEffect(() => {
-        (async function () {
-            const posts = await postService.getPosts(activeTab);
-            if (activeTab === 'queery') {
-                setQueeries([...posts]);
-            } else {
-                setStories([...posts]);
-            }
-        })();
+        if (!stories && !queeries) {
+            (async function () {
+                const posts = await postService.getPosts(activeTab);
+                if (activeTab === 'queery') {
+                    setQueeries([...posts]);
+                } else {
+                    setStories([...posts]);
+                }
+            })();
+        }
     }, [activeTab]);
+
+    useEffect(() => {
+        if (filteringAndSorting) {
+            const applicableFilters = { ...filteringAndSorting.filters['_common'], ...filteringAndSorting.filters[activeTab]};
+            const appliedFilters = Object.keys(applicableFilters)   .filter((key) => applicableFilters[key]);
+
+            const callback = posts => {
+                const shadowed = [...posts];
+                if (appliedFilters.length > 0) {
+                    for (let post of shadowed) {
+                        const postTags = post.postTags.map((tag) => tag.tagName);
+                        post.isFiltered = appliedFilters.some((filter) => postTags.includes(filter));
+                    }
+                }
+                if (filteringAndSorting.sorts['recent']) {
+                    shadowed.sort((a, b) => b.createdAt - a.createdAt);
+                }
+                if (filteringAndSorting.sorts['likes']) {
+                    shadowed.sort((a, b) => b.totalVotes - a.totalVotes);
+                }
+                console.log('shadowed', shadowed);
+                return [...shadowed];
+            };
+
+            if (activeTab === 'queery') {
+                setQueeries(callback);
+            } else {
+                setStories(callback);
+            }
+        }
+    }, [filteringAndSorting]);
 
     return (
         <Tabs color="pink" value={activeTab} onTabChange={(tab) => {
@@ -49,7 +83,7 @@ export function QueeryStoryTabs({onActiveTabChange}) {
                     <InPageLoader/>
                 ) :
                     (
-                        queeries.map((queery) => (
+                        queeries.filter(q => q.isFiltered !== undefined ? q.isFiltered : true).map((queery) => (
                             <PostContext.Provider key={queery.postId} value={queery}>
                                 <UserActionsHandlersContext.Provider value={{
                                     handleClickOnPost: () => handleClickOnPost(queery.postId, 'queery'),
@@ -67,7 +101,7 @@ export function QueeryStoryTabs({onActiveTabChange}) {
                 {stories === null ? (
                     <InPageLoader color='grape'/>
                 ) : (
-                    stories.map((story) => (
+                    stories.filter(s => s.isFiltered !== undefined ? s.isFiltered : true).map((story) => (
                         <PostContext.Provider key={story.postId} value={story}>
                             <UserActionsHandlersContext.Provider value={{
                                 handleClickOnPost: () => handleClickOnPost(story.postId, 'story'),
