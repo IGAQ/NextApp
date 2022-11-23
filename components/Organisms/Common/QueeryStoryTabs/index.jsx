@@ -70,7 +70,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
             onActiveTabChange(tab);
             setActiveTab(tab);
         }}
-        styles={{tab:  {'&[data-active]': {background: '#ffb6c3'}}}}>
+        styles={{tab:  {'&[data-active]': {background: activeTab === 'queery' ? '#ffb6c3' : '#C2ADFF'}}}}>
             <StickyDiv top={69}>
                 <Tabs.List grow>
                     <Tabs.Tab value="queery"> Queeries </Tabs.Tab>
