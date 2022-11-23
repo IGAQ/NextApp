@@ -1,4 +1,4 @@
-import { OTDCard } from '../../../Organisms/OfTheDay/OTDCard';
+import { OTDCard, OTDStory } from '../../../Organisms/OfTheDay/OTDCard';
 import { queeryQuestions } from '../../../../data/qotd';
 import { storyPrompts } from '../../../../data/sotd';
 import { Carousel } from '@mantine/carousel';
@@ -23,14 +23,14 @@ export function OTDBase({title, prompt, replies, activeTab}){
             sx={{ maxWidth: 730 }}
         >
             <>
-                {activeTab === 'story' && queeryQuestions.map((qotd) => (
+                {activeTab === 'queery' && queeryQuestions.map((qotd) => (
                     <Carousel.Slide key = {qotd.id}>
                         <OTDCard  title="Queery of the day" prompt={qotd.question} replies={replies}/>
                     </Carousel.Slide>
                 ))}
-                {activeTab === 'queery' && storyPrompts.map((sotd) => (
+                {activeTab === 'story' && storyPrompts.map((sotd) => (
                     <Carousel.Slide key={sotd.id}>
-                        <OTDCard color='#C2ADFF' title="Story of the day" prompt={sotd.prompt} replies={replies}/>
+                        <OTDStory color='#C2ADFF' title="Story of the day" prompt={sotd.prompt} replies={replies}/>
                     </Carousel.Slide>
                 ))}
         

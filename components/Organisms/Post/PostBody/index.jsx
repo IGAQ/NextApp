@@ -1,4 +1,4 @@
-import {PostContent} from '../../../Atoms/Post/PostContent';
+import {PostContent, SinglePostContent} from '../../../Atoms/Post/PostContent';
 import {PostTitle} from '../../../Atoms/Post/PostTitle';
 import {PostTagBox} from '../../../Molecules/Post/PostTagBox';
 import styled from 'styled-components';
@@ -24,6 +24,22 @@ export function PostBody() {
             <PostTitle title={post.postTitle} onClick={() => router.push('/homepage/' + post.postId)}/>
             <Spacer axis="vertical" size={5}/>
             <PostContent content={post.postContent}/>
+            <Spacer axis="vertical" size={35}/>
+            <PostTagBox tags={post.postTags}/>
+        </PostBodyDiv>
+    );
+}
+
+export function SinglePostBody(){
+    const post = useContext(PostContext);
+
+    const router = useRouter();
+    return (
+        <PostBodyDiv>
+            <Spacer axis="vertical" size={15}/>
+            <PostTitle title={post.postTitle} onClick={() => router.push('/homepage/' + post.postId)}/>
+            <Spacer axis="vertical" size={5}/>
+            <SinglePostContent content={post.postContent}/>
             <Spacer axis="vertical" size={35}/>
             <PostTagBox tags={post.postTags}/>
         </PostBodyDiv>

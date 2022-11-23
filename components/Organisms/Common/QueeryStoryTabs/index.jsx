@@ -33,10 +33,10 @@ export function QueeryStoryTabs({onActiveTabChange}) {
 
     return (
         <Tabs color="pink" value={activeTab} onTabChange={(tab) => {
-            onActiveTabChange(activeTab);
+            onActiveTabChange(tab);
             setActiveTab(tab);
         }}
-        styles={{tab: {'&[data-active]': {background: '#ffb6c3'}}}}>
+        styles={{tab:  {'&[data-active]': {background: '#ffb6c3'}}}}>
             <StickyDiv top={69}>
                 <Tabs.List grow>
                     <Tabs.Tab value="queery"> Queeries </Tabs.Tab>

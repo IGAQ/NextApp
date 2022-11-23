@@ -1,5 +1,5 @@
 import {PostHeader} from '../../../Organisms/Post/PostHeader';
-import {PostBody} from '../../../Organisms/Post/PostBody';
+import {PostBody, SinglePostBody} from '../../../Organisms/Post/PostBody';
 import {PostFooter} from '../../../Organisms/Post/PostFooter';
 import {PostSettingsModal} from '../../../Organisms/Post/PostSettingsModal';
 import styled from 'styled-components';
@@ -45,6 +45,31 @@ export function NewPost() {
                     {showSettings ? <PostSettingsModal/> : <PostSetting onClick={() => handleSettings()}/>}
                 </Toprightdiv>
                 <PostBody/>
+                <Spacer axis="vertical" size={5}/>
+                <PostFooter />
+            </PostDiv>
+            <Spacer axis="vertical" size={15}/>
+        </>
+    );
+}
+
+export function SingleNewPost(){
+    const post = useContext(PostContext);
+
+    const [showSettings, setShowSettings] = useState(false);
+
+    function handleSettings() {
+        setShowSettings(true);
+    }
+
+    return (
+        <>
+            <PostDiv>
+                <Toprightdiv>
+                    <PostHeader username={post.authorUser?.username ?? 'Anonymous'} date={post.createdAt}/>
+                    {showSettings ? <PostSettingsModal/> : <PostSetting onClick={() => handleSettings()}/>}
+                </Toprightdiv>
+                <SinglePostBody/>
                 <Spacer axis="vertical" size={5}/>
                 <PostFooter />
             </PostDiv>
