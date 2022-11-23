@@ -9,10 +9,10 @@ const OTDRepliesDiv = styled.div`
   margin-bottom: .8em;
 `;
 
-export function OTDReplies({replies = 0}) {
+export function OTDReplies({replies = 0, onClick}) {
     return (
         <OTDRepliesDiv>
-            <Button color='dark'>  View ({replies}) replies </Button>
+            <Button color='dark' onClick={onClick}>  View ({replies}) Comments</Button>
         </OTDRepliesDiv>
     );
 }

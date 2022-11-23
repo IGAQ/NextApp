@@ -93,7 +93,7 @@ textarea{
   color: transparent !important;
   fill: transparent !important;
   stroke: transparent !important;
-  left: 20px !important;
+  /* left: 20px !important; */
 }
 
 .swiper-slide-active span{
