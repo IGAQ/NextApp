@@ -21,7 +21,7 @@ export function OTDCard({title, prompt, replies, answer, setAnswer, color}) {
     const [showAnswer, setShowAnswer] = useState(false);
     const [showReplies, setShowReplies] = useState(0);
     return (
-        <OTDCardDiv>
+        <OTDCardDiv color={color}>
             <OTDTitle title={title}/>
             <OTDPrompt prompt={prompt}/>
             <OTDReplies replies={showReplies}/>
