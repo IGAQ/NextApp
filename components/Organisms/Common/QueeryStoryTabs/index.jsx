@@ -35,7 +35,7 @@ export function QueeryStoryTabs({}) {
             <StickyDiv top={69}>
                 <Tabs.List grow>
                     <Tabs.Tab value="queery"> Queeries </Tabs.Tab>
-                    <Tabs.Tab value="story">Stories </Tabs.Tab>
+                    <Tabs.Tab value="story" color='grape'>Stories </Tabs.Tab>
                 </Tabs.List>
             </StickyDiv>
 

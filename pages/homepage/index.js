@@ -1,6 +1,7 @@
 import {Spacer} from '../../components/Atoms/Common/Spacer';
-import {OTDBase} from '../../components/Templates/OfTheDay/OTDBase';
+import {OTDBase, StoryOTD} from '../../components/Templates/OfTheDay/OTDBase';
 import {queeryQuestions} from '../../data/qotd';
+import { storyQuestions } from '../../data/sotd';
 import {Background} from '../../styles/globals';
 import {SearchAndFilter} from '../../components/Organisms/Common/SearchAndFilter';
 import styled from 'styled-components';
@@ -52,7 +53,7 @@ export default function Homepage(props) {
         <UserContext.Provider value={user}>
             <Background>
                 <ScrollToTopButton isVisible={scrolledEnough}/>
-                <OTDBase queeryQuestions={queeryQuestions.question}/>
+                {activeTab === 'story' ? ( <StoryOTD  storyQuestions={storyQuestions.question} />) : ( <OTDBase  queeryQuestions={queeryQuestions.question} />)}
                 <StickyDiv top={0}>
                     <Spacer size={15}/>
                     <SearchAndFilter/>
