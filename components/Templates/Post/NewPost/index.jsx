@@ -4,8 +4,9 @@ import {PostFooter} from '../../../Organisms/Post/PostFooter';
 import {PostSettingsModal} from '../../../Organisms/Post/PostSettingsModal';
 import styled from 'styled-components';
 import {PostSetting} from '../../../Atoms/Post/PostSetting';
-import {useState} from 'react';
+import {useContext, useState} from 'react';
 import {Spacer} from '../../../Atoms/Common/Spacer';
+import {PostContext} from '../../../../lib/contexts';
 
 const PostDiv = styled.div`
   display: flex;
@@ -27,7 +28,8 @@ const Toprightdiv = styled.div`
   width: 100%;
 `;
 
-export function NewPost({postId, username, date, title, content, tags, score, numComments, onClick}) {
+export function NewPost() {
+    const post = useContext(PostContext);
 
     const [showSettings, setShowSettings] = useState(false);
 
@@ -39,12 +41,12 @@ export function NewPost({postId, username, date, title, content, tags, score, nu
         <>
             <PostDiv>
                 <Toprightdiv>
-                    <PostHeader username={username} date={date}/>
+                    <PostHeader username={post.authorUser?.username ?? 'Anonymous'} date={post.createdAt}/>
                     {showSettings ? <PostSettingsModal/> : <PostSetting onClick={() => handleSettings()}/>}
                 </Toprightdiv>
-                <PostBody postId={postId} title={title} content={content} tags={tags}/>
+                <PostBody/>
                 <Spacer axis="vertical" size={5}/>
-                <PostFooter postId={postId} score={score} numComments={numComments} onClick ={onClick}/>
+                <PostFooter />
             </PostDiv>
             <Spacer axis="vertical" size={15}/>
         </>

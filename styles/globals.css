@@ -127,3 +127,11 @@ textarea{
    transform: rotate(360deg);
   }
 }
+
+#mantine-r0-tab-story[data-active="true"] {
+  background-color: #C2ADFF !important;
+}
+
+#mantine-r0-tab-queery[data-active="true"] {
+  background-color: #ffb6c3 !important;
+}

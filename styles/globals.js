@@ -31,6 +31,6 @@ overflow: ${props => props.overflow || 'hidden'};
 `;
 
 export const Background = styled.div`
-background-color: #DFEEFF;
+background-color: ${props => props.color || '#DFEEFF'};
 height: ${props => props.height};
 `;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from '@mantine/core';
 
 const OTDRepliesDiv = styled.div`
   display: flex;
@@ -11,8 +12,7 @@ const OTDRepliesDiv = styled.div`
 export function OTDReplies({replies = 0}) {
     return (
         <OTDRepliesDiv>
-            ({replies})
-            replies
+            <Button color='dark'>  View ({replies}) replies </Button>
         </OTDRepliesDiv>
     );
 }

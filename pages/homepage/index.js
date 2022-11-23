@@ -1,6 +1,7 @@
 import {Spacer} from '../../components/Atoms/Common/Spacer';
-import {OTDBase} from '../../components/Templates/OfTheDay/OTDBase';
+import {OTDBase, StoryOTD} from '../../components/Templates/OfTheDay/OTDBase';
 import {queeryQuestions} from '../../data/qotd';
+import { storyQuestions } from '../../data/sotd';
 import {Background} from '../../styles/globals';
 import {SearchAndFilter} from '../../components/Organisms/Common/SearchAndFilter';
 import styled from 'styled-components';
@@ -25,6 +26,8 @@ export const StickyDiv = styled.div`
 export default function Homepage(props) {
     const [user, userAuthLoaded] = useUser();
 
+    const [activeTab, setActiveTab] = useState('queery');
+
     const [scrolledEnough, setScrolledEnough] = useState(false);
 
     const handleScroll = () => {
@@ -33,6 +36,11 @@ export default function Homepage(props) {
         } else {
             setScrolledEnough(false);
         }
+    };
+
+    const handleActiveTabChange = (tab) => {
+        console.log(tab);
+        setActiveTab(tab);
     };
 
     useEffect(() => {
@@ -52,13 +60,13 @@ export default function Homepage(props) {
         <UserContext.Provider value={user}>
             <Background>
                 <ScrollToTopButton isVisible={scrolledEnough}/>
-                <OTDBase queeryQuestions={queeryQuestions.question}/>
+                <OTDBase activeTab={activeTab} queeryQuestions={queeryQuestions.question}/>
                 <StickyDiv top={0}>
                     <Spacer size={15}/>
                     <SearchAndFilter/>
                 </StickyDiv>
                 <Spacer size={10}/>
-                <QueeryStoryTabs/>
+                <QueeryStoryTabs onActiveTabChange={handleActiveTabChange} />
             </Background>
         </UserContext.Provider>
     );

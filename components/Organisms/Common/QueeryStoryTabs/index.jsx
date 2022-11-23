@@ -2,40 +2,46 @@ import {Tabs} from '@mantine/core';
 import {NewPost} from '../../../Templates/Post/NewPost';
 import {Spacer} from '../../../Atoms/Common/Spacer';
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
 import {InPageLoader} from '../../../Atoms/Common/Loader';
 import {StickyDiv} from '../../../../pages/homepage';
+import {PostContext, UserActionsHandlersContext} from '../../../../lib/contexts';
+import * as postService from '../../../../lib/postService';
 
-export function QueeryStoryTabs({}) {
+export function QueeryStoryTabs({onActiveTabChange}) {
     const [activeTab, setActiveTab] = useState('queery');
 
     const [stories, setStories] = useState(null);
     const [queeries, setQueeries] = useState(null);
 
+    const handleClickOnPost = (postId, postType) => {
+        console.log('clicked on post', postId, postType);
+    };
+
+    const handleCommentClick = (postId, postType) => {
+        console.log('comment clicked', postId, postType);
+    };
+
     useEffect(() => {
         (async function () {
-            try {
-                console.log('fetching stories');
-                const response = await axios.get(`/api/posts/${activeTab}`);
-                console.log('response', response);
-                if (activeTab === 'queery') {
-                    setQueeries([...response.data]);
-                } else {
-                    setStories([...response.data]);
-                }
-            } catch (error) {
-                debugger;
-                console.error(error); 
+            const posts = await postService.getPosts(activeTab);
+            if (activeTab === 'queery') {
+                setQueeries([...posts]);
+            } else {
+                setStories([...posts]);
             }
         })();
     }, [activeTab]);
 
     return (
-        <Tabs color="pink" value={activeTab} onTabChange={setActiveTab} styles={{ tab: {'&[data-active]': {background: '#ffb6c3'}}}}>
+        <Tabs color="pink" value={activeTab} onTabChange={(tab) => {
+            onActiveTabChange(activeTab);
+            setActiveTab(tab);
+        }}
+        styles={{tab: {'&[data-active]': {background: '#ffb6c3'}}}}>
             <StickyDiv top={69}>
                 <Tabs.List grow>
                     <Tabs.Tab value="queery"> Queeries </Tabs.Tab>
-                    <Tabs.Tab value="story">Stories </Tabs.Tab>
+                    <Tabs.Tab value="story" color='grape'>Stories </Tabs.Tab>
                 </Tabs.List>
             </StickyDiv>
 
@@ -45,20 +51,15 @@ export function QueeryStoryTabs({}) {
                 ) :
                     (
                         queeries.map((queery) => (
-                            <>
-                                <NewPost
-                                    key={queery.postId}
-                                    postId={queery.postId}
-                                    postType={queery.postType ?? 'Queery'}
-                                    username={queery.authorUser?.username ?? 'Anonymous'}
-                                    date={queery.createdAt}
-                                    title={queery.postTitle}
-                                    content={queery.postContent}
-                                    tags={queery.postTags}
-                                    score={queery.totalVotes}
-                                />
-                                <Spacer size={10}/>
-                            </>
+                            <PostContext.Provider key={queery.postId} value={queery}>
+                                <UserActionsHandlersContext.Provider value={{
+                                    handleClickOnPost: () => handleClickOnPost(queery.postId, 'queery'),
+                                    handleCommentClick: () => handleCommentClick(queery.postId, 'queery'),
+                                }}>
+                                    <NewPost/>
+                                    <Spacer size={10}/>
+                                </UserActionsHandlersContext.Provider>
+                            </PostContext.Provider>
                         ))
                     )
                 }
@@ -68,21 +69,15 @@ export function QueeryStoryTabs({}) {
                     <InPageLoader/>
                 ) : (
                     stories.map((story) => (
-
-                        <>
-                            <NewPost
-                                key={story.postId}
-                                postId={story.postId}
-                                postType={story.postType ?? 'Story'}
-                                username={story.authorUser?.username ?? 'Anonymous'}
-                                date={story.createdAt}
-                                title={story.postTitle}
-                                content={story.postContent}
-                                tags={story.postTags}
-                                score={story.totalVotes}
-                            />
-                            <Spacer size={10}/>
-                        </>
+                        <PostContext.Provider key={story.postId} value={story}>
+                            <UserActionsHandlersContext.Provider value={{
+                                handleClickOnPost: () => handleClickOnPost(story.postId, 'story'),
+                                handleCommentClick: () => handleCommentClick(story.postId, 'story'),
+                            }}>
+                                <NewPost/>
+                                <Spacer size={10}/>
+                            </UserActionsHandlersContext.Provider>
+                        </PostContext.Provider>
                     ))
                 )
                 }
