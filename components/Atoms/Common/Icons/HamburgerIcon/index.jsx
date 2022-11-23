@@ -7,8 +7,8 @@ const Icon = styled(GiHamburgerMenu)`
   left: 85%;
 `;
 
-export function HamburgerIcon() {
+export function HamburgerIcon({onClick}) {
     return (
-        <Icon size={25}/>
+        <Icon size={25} onClick={onClick}/>
     );
 }
