@@ -22,16 +22,15 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
     };
 
     useEffect(() => {
-        if (!stories && !queeries) {
-            (async function () {
-                const posts = await postService.getPosts(activeTab);
-                if (activeTab === 'queery') {
-                    setQueeries([...posts]);
-                } else {
-                    setStories([...posts]);
-                }
-            })();
-        }
+        (async function () {
+            const posts = await postService.getPosts(activeTab);
+            if (activeTab === 'queery') {
+                setQueeries([...posts]);
+            } else {
+                console.log('setting stories', posts);
+                setStories([...posts]);
+            }
+        })();
     }, [activeTab]);
 
     useEffect(() => {
@@ -102,7 +101,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
                     <InPageLoader color='grape'/>
                 ) : (
                     stories.filter(s => s.isFiltered !== undefined ? s.isFiltered : true).map((story) => (
-                        <PostContext.Provider key={story.postId} value={story}>
+                        <PostContext.Provider key={'storyy' + story.postId} value={story}>
                             <UserActionsHandlersContext.Provider value={{
                                 handleClickOnPost: () => handleClickOnPost(story.postId, 'story'),
                                 handleCommentClick: () => handleCommentClick(story.postId, 'story'),

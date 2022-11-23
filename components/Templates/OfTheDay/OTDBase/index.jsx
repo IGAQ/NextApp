@@ -61,7 +61,7 @@ export function OTDBase({activeTab}){
                         </Carousel.Slide>
                     ))}
                     {activeTab === 'story' && showStory.map((storyOfTheDay) => (
-                        <Carousel.Slide key={storyOfTheDay.postId}>
+                        <Carousel.Slide key={Math.random() + storyOfTheDay.postId}>
                             <OTDCard color='#C2ADFF' title="Story of the day" prompt={storyOfTheDay.postTitle} onClick={()=>r.push(`/homepage/${storyOfTheDay.postId}`)} replies={storyOfTheDay.totalComments}/>
                         </Carousel.Slide>
                     ))} 
