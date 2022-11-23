@@ -1,5 +1,5 @@
 import {Spacer} from '../../components/Atoms/Common/Spacer';
-import {OTDBase, StoryOTD} from '../../components/Templates/OfTheDay/OTDBase';
+import {OTDBase} from '../../components/Templates/OfTheDay/OTDBase';
 import {Background} from '../../styles/globals';
 import {SearchAndFilter} from '../../components/Organisms/Common/SearchAndFilter';
 import styled from 'styled-components';
@@ -8,8 +8,8 @@ import React, {useEffect, useState} from 'react';
 import {QueeryStoryTabs} from '../../components/Organisms/Common/QueeryStoryTabs';
 import {useUser} from '../../lib/hooks/useUser';
 import {PageLoader} from '../../components/Atoms/Common/Loader';
-import {QueeryStoryStateContext, UserContext, UserActionsHandlersContext, FilterContext} from '../../lib/contexts';
-import { SlideMenu } from '../../components/Molecules/Common/SlideMenu';
+import {FilterContext, UserActionsHandlersContext, UserContext} from '../../lib/contexts';
+import {SlideMenu} from '../../components/Molecules/Common/SlideMenu';
 
 export const StickyDiv = styled.div`
   position: sticky;
@@ -24,12 +24,33 @@ export const StickyDiv = styled.div`
 
 export default function Homepage(props) {
     const [user, userAuthLoaded] = useUser();
+
     const [activeTab, setActiveTab] = useState('queery');
+
+    const [filters, setFilters] = useState({
+        '_common': {
+            'casual': false,
+            'serious': false,
+            'trigger': false,
+        },
+        'queery': {
+            'general': false,
+            'advice': false,
+            'discussion': false,
+        },
+        'story': {
+            'inspiring': false,
+            'vent': false,
+            'drama': false,
+        },
+    });
+
     const [scrolledEnough, setScrolledEnough] = useState(false);
+
     const [filterMenu, openFilterMenu] = useState(false);
-    const [appliedFilters, setAppliedFilters] = useState([]);
-    const [stories, setStories] = useState(null);
-    const [queeries, setQueeries] = useState(null);
+
+    const [filteringAndSorting, setFilteringAndSorting] = useState(null);
+
 
     const handleScroll = () => {
         if (window.scrollY > 100) {
@@ -39,11 +60,11 @@ export default function Homepage(props) {
         }
     };
 
-    function handleOpenFilter(){
+    function handleOpenFilter() {
         openFilterMenu(true);
     }
 
-    function handleCloseFilter(){
+    function handleCloseFilter() {
         openFilterMenu(false);
     }
 
@@ -51,30 +72,11 @@ export default function Homepage(props) {
         setActiveTab(tab);
     };
 
-    function handleAppliedFilters({
-        casualFilter,
-        seriousFilter,
-        generalFilter,
-        adviceFilter,
-        triggerFilter,
-        inspiringFilter,
-        ventFilter,
-        dramaFilter,
-        discussionFilter,
-        sortByRecent,
-        sortByLikes,
-    }){
-        // if(activeTab === 'queery'){
-        //     for(i = 0; i < queeries.length; i++){
-        //         console.log(queeries[i].postTags);
-        //     }
-        // }else{
-        //     for(i = 0; i < stories.length; i++){
-                
-        //     }
-        // }
+    function handleAppliedFilters({filters, sorts}) {
+        setFilteringAndSorting({filters, sorts});
+        openFilterMenu(false);
     }
-    
+
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -82,6 +84,8 @@ export default function Homepage(props) {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
+
 
     // const [search, setSearch] = useState('');
     // const [filter, setFilter] = useState('All');
@@ -91,23 +95,21 @@ export default function Homepage(props) {
         <PageLoader/>
     ) : (
         <UserContext.Provider value={user}>
-            <FilterContext.Provider value = {{handleAppliedFilters}}>
+            <FilterContext.Provider value={{handleAppliedFilters, filters, setFilters}}>
                 <Background>
                     <ScrollToTopButton isVisible={scrolledEnough}/>
                     <OTDBase activeTab={activeTab}/>
-                    <StickyDiv top={0} zIndex = {4} >
-                        {filterMenu && <SlideMenu onClick = {handleCloseFilter} currentTab = {activeTab}/>}
+                    <StickyDiv top={0} zIndex={4}>
+                        {filterMenu && <SlideMenu onClick={handleCloseFilter} currentTab={activeTab}/>}
                     </StickyDiv>
                     <StickyDiv top={0}>
                         <Spacer size={15}/>
-                        <UserActionsHandlersContext.Provider value = {{handleOpenFilter}}>
-                            <SearchAndFilter />
+                        <UserActionsHandlersContext.Provider value={{handleOpenFilter}}>
+                            <SearchAndFilter/>
                         </UserActionsHandlersContext.Provider>
                     </StickyDiv>
                     <Spacer size={10}/>
-                    <QueeryStoryStateContext.Provider value = {{setStories, setQueeries, stories, queeries}}>
-                        <QueeryStoryTabs onActiveTabChange={handleActiveTabChange} />
-                    </QueeryStoryStateContext.Provider>
+                    <QueeryStoryTabs filteringAndSorting={filteringAndSorting}  onActiveTabChange={handleActiveTabChange}/>
                 </Background>
             </FilterContext.Provider>
         </UserContext.Provider>

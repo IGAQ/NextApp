@@ -4,8 +4,6 @@ import { storyPrompts } from '../../../../data/sotd';
 import { Carousel } from '@mantine/carousel';
 
 export function OTDBase({title, prompt, replies, activeTab}){
-    console.debug('queeryQuestions', queeryQuestions);
-    console.debug('storyQuestions', storyPrompts);
     return (
         <Carousel 
             slideGap='md'
