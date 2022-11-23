@@ -4,7 +4,7 @@ const SplashImgDiv = styled.div`
   height: 400px;
   width: 400px;
   background-image: url(${props => props.img});
-  background-size: cover;
+  // background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 `;

@@ -10,7 +10,7 @@ export function BackArrow(props) {
     const r = useRouter();
     return (
         <ArrowCont>
-            <ArrowBackRoundedIcon margin="25px 0 0 25px" onClick={() => r.goBack()}/>
+            <ArrowBackRoundedIcon margin="25px 0 0 25px" onClick={() => r.back()}/>
         </ArrowCont>
     );
 }
