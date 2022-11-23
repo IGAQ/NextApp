@@ -5,12 +5,42 @@ import {PostTitle} from '../../components/Molecules/Post/PostTitle';
 import {Button} from '../../components/Atoms/Common/Buttons/Button';
 import {resources} from '../../data/resources';
 import {SearchAndFilter} from '../../components/Organisms/Common/SearchAndFilter';
+import { SlideMenu } from '../../components/Molecules/Common/SlideMenu';
+import { UserActionsHandlersContext } from '../../lib/contexts';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Resources(props) {
+    const r = useRouter();
+    const [filterMenu, openFilterMenu] = useState(false);
+
+    function handleOpenFilter(){
+        openFilterMenu(true);
+    }
+
+    function handleCloseFilter(){
+        openFilterMenu(false);
+    }
+
+    function handleResourceClick({resource}) {
+        console.log('clicked');
+        r.push({
+            pathname: '/resources/[resourceID]',
+            query: {
+                title: resource.title, 
+                id: resource.id,
+                content: resource.content,
+                tags: resource.tags,
+            },
+        });
+    }
     return (
         <FlexBox align="stretch" bgColor="#A5CEFF">
             <PostTitle title="Resources"/>
-            <SearchAndFilter/>
+            {filterMenu && <SlideMenu onClick = {handleCloseFilter}/>}
+            <UserActionsHandlersContext.Provider value = {{handleOpenFilter}}>
+                <SearchAndFilter />
+            </UserActionsHandlersContext.Provider>
             <Spacer axis="vertical" size={55}/>
             <FlexBox align="stretch" flex="1" bgColor="#DFEEFF">
                 <FlexBox margin="10px 0 0 0" dir="row" padding="15px 0" justify-content="space-between" bgColor="#FFF"
@@ -27,6 +57,7 @@ export default function Resources(props) {
                             title={resource.title}
                             content={resource.content}
                             tags={resource.tags}
+                            onClick = {() => handleResourceClick({resource})}
                         />
                     ))}
                 </FlexBox>
