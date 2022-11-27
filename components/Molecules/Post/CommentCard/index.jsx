@@ -53,7 +53,7 @@ export function CommentCard({nestedLevel= 0, ...props}) {
                 {comment.restrictedProps ? (
                     <Text size="14px" text={`[This comment is restricted due to ${comment.restrictedProps.reason}]`} weight="400" color="#000000" opacity="0.5" />
                 ) : (
-                    <Text size={1} text={comment.commentContent} onClick={handleCommentClick}/>
+                    <Text size={1} text={comment.commentContent} onClick={() => handleCommentClick({commentId: comment.commentId})}/>
                 )}
                 <Spacer size={25}/>
                 <FlexBox>
