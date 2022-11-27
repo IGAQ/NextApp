@@ -4,12 +4,13 @@ import {Background} from '../../styles/globals';
 import {SearchAndFilter} from '../../components/Organisms/Common/SearchAndFilter';
 import styled from 'styled-components';
 import {ScrollToTopButton} from '../../components/Atoms/Common/ScrollToTopButton';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {QueeryStoryTabs} from '../../components/Organisms/Common/QueeryStoryTabs';
 import {useUser} from '../../lib/hooks/useUser';
 import {PageLoader} from '../../components/Atoms/Common/Loader';
 import {FilterContext, UserActionsHandlersContext, UserContext} from '../../lib/contexts';
 import {SlideMenu} from '../../components/Molecules/Common/SlideMenu';
+import {eventService} from '../../lib/eventService';
 
 export const StickyDiv = styled.div`
   position: sticky;
@@ -85,33 +86,43 @@ export default function Homepage(props) {
         };
     }, []);
 
+    const searchTerm = useRef('');
+    const lastTimeSearchTermChanged = useRef(Date.now());
 
+    const handleSearchTermChange = (term) => {
+        if (lastTimeSearchTermChanged.current + 50 < Date.now()) {
+            searchTerm.current = term;
+            lastTimeSearchTermChanged.current = Date.now();
 
-    // const [search, setSearch] = useState('');
-    // const [filter, setFilter] = useState('All');
-    // const [filteredPosts, setFilteredPosts] = useState([]);
+            // search
+            eventService.emit('search-triggered', term);
+        }
+    };
 
     return !userAuthLoaded ? (
         <PageLoader/>
     ) : (
         <UserContext.Provider value={user}>
-            <FilterContext.Provider value={{handleAppliedFilters, filters, setFilters}}>
-                <Background>
-                    <StickyDiv top={0} zIndex={4}>
-                        {filterMenu && <SlideMenu onClick={handleCloseFilter} currentTab={activeTab}/>}
-                    </StickyDiv>
-                    <ScrollToTopButton isVisible={scrolledEnough}/>
-                    <OTDBase activeTab={activeTab}/>
-                    <StickyDiv top={0}>
-                        <Spacer size={15}/>
-                        <UserActionsHandlersContext.Provider value={{handleOpenFilter}}>
+            <Background>
+                <StickyDiv top={0} zIndex={4}>
+                    {filterMenu && <SlideMenu onClick={handleCloseFilter} currentTab={activeTab}/>}
+                </StickyDiv>
+                <ScrollToTopButton isVisible={scrolledEnough}/>
+                <OTDBase activeTab={activeTab}/>
+                <StickyDiv top={0}>
+                    <Spacer size={15}/>
+                    <FilterContext.Provider value={{handleAppliedFilters, filters, setFilters}}>
+                        <UserActionsHandlersContext.Provider value={{
+                            handleOpenFilter,
+                            handleSearchTermChange,
+                        }}>
                             <SearchAndFilter/>
                         </UserActionsHandlersContext.Provider>
-                    </StickyDiv>
-                    <Spacer size={10}/>
-                    <QueeryStoryTabs filteringAndSorting={filteringAndSorting}  onActiveTabChange={handleActiveTabChange}/>
-                </Background>
-            </FilterContext.Provider>
+                    </FilterContext.Provider>
+                </StickyDiv>
+                <Spacer size={10}/>
+                <QueeryStoryTabs filteringAndSorting={filteringAndSorting}  onActiveTabChange={handleActiveTabChange}/>
+            </Background>
         </UserContext.Provider>
     );
 }

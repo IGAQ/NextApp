@@ -41,7 +41,7 @@ export function SinglePostBody(){
             <Spacer axis="vertical" size={5}/>
             <SinglePostContent content={post.postContent}/>
             <Spacer axis="vertical" size={35}/>
-            <PostTagBox tags={post.postTags}/>
+            {post.postTags && <PostTagBox tags={post.postTags}/>}
         </PostBodyDiv>
     );
 }

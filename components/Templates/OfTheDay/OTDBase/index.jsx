@@ -39,7 +39,7 @@ export function OTDBase({activeTab}){
     return (
         
         <>
-            {showQueery.length === 0 ? (
+            {(showQueery.length === 0 || showStory.length === 0) ? (
                 <InPageLoader/>
             ) : (
                 <Carousel 

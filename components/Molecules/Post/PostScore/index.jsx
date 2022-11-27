@@ -14,13 +14,13 @@ const PostFooterDiv = styled.div`
 `;
 
 export function PostScore() {
-    const post = useContext(PostContext);
+    const content = useContext(PostContext);
 
     const router = useRouter();
     const user = useContext(UserContext);
-    const [scoreState, setScoreState] = useState(post.totalVotes);
-    const [upvoted, setUpvoted] = useState(post.userVote && post.userVote === 'UPVOTES');
-    const [downvoted, setDownvoted] = useState(post.userVote && post.userVote === 'DOWN_VOTES');
+    const [scoreState, setScoreState] = useState(content.totalVotes);
+    const [upvoted, setUpvoted] = useState(content.userVote && content.userVote === 'UPVOTES');
+    const [downvoted, setDownvoted] = useState(content.userVote && content.userVote === 'DOWN_VOTES');
 
     async function handleUpVote() {
         if (!user) {
@@ -28,7 +28,7 @@ export function PostScore() {
             return;
         }
         // tell backend but don't bother waiting for response
-        const _ = votingService.votePost(post.postId, true);
+        const _ = votingService.voteContent({isPost: Boolean(content.postId), id: (content.postId || content.commentId) ?? 0, isUpVote: true});
 
         if (upvoted) {
             // cancel upvote, if upvoted
@@ -51,7 +51,8 @@ export function PostScore() {
             return;
         }
         // tell backend but don't bother waiting for response
-        const _ = votingService.votePost(post.postId, false);
+        const _ = votingService.voteContent({isPost: Boolean(content.postId), id: (content.postId || content.commentId) ?? 0, isUpVote: false});
+
 
         if (downvoted) {
             // cancel downvote, if downvoted

@@ -5,13 +5,19 @@ import {login} from '../../lib/auth';
 import {useRouter} from 'next/router';
 import {useUser} from '../../lib/hooks/useUser';
 import { PageLoader } from '../../components/Atoms/Common/Loader';
+import {useState} from 'react';
+import {ModalAlert} from '../../components/Organisms/Common/Modals/ModalAlert';
 
 export default function Login() {
     const [, userAuthLoaded] = useUser({redirectTo: '/', redirectIfFound: true});
     const router = useRouter();
+
+    const [error, setError] = useState(null);
+
     const handleLogin = async ({username, password}) => {
         const result = await login(username, password);
         if (!result) {
+            setError('Invalid username or password');
             console.error('Login failed');
             return;
         }
@@ -23,6 +29,14 @@ export default function Login() {
         <PageLoader/>
     ) : (
         <FlexBox align='stretch' justify='center'>
+            {error && (
+                <ModalAlert
+                    onClick={() => setError(null)}
+                    title='Error'
+                    content={error}
+                    moreText='Please try again.'
+                />
+            )}
             <Banner bannerBgColor='#A5CEFF' bannerTitle='Welcome back!'/>
             <LoginForm onLogin={handleLogin}/>
         </FlexBox>

@@ -13,12 +13,12 @@ const PostFooterDiv = styled.div`
 
 export function PostComments() {
     const post = useContext(PostContext);
-    const {handleCommentClick} = useContext(UserActionsHandlersContext);
+    const {handleTogglePrompt} = useContext(UserActionsHandlersContext);
 
     return (
         <PostFooterDiv>
-            <CommentsIcon onClick={handleCommentClick}/>
-            <PostCommentsText numComments={post.totalComments ?? 0}/>
+            <CommentsIcon onClick={handleTogglePrompt}/>
+            {post.postId && <PostCommentsText numComments={post.totalComments ?? 0}/>}
         </PostFooterDiv>
     );
 }
