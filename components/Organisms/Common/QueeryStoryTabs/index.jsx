@@ -6,8 +6,11 @@ import {InPageLoader} from '../../../Atoms/Common/Loader';
 import {StickyDiv} from '../../../../pages/homepage';
 import {PostContext, UserActionsHandlersContext} from '../../../../lib/contexts';
 import * as postService from '../../../../lib/postService';
+import {useRouter} from 'next/router';
 
 export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
+    const router = useRouter();
+
     const [stories, setStories] = useState(null);
     const [queeries, setQueeries] = useState(null);
 
@@ -17,8 +20,9 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
         console.log('clicked on post', postId, postType);
     };
 
-    const handleCommentClick = (postId, postType) => {
+    const handleTogglePrompt = (postId, postType) => {
         console.log('comment clicked', postId, postType);
+        router.push(`/homepage/${postId}`);
     };
 
     useEffect(() => {
@@ -52,7 +56,6 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
                 if (filteringAndSorting.sorts['likes']) {
                     shadowed.sort((a, b) => b.totalVotes - a.totalVotes);
                 }
-                console.log('shadowed', shadowed);
                 return [...shadowed];
             };
 
@@ -86,7 +89,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
                             <PostContext.Provider key={queery.postId} value={queery}>
                                 <UserActionsHandlersContext.Provider value={{
                                     handleClickOnPost: () => handleClickOnPost(queery.postId, 'queery'),
-                                    handleCommentClick: () => handleCommentClick(queery.postId, 'queery'),
+                                    handleTogglePrompt: () => handleTogglePrompt(queery.postId, 'queery'),
                                 }}>
                                     <NewPost/>
                                     <Spacer size={10}/>
@@ -104,7 +107,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
                         <PostContext.Provider key={'storyy' + story.postId} value={story}>
                             <UserActionsHandlersContext.Provider value={{
                                 handleClickOnPost: () => handleClickOnPost(story.postId, 'story'),
-                                handleCommentClick: () => handleCommentClick(story.postId, 'story'),
+                                handleTogglePrompt: () => handleTogglePrompt(story.postId, 'story'),
                             }}>
                                 <NewPost/>
                                 <Spacer size={10}/>

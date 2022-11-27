@@ -50,16 +50,19 @@ export function CommentCard({nestedLevel= 0, ...props}) {
                     {showSettings ? <PostSettingsModal/> : <PostSetting onClick={() => handleSettings()}/>}
                 </WrappedFlexBox>
                 <Spacer size={25}/>
-                <Text size={1} text={comment.commentContent} onClick={handleCommentClick}/>
+                {comment.restrictedProps ? (
+                    <Text size="14px" text={`[This comment is restricted due to ${comment.restrictedProps.reason}]`} weight="400" color="#000000" opacity="0.5" />
+                ) : (
+                    <Text size={1} text={comment.commentContent} onClick={handleCommentClick}/>
+                )}
                 <Spacer size={25}/>
                 <FlexBox>
-                    <PostFooter score={comment.totalVotes} numComments={comment.childComments?.length ?? 0} onClick={togglePrompt}/>
+                    <UserActionsHandlersContext.Provider value={{handleTogglePrompt: togglePrompt}}>
+                        <PostFooter onClick={togglePrompt}/>
+                    </UserActionsHandlersContext.Provider>
                     <Spacer size={10}/>
                 </FlexBox>
-                {createPrompt && <CommentPrompt
-                    username={comment.authorUser?.username ?? 'Anonymous'}
-                    parentComment={comment.commentId}
-                />}
+                {createPrompt && <CommentPrompt />}
                 <Spacer size={10}/>
             </FlexBox>
         </StyledCard>
