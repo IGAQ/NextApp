@@ -7,6 +7,7 @@ import {StickyDiv} from '../../../../pages/homepage';
 import {PostContext, UserActionsHandlersContext} from '../../../../lib/contexts';
 import * as postService from '../../../../lib/postService';
 import {useRouter} from 'next/router';
+import {eventService} from '../../../../lib/eventService';
 
 export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
     const router = useRouter();
@@ -24,6 +25,36 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
         console.log('comment clicked', postId, postType);
         router.push(`/homepage/${postId}`);
     };
+
+    useEffect(() => {
+        eventService.on('search-triggered', (searchQuery) => {
+            console.log('search triggered', searchQuery);
+
+            const callback = posts => {
+                let shadowed = [...posts];
+
+                return shadowed.map(post => {
+                    const title = post.postTitle.trim().toLowerCase();
+                    const content = post.postContent.trim().toLowerCase();
+                    const query = searchQuery.trim().toLowerCase();
+
+                    post.isFiltered = (title.includes(query) || content.includes(query));
+
+                    return post;
+                });
+            };
+
+            if (activeTab === 'queery') {
+                setQueeries(callback);
+            } else {
+                setStories(callback);
+            }
+        });
+
+        return () => {
+            eventService.off('search-triggered');
+        };
+    }, []);
 
     useEffect(() => {
         (async function () {

@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import {Text} from '../../../Atoms/Common/Text';
 import {BiSearch} from 'react-icons/bi';
 import { Input } from '@mantine/core';
+import {UserActionsHandlersContext} from '../../../../lib/contexts';
+import {useContext, useState} from 'react';
 
 const BarBase = styled.div`
   background-color: #FFFFFF;
@@ -15,9 +17,15 @@ const BarBase = styled.div`
 `;
 
 export function SearchBar() {
+    const [searchInputValue, setSearchInputValue] = useState('');
+    const {handleSearchTermChange} = useContext(UserActionsHandlersContext);
+
     return (
         <BarBase>
-            <Input variant="unstyled" placeholder="Search topics you want to read"/>
+            <Input variant="unstyled" placeholder="Search topics you want to read" value={searchInputValue} onChange={(e) => {
+                setSearchInputValue(e.target.value);
+                handleSearchTermChange(e.target.value);
+            }}/>
             <BiSearch size={25} alignSelf="flex-end"/>
         </BarBase>
     );
