@@ -5,6 +5,7 @@ import * as postService from '../../../../lib/postService';
 import { useEffect } from 'react';
 import { InPageQueeryLoader } from '../../../Atoms/Common/Loader';
 import { useRouter } from 'next/router';
+import {getPostsOfTheDay} from '../../../../lib/postService';
 
 
 export function OTDBase({activeTab}){
@@ -14,23 +15,17 @@ export function OTDBase({activeTab}){
 
     useEffect (() => {
         (async function () {
-            const post = await postService.getPosts('queery');
-            console.log(post);
-            
-            for (let i = 0; i < 3; i++) {
-                setShowQueery(showQueery => [...showQueery, post[Math .floor(Math.random() * post.length)]]);
-            }
+            const queeries = await postService.getPostsOfTheDay('queery');
+
+            setShowQueery([...queeries]);
         })();
     }, []);
 
     useEffect (() => {
         (async function () {
-            const post = await postService.getPosts('story');
-            console.log(post);
-            
-            for (let i = 0; i < 3; i++) {
-                setShowStory(showStory => [...showStory, post[Math .floor(Math.random() * post.length)]]);
-            }
+            const stories = await postService.getPosts('story');
+
+            setShowStory([...stories]);
         })();
     }, []);
 
