@@ -37,3 +37,11 @@ export function PageLoader() {
         </OutsideLoader>
     );
 }
+
+export function InPageQueeryLoader() {
+    return (
+        <FlexBox>
+            <Lottie animationData={IGAQLoader} loop={true} style={{ height:300, width:300 }} />
+        </FlexBox>
+    );
+}

@@ -1,11 +1,9 @@
 import { OTDCard, OTDStory } from '../../../Organisms/OfTheDay/OTDCard';
-import { queeryQuestions } from '../../../../data/qotd';
-import { storyPrompts } from '../../../../data/sotd';
 import { Carousel } from '@mantine/carousel';
 import { useState } from 'react';
 import * as postService from '../../../../lib/postService';
 import { useEffect } from 'react';
-import { InPageLoader } from '../../../Atoms/Common/Loader';
+import { InPageQueeryLoader } from '../../../Atoms/Common/Loader';
 import { useRouter } from 'next/router';
 
 
@@ -40,7 +38,7 @@ export function OTDBase({activeTab}){
         
         <>
             {(showQueery.length === 0 || showStory.length === 0) ? (
-                <InPageLoader/>
+                <InPageQueeryLoader/>
             ) : (
                 <Carousel 
                     slideGap='md'
