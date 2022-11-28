@@ -105,20 +105,20 @@ export default function Homepage(props) {
         <UserContext.Provider value={user}>
             <Background>
                 <StickyDiv top={0} zIndex={4}>
-                    {filterMenu && <SlideMenu onClick={handleCloseFilter} currentTab={activeTab}/>}
+                    <FilterContext.Provider value={{handleAppliedFilters, filters, setFilters}}>
+                        {filterMenu && <SlideMenu onClick={handleCloseFilter} currentTab={activeTab}/>}
+                    </FilterContext.Provider>
                 </StickyDiv>
                 <ScrollToTopButton isVisible={scrolledEnough}/>
                 <OTDBase activeTab={activeTab}/>
                 <StickyDiv top={0}>
                     <Spacer size={15}/>
-                    <FilterContext.Provider value={{handleAppliedFilters, filters, setFilters}}>
-                        <UserActionsHandlersContext.Provider value={{
-                            handleOpenFilter,
-                            handleSearchTermChange,
-                        }}>
-                            <SearchAndFilter/>
-                        </UserActionsHandlersContext.Provider>
-                    </FilterContext.Provider>
+                    <UserActionsHandlersContext.Provider value={{
+                        handleOpenFilter,
+                        handleSearchTermChange,
+                    }}>
+                        <SearchAndFilter/>
+                    </UserActionsHandlersContext.Provider>
                 </StickyDiv>
                 <Spacer size={10}/>
                 <QueeryStoryTabs filteringAndSorting={filteringAndSorting}  onActiveTabChange={handleActiveTabChange}/>
