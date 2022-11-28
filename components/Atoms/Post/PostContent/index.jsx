@@ -1,6 +1,6 @@
-import styled from 'styled-components';
 import { useState } from 'react';
-import {ContentButton} from '../../../Atoms/Post/ContentButton';
+import styled from 'styled-components';
+import { ContentButton } from '../../Comment/ContentButton';
 
 const PostContentDiv = styled.div`
   font-size: .9rem;

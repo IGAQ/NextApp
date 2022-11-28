@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { BackArrow } from '../../../components/Atoms/Common/Buttons/BackArrow';
 import { InPageLoader } from '../../../components/Atoms/Common/Loader';
 import { Spacer } from '../../../components/Atoms/Common/Spacer';
-import { CommentCard } from '../../../components/Molecules/Post/CommentCard';
-import { CommentPrompt } from '../../../components/Molecules/Post/CommentPrompt';
+import { CommentCard } from '../../../components/Molecules/Comment/CommentCard';
+import { CommentPrompt } from '../../../components/Molecules/Comment/CommentPrompt';
 import { ModalAlert } from '../../../components/Organisms/Common/Modals/ModalAlert';
 import { SingleNewPost } from '../../../components/Templates/Post/NewPost';
 import { API_SERVER } from '../../../lib/constants';
@@ -37,7 +37,7 @@ export default function Post({ post }) {
         } catch (error) {
             setError(error);
         }
-    }
+    };
 
     const handleSubmitComment = async ({ parentId, commentContent, isPost }) => {
         console.log('submitting comment', parentId, commentContent);
@@ -90,7 +90,7 @@ export default function Post({ post }) {
                         },
                         handleCommentClick: handleCommentClick,
                         handleSubmitComment: handleSubmitComment,
-                        handlePin: handlePinClick
+                        handlePin: handlePinClick,
                     }}>
                         <CommentCard
                             nestedLevel={comment.pinned ? 0 : comment.nestedLevel}
@@ -103,7 +103,7 @@ export default function Post({ post }) {
             } else {
                 result.push(commentComponent);
             }
-        }
+        };
         return result;
     };
 
@@ -152,7 +152,7 @@ export default function Post({ post }) {
             </Background>
         </UserContext.Provider>
     );
-}
+};
 
 export async function getServerSideProps({ params }) {
     const res = await axios.get(`${API_SERVER}/posts/${params.postId}`);
@@ -160,4 +160,4 @@ export async function getServerSideProps({ params }) {
     return {
         props: { post }, // will be passed to the page component as props
     };
-}
+};
