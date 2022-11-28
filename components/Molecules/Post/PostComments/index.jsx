@@ -1,8 +1,8 @@
-import {PostCommentsText} from '../../../Atoms/Post/PostCommentsText';
-import {CommentsIcon} from '../../../Atoms/Post/CommentsIcon';
+import { useContext } from 'react';
 import styled from 'styled-components';
-import {useContext} from 'react';
-import {PostContext, UserActionsHandlersContext} from '../../../../lib/contexts';
+import { PostContext, UserActionsHandlersContext } from '../../../../lib/contexts';
+import { CommentsIcon } from '../../../Atoms/Comment/CommentsIcon';
+import { PostCommentsText } from '../../../Atoms/Post/PostCommentsText';
 
 const PostFooterDiv = styled.div`
   display: flex;

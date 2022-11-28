@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import timeAgo from '../../../../utils/timeAgo';
+import { timeAgo } from '../../../../lib/utils';
 
 const PostDateDiv = styled.div`
   font-size: 1rem;

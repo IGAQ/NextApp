@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { InPageLoader } from '../../../../components/Atoms/Common/Loader';
 import { Spacer } from '../../../../components/Atoms/Common/Spacer';
-import { CommentCard } from '../../../../components/Molecules/Post/CommentCard';
-import { CommentPrompt } from '../../../../components/Molecules/Post/CommentPrompt';
+import { CommentCard } from '../../../../components/Molecules/Comment/CommentCard';
+import { CommentPrompt } from '../../../../components/Molecules/Comment/CommentPrompt';
 import { ModalAlert } from '../../../../components/Organisms/Common/Modals/ModalAlert';
 import { SingleComment } from '../../../../components/Templates/Comment/SingleComment';
 import { API_SERVER } from '../../../../lib/constants';
@@ -35,7 +35,7 @@ export default function Comment({ post, comment }) {
         } catch (error) {
             setError(error);
         }
-    }
+    };
 
     const handleSubmitComment = async ({ parentId, commentContent, isPost }) => {
         console.log('submitting comment', parentId, commentContent);
@@ -147,7 +147,7 @@ export default function Comment({ post, comment }) {
             <Spacer size={50} />
         </UserContext.Provider>
     );
-}
+};
 
 export async function getServerSideProps({ params }) {
     const responsePost = await axios.get(`${API_SERVER}/posts/${params.postId}`);

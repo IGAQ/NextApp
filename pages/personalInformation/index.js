@@ -5,5 +5,5 @@ import { PersonalInformationPage } from '../../components/Organisms/Common/Perso
 export default function PersonalInformation() {
     return (
         <PersonalInformationPage />
-    )
+    );
 }
