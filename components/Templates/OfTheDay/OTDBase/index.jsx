@@ -23,7 +23,7 @@ export function OTDBase({activeTab}){
 
     useEffect (() => {
         (async function () {
-            const stories = await postService.getPosts('story');
+            const stories = await postService.getPostsOfTheDay('story');
 
             setShowStory([...stories]);
         })();
