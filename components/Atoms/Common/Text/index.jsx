@@ -10,6 +10,7 @@ const Header = styled.p`
   margin: ${props => props.margin};
   padding: ${props => props.padding};
   width: ${props => props.width};
+  border-left: ${props => props.borderLeft};
 `;
 
 export function Text({
@@ -24,10 +25,11 @@ export function Text({
     overflow = 'visible',
     padding = '0',
     width = 'auto',
+    borderLeft = 'inherit',
     ...otherProps
 }) {
     return (
-        <Header width={width} padding={padding} lineHeight={lineHeight} overflow={overflow} size={size} color={color} weight={weight}
+        <Header width={width} borderLeft={borderLeft} padding={padding} lineHeight={lineHeight} overflow={overflow} size={size} color={color} weight={weight}
             margin={margin} display={display} textAlign={textAlign} {...otherProps}>
             {text}
         </Header>

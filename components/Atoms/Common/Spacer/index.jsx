@@ -14,4 +14,5 @@ export const Spacer = styled.span`
   min-width: ${getWidth}px;
   height: ${getHeight}px;
   min-height: ${getHeight}px;
+  border-left: ${props => props.borderLeft};
 `;
