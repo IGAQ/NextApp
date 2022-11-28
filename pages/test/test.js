@@ -1,8 +1,7 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { OTDBase } from '../../components/Templates/OfTheDay/OTDBase';
+import { WebNav } from '../../components/Organisms/Common/WebNav';
 
 export default function Test(){
     return (
-        <OTDBase />
+        <WebNav />
     );
 }

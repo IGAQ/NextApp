@@ -8,22 +8,19 @@ import {BsPlusLg} from 'react-icons/bs';
 import {BsPersonFill} from 'react-icons/bs';
 import {NewPostModal} from '../../Post/NewPostModal';
 import {useEffect, useState} from 'react';
-import styles from './MobileNav.module.css';
 import {useRouter} from 'next/router';
+import { Logo } from '../../../Atoms/Common/Logo';
+import {SearchAndFilter} from '../SearchAndFilter';
+import {FilterContext, UserActionsHandlersContext, UserContext} from '../../../../lib/contexts';
+import styles from './WebNav.module.css';
 
 const NavBase = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  position: fixed;
-  width: 100vw;
-  bottom: 0;
   padding: 15px 25px 10px;
   z-index: 15;
-  background-color: #F5F5F5;
-  box-shadow: 0 7px 15px 3px rgb(117 37 37 / 35%);
-  border-radius: 10px 10px 0 0;
 `;
 
 const StyledLink = styled.a`
@@ -32,6 +29,7 @@ const StyledLink = styled.a`
   align-items: center;
   justify-content: center;
   font-size: 0.85rem;
+  padding: 0 20px;
 `;
 
 const IconHolder = styled(motion.div)`
@@ -51,17 +49,58 @@ const Middle = styled.button`
   padding: 12px 14px 10px;
 `;
 
-export function MobileNav() {
+const WebNavBase = styled.div`
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 25px 10px;
+    z-index: 15;
+    background-color: #F5F5F5;
+    // box-shadow: 0 7px 15px 3px rgb(117 37 37 / 35%);
+    top: 0;
+    width: 100%;
+    height: 70px;
+    `;
+
+export function WebNav() {
     const r = useRouter();
     const [postModal, setPostModal] = useState(false);
-
+    const [filterMenu, openFilterMenu] = useState(false);
+    const [filteringAndSorting, setFilteringAndSorting] = useState(null);
+    
     function closePostModal() {
         setPostModal(false);
     }
 
     function openPostModal() {
         setPostModal(true);
+
     }
+    
+    function handleOpenFilter() {
+        openFilterMenu(true);
+    }
+
+    function handleCloseFilter() {
+        openFilterMenu(false);
+    }
+
+    function handleAppliedFilters({filters, sorts}) {
+        setFilteringAndSorting({filters, sorts});
+        openFilterMenu(false);
+    }
+
+    const handleSearchTermChange = (term) => {
+        if (lastTimeSearchTermChanged.current + 50 < Date.now()) {
+            searchTerm.current = term;
+            lastTimeSearchTermChanged.current = Date.now();
+
+            // search
+            eventService.emit('search-triggered', term);
+        }
+    };
 
     useEffect(() => {
         r.events.on('routeChangeStart', closePostModal);
@@ -71,24 +110,34 @@ export function MobileNav() {
     }, [r.events]);
 
     return (
-        <>
+        <WebNavBase>
+            <div onClick={()=> r.push('/homepage')}>
+                <Logo height={50} width={50} />
+            </div>
+            <UserActionsHandlersContext.Provider value={{
+                handleOpenFilter,
+                handleSearchTermChange,
+            }}>
+                <SearchAndFilter/>
+            </UserActionsHandlersContext.Provider>
             {postModal && <NewPostModal onClick={closePostModal}/>}
-            {/* {postModal && <ModalBackdrop onClick = {closePostModal}/>} */}
             <NavBase>
                 <Link href='/homepage' scroll={false}>
                     <StyledLink className={r.pathname === '/homepage' ? styles.activePage : ' '}>
+                        Home
                         <IconHolder>
                             <AiFillHome size={28}/>
                         </IconHolder>
-                        Home
+                        
                     </StyledLink>
                 </Link>
                 <Link href='/resources' scroll={false}>
                     <StyledLink className={r.pathname === '/resources' ? styles.activePage : ' '}>
+                        Resources
                         <IconHolder>
                             <ImBooks size={28}/>
                         </IconHolder>
-                        Resources
+                        
                     </StyledLink>
                 </Link>
                 <Middle onClick={openPostModal}>
@@ -99,22 +148,24 @@ export function MobileNav() {
                 </Middle>
                 <Link href='/notifications' scroll={false}>
                     <StyledLink className={r.pathname === '/notifications' ? styles.activePage : ' '}>
+                        Notifications
                         <IconHolder margin="0 0 4px 0">
                             <FaBell size={22}/>
                         </IconHolder>
-                        Notifications
+                        
                     </StyledLink>
                 </Link>
                 <Link href='/profile' scroll={false}>
                     <StyledLink className={r.pathname === '/profile' ? styles.activePage : ' '}>
+                        Profile
                         <IconHolder>
                             <BsPersonFill size={28}/>
                         </IconHolder>
-                        Profile
+                        
                     </StyledLink>
                 </Link>
 
             </NavBase>
-        </>
+        </WebNavBase>
     );
 }

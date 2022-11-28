@@ -34,3 +34,14 @@ export const Background = styled.div`
 background-color: ${props => props.color || '#DFEEFF'};
 height: ${props => props.height};
 `;
+
+export const StickyDiv2 = styled.div`
+  position: sticky;
+  position: -webkit-sticky;
+  top: ${(props) => props.top}px;
+  z-index: ${(props) => props.zIndex || 2};
+  background-color: #DFEEFF;
+  max-width: 50em;
+  margin: auto;
+  padding-bottom: 1em;
+`;

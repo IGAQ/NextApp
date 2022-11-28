@@ -14,6 +14,7 @@ const BarBase = styled.div`
   justify-content: space-between;
   padding: 0 10px 0 10px;
   width: 65%;
+  min-width: 250px;
 `;
 
 export function SearchBar() {
