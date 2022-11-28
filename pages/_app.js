@@ -3,8 +3,10 @@ import { MobileNav } from '../components/Organisms/Common/MobileNav/MobileNav';
 import { useRouter } from 'next/router';
 import { Spacer } from '../components/Atoms/Common/Spacer';
 import { PageLoader } from '../components/Atoms/Common/Loader';
+import {WebNav} from '../components/Organisms/Common/WebNav';
 import Router from 'next/router';
 import React from 'react';
+import {StickyDiv2 } from '../styles/globals';
 
 function MyApp({ Component, pageProps }) {
     const r = useRouter();
@@ -37,16 +39,57 @@ function MyApp({ Component, pageProps }) {
         };
     }, []);
 
+    const [showNav, setShowNav] = React.useState(false);
+    const [mobile, setMobile] = React.useState(false);
+
+    React.useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 1100) {
+                setMobile(true);
+            } else {
+                setMobile(false);
+            }
+        };
+        window.addEventListener('resize', handleResize);
+        handleResize();
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    React.useEffect(() => {
+        const handlePage = () => {
+            if (r.pathname === '/login' || r.pathname === '/newQueery' || r.pathname === '/newStory' || r.pathname === '/dashboard' ) {
+                setShowNav(false);
+            } else {
+                setShowNav(true);
+            }
+        };
+        handlePage();
+        return () => handlePage();
+    }, [r.pathname]);
+
     return (
         <>
             {loading ? (
                 <PageLoader />
             ) : (
                 <>
-                    <Component {...pageProps} />
+                    {showNav && !mobile && <> 
+                        <WebNav />
+                        <Spacer axis="vertical" size={70}/> 
+                        <Component {...pageProps} />  
+                    </>}
+                    {showNav && mobile && <> 
+                        <Component {...pageProps} /> 
+                        <Spacer axis="vertical" size={55}/> 
+                        <MobileNav/> 
+                    </>}
+                    
+                    {!showNav && <> 
+                        <Component {...pageProps} />
+                    </>}
+                    
                     {/* {<showBottomNav && MobileNav/>} */}
-                    <Spacer axis="vertical" size={55}/>
-                    <MobileNav/>
+                    
                 </>
             )}
         </>

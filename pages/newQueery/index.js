@@ -9,6 +9,7 @@ import {useUser} from '../../lib/hooks/useUser';
 import {PageLoader} from '../../components/Atoms/Common/Loader';
 import React from 'react';
 import Login from '../login';
+import {BackArrow} from '../../components/Atoms/Common/Buttons/BackArrow';
 
 export async function getStaticProps() {
     const res = await axios.get(`${API_SERVER}/postTags`);
@@ -51,6 +52,7 @@ export default function NewQueeryPage({postTags}) {
     return !userAuthLoaded ? <PageLoader/> : (
         <>
             <FlexBox align = "stretch" bgColor = "#FFB6C3">
+                <BackArrow/>
                 <PostTitle title = "Post a Queery"/>
                 <FlexBox bgColor = "#DFEEFF" padding = "25px 50px" margin = "0" align = "stretch" flex = "1">
                     <Spacer axis="vertical" size={25}/>

@@ -8,6 +8,7 @@ import {API_SERVER, JWT_TOKEN_LOCAL_STORAGE_KEY} from '../../lib/constants';
 import {PageLoader} from '../../components/Atoms/Common/Loader';
 import React from 'react';
 import {useUser} from '../../lib/hooks/useUser';
+import {BackArrow} from '../../components/Atoms/Common/Buttons/BackArrow';
 
 
 export async function getStaticProps() {
@@ -46,6 +47,7 @@ export default function NewStoryPage({postTags}) {
     return !userAuthLoaded ? <PageLoader/> : (
         <>
             <FlexBox align="stretch" bgColor="#C2ADff">
+                <BackArrow/>
                 <Spacer axis="vertical" size={15}/>
                 <PostTitle title="Post a Story"/>
                 <Spacer axis="vertical" size={25}/>

@@ -6,8 +6,6 @@ const LogoDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: ${props => props.height}em;
-  width: ${props => props.width}em;
 `;
 
 const defaultProps = {
@@ -20,10 +18,10 @@ const defaultProps = {
 };
 
 export function Logo(props = defaultProps) {
-    const {imageSrc, containerHeight, containerWidth, imageHeight, imageWidth, imageAlt} = props;
+    const {imageSrc, containerHeight, containerWidth, imageHeight, imageWidth, width='100', height='100'} = props;
     return (
         <LogoDiv height={containerHeight} width={containerWidth}>
-            <Image src='/IGAQLogo.svg' width='100px' height='100px' alt={imageAlt}/>
+            <Image src='/IGAQLogo.svg' width={width} height={height} alt='logo'/>
         </LogoDiv>
     );
 }
