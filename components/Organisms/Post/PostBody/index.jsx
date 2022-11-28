@@ -31,17 +31,17 @@ export function PostBody() {
 }
 
 export function SinglePostBody(){
-    const post = useContext(PostContext);
+    const content = useContext(PostContext);
 
     const router = useRouter();
     return (
         <PostBodyDiv>
             <Spacer axis="vertical" size={15}/>
-            <PostTitle title={post.postTitle} onClick={() => router.push('/homepage/' + post.postId)}/>
+            {content.postTitle && <PostTitle title={content.postTitle} onClick={() => router.push('/homepage/' + content.postId)}/>}
             <Spacer axis="vertical" size={5}/>
-            <SinglePostContent content={post.postContent}/>
+            <SinglePostContent content={content.postContent || content.commentContent}/>
             <Spacer axis="vertical" size={35}/>
-            {post.postTags && <PostTagBox tags={post.postTags}/>}
+            {content.postTags && <PostTagBox tags={content.postTags}/>}
         </PostBodyDiv>
     );
 }
