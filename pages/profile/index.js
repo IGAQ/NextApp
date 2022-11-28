@@ -1,4 +1,4 @@
-import {FlexBox} from '../../styles/globals';
+import {Background, FlexBox} from '../../styles/globals';
 import {Spacer} from '../../components/Atoms/Common/Spacer';
 import {HamburgerIcon} from '../../components/Atoms/Common/Icons/HamburgerIcon';
 import {PostTitle} from '../../components/Molecules/Post/PostTitle';
@@ -43,7 +43,10 @@ export default function Profile(props) {
                 <Button label='Help' size='long'  
                     onClick={() => r.push('/help')}
                 /> 
-                
+                <Spacer axis="vertical" size={25}/>
+                <Button label='Log Out' size='long'  
+                    onClick={() => r.push('/test/temporaryLogout')}
+                /> 
             </Drawer>
             <HamburgerIcon onClick={() => setDrawerOpened(true)}  />
             <PostTitle title="Profile"/>
