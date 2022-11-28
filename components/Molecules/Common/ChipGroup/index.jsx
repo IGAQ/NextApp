@@ -1,7 +1,7 @@
-import {createStyles, Chip} from '@mantine/core';
-import {FlexBox} from '../../../../styles/globals';
-import {Text} from '../../../Atoms/Common/Text';
-import {capitalizeFirstLetter} from '../../../../lib/utils';
+import { Chip, createStyles } from '@mantine/core';
+import { capitalizeFirstLetter } from '../../../../lib/utils';
+import { FlexBox } from '../../../../styles/globals';
+import { Text } from '../../../Atoms/Common/Text';
 
 const useStyles = createStyles((theme, _params, getRef) => ({
 
@@ -39,7 +39,6 @@ const useStyles = createStyles((theme, _params, getRef) => ({
 
 export function ChipGroup({onChange, postTags}) {
     const {classes} = useStyles();
-    console.debug('postTags', postTags);
 
     return (
         <>

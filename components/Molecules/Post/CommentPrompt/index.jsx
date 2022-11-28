@@ -1,15 +1,15 @@
+import { useRouter } from 'next/router';
+import { useContext, useState } from 'react';
 import styled from 'styled-components';
-import {InputBox} from '../../../Atoms/Common/Inputs/TextInput';
-import {PostUsername} from '../../../Atoms/Post/PostUsername';
-import {Button} from '../../../Atoms/Common/Buttons/Button';
-import {useContext, useState} from 'react';
-import {FlexBox} from '../../../../styles/globals';
-import {Spacer} from '../../../Atoms/Common/Spacer';
-import {Text} from '../../../Atoms/Common/Text';
-import {UserActionsHandlersContext, UserContext, PostContext} from '../../../../lib/contexts';
-import {CommentCard} from '../CommentCard';
-import {useRouter} from 'next/router';
-import {InPageLoader} from '../../../Atoms/Common/Loader';
+import { PostContext, UserActionsHandlersContext, UserContext } from '../../../../lib/contexts';
+import { FlexBox } from '../../../../styles/globals';
+import { Button } from '../../../Atoms/Common/Buttons/Button';
+import { InputBox } from '../../../Atoms/Common/Inputs/TextInput';
+import { InPageLoader } from '../../../Atoms/Common/Loader';
+import { Spacer } from '../../../Atoms/Common/Spacer';
+import { Text } from '../../../Atoms/Common/Text';
+import { PostUsername } from '../../../Atoms/Post/PostUsername';
+import { CommentCard } from '../CommentCard';
 
 const StyledInputBox = styled(InputBox)`
   min-width: 75%;
@@ -81,7 +81,7 @@ export function CommentPrompt({}) {
         </>
     ) : (
         <PostContext.Provider key={newlyCreatedComment.commentId} value={newlyCreatedComment}>
-            <CommentCard nestedLevel={data.nestedLevel}/>
+            <CommentCard nestedLevel={1} isNewlyCreated={true}/>
         </PostContext.Provider>
     ));
 }
