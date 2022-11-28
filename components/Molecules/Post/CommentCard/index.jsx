@@ -1,14 +1,15 @@
-import {useContext, useState} from 'react';
+import { useContext, useState } from 'react';
 import styled from 'styled-components';
-import {FlexBox} from '../../../../styles/globals';
-import {Spacer} from '../../../Atoms/Common/Spacer';
-import {Text} from '../../../Atoms/Common/Text';
-import {PostSetting} from '../../../Atoms/Post/PostSetting';
-import {PostFooter} from '../../../Organisms/Post/PostFooter';
-import {PostHeader} from '../../../Organisms/Post/PostHeader';
-import {PostSettingsModal} from '../../../Organisms/Post/PostSettingsModal';
-import {CommentPrompt} from '../CommentPrompt';
-import {PostContext, UserActionsHandlersContext} from '../../../../lib/contexts';
+import { PostContext, UserActionsHandlersContext } from '../../../../lib/contexts';
+import { FlexBox } from '../../../../styles/globals';
+import { Spacer } from '../../../Atoms/Common/Spacer';
+import { Text } from '../../../Atoms/Common/Text';
+import { CommentsPinIcon } from '../../../Atoms/Post/CommentsPinIcon';
+import { PostSetting } from '../../../Atoms/Post/PostSetting';
+import { PostFooter } from '../../../Organisms/Post/PostFooter';
+import { PostHeader } from '../../../Organisms/Post/PostHeader';
+import { PostSettingsModal } from '../../../Organisms/Post/PostSettingsModal';
+import { CommentPrompt } from '../CommentPrompt';
 
 
 const WrappedFlexBox = styled(FlexBox)`
@@ -47,7 +48,10 @@ export function CommentCard({nestedLevel= 0, ...props}) {
             <FlexBox align="stretch">
                 <WrappedFlexBox dir="row" justify="space-between">
                     <PostHeader weight="400" username={comment.authorUser.username} date={comment.createdAt}/>
-                    {showSettings ? <PostSettingsModal/> : <PostSetting onClick={() => handleSettings()}/>}
+                    <FlexBox dir="row">
+                        <CommentsPinIcon/>
+                        {showSettings ? <PostSettingsModal/> : <PostSetting onClick={() => handleSettings()}/>}
+                    </FlexBox>
                 </WrappedFlexBox>
                 <Spacer size={25}/>
                 {comment.restrictedProps ? (
