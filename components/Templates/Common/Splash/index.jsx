@@ -34,7 +34,7 @@ export function Splash() {
     const autoplay = useRef(Autoplay({delay: 4000}));
 
     return (
-        <Background height="93vh">
+        <Background height="100vh">
             <PostDiv>
                 <Logo/>
                 <OTDTitle title="I got a queery" fontSize="2em"/>
@@ -87,6 +87,9 @@ export function Splash() {
                                         (
                                             <>
                                                 <OTDTitle title={`Welcome, ${user.username}!`} fontSize="1.6em"/>
+                                                <Spacer size="20"/>
+                                                <Button size='long' onClick={() => r.push('/homepage')}
+                                                    label="Homepage"/>
                                                 <Spacer size="20"/>
                                                 <Button size='long' onClick={() => r.push('/test/temporaryLogout')}
                                                     label="Logout"/>

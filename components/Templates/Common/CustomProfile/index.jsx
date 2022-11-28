@@ -13,7 +13,7 @@ import { ProfileBadge } from '../../../Atoms/Common/Badge';
 
 export function CustomProfile() {
     return (
-        <Background height='100%'>
+        <Background height='100vh'>
             <FlexBox dir='row' justify='space-between' maxWidth='50rem' margin='auto'>
                 <BackArrow />
                 <div>

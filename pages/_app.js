@@ -57,7 +57,7 @@ function MyApp({ Component, pageProps }) {
 
     React.useEffect(() => {
         const handlePage = () => {
-            if (r.pathname === '/login' || r.pathname === '/newQueery' || r.pathname === '/newStory' || r.pathname === '/dashboard' ) {
+            if (r.pathname === '/login' || r.pathname === '/newQueery' || r.pathname === '/newStory' || r.pathname === '/dashboard' || r.pathname === '/' ) {
                 setShowNav(false);
             } else {
                 setShowNav(true);

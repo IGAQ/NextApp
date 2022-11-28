@@ -22,9 +22,8 @@ const TagDiv = styled.div`
 export function PostTag({
     text = 'Tag',
     tagBgColor = '#C2ADFF',
-    tagColor = 'white',
+    tagColor = 'black',
 }) {
-
     return (
         <TagDiv tagBgColor={tagBgColor} tagColor={tagColor}>
             {text}
