@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import {useEffect, useState} from 'react';
-import * as auth from '../../lib/auth';
+import * as auth from '../../lib/authService';
 
 export default function TemporaryLogout() {
     const [isLoading, setIsLoading] = useState(true);
