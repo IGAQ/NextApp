@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {badgesPaths} from '../../../../lib/constants/badgesPaths';
 
 
 export const StyledCircle = styled.div`
@@ -23,9 +24,9 @@ export const ProfileBadge = styled.div`
 
 
 export function Badge({
-  badge = '/PrideFlag.svg'
+    badge = badgesPaths.flags.pride,
 }) {
-  return (
-    <StyledCircle badge={badge}></StyledCircle>
-  );
+    return (
+        <StyledCircle badge={badge}></StyledCircle>
+    );
 }

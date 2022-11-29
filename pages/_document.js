@@ -4,6 +4,7 @@ export default function Document() {
     return (
         <Html>
             <Head>
+                <link rel="icon" type="image/x-icon" href="/IGAQLogo.svg" />
                 <link
                     rel="preload"
                     href="../fonts/AmaticSC-Bold.ttf"
@@ -13,7 +14,7 @@ export default function Document() {
                 />
             </Head>
             <body>
-                <Main />
+                <Main/>
                 <NextScript/>
             </body>
         </Html>

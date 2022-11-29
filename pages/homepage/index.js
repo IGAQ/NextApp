@@ -10,7 +10,7 @@ import {useUser} from '../../lib/hooks/useUser';
 import {PageLoader} from '../../components/Atoms/Common/Loader';
 import {FilterContext, UserActionsHandlersContext, UserContext} from '../../lib/contexts';
 import {SlideMenu} from '../../components/Molecules/Common/SlideMenu';
-import {eventService} from '../../lib/eventService';
+import {eventService} from '../../lib/services/eventService';
 
 export const StickyDiv = styled.div`
   position: sticky;

@@ -1,5 +1,5 @@
 export const queeryQuestions = [
-    {question: 'Do companies that have the pride flag actually support it?', id: 1},
+    {question: 'Do companies that have the pride flags actually support it?', id: 1},
     {question: 'What advice would you give to roommate, friends, or family?', id: 2},
     {question: 'What is your favorite queer movie?', id: 3},
     {question: 'Do you have a same-gender crush? Who?', id: 4},

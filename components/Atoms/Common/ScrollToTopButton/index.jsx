@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import {Icon} from '../Icons/Icon';
+import {iconsPaths} from '../../../../lib/constants/iconsPaths';
 
 const StyledScrollToTopButton = styled.button`
   position: fixed;
@@ -36,7 +37,7 @@ export function ScrollToTopButton({isVisible, ...otherProps}) {
     return (
         <StyledScrollToTopButton {...otherProps} style={{display: isVisible ? 'flex' : 'none'}}
             onClick={() => handleClick()}>
-            <Icon icon={'/arrow.svg'} size={1} cssTransform={'rotate(0.25turn)'}/>
+            <Icon icon={iconsPaths.arrow} size={1} cssTransform={'rotate(0.25turn)'}/>
         </StyledScrollToTopButton>
     );
 }

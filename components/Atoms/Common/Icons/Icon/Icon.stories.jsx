@@ -1,6 +1,8 @@
 import React from 'react';
 
 import {Icon} from './index';
+import {iconsPaths} from '../../../../../lib/constants/iconsPaths';
+import {badgesPaths} from '../../../../../lib/constants/badgesPaths';
 
 export default {
     title: 'Atoms/Common/Icons/Icon',
@@ -9,26 +11,15 @@ export default {
         icon: {
             control: 'select',
             options: [
-                '/ReportIcon.svg',
-                '/arrow.svg',
-                '/Carousel_1.svg',
-                '/Carousel_2.svg',
-                '/Carousel_3.svg',
-                '/CommentsIcon.svg',
-                '/defaultFlag.svg',
-                '/DefaultProfile.svg',
+                ...iconsPaths,
+                ...badgesPaths.flags,
+                ...badgesPaths.avatars,
+                ...badgesPaths.pronouns,
+                ...badgesPaths.openness,
                 '/IGAQLogo.svg',
-                '/PrideFlag.svg',
-                '/profileIcon2.svg',
-                '/profileIcon3.svg',
-                '/profileIcon4.svg',
-                '/profileIcon5.svg',
-                '/profileIcon6.svg',
-                '/SaveIcon.svg',
-                '/vercel.svg',
             ],
             description: 'The icon to display. Will be loaded from the public folder. Defaults to /ReportIcon.svg',
-            defaultValue: '/ReportIcon.svg',
+            defaultValue: iconsPaths.reportIcon,
         },
         size: {
             control: 'text',

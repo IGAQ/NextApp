@@ -10,7 +10,7 @@ import { SingleComment } from '../../../../components/Templates/Comment/SingleCo
 import { API_SERVER } from '../../../../lib/constants';
 import { PostContext, UserActionsHandlersContext, UserContext } from '../../../../lib/contexts';
 import { useUser } from '../../../../lib/hooks/useUser';
-import * as postService from '../../../../lib/postService';
+import * as postService from '../../../../lib/services/postService';
 
 export default function Comment({ post, comment }) {
     const router = useRouter();
@@ -31,7 +31,7 @@ export default function Comment({ post, comment }) {
 
     const handlePinClick = async ({ commentId, isPinning }) => {
         try {
-            await postService.pinOrUnpinComment({ commentId, isPinning })
+            await postService.pinOrUnpinComment({ commentId, isPinning });
         } catch (error) {
             setError(error);
         }

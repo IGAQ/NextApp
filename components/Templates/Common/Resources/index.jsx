@@ -10,11 +10,11 @@ export function Flags(props) {
             <ABCSelect />
             Flags
             {/* <div className="flags">
-                {flags.map(flag => (
-                    <div className="flag" key={flag}>
-                        <LetterSection letter={flag.firstLetter} />
-                        <flagName>{flag.name}</flagName>
-                        <Image src={`https://www.countryflags.io/${flag}/flat/64.png`} alt={flag} />
+                {flags.map(flags => (
+                    <div className="flags" key={flags}>
+                        <LetterSection letter={flags.firstLetter} />
+                        <flagName>{flags.name}</flagName>
+                        <Image src={`https://www.countryflags.io/${flags}/flat/64.png`} alt={flags} />
                     </div>
                 ))}
             </div> */}

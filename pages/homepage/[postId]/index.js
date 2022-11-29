@@ -11,7 +11,7 @@ import { SingleNewPost } from '../../../components/Templates/Post/NewPost';
 import { API_SERVER } from '../../../lib/constants';
 import { PostContext, UserActionsHandlersContext, UserContext } from '../../../lib/contexts';
 import { useUser } from '../../../lib/hooks/useUser';
-import * as postService from '../../../lib/postService';
+import * as postService from '../../../lib/services/postService';
 import { Background } from '../../../styles/globals';
 
 export default function Post({ post }) {
@@ -33,7 +33,7 @@ export default function Post({ post }) {
 
     const handlePinClick = async ({ commentId, isPinning }) => {
         try {
-            await postService.pinOrUnpinComment({ commentId, isPinning })
+            await postService.pinOrUnpinComment({ commentId, isPinning });
         } catch (error) {
             setError(error);
         }

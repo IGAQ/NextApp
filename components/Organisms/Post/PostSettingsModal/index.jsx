@@ -2,6 +2,7 @@ import {PostSettingsButton} from '../../../Molecules/Post/PostSettingsButton';
 import styled from 'styled-components';
 import {useState} from 'react';
 import {ModalAlert} from '../../Common/Modals/ModalAlert';
+import {iconsPaths} from '../../../../lib/constants/iconsPaths';
 
 const SettingsModalDiv = styled.div`
   display: flex;
@@ -36,7 +37,7 @@ export function PostSettingsModal() {
             )}
             <SettingsModalDiv>
                 <PostSettingsButton onOpen={() => setReportOpen(true)}/>
-                <PostSettingsButton setType="Save" icon="SaveIcon.svg" on/>
+                <PostSettingsButton setType="Save" icon={iconsPaths.saveIcon} on/>
             </SettingsModalDiv>
         </>
     );
