@@ -5,9 +5,9 @@ import React, {useEffect, useState} from 'react';
 import {InPageLoader} from '../../../Atoms/Common/Loader';
 import {StickyDiv} from '../../../../pages/homepage';
 import {PostContext, UserActionsHandlersContext} from '../../../../lib/contexts';
-import * as postService from '../../../../lib/postService';
+import * as postService from '../../../../lib/services/postService';
 import {useRouter} from 'next/router';
-import {eventService} from '../../../../lib/eventService';
+import {eventService} from '../../../../lib/services/eventService';
 
 export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
     const router = useRouter();

@@ -1,5 +1,6 @@
 import IconButton from '@mui/material/IconButton';
 import styled from 'styled-components';
+import {iconsPaths} from '../../../../lib/constants/iconsPaths';
 
 const CommentIconDiv = styled.img`
   width: 1em;
@@ -10,7 +11,7 @@ const CommentIconDiv = styled.img`
 export function CommentsIcon({onClick}) {
     return (
         <IconButton onClick={onClick}>
-            <CommentIconDiv src='/CommentsIcon.svg'/>
+            <CommentIconDiv src={iconsPaths.commentsIcon}/>
         </IconButton>
     );
 }

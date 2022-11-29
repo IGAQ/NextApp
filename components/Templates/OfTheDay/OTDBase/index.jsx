@@ -1,11 +1,11 @@
 import { OTDCard, OTDStory } from '../../../Organisms/OfTheDay/OTDCard';
 import { Carousel } from '@mantine/carousel';
 import { useState } from 'react';
-import * as postService from '../../../../lib/postService';
+import * as postService from '../../../../lib/services/postService';
 import { useEffect } from 'react';
 import { InPageQueeryLoader } from '../../../Atoms/Common/Loader';
 import { useRouter } from 'next/router';
-import {getPostsOfTheDay} from '../../../../lib/postService';
+import {getPostsOfTheDay} from '../../../../lib/services/postService';
 
 
 export function OTDBase({activeTab}){

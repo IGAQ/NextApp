@@ -15,7 +15,7 @@ import {
     UserContext,
 } from '../../../lib/contexts';
 import {useUser} from '../../../lib/hooks/useUser';
-import * as postService from '../../../lib/postService';
+import * as postService from '../../../lib/services/postService';
 import {Background} from '../../../styles/globals';
 
 export default function Post({post}) {

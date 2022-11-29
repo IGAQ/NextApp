@@ -1,6 +1,6 @@
 import {PostReaction} from '../../../Atoms/Post/PostReaction';
 import styled from 'styled-components';
-import * as votingService from '../../../../lib/votingService';
+import * as votingService from '../../../../lib/services/votingService';
 import {useContext, useState} from 'react';
 import {PostContext, UserContext} from '../../../../lib/contexts';
 import {useRouter} from 'next/router';

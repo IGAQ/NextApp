@@ -79,7 +79,7 @@ textarea{
 }
 
 .swiper-button-next{
-  background-image: url(/arrow.svg);
+  background-image: url(/assets/icons/arrow.svg);
   background-repeat: no-repeat;
   transform: scaleX(-1);
   color: transparent !important;
@@ -88,7 +88,7 @@ textarea{
   right: 20px !important;
 }
 .swiper-button-prev {
-  background-image: url(/arrow.svg);
+  background-image: url(/assets/icons/arrow.svg);
   background-repeat: no-repeat;
   color: transparent !important;
   fill: transparent !important;

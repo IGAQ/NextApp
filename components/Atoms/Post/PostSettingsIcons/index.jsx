@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {Icon} from '../../Common/Icons/Icon';
+import {iconsPaths} from '../../../../lib/constants/iconsPaths';
 
 const SettingsIcons = styled(Icon)`
   background-position: unset;
@@ -8,6 +9,6 @@ const SettingsIcons = styled(Icon)`
 
 export function PostSettingsIcons({size=1}) {
     return (
-        <SettingsIcons icon={'/ReportIcon.svg'} size={size}/>
+        <SettingsIcons icon={iconsPaths.reportIcon} size={size}/>
     );
 }

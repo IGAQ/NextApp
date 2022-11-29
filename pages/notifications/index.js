@@ -3,6 +3,7 @@ import {NotificationBox} from '../../components/Molecules/Common/NotificationBox
 import {Text} from '../../components/Atoms/Common/Text';
 import styled from 'styled-components';
 import {PostTitle} from '../../components/Molecules/Post/PostTitle';
+import {badgesPaths} from '../../lib/constants/badgesPaths';
 
 const NotificationDiv = styled(FlexBox)`
   width: 100%;
@@ -23,21 +24,21 @@ export default function Notifications(props) {
                 <FlexBox align="flex-start" bgColor='#DFEEFF'>
                     <Text weight="500" size="1.25rem" textAlign="left" text="New"/>
                     <FlexBox bgColor='#DFEEFF' align='flex-start'>
-                        <NotificationBox AvaPic="/profileIcon2.svg"
+                        <NotificationBox AvaPic={badgesPaths.avatars.profile2}
                             text="Anyaaa replied to your queery 'Is there a term for ..."/>
-                        <NotificationBox AvaPic="/profileIcon5.svg"
+                        <NotificationBox AvaPic={badgesPaths.avatars.profile5}
                             text="BorutoLover replied to your queery 'have you told ..."/>
-                        <NotificationBox AvaPic="/profileIcon4.svg" text="flybi replied to your story 'AITA?'"/>
+                        <NotificationBox AvaPic={badgesPaths.avatars.profile4} text="flybi replied to your story 'AITA?'"/>
                     </FlexBox>
                 </FlexBox>
                 <FlexBox align="flex-start" bgColor='#DFEEFF'>
                     <Text weight="500" size="1.25rem" textAlign="left" text="Old"/>
                     <FlexBox bgColor='#DFEEFF' align='flex-start'>
-                        <NotificationBox AvaPic="/profileIcon3.svg" text="ace replied to your story 'AITA?'"/>
-                        <NotificationBox AvaPic="/profileIcon6.svg" text="btsmarmy7 replied to your queery 'Am I gay"/>
-                        <NotificationBox AvaPic="/profileIcon2.svg"
+                        <NotificationBox AvaPic={badgesPaths.avatars.profile3} text="ace replied to your story 'AITA?'"/>
+                        <NotificationBox AvaPic={badgesPaths.avatars.profile6} text="btsmarmy7 replied to your queery 'Am I gay"/>
+                        <NotificationBox AvaPic={badgesPaths.avatars.profile2}
                             text="TheSadPotato replied to your comment in your story ..."/>
-                        <NotificationBox AvaPic="/profileIcon4.svg"
+                        <NotificationBox AvaPic={badgesPaths.avatars.profile4}
                             text="flybi replied to your queery 'Is there a term for ..."/>
                     </FlexBox>
                 </FlexBox>

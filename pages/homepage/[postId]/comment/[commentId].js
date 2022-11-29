@@ -14,7 +14,7 @@ import {
     UserContext,
 } from '../../../../lib/contexts';
 import {useUser} from '../../../../lib/hooks/useUser';
-import * as postService from '../../../../lib/postService';
+import * as postService from '../../../../lib/services/postService';
 
 export default function Comment({post, comment}) {
     const router = useRouter();

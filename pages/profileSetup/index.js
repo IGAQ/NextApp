@@ -1,10 +1,7 @@
-import { CustomProfile } from '../../components/Templates/Common/CustomProfile';
 import * as userService from '../../lib/services/userService';
-import {useRouter} from 'next/router';
+import {CustomProfile} from '../../components/Templates/Common/CustomProfile';
 
-export default function ProfileSet() {
-    const router = useRouter();
-
+export default function ProfileSetup() {
     const handleSubmit = async ({
         avatar,
         pronouns,
@@ -27,13 +24,7 @@ export default function ProfileSet() {
         });
     };
 
-    const handleSkipNow = async () => {
-        await router.push('/profile');
-    };
-
     return (
-        <div>
-            <CustomProfile onSubmit={handleSubmit} onSkipNow={handleSkipNow} />
-        </div>
+        <CustomProfile onSubmit={handleSubmit} onSkipNow={() => ''} editMode={true} />
     );
 }

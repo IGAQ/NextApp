@@ -57,21 +57,21 @@ export function Splash() {
             >
                 <Carousel.Slide>
                     <ImageDiv>
-                        <SplashImg img='/Carousel_1.svg'/>
+                        <SplashImg img='/assets/images/carousels/Carousel_1.svg'/>
                         <PostContent textAlign="center"
                             content="Safely ask a question (“Queery”) or share a story with like-minded LGBTQA+ users seeking to share experiences."/>
                     </ImageDiv>
                 </Carousel.Slide>
                 <Carousel.Slide>
                     <ImageDiv>
-                        <SplashImg img='/Carousel_2.svg'/>
+                        <SplashImg img='/assets/images/carousels/Carousel_2.svg'/>
                         <PostContent textAlign="center" text-align="center"
                             content="Access curated resources such as informative articles about LGBTQA+ related content."/>
                     </ImageDiv>
                 </Carousel.Slide>
                 <Carousel.Slide>
                     <ImageDiv>
-                        <SplashImg img='/Carousel_3.svg'/>
+                        <SplashImg img='/assets/images/carousels/Carousel_3.svg'/>
                         <PostContent textAlign="center"
                             content="Customize your profile and easily view your saved articles and saved posts."/>
                     </ImageDiv>

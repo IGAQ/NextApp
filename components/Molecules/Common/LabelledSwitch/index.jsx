@@ -12,7 +12,7 @@ export function LabelledSwitch({
         <FlexBox dir="row">
             <Text text={label} size="1rem"></Text>
             <Spacer width="50px"/>
-            <StyledSwitch checked={checked} setChecked={setChecked}/>
+            <StyledSwitch onChange={setChecked}/>
         </FlexBox>
     );
 }
