@@ -4,6 +4,8 @@ const PostTitleDiv = styled.div`
   font-size: 1.5rem;
   font-weight: 700;
   margin: .6em 0 .6em 0;
+  text-align: center;
+  padding: ${props => props.padding || '0'};
 `;
 
 export function PostTitle({title = 'Title', ...otherProps}) {

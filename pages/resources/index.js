@@ -9,11 +9,12 @@ import { SlideMenu } from '../../components/Molecules/Common/SlideMenu';
 import { UserActionsHandlersContext } from '../../lib/contexts';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { SavedResourceContext } from '../../lib/contexts';
 
 export default function Resources(props) {
     const r = useRouter();
     const [filterMenu, openFilterMenu] = useState(false);
-
+    
     function handleOpenFilter(){
         openFilterMenu(true);
     }
@@ -23,7 +24,6 @@ export default function Resources(props) {
     }
 
     function handleResourceClick({resource}) {
-        console.log('clicked');
         r.push({
             pathname: '/resources/[resourceID]',
             query: {
@@ -31,6 +31,7 @@ export default function Resources(props) {
                 id: resource.id,
                 content: resource.content,
                 tags: resource.tags,
+                author: resource.author,
             },
         });
     }
@@ -57,7 +58,7 @@ export default function Resources(props) {
                             title={resource.title}
                             content={resource.content}
                             tags={resource.tags}
-                            onClick = {() => handleResourceClick({resource})}
+                            onClick = {() => r.push('resources/' + resource.id)}
                         />
                     ))}
                 </FlexBox>
