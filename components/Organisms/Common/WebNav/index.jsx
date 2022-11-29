@@ -13,23 +13,25 @@ import { Logo } from '../../../Atoms/Common/Logo';
 import {SearchAndFilter} from '../SearchAndFilter';
 import {FilterContext, UserActionsHandlersContext, UserContext} from '../../../../lib/contexts';
 import styles from './WebNav.module.css';
+import { SearchBar } from '../../../Molecules/Common/SearchBar';
+import { Text } from '../../../Atoms/Common/Text';
+import { Spacer } from '../../../Atoms/Common/Spacer';
 
 const NavBase = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  padding: 15px 25px 10px;
   z-index: 15;
 `;
 
 const StyledLink = styled.a`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: 0.85rem;
-  padding: 0 20px;
+  padding: 0 15px;
 `;
 
 const IconHolder = styled(motion.div)`
@@ -39,14 +41,15 @@ const IconHolder = styled(motion.div)`
 
 const Middle = styled.button`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: 100%;
+  border-radius: 10px;
   background-color: #ff758c;
   color: #ffffff;
   padding: 12px 14px 10px;
+  width: 15em;
 `;
 
 const WebNavBase = styled.div`
@@ -78,14 +81,6 @@ export function WebNav() {
         setPostModal(true);
 
     }
-    
-    function handleOpenFilter() {
-        openFilterMenu(true);
-    }
-
-    function handleCloseFilter() {
-        openFilterMenu(false);
-    }
 
     function handleAppliedFilters({filters, sorts}) {
         setFilteringAndSorting({filters, sorts});
@@ -112,58 +107,55 @@ export function WebNav() {
     return (
         <WebNavBase>
             <div onClick={()=> r.push('/homepage')}>
-                <Logo height={50} width={50} />
+                <Logo height={95} width={95} />
             </div>
+            <Spacer axis="horizontal" size={20}/>
+
             <UserActionsHandlersContext.Provider value={{
-                handleOpenFilter,
                 handleSearchTermChange,
             }}>
-                <SearchAndFilter/>
+                <SearchBar/>
+                <Spacer axis="horizontal" size={125}/>
             </UserActionsHandlersContext.Provider>
             {postModal && <NewPostModal onClick={closePostModal}/>}
             <NavBase>
-                <Link href='/homepage' scroll={false}>
-                    <StyledLink className={r.pathname === '/homepage' ? styles.activePage : ' '}>
-                        Home
-                        <IconHolder>
-                            <AiFillHome size={28}/>
-                        </IconHolder>
-                        
-                    </StyledLink>
-                </Link>
                 <Link href='/resources' scroll={false}>
                     <StyledLink className={r.pathname === '/resources' ? styles.activePage : ' '}>
-                        Resources
                         <IconHolder>
-                            <ImBooks size={28}/>
+                            <ImBooks size={24}/>
                         </IconHolder>
-                        
+                        <Spacer axis="horizontal" size={5}/>
+                        Resources
                     </StyledLink>
                 </Link>
-                <Middle onClick={openPostModal}>
-                    <IconHolder>
-                        <BsPlusLg size={26}/>
-                    </IconHolder>
-                    {/* <Spacer axis="vertical" size={10}/> */}
-                </Middle>
+                
                 <Link href='/notifications' scroll={false}>
                     <StyledLink className={r.pathname === '/notifications' ? styles.activePage : ' '}>
-                        Notifications
-                        <IconHolder margin="0 0 4px 0">
-                            <FaBell size={22}/>
-                        </IconHolder>
                         
+                        <IconHolder margin="0 0 0 0">
+                            <FaBell size={18}/>
+                        </IconHolder>
+                        <Spacer axis="horizontal" size={5}/>
+                        Notifications
                     </StyledLink>
                 </Link>
                 <Link href='/profile' scroll={false}>
                     <StyledLink className={r.pathname === '/profile' ? styles.activePage : ' '}>
-                        Profile
                         <IconHolder>
-                            <BsPersonFill size={28}/>
+                            <BsPersonFill size={24}/>
                         </IconHolder>
-                        
+                        <Spacer axis="horizontal" size={5}/>
+                        Profile
                     </StyledLink>
                 </Link>
+                <Spacer axis="horizontal" size={30}/>
+                <Middle onClick={openPostModal}>
+                    <IconHolder>
+                        <BsPlusLg size={16}/>
+                    </IconHolder>
+                    <Spacer axis="horizontal" size={10}/>
+                    <Text size = "1em" weight = "500" color = "#ffffff" text = "New queery/story"/>
+                </Middle>
 
             </NavBase>
         </WebNavBase>
