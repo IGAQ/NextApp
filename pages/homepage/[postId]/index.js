@@ -27,6 +27,8 @@ export default function Post({post}) {
     const [createPrompt, setCommentPrompt] = useState(false);
 
     const [error, setError] = useState(null);
+    const [pinSuccess, setPinSuccess] = useState(false);
+    const [unpinSuccess, setUnpinSuccess] = useState(false);
 
     const togglePrompt = () => setCommentPrompt(!createPrompt);
 
@@ -38,6 +40,12 @@ export default function Post({post}) {
     const handlePinClick = async ({commentId, isPinning}) => {
         try {
             await postService.pinOrUnpinComment({commentId, isPinning});
+            if (isPinning) {
+                setPinSuccess(true);
+                return;
+            }
+            setUnpinSuccess(true);
+            return;
         } catch (error) {
             setError(error);
         }
@@ -62,7 +70,7 @@ export default function Post({post}) {
             setComments([...comments]);
             setIsLoadingComments(false);
         })();
-    }, [post.postId]);
+    }, [post.postId, pinSuccess, unpinSuccess]);
 
     const flatComments = (comments, nestedLevel = 0, parentId = null) => {
         return comments.reduce((acc, comment) => {
@@ -132,6 +140,22 @@ export default function Post({post}) {
                         title="Error"
                         content={error}
                         moreText="Please try again."
+                    />
+                )}
+                {pinSuccess && (
+                    <ModalAlert
+                        onClick={() => setPinSuccess(false)}
+                        title="Success"
+                        content={'You have successfully pinned a comment'}
+                        moreText="Marked as resolved!"
+                    />
+                )}
+                {unpinSuccess && (
+                    <ModalAlert
+                        onClick={() => setUnpinSuccess(false)}
+                        title="Success"
+                        content={'You have successfully unpinned a comment'}
+                        moreText="Feel free to pin a new comment!"
                     />
                 )}
                 <PostContext.Provider value={post}>
