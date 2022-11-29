@@ -43,7 +43,7 @@ export default function Signup() {
             )}
             {success && (
                 <ModalAlert
-                    onClick={async () => await router.push('/')}
+                    onClick={async () => await router.push('/CustomProfile')}
                     title='Success'
                     content={'You have successfully registered!'}
                     moreText='Welcome to the community!'

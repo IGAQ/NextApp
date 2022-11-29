@@ -210,16 +210,6 @@ export function CustomProfile({
                 if (!currentSelectedSexuality) {
                     setError('Please choose a sexuality.');
                 }
-                console.log({
-                    avatar: avatars[currentIndexForAvatar].value,
-                    pronouns: pronouns[currentIndexForPronoun].value,
-                    openness: opennesses[currentIndexForOpenness].value,
-                    bio: inputBio,
-                    sexuality: currentSelectedSexuality,
-                    isGenderPrivate,
-                    isSexualityPrivate,
-                    isOpennessPrivate,
-                });
                 onSubmit({
                     avatar: avatars[currentIndexForAvatar].value,
                     pronouns: pronouns[currentIndexForPronoun].value,
