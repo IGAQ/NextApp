@@ -25,6 +25,8 @@ export default function Comment({post, comment}) {
     const [createPrompt, setCommentPrompt] = useState(false);
 
     const [error, setError] = useState(null);
+    const [pinSuccess, setPinSuccess] = useState(false);
+    const [unpinSuccess, setUnpinSuccess] = useState(false);
 
     const togglePrompt = () => setCommentPrompt(!createPrompt);
 
@@ -36,6 +38,12 @@ export default function Comment({post, comment}) {
     const handlePinClick = async ({commentId, isPinning}) => {
         try {
             await postService.pinOrUnpinComment({commentId, isPinning});
+            if (isPinning) {
+                setPinSuccess(true);
+                return;
+            }
+            setUnpinSuccess(true);
+            return;
         } catch (error) {
             setError(error);
         }
@@ -62,7 +70,7 @@ export default function Comment({post, comment}) {
             setComments([...comments]);
             setIsLoadingComments(false);
         })();
-    }, [comment.commentId]);
+    }, [comment.commentId, pinSuccess, unpinSuccess]);
 
     const flatComments = (comments, nestedLevel = 0, parentId = null) => {
         return comments.reduce((acc, comment) => {
@@ -88,12 +96,13 @@ export default function Comment({post, comment}) {
         const result = [];
         const flattenedComments = flatComments(comments);
         for (let comment of flattenedComments) {
-            result.push(
+            const commentComponent = (
                 <PostContext.Provider key={comment.commentId} value={comment}>
                     <UserActionsHandlersContext.Provider
                         value={{
                             data: {
                                 parentId: comment.commentId,
+                                postId: post.postId,
                                 postAuthorId: post.authorUser.userId,
                                 isPost: false,
                                 nestedLevel: comment.nestedLevel,
@@ -109,8 +118,13 @@ export default function Comment({post, comment}) {
                             }
                         />
                     </UserActionsHandlersContext.Provider>
-                </PostContext.Provider>,
+                </PostContext.Provider>
             );
+            if (comment.pinned) {
+                result.unshift(commentComponent);
+            } else {
+                result.push(commentComponent);
+            }
         }
         return result;
     };
@@ -126,6 +140,22 @@ export default function Comment({post, comment}) {
                         title="Error"
                         content={error}
                         moreText="Please try again."
+                    />
+                )}
+                {pinSuccess && (
+                    <ModalAlert
+                        onClick={() => setPinSuccess(false)}
+                        title="Success"
+                        content={'You have successfully pinned a comment'}
+                        moreText="Marked as resolved!"
+                    />
+                )}
+                {unpinSuccess && (
+                    <ModalAlert
+                        onClick={() => setUnpinSuccess(false)}
+                        title="Success"
+                        content={'You have successfully unpinned a comment'}
+                        moreText="Feel free to pin a new comment!"
                     />
                 )}
                 <PostContext.Provider value={comment}>
