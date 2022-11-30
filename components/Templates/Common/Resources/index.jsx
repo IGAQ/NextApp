@@ -1,4 +1,3 @@
-import { Background } from '../../../../styles/globals';
 import LetterSection from '../../../Atoms/Common/LetterSection';
 import Image from 'next/image';
 import { ABCSelect } from '../../../Atoms/Common/ABCselect';
@@ -6,7 +5,7 @@ import { ABCSelect } from '../../../Atoms/Common/ABCselect';
 export function Flags(props) {
     // const { flags } = props;
     return (
-        <Background>
+        <>
             <ABCSelect />
             Flags
             {/* <div className="flags">
@@ -18,14 +17,14 @@ export function Flags(props) {
                     </div>
                 ))}
             </div> */}
-        </Background>
+        </>
     );
 }
 
 export function Terms(props) {
     // const { terms } = props;
     return (
-        <Background>
+        <>
             <ABCSelect />
             Terms
             {/* <div className="terms">
@@ -37,6 +36,6 @@ export function Terms(props) {
                     </div>
                 ))}
             </div> */}
-        </Background>
+        </>
     );
 }

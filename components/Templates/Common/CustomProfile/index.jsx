@@ -200,7 +200,7 @@ export function CustomProfile({
     return !user || !userAuthLoaded ? (
         <PageLoader />
     ) : (
-        <Background height='100vh'>
+        <>
             <FlexBox dir='row' justify='space-between' maxWidth='50rem' margin='auto'>
                 <BackArrow/>
                 {!editMode && (<div onClick={onSkipNow}>Skip for now</div>)}
@@ -333,10 +333,10 @@ export function CustomProfile({
                         />
                     </FlexBox>
                 </div>
-                <FlexBox margin='3em'>
+                <FlexBox padding='3em'>
                     <Button size='large' color='primary' type='submit' label={editMode ? 'Save Changes' : 'Set up Profile'}></Button>
                 </FlexBox>
             </form>
-        </Background>
+            </>
     );
 } 

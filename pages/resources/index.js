@@ -149,6 +149,7 @@ export default function Resources(props) {
                     {isLoading ? (
                         <InPageLoader/>
                     ) : resources.filter(r => r.isFiltered !== undefined ? r.isFiltered : true).map((resource) => (
+
                         <ResourceCard
                             key={resource.title}
                             title={resource.title}
