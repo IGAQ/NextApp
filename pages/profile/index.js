@@ -29,7 +29,7 @@ export default function Profile(props) {
                 <Drawer
                     opened={drawerOpened}
                     onClose={() => setDrawerOpened(false)}
-                    title="Username"
+                    title={user.username}
                     padding="md"
                     size="lg"
                     position="right"

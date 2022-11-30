@@ -19,7 +19,7 @@ export default function Signup() {
 
     const handleRegister = async ({username, password, email}) => {
         try {
-            const recaptchaToken = await getRecaptchaToken(UserActionsEnum.Login, process.env.NEXT_PUBLIC_RECAPTCHA_KEY);
+            const recaptchaToken = await getRecaptchaToken(UserActionsEnum.SignUp, process.env.NEXT_PUBLIC_RECAPTCHA_KEY);
             await register(username, email, password, recaptchaToken);
             setSuccess(true);
         } catch (error) {

@@ -333,7 +333,7 @@ export function CustomProfile({
                         />
                     </FlexBox>
                 </div>
-                <FlexBox margin='3em'>
+                <FlexBox padding='3em'>
                     <Button size='large' color='primary' type='submit' label={editMode ? 'Save Changes' : 'Set up Profile'}></Button>
                 </FlexBox>
             </form>
