@@ -14,7 +14,7 @@ const OTDCardDiv = styled.div`
   border-radius: 1rem;
   margin: 2rem;
   padding: 2rem 0 1.5rem 0;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 13px 0px #4e6881aa;
 `;
 
 export function OTDCard({title, prompt, replies, answer, setAnswer, color, onClick}) {

@@ -22,7 +22,7 @@ border-left: ${props => props.borderLeft};
 `;
 
 export const ModalBackdrop = styled.div`
-background-color: #3F3924C9;
+background-color: #4E586C91;
   z-index: 9;
   width: 100vw;
   height: 100vh;

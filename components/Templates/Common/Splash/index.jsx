@@ -37,7 +37,7 @@ export function Splash() {
         <Background height="100vh">
             <PostDiv>
                 <Logo/>
-                <OTDTitle title="I got a queery" fontSize="2em"/>
+                <OTDTitle color ="#ff758c" title="I got a queery" fontSize="2em"/>
                 <Spacer size="20"/>
             </PostDiv>
             <Carousel 
@@ -77,6 +77,7 @@ export function Splash() {
                     </ImageDiv>
                 </Carousel.Slide>
             </Carousel>
+            <Spacer size="25"/>
             <PostDiv>
                 {
                     userAuthLoaded ?
@@ -114,6 +115,7 @@ export function Splash() {
                         )
                 }
             </PostDiv>
+            <Spacer size="35"/>
         </Background>
     );
 }

@@ -10,6 +10,7 @@ const TitleDiv = styled.div`
     font-size: ${props => props.fontSize || '50px'};
     font-family: 'AmaticSC-Bold',serif; 
     text-transform: uppercase;
+    color: ${props => props.color || 'black'};
     `;
 
 export function OTDTitle({ title='Queery of the Day'}) {

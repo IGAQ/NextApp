@@ -158,6 +158,7 @@ export default function Post({post}) {
                         moreText="Feel free to pin a new comment!"
                     />
                 )}
+                <BackArrow margin = '0' />
                 <PostContext.Provider value={post}>
                     <UserActionsHandlersContext.Provider
                         value={{
