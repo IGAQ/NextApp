@@ -36,7 +36,7 @@ export function Splash() {
         <>
             <PostDiv>
                 <Logo/>
-                <OTDTitle title="I got a queery" fontSize="2em"/>
+                <OTDTitle color ="#ff758c" title="I got a queery" fontSize="2em"/>
                 <Spacer size="20"/>
             </PostDiv>
             <Carousel 
@@ -76,6 +76,7 @@ export function Splash() {
                     </ImageDiv>
                 </Carousel.Slide>
             </Carousel>
+            <Spacer size="25"/>
             <PostDiv>
                 {
                     userAuthLoaded ?
@@ -86,9 +87,6 @@ export function Splash() {
                                         (
                                             <>
                                                 <OTDTitle title={`Welcome, ${user.username}!`} fontSize="1.6em"/>
-                                                <Spacer size="20"/>
-                                                <Button size='long' onClick={() => r.push('/CustomProfile')}
-                                                    label="Profile Set up"/>
                                                 <Spacer size="20"/>
                                                 <Button size='long' onClick={() => r.push('/homepage')}
                                                     label="Homepage"/>
@@ -116,6 +114,8 @@ export function Splash() {
                         )
                 }
             </PostDiv>
+            <Spacer size="35"/>
         </>
+
     );
 }

@@ -22,14 +22,14 @@ export const FlexBox = styled.div`
 `;
 
 export const ModalBackdrop = styled.div`
-    background-color: #3f3924c9;
-    z-index: 9;
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    overflow: ${(props) => props.overflow || 'hidden'};
+background-color: #4E586C91;
+  z-index: 9;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  overflow: ${props => props.overflow || 'hidden'};
 `;
 
 export const Background = styled.div`

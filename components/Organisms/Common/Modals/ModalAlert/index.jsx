@@ -49,13 +49,14 @@ export function ModalAlert({
 
     return (
         <FlexBox>
-            <ModalBox border="5px solid #FF758C" padding={modalBoxPadding} align="stretch"
+            <ModalBox minWidth="50%" padding={modalBoxPadding} align="stretch"
                 borderRadius="20px"
                 initial={{y: 500}}
                 animate={{y: -300, opacity: 1}}
                 transiton={{duration: 100, delay: 500}}
                 exit={{y: 1000, opacity: 0}}>
                 <FlexBox>
+                    <Spacer axis="vertical" size={5}/>
                     <Text weight={titleTextWeight} color={titleColor} text={title}/>
                     <Spacer axis="vertical" size={15}/>
                     <Text textAlign="center" size={contentTextSize} weight={contentTextWeight} text={content} color={contentColor} />

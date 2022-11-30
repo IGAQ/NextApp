@@ -12,7 +12,7 @@ const BarBase = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 0 10px 0 10px;
-  width: 65%;
+  width: 76%;
   min-width: 250px;
 `;
 

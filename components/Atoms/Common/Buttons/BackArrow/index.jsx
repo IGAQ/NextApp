@@ -1,16 +1,24 @@
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import {useRouter} from 'next/router';
 import styled from 'styled-components';
+import { Spacer } from '../../Spacer';
 
 const ArrowCont = styled.div`
-  margin: 25px 0 0 25px;
+  margin: ${props => props.margin || '0'};
+  position: relative;
+    top: ${props => props.top || '25px'};
+    left: ${props => props.left || '25px'};
 `;
 
 export function BackArrow(props) {
     const r = useRouter();
     return (
-        <ArrowCont>
-            <ArrowBackRoundedIcon margin="25px 0 0 25px" onClick={() => r.back()}/>
-        </ArrowCont>
+        <>
+            <ArrowCont>
+                <ArrowBackRoundedIcon margin={props.margin} onClick={() => r.back()}/>
+            </ArrowCont>
+            <Spacer size = {45}/>
+        </>
+        
     );
 }

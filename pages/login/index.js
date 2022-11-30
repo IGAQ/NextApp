@@ -50,8 +50,8 @@ export default function Login() {
                     moreText="Please try again."
                 />
             )}
-            <Banner bannerBgColor="#A5CEFF" bannerTitle="Welcome back!" />
-            <LoginForm onLogin={handleLogin} />
+            <Banner bannerBgColor='#DFEEFF' bannerTitle='Welcome back!'/>
+            <LoginForm onLogin={handleLogin}/>
         </FlexBox>
     );
 }

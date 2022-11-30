@@ -92,20 +92,20 @@ export function PostForm({onSubmit, postTags, type}) {
                             label="Post title" id="title" placeholder="Enter your title"/>
                         <Spacer axis="vertical" size={25}/>
                         <MaxTextArea onChange={(e) => setContent(e.target.value)} name="content" id="content"
-                            text={content} label="Queery" placeholder="Enter your queery" maxLength="250"/>
+                            text={content} label="Queery" placeholder="Enter your Queery" maxLength="250"/>
                         <Spacer axis="vertical" size={25}/>
                         <Breakline/>
                         <Spacer axis="vertical" size={25}/>
                         <FlexBox>
+                            <LabelledSwitch checked={anonymous} setChecked={() => setAnonymous(!anonymous)}
+                                label='Post anonymously'></LabelledSwitch>
+                            <Spacer axis="vertical" size={35}/>
                             <RadioGroup tone={tone} setTone={setTone}/>
                             <Spacer axis="vertical" size={35}/>
                             <ChipGroup onChange={setTag} postTags={postTags}/>
-                            <Spacer axis="vertical" size={35}/>
-                            <LabelledSwitch checked={anonymous} setChecked={() => setAnonymous(!anonymous)}
-                                label='Post anonymously'></LabelledSwitch>
                         </FlexBox>
                         <Spacer axis="vertical" size={35}/>
-                        <StyledSubmitButton text="Submit queery"/>
+                        <StyledSubmitButton text="Submit Queery"/>
                     </FlexBox>
                 </form>
 
@@ -156,7 +156,7 @@ export function PostForm({onSubmit, postTags, type}) {
                         <Spacer axis="vertical" size={25}/>
                         <MaxTextArea onChange={(e) => setContent(e.target.value)} borderBottom="2px solid #C2ADff"
                             boxShadow="0 0 2px 2px #38004d" name="content" rows="15" id="content"
-                            text={content} label="Story" placeholder="Enter your queery" maxLength="5000"/>
+                            text={content} label="Story" placeholder="Enter your Story" maxLength="5000"/>
                         <Spacer axis="vertical" size={25}/>
                         <Breakline/>
                         <Spacer axis="vertical" size={25}/>
@@ -169,7 +169,7 @@ export function PostForm({onSubmit, postTags, type}) {
                                 label='Post anonymously'></LabelledSwitch>
                         </FlexBox>
                         <Spacer axis="vertical" size={35}/>
-                        <StyledSubmitButton text="Submit story"/>
+                        <StyledSubmitButton text="Submit Story"/>
                     </FlexBox>
                 </form>
 
