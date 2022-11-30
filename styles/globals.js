@@ -29,7 +29,7 @@ background-color: #4E586C91;
   position: fixed;
   top: 0%;
   left: 0%;
-overflow: ${props => props.overflow || 'hidden'};
+  overflow: ${props => props.overflow || 'hidden'};
 `;
 
 export const Background = styled.div`
