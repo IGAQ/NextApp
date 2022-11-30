@@ -1,23 +1,26 @@
 import '../styles/globals.css';
-import { MobileNav } from '../components/Organisms/Common/MobileNav/MobileNav';
-import { useRouter } from 'next/router';
-import { Spacer } from '../components/Atoms/Common/Spacer';
-import { PageLoader } from '../components/Atoms/Common/Loader';
+import {MobileNav} from '../components/Organisms/Common/MobileNav/MobileNav';
+import {useRouter} from 'next/router';
+import {Spacer} from '../components/Atoms/Common/Spacer';
+import {PageLoader} from '../components/Atoms/Common/Loader';
 import {WebNav} from '../components/Organisms/Common/WebNav';
 import Router from 'next/router';
 import React from 'react';
-import {StickyDiv2 } from '../styles/globals';
+import {StickyDiv2} from '../styles/globals';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({Component, pageProps}) {
     const r = useRouter();
-    function showBottomNav(){
-        if (router.pathname === '/login' || router.pathname === '/newQueery'){
-            return false; 
-        }
-        else{
+    function showBottomNav() {
+        if (
+            r.pathname === '/login' ||
+            r.pathname === '/signup' ||
+            r.pathname === '/newQueery'
+        ) {
+            return false;
+        } else {
             return true;
         }
-    } 
+    }
 
     const [loading, setLoading] = React.useState(false);
     React.useEffect(() => {
@@ -57,7 +60,14 @@ function MyApp({ Component, pageProps }) {
 
     React.useEffect(() => {
         const handlePage = () => {
-            if (r.pathname === '/login' || r.pathname === '/newQueery' || r.pathname === '/newStory' || r.pathname === '/dashboard' || r.pathname === '/' ) {
+            if (
+                r.pathname === '/login' ||
+                r.pathname === '/signup' ||
+                r.pathname === '/newQueery' ||
+                r.pathname === '/newStory' ||
+                r.pathname === '/dashboard' ||
+                r.pathname === '/'
+            ) {
                 setShowNav(false);
             } else {
                 setShowNav(true);
@@ -73,23 +83,27 @@ function MyApp({ Component, pageProps }) {
                 <PageLoader />
             ) : (
                 <>
-                    {showNav && !mobile && <> 
-                        <WebNav />
-                        <Spacer axis="vertical" size={70}/> 
-                        <Component {...pageProps} />  
-                    </>}
-                    {showNav && mobile && <> 
-                        <Component {...pageProps} /> 
-                        <Spacer axis="vertical" size={78}/> 
-                        <MobileNav/> 
-                    </>}
-                    
-                    {!showNav && <> 
-                        <Component {...pageProps} />
-                    </>}
-                    
+                    {showNav && !mobile && (
+                        <>
+                            <WebNav />
+                            <Spacer axis="vertical" size={70} />
+                            <Component {...pageProps} />
+                        </>
+                    )}
+                    {showNav && mobile && (
+                        <>
+                            <Component {...pageProps} />
+                            <Spacer axis="vertical" size={55} />
+                            <MobileNav />
+                        </>
+                    )}
+
+                    {!showNav && (
+                        <>
+                            <Component {...pageProps} />
+                        </>
+                    )}
                     {/* {<showBottomNav && MobileNav/>} */}
-                    
                 </>
             )}
         </>
