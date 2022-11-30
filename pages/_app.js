@@ -80,7 +80,7 @@ function MyApp({ Component, pageProps }) {
                     </>}
                     {showNav && mobile && <> 
                         <Component {...pageProps} /> 
-                        <Spacer axis="vertical" size={55}/> 
+                        <Spacer axis="vertical" size={78}/> 
                         <MobileNav/> 
                     </>}
                     
