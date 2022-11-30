@@ -6,7 +6,7 @@ import { BackArrow } from '../../components/Atoms/Common/Buttons/BackArrow';
 import { PostTitle } from '../../components/Molecules/Post/PostTitle';
 import {ModalAlert} from '../../components/Organisms/Common/Modals/ModalAlert';
 import {useState} from 'react';
-import * as authService from '../../lib/authService';
+import * as authService from '../../lib/services/authService';
 import {useRouter} from 'next/router';
 import {useUser} from '../../lib/hooks/useUser';
 import {PageLoader} from '../../components/Atoms/Common/Loader';
