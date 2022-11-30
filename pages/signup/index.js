@@ -7,6 +7,8 @@ import {ModalAlert} from '../../components/Organisms/Common/Modals/ModalAlert';
 import {useRouter} from 'next/router';
 import {useUser} from '../../lib/hooks/useUser';
 import {PageLoader} from '../../components/Atoms/Common/Loader';
+import {getRecaptchaToken} from '../../lib/utils';
+import {UserActionsEnum} from '../../lib/constants/userInteractions';
 
 export default function Signup() {
     const router = useRouter();
@@ -17,7 +19,8 @@ export default function Signup() {
 
     const handleRegister = async ({username, password, email}) => {
         try {
-            await register(username, email, password);
+            const recaptchaToken = await getRecaptchaToken(UserActionsEnum.Login, process.env.NEXT_PUBLIC_RECAPTCHA_KEY);
+            await register(username, email, password, recaptchaToken);
             setSuccess(true);
         } catch (error) {
             const errorMessage = error.response.data.message;
