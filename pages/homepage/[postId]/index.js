@@ -17,6 +17,8 @@ import {
 import {useUser} from '../../../lib/hooks/useUser';
 import * as postService from '../../../lib/services/postService';
 import {Background} from '../../../styles/globals';
+import {getRecaptchaToken} from '../../../lib/utils';
+import {UserActionsEnum} from '../../../lib/constants/userInteractions';
 
 export default function Post({post}) {
     const router = useRouter();
@@ -53,11 +55,13 @@ export default function Post({post}) {
 
     const handleSubmitComment = async ({parentId, commentContent, isPost}) => {
         console.log('submitting comment', parentId, commentContent);
+        const recaptchaToken = await getRecaptchaToken(UserActionsEnum.CreateComment, process.env.NEXT_PUBLIC_RECAPTCHA_KEY);
         try {
             return await postService.newCommentOn({
                 postId: parentId,
                 commentContent,
                 isPost,
+                googleRecaptchaToken: recaptchaToken,
             });
         } catch (error) {
             setError(error);

@@ -51,7 +51,7 @@ export default function Resources(props) {
                     <Button size="short" color="#000000" label="LGBTQA+ Flags" backgroundColor="#A5CEFF"/>
                 </FlexBox>
                 <Spacer axis="vertical" size={25}/>
-                <FlexBox margin="0" align="stretch" flex="1">
+                <FlexBox margin="auto" maxWidth='50em' align="stretch" flex="1">
                     {resources.map((resource) => (
                         <ResourceCard
                             key={resource.title}

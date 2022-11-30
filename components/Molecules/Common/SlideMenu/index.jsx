@@ -24,8 +24,8 @@ const SlideMenuBase = styled(motion.div)`
   top: 0.8em;
 `;
 
-export function SlideMenu({currentTab, onClick}) {
-    const {filters, setFilters, handleAppliedFilters} = useContext(FilterContext);
+export function SlideMenu({currentTab, onClick, filters, setFilters}) {
+    const {handleAppliedFilters} = useContext(FilterContext);
 
     const [sorts, setSorts] = useState({
         'recent': false,

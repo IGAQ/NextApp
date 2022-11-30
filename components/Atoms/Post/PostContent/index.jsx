@@ -9,6 +9,7 @@ const PostContentDiv = styled.div`
   max-height: ${props => props.maxHeight || '4.2em'};
   overflow: hidden;
   text-align: ${props => props.textAlign};
+  padding-inline: 20px;
 `;
 
 
