@@ -13,7 +13,7 @@ export function PostTagBox({tags}) {
     return (
         <PostTagBoxDiv>
             {tags.map((tag) => (
-                <PostTag key={tag.tagId} text={tag.tagName} tagBgColor={tag.tagColor}/>
+                <PostTag key={'postTag' + tag.tagName} text={tag.tagName} tagBgColor={tag.tagColor}/>
             ))}
         </PostTagBoxDiv>
     );

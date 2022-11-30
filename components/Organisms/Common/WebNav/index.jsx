@@ -88,13 +88,13 @@ export function WebNav() {
     }
 
     const handleSearchTermChange = (term) => {
-        if (lastTimeSearchTermChanged.current + 50 < Date.now()) {
-            searchTerm.current = term;
-            lastTimeSearchTermChanged.current = Date.now();
+        // if (lastTimeSearchTermChanged.current + 50 < Date.now()) {
+        //     searchTerm.current = term;
+        //     lastTimeSearchTermChanged.current = Date.now();
 
-            // search
-            eventService.emit('search-triggered', term);
-        }
+        //     // search
+        //     eventService.emit('search-triggered', term);
+        // }
     };
 
     useEffect(() => {

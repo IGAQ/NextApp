@@ -24,8 +24,8 @@ const SlideMenuBase = styled(motion.div)`
   top: 0.8em;
 `;
 
-export function SlideMenu({currentTab, onClick}) {
-    const {filters, setFilters, handleAppliedFilters} = useContext(FilterContext);
+export function SlideMenu({currentTab, onClick, filters, setFilters}) {
+    const {handleAppliedFilters} = useContext(FilterContext);
 
     const [sorts, setSorts] = useState({
         'recent': false,
@@ -84,6 +84,7 @@ export function SlideMenu({currentTab, onClick}) {
                         <FlexBox align="flex-start">
                             <Checkbox color="red" size="md"
                                 value='mostRecent'
+                                checked={sorts['recent']}
                                 label='Most Recent'
                                 onChange={() => handleSortChange('recent', !sorts['recent'])}
                                 styles={(theme) => ({
@@ -95,6 +96,7 @@ export function SlideMenu({currentTab, onClick}) {
                             <Spacer axis="vertical" size={15}/>
                             <Checkbox color="red" size="md"
                                 value='mostLikes'
+                                checked={sorts['likes']}
                                 label='Most Likes'
                                 onChange={() => handleSortChange('likes', !sorts['likes'])}
                                 styles={(theme) => ({
@@ -250,8 +252,8 @@ export function SlideMenu({currentTab, onClick}) {
                         <Button label="Apply Filters" onClick={() => handleAppliedFilters({filters, sorts})}/>
                     </FlexBox>
                 </SlideMenuBase>
+                <ModalBackdrop/>
             </AnimatePresence>
-            <ModalBackdrop/>
         </>
     );
 }

@@ -3,7 +3,6 @@ import {PostContent} from '../../../Atoms/Post/PostContent';
 import {OTDTitle} from '../../../Atoms/OfTheDay/OTDTitle';
 import {Logo} from '../../../Atoms/Common/Logo';
 import {Spacer} from '../../../Atoms/Common/Spacer';
-import {Background} from '../../../../styles/globals';
 import {Button} from '../../../Atoms/Common/Buttons/Button';
 import {SplashImg} from '../../../Atoms/Common/SplashImg';
 import {useRouter} from 'next/router';
@@ -34,7 +33,7 @@ export function Splash() {
     const autoplay = useRef(Autoplay({delay: 4000}));
 
     return (
-        <Background height="100vh">
+        <>
             <PostDiv>
                 <Logo/>
                 <OTDTitle color ="#ff758c" title="I got a queery" fontSize="2em"/>
@@ -89,6 +88,9 @@ export function Splash() {
                                             <>
                                                 <OTDTitle title={`Welcome, ${user.username}!`} fontSize="1.6em"/>
                                                 <Spacer size="20"/>
+                                                <Button size='long' onClick={() => r.push('/CustomProfile')}
+                                                    label="Profile Set up"/>
+                                                <Spacer size="20"/>
                                                 <Button size='long' onClick={() => r.push('/homepage')}
                                                     label="Homepage"/>
                                                 <Spacer size="20"/>
@@ -116,6 +118,6 @@ export function Splash() {
                 }
             </PostDiv>
             <Spacer size="35"/>
-        </Background>
+        </>
     );
 }
