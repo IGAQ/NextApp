@@ -27,8 +27,8 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
     };
 
     useEffect(() => {
-        eventService.on('search-triggered', (searchQuery) => {
-            console.log('search triggered', searchQuery);
+        const searchTriggeredCallback = (searchQuery) => {
+            // console.debug('search triggered', searchQuery);
 
             const callback = posts => {
                 let shadowed = [...posts];
@@ -49,12 +49,13 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
             } else {
                 setStories(callback);
             }
-        });
+        };
+        eventService.on('search-triggered', searchTriggeredCallback);
 
         return () => {
-            eventService.off('search-triggered');
+            eventService.off('search-triggered', searchTriggeredCallback);
         };
-    }, []);
+    }, [activeTab]);
 
     useEffect(() => {
         (async function () {
@@ -62,7 +63,6 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
             if (activeTab === 'queery') {
                 setQueeries([...posts]);
             } else {
-                console.log('setting stories', posts);
                 setStories([...posts]);
             }
         })();
@@ -71,14 +71,14 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
     useEffect(() => {
         if (filteringAndSorting) {
             const applicableFilters = { ...filteringAndSorting.filters['_common'], ...filteringAndSorting.filters[activeTab]};
-            const appliedFilters = Object.keys(applicableFilters)   .filter((key) => applicableFilters[key]);
+            const appliedFilters = Object.keys(applicableFilters).filter((key) => applicableFilters[key]);
 
             const callback = posts => {
                 const shadowed = [...posts];
                 if (appliedFilters.length > 0) {
                     for (let post of shadowed) {
-                        const postTags = post.postTags.map((tag) => tag.tagName);
-                        post.isFiltered = appliedFilters.some((filter) => postTags.includes(filter));
+                        const postTags = post.postTags.map((tag) => tag.tagName.trim().toLowerCase());
+                        post.isFiltered = appliedFilters.some((filter) => postTags.includes(filter.trim().toLowerCase()));
                     }
                 }
                 if (filteringAndSorting.sorts['recent']) {
@@ -115,36 +115,46 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
                 {queeries === null ? (
                     <InPageLoader/>
                 ) :
-                    (
-                        queeries.filter(q => q.isFiltered !== undefined ? q.isFiltered : true).map((queery) => (
-                            <PostContext.Provider key={queery.postId} value={queery}>
-                                <UserActionsHandlersContext.Provider value={{
-                                    handleClickOnPost: () => handleClickOnPost(queery.postId, 'queery'),
-                                    handleTogglePrompt: () => handleTogglePrompt(queery.postId, 'queery'),
-                                }}>
-                                    <NewPost/>
-                                    <Spacer size={10}/>
-                                </UserActionsHandlersContext.Provider>
-                            </PostContext.Provider>
-                        ))
-                    )
+                    <>
+                        {queeries.length === 0 ? (
+                            <div style={{textAlign: 'center'}}>There are no queeries made yet.</div>
+                        ) : (
+                            queeries.filter(q => q.isFiltered !== undefined ? q.isFiltered : true).map((queery) => (
+                                <PostContext.Provider key={queery.postId} value={queery}>
+                                    <UserActionsHandlersContext.Provider value={{
+                                        handleClickOnPost: () => handleClickOnPost(queery.postId, 'queery'),
+                                        handleTogglePrompt: () => handleTogglePrompt(queery.postId, 'queery'),
+                                    }}>
+                                        <NewPost/>
+                                        <Spacer size={10}/>
+                                    </UserActionsHandlersContext.Provider>
+                                </PostContext.Provider>
+                            ))
+                        )}
+                    </>
                 }
             </Tabs.Panel>
             <Tabs.Panel value="story">
                 {stories === null ? (
                     <InPageLoader color='grape'/>
                 ) : (
-                    stories.filter(s => s.isFiltered !== undefined ? s.isFiltered : true).map((story) => (
-                        <PostContext.Provider key={'storyy' + story.postId} value={story}>
-                            <UserActionsHandlersContext.Provider value={{
-                                handleClickOnPost: () => handleClickOnPost(story.postId, 'story'),
-                                handleTogglePrompt: () => handleTogglePrompt(story.postId, 'story'),
-                            }}>
-                                <NewPost/>
-                                <Spacer size={10}/>
-                            </UserActionsHandlersContext.Provider>
-                        </PostContext.Provider>
-                    ))
+                    <>
+                        {stories.length === 0 ? (
+                            <div style={{textAlign: 'center'}}>There are no queeries made yet.</div>
+                        ) : (
+                            stories.filter(s => s.isFiltered !== undefined ? s.isFiltered : true).map((story) => (
+                                <PostContext.Provider key={'story' + story.postId} value={story}>
+                                    <UserActionsHandlersContext.Provider value={{
+                                        handleClickOnPost: () => handleClickOnPost(story.postId, 'story'),
+                                        handleTogglePrompt: () => handleTogglePrompt(story.postId, 'story'),
+                                    }}>
+                                        <NewPost/>
+                                        <Spacer size={10}/>
+                                    </UserActionsHandlersContext.Provider>
+                                </PostContext.Provider>
+                            ))
+                        )}
+                    </>
                 )
                 }
             </Tabs.Panel>

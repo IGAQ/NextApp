@@ -1,7 +1,7 @@
 import {FlexBox} from '../../styles/globals';
 import {Banner} from '../../components/Atoms/Common/Banner';
 import {LoginForm} from '../../components/Organisms/Auth/LoginForm';
-import {login} from '../../lib/authService';
+import {login} from '../../lib/services/authService';
 import {useRouter} from 'next/router';
 import {useUser} from '../../lib/hooks/useUser';
 import { PageLoader } from '../../components/Atoms/Common/Loader';

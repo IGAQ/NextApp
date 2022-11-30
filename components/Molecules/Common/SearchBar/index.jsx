@@ -27,7 +27,7 @@ export function SearchBar() {
                 setSearchInputValue(e.target.value);
                 handleSearchTermChange(e.target.value);
             }}/>
-            <BiSearch size={25} alignSelf="flex-end"/>
+            <BiSearch size={25}/>
         </BarBase>
     );
 }

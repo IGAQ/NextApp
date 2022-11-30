@@ -24,8 +24,8 @@ const SlideMenuBase = styled(motion.div)`
   top: 0.8em;
 `;
 
-export function SlideMenu({currentTab, onClick}) {
-    const {filters, setFilters, handleAppliedFilters} = useContext(FilterContext);
+export function SlideMenu({currentTab, onClick, filters, setFilters}) {
+    const {handleAppliedFilters} = useContext(FilterContext);
 
     const [sorts, setSorts] = useState({
         'recent': false,
@@ -83,6 +83,7 @@ export function SlideMenu({currentTab, onClick}) {
                     <FlexBox align="flex-start">
                         <Checkbox color="red" size="md"
                             value='mostRecent'
+                            checked={sorts['recent']}
                             label='Most Recent'
                             onChange={() => handleSortChange('recent', !sorts['recent'])}
                             styles={(theme) => ({
@@ -94,6 +95,7 @@ export function SlideMenu({currentTab, onClick}) {
                         <Spacer axis="vertical" size={15}/>
                         <Checkbox color="red" size="md"
                             value='mostLikes'
+                            checked={sorts['likes']}
                             label='Most Likes'
                             onChange={() => handleSortChange('likes', !sorts['likes'])}
                             styles={(theme) => ({
@@ -110,6 +112,7 @@ export function SlideMenu({currentTab, onClick}) {
                         <FlexBox align="flex-start">
                             <Checkbox color="red" size="md"
                                 value='casual'
+                                checked={filters['_common']['casual']}
                                 label='Casual'
                                 onChange={() => handleFilterChange('_common', 'casual', !filters['_common']['casual'])}
                                 styles={(theme) => ({
@@ -121,6 +124,7 @@ export function SlideMenu({currentTab, onClick}) {
                             <Spacer axis="vertical" size={15}/>
                             <Checkbox color="red" size="md"
                                 value='serious'
+                                checked={filters['_common']['serious']}
                                 label='Serious'
                                 onChange={() => handleFilterChange('_common', 'serious', !filters['_common']['serious'])}
                                 styles={(theme) => ({
@@ -132,6 +136,7 @@ export function SlideMenu({currentTab, onClick}) {
                             <Spacer axis="vertical" size={15}/>
                             <Checkbox color="red" size="md"
                                 value='advice'
+                                checked={filters['queery']['advice']}
                                 label='Advice'
                                 onChange={() => handleFilterChange('queery', 'advice', !filters['queery']['advice'])}
                                 styles={(theme) => ({
@@ -143,6 +148,7 @@ export function SlideMenu({currentTab, onClick}) {
                             <Spacer axis="vertical" size={15}/>
                             <Checkbox color="red" size="md"
                                 value='general'
+                                checked={filters['queery']['general']}
                                 label='General'
                                 onChange={() => handleFilterChange('queery', 'general', !filters['queery']['general'])}
                                 styles={(theme) => ({
@@ -154,6 +160,7 @@ export function SlideMenu({currentTab, onClick}) {
                             <Spacer axis="vertical" size={15}/>
                             <Checkbox color="red" size="md"
                                 value='discussion'
+                                checked={filters['queery']['discussion']}
                                 label='Discussion'
                                 onChange={() => handleFilterChange('queery', 'discussion', !filters['queery']['discussion'])}
                                 styles={(theme) => ({
@@ -165,6 +172,7 @@ export function SlideMenu({currentTab, onClick}) {
                             <Spacer axis="vertical" size={15}/>
                             <Checkbox color="red" size="md"
                                 value='trigger'
+                                checked={filters['_common']['trigger']}
                                 label='Trigger'
                                 onChange={() => handleFilterChange('_common', 'trigger', !filters['_common']['trigger'])}
                                 styles={(theme) => ({
@@ -178,6 +186,7 @@ export function SlideMenu({currentTab, onClick}) {
                         <FlexBox align="flex-start">
                             <Checkbox color="red" size="md"
                                 value='casual'
+                                checked={filters['_common']['casual']}
                                 label='Casual'
                                 onChange={() => handleFilterChange('_common', 'casual', !filters['_common']['casual'])}
                                 styles={(theme) => ({
@@ -189,6 +198,7 @@ export function SlideMenu({currentTab, onClick}) {
                             <Spacer axis="vertical" size={15}/>
                             <Checkbox color="red" size="md"
                                 value='serious'
+                                checked={filters['_common']['serious']}
                                 label='Serious'
                                 onChange={() => handleFilterChange('_common', 'serious', !filters['_common']['serious'])}
                                 styles={(theme) => ({
@@ -200,6 +210,7 @@ export function SlideMenu({currentTab, onClick}) {
                             <Spacer axis="vertical" size={15}/>
                             <Checkbox color="red" size="md"
                                 value='trigger'
+                                checked={filters['_common']['trigger']}
                                 label='Trigger'
                                 onChange={() => handleFilterChange('_common', 'trigger', !filters['_common']['trigger'])}
                                 styles={(theme) => ({
@@ -211,6 +222,7 @@ export function SlideMenu({currentTab, onClick}) {
                             <Spacer axis="vertical" size={15}/>
                             <Checkbox color="red" size="md"
                                 value='inspiring'
+                                checked={filters['story']['inspiring']}
                                 label='Inspiring'
                                 onChange={() => handleFilterChange('story', 'inspiring', !filters['story']['inspiring'])}
                                 styles={(theme) => ({
@@ -222,6 +234,7 @@ export function SlideMenu({currentTab, onClick}) {
                             <Spacer axis="vertical" size={15}/>
                             <Checkbox color="red" size="md"
                                 value='vent'
+                                checked={filters['story']['vent']}
                                 label='Vent'
                                 onChange={() => handleFilterChange('story', 'vent', !filters['story']['vent'])}
                                 styles={(theme) => ({
@@ -233,6 +246,7 @@ export function SlideMenu({currentTab, onClick}) {
                             <Spacer axis="vertical" size={15}/>
                             <Checkbox color="red" size="md"
                                 value='drama'
+                                checked={filters['story']['drama']}
                                 label='Drama'
                                 onChange={() => handleFilterChange('story', 'drama', !filters['story']['drama'])}
                                 styles={(theme) => ({
@@ -246,7 +260,10 @@ export function SlideMenu({currentTab, onClick}) {
                     <Spacer axis="vertical" size={45}/>
                 </FlexBox>
                 <FlexBox align="center">
-                    <Button label="Apply Filters" onClick={() => handleAppliedFilters({filters, sorts})}/>
+                    <Button label="Apply Filters" onClick={(e) => {
+                        e.preventDefault();
+                        handleAppliedFilters({filters, sorts});
+                    }}/>
                 </FlexBox>
             </SlideMenuBase>
         </AnimatePresence>
