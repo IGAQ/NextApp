@@ -20,7 +20,7 @@ const opennessLevelToSvgs = {
 export function ProfileBio() {
     const user = useContext(UserContext);
 
-    console.log(user, opennessLevelToSvgs[user.openness.opennessLevel]);
+    console.log(user, opennessLevelToSvgs[user?.openness?.opennessLevel]);
 
     return (
         <>
@@ -28,20 +28,20 @@ export function ProfileBio() {
                 <FlexBox padding='1rem 2rem 1rem 2rem' bgColor='#ffffff' borderRadius='0.5rem'>
                     <Spacer axis='vertical' size={5} />
                     <ProfileIcon marginRight='0' AvaPic={badgesPaths.avatars[user.avatar ?? 'default']} />
-                    <Text text={user.username} weight='600' size='1.5rem' />
+                    <Text text={user.username ?? ''} weight='600' size='1.5rem' />
                     <PostTag text='2pts' tagBgColor='#C0DDFF' tagColor='#000' />
                     <Spacer axis='vertical' size={20} />
                     <Text text='ABOUT ME' weight='500' size='0.85rem' />
                     <Text
-                        text={user.bio}
+                        text={user.bio ?? ''}
                         size='0.9rem'
                         padding='1em' />
                 </FlexBox>
                 <Spacer axis='vertical' size={30} />
                 <FlexBox dir='row' flexWrap='wrap' justify='space-around' bgColor='#ffffff' padding='1rem 2rem 1rem 2rem' borderRadius='0.5rem'>
                     <Badge badge={badgesPaths.flags.pride} />
-                    <Badge badge={badgesPaths.pronouns[user.gender.genderPronouns.toLowerCase()]} />
-                    <Badge badge={opennessLevelToSvgs[user.openness.opennessLevel]} />
+                    <Badge badge={badgesPaths.pronouns[user.gender.genderPronouns.toLowerCase()] ?? ''} />
+                    <Badge badge={opennessLevelToSvgs[user.openness.opennessLevel] ?? ''} />
                 </FlexBox>
             </FlexBox>
         </>
