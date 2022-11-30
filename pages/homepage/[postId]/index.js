@@ -16,7 +16,6 @@ import {
 } from '../../../lib/contexts';
 import {useUser} from '../../../lib/hooks/useUser';
 import * as postService from '../../../lib/services/postService';
-import {Background} from '../../../styles/globals';
 import {getRecaptchaToken} from '../../../lib/utils';
 import {UserActionsEnum} from '../../../lib/constants/userInteractions';
 
@@ -55,7 +54,10 @@ export default function Post({post}) {
 
     const handleSubmitComment = async ({parentId, commentContent, isPost}) => {
         console.log('submitting comment', parentId, commentContent);
-        const recaptchaToken = await getRecaptchaToken(UserActionsEnum.CreateComment, process.env.NEXT_PUBLIC_RECAPTCHA_KEY);
+        const recaptchaToken = await getRecaptchaToken(
+            UserActionsEnum.CreateComment,
+            process.env.NEXT_PUBLIC_RECAPTCHA_KEY,
+        );
         try {
             return await postService.newCommentOn({
                 postId: parentId,
@@ -137,7 +139,7 @@ export default function Post({post}) {
         <InPageLoader />
     ) : (
         <UserContext.Provider value={user}>
-            <Background>
+            <>
                 {error && (
                     <ModalAlert
                         onClick={() => setError(null)}
@@ -191,7 +193,7 @@ export default function Post({post}) {
 
                 {isLoadingComments ? <InPageLoader /> : renderComments()}
                 <Spacer size={50} />
-            </Background>
+            </>
         </UserContext.Provider>
     );
 }

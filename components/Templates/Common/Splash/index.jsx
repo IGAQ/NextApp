@@ -3,7 +3,6 @@ import {PostContent} from '../../../Atoms/Post/PostContent';
 import {OTDTitle} from '../../../Atoms/OfTheDay/OTDTitle';
 import {Logo} from '../../../Atoms/Common/Logo';
 import {Spacer} from '../../../Atoms/Common/Spacer';
-import {Background} from '../../../../styles/globals';
 import {Button} from '../../../Atoms/Common/Buttons/Button';
 import {SplashImg} from '../../../Atoms/Common/SplashImg';
 import {useRouter} from 'next/router';
@@ -34,7 +33,7 @@ export function Splash() {
     const autoplay = useRef(Autoplay({delay: 4000}));
 
     return (
-        <Background height="100vh">
+        <>
             <PostDiv>
                 <Logo/>
                 <OTDTitle title="I got a queery" fontSize="2em"/>
@@ -114,6 +113,6 @@ export function Splash() {
                         )
                 }
             </PostDiv>
-        </Background>
+        </>
     );
 }
