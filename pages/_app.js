@@ -103,7 +103,6 @@ function MyApp({Component, pageProps}) {
                             <Component {...pageProps} />
                         </>
                     )}
-
                     {/* {<showBottomNav && MobileNav/>} */}
                 </>
             )}
