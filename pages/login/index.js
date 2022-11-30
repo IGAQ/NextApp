@@ -7,6 +7,8 @@ import {useUser} from '../../lib/hooks/useUser';
 import { PageLoader } from '../../components/Atoms/Common/Loader';
 import {useState} from 'react';
 import {ModalAlert} from '../../components/Organisms/Common/Modals/ModalAlert';
+import {getRecaptchaToken} from '../../lib/utils';
+import {UserActionsEnum} from '../../lib/constants/userInteractions';
 
 export default function Login() {
     const [, userAuthLoaded] = useUser({redirectTo: '/', redirectIfFound: true});
@@ -15,7 +17,8 @@ export default function Login() {
     const [error, setError] = useState(null);
 
     const handleLogin = async ({username, password}) => {
-        const result = await login(username, password);
+        const recaptchaToken = await getRecaptchaToken(UserActionsEnum.Login, process.env.NEXT_PUBLIC_RECAPTCHA_KEY);
+        const result = await login(username, password, recaptchaToken);
         if (!result) {
             setError('Invalid username or password');
             console.error('Login failed');
@@ -23,6 +26,10 @@ export default function Login() {
         }
         console.log('Login success');
         await router.push('/');
+    };
+
+    const handleCaptchaChange = (value) => {
+        console.log('captcha value', value);
     };
 
     return !userAuthLoaded ? (
@@ -39,6 +46,7 @@ export default function Login() {
             )}
             <Banner bannerBgColor='#A5CEFF' bannerTitle='Welcome back!'/>
             <LoginForm onLogin={handleLogin}/>
+
         </FlexBox>
     );
 }

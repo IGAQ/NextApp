@@ -10,6 +10,8 @@ import * as authService from '../../lib/services/authService';
 import {useRouter} from 'next/router';
 import {useUser} from '../../lib/hooks/useUser';
 import {PageLoader} from '../../components/Atoms/Common/Loader';
+import {getRecaptchaToken} from '../../lib/utils';
+import {UserActionsEnum} from '../../lib/constants/userInteractions';
 
 export default function ChangePassword() {
     const router = useRouter();
@@ -29,7 +31,8 @@ export default function ChangePassword() {
             return;
         }
         try {
-            await authService.changePassword({previousPassword, newPassword});
+            const recaptchaToken = await getRecaptchaToken(UserActionsEnum.ChangePassword, process.env.NEXT_PUBLIC_RECAPTCHA_KEY);
+            await authService.changePassword({previousPassword, newPassword, googleRecaptchaToken: recaptchaToken});
             setSuccess(true);
         } catch (error) {
             setError(error);
