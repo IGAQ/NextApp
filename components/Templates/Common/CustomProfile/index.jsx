@@ -19,10 +19,8 @@ import {InPageLoader, PageLoader} from '../../../Atoms/Common/Loader';
 import {ModalAlert} from '../../../Organisms/Common/Modals/ModalAlert';
 import {useUser} from '../../../../lib/hooks/useUser';
 import {useRouter} from 'next/router';
-import {TextInput} from '../../../Atoms/Common/Inputs/TextInput';
 import * as userService from '../../../../lib/services/userService';
 import {Spacer} from '../../../Atoms/Common/Spacer';
-import { Text } from '../../../Atoms/Common/Text';
 
 const avatars = [
     {
@@ -248,7 +246,7 @@ export function CustomProfile({
                     <FlexBox align='flex-start' maxWidth='50rem' margin='auto'>
                         <PostTitle title='Avatar Selection'/>
                     </FlexBox>
-                    <Background color='#FFF' height='auto'>
+                    <Background height='auto' color='#FFF'>
                         <Swiper
                             centeredSlides={true}
                             spaceBetween={30}
@@ -288,7 +286,7 @@ export function CustomProfile({
                             </FlexBox>
                         </FlexBox>
                     </FlexBox>
-                    <Background color='#fff' height='auto'>
+                    <Background height='auto' color='#fff'>
                         {isLoading ? (
                             <InPageLoader/>
                         ) : (
@@ -332,7 +330,8 @@ export function CustomProfile({
                             </FlexBox>
                         </FlexBox>
                     </FlexBox>
-                    <Background color='#fff' height='auto'>
+
+                    <Background height='auto' color='#fff'>
                         {isLoading ? (
                             <InPageLoader/>
                         ) : (
