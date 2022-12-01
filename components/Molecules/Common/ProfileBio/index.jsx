@@ -38,10 +38,10 @@ export function ProfileBio() {
                         padding='1em' />
                 </FlexBox>
                 <Spacer axis='vertical' size={30} />
-                <FlexBox dir='row' flexWrap='wrap' justify='space-around' bgColor='#ffffff' padding='1rem 2rem 1rem 2rem' borderRadius='0.5rem'>
-                    <Badge badge={badgesPaths.flags.pride} />
-                    <Badge badge={badgesPaths.pronouns[user.gender?.genderPronouns?.toLowerCase()] ?? ''} />
-                    <Badge badge={opennessLevelToSvgs[user.openness?.opennessLevel] ?? ''} />
+                <FlexBox dir='row' flexWrap='wrap' justify='space-between' bgColor='#ffffff' padding='1rem 2rem 1rem 2rem' borderRadius='0.5rem'>
+                    <Badge margin={'0 1em 0 0'} badge={badgesPaths.flags.pride} />
+                    <Badge margin={'0 1em 0 0'} badge={badgesPaths.pronouns[user.gender?.genderPronouns?.toLowerCase()] ?? ''} />
+                    <Badge margin={'0 1em 0 0'} badge={opennessLevelToSvgs[user.openness?.opennessLevel] ?? ''} />
                 </FlexBox>
             </FlexBox>
         </>

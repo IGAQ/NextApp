@@ -57,21 +57,21 @@ export function Splash() {
                 <Carousel.Slide>
                     <ImageDiv>
                         <SplashImg img='/assets/images/carousels/Carousel_1.svg'/>
-                        <PostContent textAlign="center"
+                        <PostContent textAlign="center" maxHeight='auto'
                             content="Safely ask a question (“Queery”) or share a story with like-minded LGBTQA+ users seeking to share experiences."/>
                     </ImageDiv>
                 </Carousel.Slide>
                 <Carousel.Slide>
                     <ImageDiv>
                         <SplashImg img='/assets/images/carousels/Carousel_2.svg'/>
-                        <PostContent textAlign="center" text-align="center"
+                        <PostContent textAlign="center" text-align="center" maxHeight='auto'
                             content="Access curated resources such as informative articles about LGBTQA+ related content."/>
                     </ImageDiv>
                 </Carousel.Slide>
                 <Carousel.Slide>
                     <ImageDiv>
                         <SplashImg img='/assets/images/carousels/Carousel_3.svg'/>
-                        <PostContent textAlign="center"
+                        <PostContent textAlign="center" maxHeight='auto'
                             content="Customize your profile and easily view your saved articles and saved posts."/>
                     </ImageDiv>
                 </Carousel.Slide>
@@ -87,6 +87,9 @@ export function Splash() {
                                         (
                                             <>
                                                 <OTDTitle title={`Welcome, ${user.username}!`} fontSize="1.6em"/>
+                                                <Spacer size="20"/>
+                                                <Button size='long' onClick={() => r.push('/profileSetup')}
+                                                    label="Profile Setup"/>
                                                 <Spacer size="20"/>
                                                 <Button size='long' onClick={() => r.push('/homepage')}
                                                     label="Homepage"/>

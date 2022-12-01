@@ -19,6 +19,7 @@ export const FlexBox = styled.div`
     min-width: ${(props) => props.minWidth};
     max-width: ${(props) => props.maxWidth};
     border-left: ${(props) => props.borderLeft};
+    color: ${(props) => props.color};
 `;
 
 export const ModalBackdrop = styled.div`

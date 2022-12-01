@@ -5,10 +5,12 @@ import {Spacer} from '../../../Atoms/Common/Spacer';
 
 export function SearchAndFilter() {
     return (
-        <FlexBox dir="row" justify-content="space-between" align="center" max-width="50em">
+        <FlexBox  dir='row' justify-content='space-between' align='center'>
             <SearchBar/>
-            <Spacer axis="horizontal" size={25}/>
-            <FilterIcon/>
+            <Spacer axis='horizontal' size={50}/>
+            <FlexBox>
+                <FilterIcon/>
+            </FlexBox>
         </FlexBox>
     );
 } 

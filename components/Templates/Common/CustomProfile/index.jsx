@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 import {StyledSwitch} from '../../../Atoms/Common/Switch';
 import {badgesPaths} from '../../../../lib/constants/badgesPaths';
 import React, {useEffect, useState} from 'react';
-import {Select} from '@mantine/core';
+import {Select, Space} from '@mantine/core';
 import * as sexualityService from '../../../../lib/services/sexualityService';
 import * as genderService from '../../../../lib/services/genderService';
 import * as opennessService from '../../../../lib/services/opennessService';
@@ -19,7 +19,6 @@ import {InPageLoader, PageLoader} from '../../../Atoms/Common/Loader';
 import {ModalAlert} from '../../../Organisms/Common/Modals/ModalAlert';
 import {useUser} from '../../../../lib/hooks/useUser';
 import {useRouter} from 'next/router';
-import {TextInput} from '../../../Atoms/Common/Inputs/TextInput';
 import * as userService from '../../../../lib/services/userService';
 import {Spacer} from '../../../Atoms/Common/Spacer';
 
@@ -241,22 +240,32 @@ export function CustomProfile({
                 <FlexBox align='flex-start' marginLeft='3em' maxWidth='50rem' margin='auto'>
                     <PostTitle title='Introduce yourself!'/>
                     <input onChange={(e) => setInputBio(e.target.value)} value={inputBio} name="bio"
-                        id="bio" placeholder="Write your bio..."/>
+                        id="bio" placeholder="Write your bio..." />
                 </FlexBox>
                 <div>
                     <FlexBox align='flex-start' maxWidth='50rem' margin='auto'>
                         <PostTitle title='Avatar Selection'/>
                     </FlexBox>
-                    <Background color='#FFF'>
+                    <Background height='auto' color='#FFF'>
                         <Swiper
                             centeredSlides={true}
                             spaceBetween={30}
-                            slidesPerView={4}
+                            slidesPerView={3}
                             onActiveIndexChange={(e) => setCurrentIndexForAvatar(e.realIndex)}
                             loop={true}
                             navigation={true}
                             initialSlide={currentIndexForAvatar}
                             modules={[Navigation]}
+                            breakpoints={{
+                                824: {
+                                    slidesPerView: 5,
+                                    spaceBetween: 50,
+                                },
+                                1440: {
+                                    slidesPerView: 7,
+                                    spaceBetween: 30,
+                                },
+                            }}
                         >
                             {avatars.map((item) => item.Avatar)}
                         </Swiper>
@@ -265,24 +274,41 @@ export function CustomProfile({
                 <div>
                     <FlexBox align='center' justify='space-between' dir='row' maxWidth='50rem' margin='auto'>
                         <PostTitle title='Pronoun Badge'/>
-                        <FlexBox dir='row'>
+                        <FlexBox dir='row' justify='center' align='flex-end'  color='#ff758c'>
                             {(editMode && isLoading) ? <InPageLoader/> : <StyledSwitch defaultValue={isGenderPrivate} onChange={setIsGenderPrivate} />}
-                            Hide Pronoun
+                            <Spacer size='5'/>
+                            <FlexBox align='center' dir='row'>
+                                Hide 
+                            </FlexBox>
+                            <Spacer  size='5'/> 
+                            <FlexBox align='center' dir='row'>
+                                Pronouns
+                            </FlexBox>
                         </FlexBox>
                     </FlexBox>
-                    <Background color='#fff'>
+                    <Background height='auto' color='#fff'>
                         {isLoading ? (
                             <InPageLoader/>
                         ) : (
                             <Swiper
                                 centeredSlides={true}
                                 spaceBetween={30}
-                                slidesPerView={4}
+                                slidesPerView={3}
                                 onActiveIndexChange={(e) => setCurrentIndexForPronoun(e.realIndex)}
                                 loop={true}
                                 navigation={true}
                                 initialSlide={currentIndexForPronoun}
                                 modules={[Navigation]}
+                                breakpoints={{
+                                    824: {
+                                        slidesPerView: 5,
+                                        spaceBetween: 50,
+                                    },
+                                    1440: {
+                                        slidesPerView: 7,
+                                        spaceBetween: 30,
+                                    },
+                                }}
                             >
                                 {pronouns.map((item) => item.Pronoun)}
                             </Swiper>
@@ -292,23 +318,41 @@ export function CustomProfile({
                 <div>
                     <FlexBox align='center' justify='space-between' maxWidth='50rem' margin='auto' dir='row'>
                         <PostTitle title='Openness Badge'/>
-                        <FlexBox dir='row'>
+                        <FlexBox dir='row' align='flex-end' color='#ff758c'>
                             {(editMode && isLoading) ? <InPageLoader/> : <StyledSwitch defaultValue={isOpennessPrivate} onChange={setIsOpennessPrivate} />}
-                            Hide Openness
+                            <Spacer size='5'/>
+                            <FlexBox align='center' dir='row'>
+                                Hide 
+                            </FlexBox>
+                            <Spacer  size='5'/> 
+                            <FlexBox align='center' dir='row'>
+                                Openness
+                            </FlexBox>
                         </FlexBox>
                     </FlexBox>
-                    <Background color='#fff'>
+
+                    <Background height='auto' color='#fff'>
                         {isLoading ? (
                             <InPageLoader/>
                         ) : (
                             <Swiper
                                 centeredSlides={true}
                                 spaceBetween={30}
-                                slidesPerView={4}
+                                slidesPerView={3}
                                 onActiveIndexChange={(e) => setCurrentIndexForOpenness(e.realIndex)}
                                 loop={true}
                                 navigation={true}
                                 modules={[Navigation]}
+                                breakpoints={{
+                                    824: {
+                                        slidesPerView: 5,
+                                        spaceBetween: 50,
+                                    },
+                                    1440: {
+                                        slidesPerView: 7,
+                                        spaceBetween: 30,
+                                    },
+                                }}
                             >
                                 {opennesses.map((item) => item.Openness)}
                             </Swiper>
@@ -318,9 +362,16 @@ export function CustomProfile({
                 <div>
                     <FlexBox align='center' justify='space-between' maxWidth='50rem' margin='auto' dir='row'>
                         <PostTitle title='Sexuality'></PostTitle>
-                        <FlexBox dir='row'>
+                        <FlexBox dir='row' align='flex-end' color='#ff758c'>
                             {(editMode && isLoading) ? <InPageLoader/> : <StyledSwitch defaultValue={isSexualityPrivate} onChange={setIsSexualityPrivate} />}
-                            Hide Sexuality
+                            <Spacer size='5'/>
+                            <FlexBox align='center' dir='row'>
+                                Hide 
+                            </FlexBox>
+                            <Spacer  size='5'/> 
+                            <FlexBox align='center' dir='row'>
+                                Sexulatiy
+                            </FlexBox>
                         </FlexBox>
                     </FlexBox>
                     <FlexBox align='flex-start' maxWidth='50rem' margin='auto'>
@@ -334,9 +385,10 @@ export function CustomProfile({
                     </FlexBox>
                 </div>
                 <FlexBox padding='3em'>
-                    <Button size='large' color='primary' type='submit' label={editMode ? 'Save Changes' : 'Set up Profile'}></Button>
+                    <Button size='large' color='white' type='submit' label={editMode ? 'Save Changes' : 'Set up Profile'}></Button>
                 </FlexBox>
             </form>
-            </>
+            <Spacer size='45'/>
+        </>
     );
 } 

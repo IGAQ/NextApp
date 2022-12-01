@@ -20,6 +20,7 @@ import * as postService from '../../../lib/services/postService';
 import {getRecaptchaToken} from '../../../lib/utils';
 import {UserActionsEnum} from '../../../lib/constants/userInteractions';
 
+
 export default function Post() {
     const router = useRouter();
     const {postId} = router.query;

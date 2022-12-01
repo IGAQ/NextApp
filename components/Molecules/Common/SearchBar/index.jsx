@@ -13,7 +13,7 @@ const BarBase = styled.div`
   justify-content: space-between;
   padding: 0 10px 0 10px;
   width: 76%;
-  min-width: 250px;
+  min-width: 270px;
 `;
 
 export function SearchBar() {
@@ -22,7 +22,7 @@ export function SearchBar() {
 
     return (
         <BarBase>
-            <Input variant="unstyled" style={{ width: "100%"}} rightSectionWidth={500} placeholder="Search topics you want to read" value={searchInputValue} onChange={(e) => {
+            <Input variant="unstyled" style={{ width: '100%'}} rightSectionWidth={500} placeholder="Search topics you want to read" value={searchInputValue} onChange={(e) => {
                 setSearchInputValue(e.target.value);
                 handleSearchTermChange(e.target.value);
             }}/>

@@ -7,17 +7,21 @@ import {PostSetting} from '../../../Atoms/Post/PostSetting';
 import {useContext, useState} from 'react';
 import {Spacer} from '../../../Atoms/Common/Spacer';
 import {PostContext} from '../../../../lib/contexts';
+import { Logo, SadLogo } from '../../../Atoms/Common/Logo';
+import { PostContent } from '../../../Atoms/Post/PostContent';
+import { Button } from '../../../Atoms/Common/Buttons/Button';
 
 const PostDiv = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: ${props => props.alignPost|| 'flex-start'};
   justify-content: center;
   width: 100%;
   padding: 2.25rem;
   background-color: #fff;
   max-width: 50em;
   margin: auto;
+  border-radius: 10px;
 `;
 
 const Toprightdiv = styled.div`
@@ -75,5 +79,16 @@ export function SingleNewPost(){
             </PostDiv>
             <Spacer axis="vertical" size={15}/>
         </>
+    );
+}
+
+export function NoPosts() {
+    return (
+        <PostDiv alignPost='center'>
+            <SadLogo />
+            <PostContent content='No Posts Related to This Search'/>
+            <Spacer axis="vertical" size={10}/>
+            <Button onClick={() => window.location.href = '/homepage'} size='small' label='Reset'></Button>
+        </PostDiv>
     );
 }

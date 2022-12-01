@@ -1,5 +1,5 @@
 import {Tabs} from '@mantine/core';
-import {NewPost} from '../../../Templates/Post/NewPost';
+import {NewPost, NoPosts} from '../../../Templates/Post/NewPost';
 import {Spacer} from '../../../Atoms/Common/Spacer';
 import React, {useEffect, useState} from 'react';
 import {InPageLoader} from '../../../Atoms/Common/Loader';
@@ -75,6 +75,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
 
             const callback = posts => {
                 const shadowed = [...posts];
+                shadowed.forEach(s => {s.isFiltered = undefined; return s;});
                 if (appliedFilters.length > 0) {
                     for (let post of shadowed) {
                         const postTags = post.postTags.map((tag) => tag.tagName.trim().toLowerCase());
@@ -105,7 +106,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
         }}
         styles={{tab: 
             {borderBottom:'2px solid #B3CAE788', '&hover': {background: '#ccdef1'}, '&[data-active]': {background: activeTab === 'queery' ? '#ffb6c3' : '#C2ADFF'}} }}>
-            <StickyDiv top={69}>
+            <StickyDiv top={67}>
                 <Tabs.List grow>
                     <Tabs.Tab value="queery"> Queeries </Tabs.Tab>
                     <Tabs.Tab value="story" color='grape'>Stories </Tabs.Tab>
@@ -118,7 +119,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
                 ) :
                     <>
                         {queeries.length === 0 ? (
-                            <div style={{textAlign: 'center'}}>There are no queeries made yet.</div>
+                            <NoPosts/>
                         ) : (
                             queeries.filter(q => q.isFiltered !== undefined ? q.isFiltered : true).map((queery) => (
                                 <PostContext.Provider key={queery.postId} value={queery}>
@@ -141,7 +142,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
                 ) : (
                     <>
                         {stories.length === 0 ? (
-                            <div style={{textAlign: 'center'}}>There are no queeries made yet.</div>
+                            <NoPosts/>
                         ) : (
                             stories.filter(s => s.isFiltered !== undefined ? s.isFiltered : true).map((story) => (
                                 <PostContext.Provider key={'story' + story.postId} value={story}>
