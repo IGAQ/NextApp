@@ -88,7 +88,7 @@ export function Splash() {
                                             <>
                                                 <OTDTitle title={`Welcome, ${user.username}!`} fontSize="1.6em"/>
                                                 <Spacer size="20"/>
-                                                <Button size='long' onClick={() => r.push('/CustomProfile')}
+                                                <Button size='long' onClick={() => r.push('/profileSetup')}
                                                     label="Profile Setup"/>
                                                 <Spacer size="20"/>
                                                 <Button size='long' onClick={() => r.push('/homepage')}
