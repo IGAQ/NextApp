@@ -6,6 +6,8 @@ import {PostTitle} from '../../components/Molecules/Post/PostTitle';
 import {badgesPaths} from '../../lib/constants/badgesPaths';
 import {useEffect, useState} from 'react';
 import {notificationService} from '../../lib/services/notificationService';
+import {InPageLoader} from '../../components/Atoms/Common/Loader';
+import {timeAgo} from '../../lib/utils';
 
 const NotificationDiv = styled(FlexBox)`
   width: 100%;
@@ -13,7 +15,7 @@ const NotificationDiv = styled(FlexBox)`
   background-color: #A5CEFF;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
 
@@ -25,35 +27,48 @@ export default function Notifications(props) {
         setNotifications([...Object.values(notificationService.notifications)]);
     }, []);
 
-    const render = () => {
+    const renderNotifications = () => {
+        const notifications = Object.values(notificationService.notifications)
+            .sort((n1, n2) => n2.pushedAt - n1.pushedAt)
+            .map(notification => {
+                notification.timeTitle = timeAgo(notification.pushedAt);
+                return notification;
+            });
 
+        const grouped = {};
+        notifications.map(notification => {
+            if (!grouped[notification.timeTitle]) {
+                grouped[notification.timeTitle] = [];
+            }
+            grouped[notification.timeTitle].push(notification);
+        });
+
+        const result = [];
+        for (const timeTitle in grouped) {
+            result.push(
+                <FlexBox align="flex-start" bgColor='#DFEEFF'>
+                    <Text weight="500" size="1.25rem" padding={'0.2em 1em 0.2em 0.5em'} textAlign="left" text={timeTitle}/>
+                    {grouped[timeTitle].map(notification => (
+                        <NotificationBox key={notification.notificationId} AvaPic={notification.avatar ?? badgesPaths.avatars.profile2}
+                            text={notification.message}/>
+                    ))}
+                </FlexBox>
+            );
+        }
+        return result;
     };
 
     return (
         <NotificationDiv>
             <PostTitle title="Notifications"/>
             <FlexBox align="stretch">
-                <FlexBox align="flex-start" bgColor='#DFEEFF'>
-                    <Text weight="500" size="1.25rem" textAlign="left" text="New"/>
-                    <FlexBox bgColor='#DFEEFF' align='flex-start'>
-                        <NotificationBox AvaPic={badgesPaths.avatars.profile2}
-                            text="Anyaaa replied to your queery 'Is there a term for ..."/>
-                        <NotificationBox AvaPic={badgesPaths.avatars.profile5}
-                            text="BorutoLover replied to your queery 'have you told ..."/>
-                        <NotificationBox AvaPic={badgesPaths.avatars.profile4} text="flybi replied to your story 'AITA?'"/>
-                    </FlexBox>
-                </FlexBox>
-                <FlexBox align="flex-start" bgColor='#DFEEFF'>
-                    <Text weight="500" size="1.25rem" textAlign="left" text="Old"/>
-                    <FlexBox bgColor='#DFEEFF' align='flex-start'>
-                        <NotificationBox AvaPic={badgesPaths.avatars.profile3} text="ace replied to your story 'AITA?'"/>
-                        <NotificationBox AvaPic={badgesPaths.avatars.profile6} text="btsmarmy7 replied to your queery 'Am I gay"/>
-                        <NotificationBox AvaPic={badgesPaths.avatars.profile2}
-                            text="TheSadPotato replied to your comment in your story ..."/>
-                        <NotificationBox AvaPic={badgesPaths.avatars.profile4}
-                            text="flybi replied to your queery 'Is there a term for ..."/>
-                    </FlexBox>
-                </FlexBox>
+                {!notifications ? (
+                    <InPageLoader/>
+                ) : (
+                    <>
+                        {renderNotifications()}
+                    </>
+                )}
             </FlexBox>
 
         </NotificationDiv>
