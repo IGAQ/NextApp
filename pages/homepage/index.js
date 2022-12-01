@@ -20,10 +20,11 @@ export const StickyDiv = styled.div`
     position: -webkit-sticky;
     top: ${(props) => props.top}px;
     z-index: ${(props) => props.zIndex || 2};
-    background-color: #dfeeff;
-    max-width: 50em;
+    background-color: ${(props) => props.bgColor || '#dfeeff'};
+    max-width: ${(props) => props.maxWidth || '50em'};
     margin: auto;
     padding-bottom: 1em;
+    width: 100%;
 `;
 
 export default function Homepage(props) {

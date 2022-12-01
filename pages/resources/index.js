@@ -11,7 +11,6 @@ import { useRouter } from 'next/router';
 import {SlideMenuForResourcePage} from '../../components/Molecules/Common/SlideMenuForResourcePage';
 import {InPageLoader} from '../../components/Atoms/Common/Loader';
 import {ScrollToTopButton} from '../../components/Atoms/Common/ScrollToTopButton';
-import {eventService} from '../../lib/services/eventService';
 
 export default function Resources(props) {
     const r = useRouter();
@@ -110,19 +109,6 @@ export default function Resources(props) {
             setResources(callback);
         }
     };
-
-    function handleResourceClick({resource}) {
-        r.push({
-            pathname: '/resources/[resourceID]',
-            query: {
-                title: resource.title, 
-                id: resource.id,
-                content: resource.content,
-                tags: resource.tags,
-                author: resource.author,
-            },
-        });
-    }
     return (
         <FlexBox align='stretch' bgColor='#A5CEFF'>
             <PostTitle title='Resources'/>
