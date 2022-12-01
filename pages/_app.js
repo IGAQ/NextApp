@@ -95,57 +95,13 @@ function MyApp({Component, pageProps}) {
                 console.log('pusher:error', e);
             });
 
-            igaqNotificationChannel.bind(PusherEventTypes.NewCommentOnPost, (data) => {
-                console.log(PusherEventTypes.NewCommentOnPost, data);
+            igaqNotificationChannel.bind(PusherEventTypes.UserReceivesNotification, (data) => {
+                console.log(PusherEventTypes.UserReceivesNotification, data);
                 notificationService.push({
                     username: data.username,
                     avatar: data.avatar,
-                    message: `${data.username} replied to your ${data.postTypeName} '${data?.commentContent?.slice(0, 20) ?? ''}'`,
-                });
-            });
-
-            igaqNotificationChannel.bind(PusherEventTypes.NewCommentOnComment, (data) => {
-                console.log(PusherEventTypes.NewCommentOnComment, data);
-                notificationService.push({
-                    username: data.username,
-                    avatar: data.avatar,
-                    message: `${data.username} replied to your comment '${data?.commentContent?.slice(0, 20) ?? ''}'`,
-                });
-            });
-
-            igaqNotificationChannel.bind(PusherEventTypes.PostGotUpVote, (data) => {
-                console.log(PusherEventTypes.PostGotUpVote, data);
-                notificationService.push({
-                    username: data.username,
-                    avatar: data.avatar,
-                    message: `${data.username} up voted your post <a href="/homepage/${data.postId}">check it out!</a>`,
-                });
-            });
-            igaqNotificationChannel.bind(PusherEventTypes.PostGotDownVote, (data) => {
-                console.log(PusherEventTypes.PostGotDownVote, data);
-                notificationService.push({
-                    username: data.username,
-                    avatar: data.avatar,
-                    message: `${data.username} down voted your post <a href="/homepage/${data.postId}">check it out!</a>`,
-                });
-            });
-
-            igaqNotificationChannel.bind(PusherEventTypes.CommentGotUpVote, (data) => {
-                console.log(PusherEventTypes.CommentGotUpVote, data);
-                notificationService.push({
-                    username: data.username,
-                    avatar: data.avatar,
-                    message: `${data.username} down voted your comment <a href="/homepage/${data.postId}">check it out!</a>`,
-                });
-            });
-
-
-            igaqNotificationChannel.bind(PusherEventTypes.CommentGotPinnedByAuthor, (data) => {
-                console.log(PusherEventTypes.CommentGotPinnedByAuthor, data);
-                notificationService.push({
-                    username: data.username,
-                    avatar: data.avatar,
-                    message: `${data.username} pinned your comment '${data?.commentContent?.slice(0, 20) ?? ''}'`,
+                    message: data.composedMessage,
+                    stashToken: data.stashToken,
                 });
             });
         },
