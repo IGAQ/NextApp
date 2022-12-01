@@ -337,6 +337,6 @@ export function CustomProfile({
                     <Button size='large' color='primary' type='submit' label={editMode ? 'Save Changes' : 'Set up Profile'}></Button>
                 </FlexBox>
             </form>
-            </>
+        </>
     );
 } 
