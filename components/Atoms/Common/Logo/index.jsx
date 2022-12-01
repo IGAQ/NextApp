@@ -25,3 +25,12 @@ export function Logo(props = defaultProps) {
         </LogoDiv>
     );
 }
+
+export function SadLogo(props = defaultProps) {
+    const {imageSrc, containerHeight, containerWidth, imageAlt, imageHeight = '100', imageWidth = '100'} = props;
+    return (
+        <LogoDiv height={containerHeight} width={containerWidth}>
+            <Image src='/SadIGAQLogo.svg' width={imageWidth} height={imageHeight} alt='Sad IGAQ Logo'/>
+        </LogoDiv>
+    );
+}
