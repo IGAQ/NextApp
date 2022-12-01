@@ -21,9 +21,9 @@ export function HelpButton({
 
     return (
         <HelpDiv onClick={() => r.push(helppush)}>
-            <Text text={headingtext} weight='600' size='1.3rem'></Text>
+            <Text borderLeft = "none" text={headingtext} weight='600' size='1.3rem'></Text>
             <Spacer axis='vertical' size={15} />
-            <Text text={descriptiontext} size='0.9rem'></Text>
+            <Text borderLeft = "none" text={descriptiontext} size='0.9rem'></Text>
         </HelpDiv>
     );
 }

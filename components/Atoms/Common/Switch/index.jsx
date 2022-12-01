@@ -11,6 +11,20 @@ export function StyledSwitch({defaultValue = false, onChange}) {
                 colors: {
                     'queeryPink': ['#ffe2e9', '#ffb2bf', '#ff758c', '#fe4e6a', '#fd2041', '#e40b27', '#b2041f', '#800015', '#4e000c', '#1f0002'],
                 },
+                components:{
+                    Switch: {
+                        styles:{
+                            track:{
+                                border: '1.5px solid #FE4E6A',
+                                backgroundColor: '#FE4E6B46',
+                            }, 
+                            thumb: {
+                                border: 'none',
+                            },
+                        }, 
+                    },
+                },
+                
             }}>
             <Switch color='queeryPink.3' checked={checked} onChange={(e) => {
                 setChecked(e.currentTarget.checked);

@@ -57,7 +57,7 @@ export function CommentCard({isNewlyCreated = false, nestedLevel= 0, ...props}) 
     return (
         <StyledCard isNewlyCreated={isNewlyCreated} paddingTop={nestedLevel === 0 ? '24px' : 0} nestedLevel={nestedLevel}>
             {nestedLevel > 0 && new Array(nestedLevel).fill(0).map((item, i) => (
-                <VerticalLine isLeft={i + 1 > 1 ? false : true} marginRight={i > 0 && '10px'} />
+                <VerticalLine key = {i} isLeft={i + 1 > 1 ? false : true} marginRight={i > 0 && '10px'} />
             ))}
             <FlexBox flex={1} align="stretch">
                 <WrappedFlexBox dir="row" justify="space-between">
