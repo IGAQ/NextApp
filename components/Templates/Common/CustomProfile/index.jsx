@@ -19,9 +19,7 @@ import {InPageLoader, PageLoader} from '../../../Atoms/Common/Loader';
 import {ModalAlert} from '../../../Organisms/Common/Modals/ModalAlert';
 import {useUser} from '../../../../lib/hooks/useUser';
 import {useRouter} from 'next/router';
-import {TextInput} from '../../../Atoms/Common/Inputs/TextInput';
 import * as userService from '../../../../lib/services/userService';
-import {Spacer} from '../../../Atoms/Common/Spacer';
 
 const avatars = [
     {
@@ -247,7 +245,7 @@ export function CustomProfile({
                     <FlexBox align='flex-start' maxWidth='50rem' margin='auto'>
                         <PostTitle title='Avatar Selection'/>
                     </FlexBox>
-                    <Background color='#FFF'>
+                    <Background height='auto' color='#FFF'>
                         <Swiper
                             centeredSlides={true}
                             spaceBetween={30}
@@ -270,7 +268,7 @@ export function CustomProfile({
                             Hide Pronoun
                         </FlexBox>
                     </FlexBox>
-                    <Background color='#fff'>
+                    <Background height='auto' color='#fff'>
                         {isLoading ? (
                             <InPageLoader/>
                         ) : (
@@ -297,7 +295,7 @@ export function CustomProfile({
                             Hide Openness
                         </FlexBox>
                     </FlexBox>
-                    <Background color='#fff'>
+                    <Background height='auto' color='#fff'>
                         {isLoading ? (
                             <InPageLoader/>
                         ) : (

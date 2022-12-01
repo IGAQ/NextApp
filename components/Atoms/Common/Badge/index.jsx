@@ -8,6 +8,7 @@ export const StyledCircle = styled.div`
   width: 3rem;
   height: 3rem;
   content:url(${props => props.badge || '/SheHer.svg'});
+  margin: ${props => props.margin};
   `;
 
 export const ProfileBadge = styled.div`
@@ -25,8 +26,9 @@ export const ProfileBadge = styled.div`
 
 export function Badge({
     badge = badgesPaths.flags.pride,
+    margin,
 }) {
     return (
-        <StyledCircle badge={badge}></StyledCircle>
+        <StyledCircle margin={margin} badge={badge}></StyledCircle>
     );
 }

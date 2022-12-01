@@ -75,6 +75,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
 
             const callback = posts => {
                 const shadowed = [...posts];
+                shadowed.forEach(s => {s.isFiltered = undefined; return s;});
                 if (appliedFilters.length > 0) {
                     for (let post of shadowed) {
                         const postTags = post.postTags.map((tag) => tag.tagName.trim().toLowerCase());
