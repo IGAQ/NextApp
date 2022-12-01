@@ -20,6 +20,7 @@ import {getRecaptchaToken} from '../../../lib/utils';
 import {UserActionsEnum} from '../../../lib/constants/userInteractions';
 
 export default function Post({post}) {
+
     const router = useRouter();
     const [user, userAuthLoaded] = useUser();
     const [isLoadingComments, setIsLoadingComments] = useState(true);

@@ -8,8 +8,10 @@ import {API_SERVER, JWT_TOKEN_LOCAL_STORAGE_KEY} from '../../lib/constants';
 import {useUser} from '../../lib/hooks/useUser';
 import {PageLoader} from '../../components/Atoms/Common/Loader';
 import React from 'react';
-import Login from '../login';
 import {BackArrow} from '../../components/Atoms/Common/Buttons/BackArrow';
+import * as postService from '../../lib/services/postService';
+import {getRecaptchaToken} from '../../lib/utils';
+import {UserActionsEnum} from '../../lib/constants/userInteractions';
 
 export async function getStaticProps() {
     const res = await axios.get(`${API_SERVER}/postTags`);
@@ -29,14 +31,10 @@ export default function NewQueeryPage({postTags}) {
             anonymous: anonymous,
             postTypeName: 'queery',
         };
+        const googleRecaptchaToken = await getRecaptchaToken(UserActionsEnum.CreatePost, process.env.NEXT_PUBLIC_RECAPTCHA_KEY);
 
         try {
-            let result = await axios.post('/api/posts/create', post, {
-                headers: {
-                    Authorization: `Bearer ${storage.getFromStorage(JWT_TOKEN_LOCAL_STORAGE_KEY)}`,
-                },
-            });
-            return result.data;
+            return await postService.createPost({post, googleRecaptchaToken });
         } catch (error) {
             const result = error.response?.data ?? undefined;
             if (!result) {
@@ -46,7 +44,6 @@ export default function NewQueeryPage({postTags}) {
 
             return result;
         }
-
     }
 
     return !userAuthLoaded ? <PageLoader/> : (

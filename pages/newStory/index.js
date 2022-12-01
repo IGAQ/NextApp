@@ -9,6 +9,9 @@ import {PageLoader} from '../../components/Atoms/Common/Loader';
 import React from 'react';
 import {useUser} from '../../lib/hooks/useUser';
 import {BackArrow} from '../../components/Atoms/Common/Buttons/BackArrow';
+import * as postService from '../../lib/services/postService';
+import {getRecaptchaToken} from '../../lib/utils';
+import {UserActionsEnum} from '../../lib/constants/userInteractions';
 
 
 export async function getStaticProps() {
@@ -30,14 +33,10 @@ export default function NewStoryPage({postTags}) {
             anonymous: anonymous,
             postTypeName: 'story',
         };
+        const googleRecaptchaToken = await getRecaptchaToken(UserActionsEnum.CreatePost, process.env.NEXT_PUBLIC_RECAPTCHA_KEY);
 
         try {
-            let result = await axios.post('/api/posts/create', post, {
-                headers: {
-                    Authorization: `Bearer ${storage.getFromStorage(JWT_TOKEN_LOCAL_STORAGE_KEY)}`,
-                },
-            });
-            return result.data;
+            return await postService.createPost({post, googleRecaptchaToken });
         } catch (error) {
             return false;
         }

@@ -81,7 +81,7 @@ export function CommentPrompt({}) {
         </>
     ) : (
         <PostContext.Provider key={newlyCreatedComment.commentId} value={newlyCreatedComment}>
-            <CommentCard nestedLevel={1} isNewlyCreated={true}/>
+            <CommentCard nestedLevel={data.isPost ? 0 : 1} isNewlyCreated={true}/>
         </PostContext.Provider>
     ));
 }

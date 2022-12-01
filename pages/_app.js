@@ -5,11 +5,18 @@ import {Spacer} from '../components/Atoms/Common/Spacer';
 import {PageLoader} from '../components/Atoms/Common/Loader';
 import {WebNav} from '../components/Organisms/Common/WebNav';
 import Router from 'next/router';
-import React from 'react';
-import {StickyDiv2} from '../styles/globals';
+import React, {useEffect, useState} from 'react';
+import {StickyDiv2 } from '../styles/globals';
+import {usePusher} from '../lib/hooks/usePusher';
+import {PusherChannelType, PusherEventTypes} from '../lib/constants/pusherEventTypes';
+import {eventService} from '../lib/services/eventService';
+import {useUser} from '../lib/hooks/useUser';
+import {notificationService} from '../lib/services/notificationService';
 
 function MyApp({Component, pageProps}) {
     const r = useRouter();
+    const [user, userAuthLoaded] = useUser();
+
     function showBottomNav() {
         if (
             r.pathname === '/login' ||
@@ -77,6 +84,71 @@ function MyApp({Component, pageProps}) {
         return () => handlePage();
     }, [r.pathname]);
 
+    const isReady = usePusher(user, [{
+        channelName: PusherChannelType.IGAQ_Notification,
+        requiredAuth: true,
+        bindingsCallback: (igaqNotificationChannel) => {
+            igaqNotificationChannel.bind('pusher:subscription_succeeded', () => {
+                console.log('bind was successful');
+            });
+            igaqNotificationChannel.bind('pusher:error', (e) => {
+                console.log('pusher:error', e);
+            });
+
+            igaqNotificationChannel.bind(PusherEventTypes.NewCommentOnPost, (data) => {
+                console.log(PusherEventTypes.NewCommentOnPost, data);
+                notificationService.push({
+                    username: data.username,
+                    message: `${data.username} replied to your ${data.postTypeName} '${data?.commentContent?.slice(0, 20) ?? ''}'`,
+                });
+            });
+
+            igaqNotificationChannel.bind(PusherEventTypes.NewCommentOnComment, (data) => {
+                console.log(PusherEventTypes.NewCommentOnComment, data);
+                notificationService.push({
+                    username: data.username,
+                    message: `${data.username} replied to your comment '${data?.commentContent?.slice(0, 20) ?? ''}'`,
+                });
+            });
+
+
+            igaqNotificationChannel.bind(PusherEventTypes.CommentGotPinnedByAuthor, (data) => {
+                console.log(PusherEventTypes.CommentGotPinnedByAuthor, data);
+                // notificationService.push({
+                //     username: data.username,
+                //     message: '',
+                // });
+            });
+        },
+    }]);
+
+    const [notificationBadge, setNotificationBadge] = useState(0);
+    useEffect(() => {
+        if (r.pathname === '/notifications') {
+            setNotificationBadge(0);
+        }
+        const updateNotificationBadgeNumber = (newValue) => {
+            setNotificationBadge(newValue);
+        };
+        eventService.on('update-notification-badge-number', updateNotificationBadgeNumber);
+
+        const incrementNotificationBadgeNumber = () => {
+            setNotificationBadge((prevState) => prevState + 1);
+        };
+        eventService.on('increment-notification-badge-number', incrementNotificationBadgeNumber);
+
+        const decrementNotificationBadgeNumber = () => {
+            setNotificationBadge((prevState) => prevState - 1);
+        };
+        eventService.on('decrement-notification-badge-number', decrementNotificationBadgeNumber);
+
+        return () => {
+            eventService.off('update-notification-badge-number', updateNotificationBadgeNumber);
+            eventService.off('increment-notification-badge-number', incrementNotificationBadgeNumber);
+            eventService.off('decrement-notification-badge-number', decrementNotificationBadgeNumber);
+        };
+    }, []);
+
     return (
         <>
             {loading ? (
@@ -85,7 +157,7 @@ function MyApp({Component, pageProps}) {
                 <>
                     {showNav && !mobile && (
                         <>
-                            <WebNav />
+                            <WebNav notificationBadge={notificationBadge} />
                             <Spacer axis="vertical" size={70} />
                             <Component {...pageProps} />
                         </>
@@ -94,7 +166,7 @@ function MyApp({Component, pageProps}) {
                         <>
                             <Component {...pageProps} />
                             <Spacer axis="vertical" size={55} />
-                            <MobileNav />
+                            <MobileNav notificationBadge={notificationBadge} />
                         </>
                     )}
 

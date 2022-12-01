@@ -16,6 +16,7 @@ import styles from './WebNav.module.css';
 import { SearchBar } from '../../../Molecules/Common/SearchBar';
 import { Text } from '../../../Atoms/Common/Text';
 import { Spacer } from '../../../Atoms/Common/Spacer';
+import {eventService} from '../../../../lib/services/eventService';
 
 const NavBase = styled.div`
   display: flex;
@@ -67,7 +68,20 @@ const WebNavBase = styled.div`
     height: 70px;
     `;
 
-export function WebNav() {
+const NotificationBadge = styled.span`
+  position: absolute;
+  top: ${props => props.activePage ? '-10px' : '17px'};
+  right: ${props => props.activePage ? '92px' : '40.5em'};
+  border-radius: 200px;
+  color: white;
+  text-align: center;
+  background: #ff758c;
+  width: 15px;
+  height: 15px;
+  font-size: 11px;
+`;
+
+export function WebNav({notificationBadge}) {
     const r = useRouter();
     const [postModal, setPostModal] = useState(false);
     const [filterMenu, openFilterMenu] = useState(false);
@@ -131,8 +145,8 @@ export function WebNav() {
                 
                 <Link href='/notifications' scroll={false}>
                     <StyledLink className={r.pathname === '/notifications' ? styles.activePage : ' '}>
-                        
                         <IconHolder margin="0 0 0 0">
+                            {notificationBadge > 0 && <NotificationBadge activePage={r.pathname === '/notifications'}>{notificationBadge}</NotificationBadge>}
                             <FaBell size={18}/>
                         </IconHolder>
                         <Spacer axis="horizontal" size={5}/>
