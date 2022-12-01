@@ -1,8 +1,8 @@
 import '../styles/globals.css';
-import { MobileNav } from '../components/Organisms/Common/MobileNav/MobileNav';
-import { useRouter } from 'next/router';
-import { Spacer } from '../components/Atoms/Common/Spacer';
-import { PageLoader } from '../components/Atoms/Common/Loader';
+import {MobileNav} from '../components/Organisms/Common/MobileNav/MobileNav';
+import {useRouter} from 'next/router';
+import {Spacer} from '../components/Atoms/Common/Spacer';
+import {PageLoader} from '../components/Atoms/Common/Loader';
 import {WebNav} from '../components/Organisms/Common/WebNav';
 import Router from 'next/router';
 import React, {useEffect, useState} from 'react';
@@ -13,15 +13,18 @@ import {eventService} from '../lib/services/eventService';
 import {useUser} from '../lib/hooks/useUser';
 import {notificationService} from '../lib/services/notificationService';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({Component, pageProps}) {
     const r = useRouter();
     const [user, userAuthLoaded] = useUser();
 
-    function showBottomNav(){
-        if (router.pathname === '/login' || router.pathname === '/newQueery'){
-            return false; 
-        }
-        else{
+    function showBottomNav() {
+        if (
+            r.pathname === '/login' ||
+            r.pathname === '/signup' ||
+            r.pathname === '/newQueery'
+        ) {
+            return false;
+        } else {
             return true;
         }
     }
@@ -64,7 +67,14 @@ function MyApp({ Component, pageProps }) {
 
     React.useEffect(() => {
         const handlePage = () => {
-            if (r.pathname === '/login' || r.pathname === '/newQueery' || r.pathname === '/newStory' || r.pathname === '/dashboard' || r.pathname === '/' ) {
+            if (
+                r.pathname === '/login' ||
+                r.pathname === '/signup' ||
+                r.pathname === '/newQueery' ||
+                r.pathname === '/newStory' ||
+                r.pathname === '/dashboard' ||
+                r.pathname === '/'
+            ) {
                 setShowNav(false);
             } else {
                 setShowNav(true);
@@ -145,23 +155,27 @@ function MyApp({ Component, pageProps }) {
                 <PageLoader />
             ) : (
                 <>
-                    {showNav && !mobile && <> 
-                        <WebNav notificationBadge={notificationBadge} />
-                        <Spacer axis="vertical" size={70}/> 
-                        <Component {...pageProps} />  
-                    </>}
-                    {showNav && mobile && <> 
-                        <Component {...pageProps} /> 
-                        <Spacer axis="vertical" size={78}/> 
-                        <MobileNav notificationBadge={notificationBadge} />
-                    </>}
-                    
-                    {!showNav && <> 
-                        <Component {...pageProps} />
-                    </>}
-                    
+                    {showNav && !mobile && (
+                        <>
+                            <WebNav notificationBadge={notificationBadge} />
+                            <Spacer axis="vertical" size={70} />
+                            <Component {...pageProps} />
+                        </>
+                    )}
+                    {showNav && mobile && (
+                        <>
+                            <Component {...pageProps} />
+                            <Spacer axis="vertical" size={55} />
+                            <MobileNav notificationBadge={notificationBadge} />
+                        </>
+                    )}
+
+                    {!showNav && (
+                        <>
+                            <Component {...pageProps} />
+                        </>
+                    )}
                     {/* {<showBottomNav && MobileNav/>} */}
-                    
                 </>
             )}
         </>

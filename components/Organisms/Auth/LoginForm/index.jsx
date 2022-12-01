@@ -14,7 +14,7 @@ export function LoginForm({onLogin}) {
     };
 
     return (
-        <FlexBox align='center' bgColor='white'>
+        <FlexBox align='center' bgColor='white' padding="0px 0px 50px 0px">
             <FlexBox align='flex-start' bgColor='white'>
                 <InputArea type='text' label='Username' topSpacerSize={40}
                     onChangeValue={(username) => setUsername(username)} placeholder='Username'/>

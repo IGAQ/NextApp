@@ -7,7 +7,7 @@ export function SearchAndFilter() {
     return (
         <FlexBox dir="row" justify-content="space-between" align="center" max-width="50em">
             <SearchBar/>
-            <Spacer axis="horizontal" size={15}/>
+            <Spacer axis="horizontal" size={25}/>
             <FilterIcon/>
         </FlexBox>
     );

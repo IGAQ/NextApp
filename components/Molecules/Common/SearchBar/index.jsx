@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import {Text} from '../../../Atoms/Common/Text';
 import {BiSearch} from 'react-icons/bi';
 import { Input } from '@mantine/core';
 import {UserActionsHandlersContext} from '../../../../lib/contexts';
@@ -13,7 +12,7 @@ const BarBase = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 0 10px 0 10px;
-  width: 65%;
+  width: 76%;
   min-width: 250px;
 `;
 
@@ -23,7 +22,7 @@ export function SearchBar() {
 
     return (
         <BarBase>
-            <Input variant="unstyled" placeholder="Search topics you want to read" value={searchInputValue} onChange={(e) => {
+            <Input variant="unstyled" style={{ width: "100%"}} rightSectionWidth={500} placeholder="Search topics you want to read" value={searchInputValue} onChange={(e) => {
                 setSearchInputValue(e.target.value);
                 handleSearchTermChange(e.target.value);
             }}/>

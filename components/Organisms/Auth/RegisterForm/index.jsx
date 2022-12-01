@@ -12,7 +12,7 @@ export function RegisterForm({onRegister}) {
     const [email, setEmail] = useState('');
 
     return (
-        <FlexBox align='center' bgColor='white'>
+        <FlexBox align='center' bgColor='white' padding="0px 0px 50px 0px">
             <FlexBox align='flex-start' bgColor='white'>
                 <InputArea type={'text'} label={'Username'} placeholder={'Username'} topSpacerSize={40}
                     onChangeValue={(v) => setUsername(v)}/>
