@@ -4,6 +4,8 @@ import {Text} from '../../components/Atoms/Common/Text';
 import styled from 'styled-components';
 import {PostTitle} from '../../components/Molecules/Post/PostTitle';
 import {badgesPaths} from '../../lib/constants/badgesPaths';
+import {useEffect, useState} from 'react';
+import {notificationService} from '../../lib/services/notificationService';
 
 const NotificationDiv = styled(FlexBox)`
   width: 100%;
@@ -16,6 +18,16 @@ const NotificationDiv = styled(FlexBox)`
 
 
 export default function Notifications(props) {
+    const [notifications, setNotifications] = useState(null);
+
+    useEffect(() => {
+        notificationService.load();
+        setNotifications([...Object.values(notificationService.notifications)]);
+    }, []);
+
+    const render = () => {
+
+    };
 
     return (
         <NotificationDiv>

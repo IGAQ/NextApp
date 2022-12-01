@@ -7,9 +7,10 @@ import {FaBell} from 'react-icons/fa';
 import {BsPlusLg} from 'react-icons/bs';
 import {BsPersonFill} from 'react-icons/bs';
 import {NewPostModal} from '../../Post/NewPostModal';
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './MobileNav.module.css';
-import {useRouter} from 'next/router';
+import Router, {useRouter} from 'next/router';
+import {eventService} from '../../../../lib/services/eventService';
 
 const NavBase = styled.div`
   display: flex;
@@ -51,7 +52,19 @@ const Middle = styled.button`
   padding: 12px 14px 10px;
 `;
 
-export function MobileNav() {
+const NotificationBadge = styled.span`
+  position: absolute;
+  top: ${props => props.activePage ? '-10px' : '10px'};
+  right: ${props => props.activePage ? '17px' : ''};
+  border-radius: 200px;
+  color: white;
+  text-align: center;
+  background: #ff758c;
+  width: 20px;
+  height: 20px;
+`;
+
+export function MobileNav({notificationBadge}) {
     const r = useRouter();
     const [postModal, setPostModal] = useState(false);
 
@@ -98,9 +111,10 @@ export function MobileNav() {
                     {/* <Spacer axis="vertical" size={10}/> */}
                 </Middle>
                 <Link href='/notifications' scroll={false}>
-                    <StyledLink className={r.pathname === '/notifications' ? styles.activePage : ' '}>
+                    <StyledLink className={r.pathname === '/notifications' ? styles.activePage : ''}>
                         <IconHolder margin="0 0 4px 0">
                             <FaBell size={22}/>
+                            {notificationBadge > 0 && <NotificationBadge activePage={r.pathname === '/notifications'}>{notificationBadge}</NotificationBadge>}
                         </IconHolder>
                         Notifications
                     </StyledLink>
