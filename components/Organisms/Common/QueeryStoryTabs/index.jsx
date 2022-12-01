@@ -1,5 +1,5 @@
 import {Tabs} from '@mantine/core';
-import {NewPost} from '../../../Templates/Post/NewPost';
+import {NewPost, NoPosts} from '../../../Templates/Post/NewPost';
 import {Spacer} from '../../../Atoms/Common/Spacer';
 import React, {useEffect, useState} from 'react';
 import {InPageLoader} from '../../../Atoms/Common/Loader';
@@ -118,7 +118,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
                 ) :
                     <>
                         {queeries.length === 0 ? (
-                            <div style={{textAlign: 'center'}}>There are no queeries made yet.</div>
+                            <NoPosts/>
                         ) : (
                             queeries.filter(q => q.isFiltered !== undefined ? q.isFiltered : true).map((queery) => (
                                 <PostContext.Provider key={queery.postId} value={queery}>
@@ -141,7 +141,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
                 ) : (
                     <>
                         {stories.length === 0 ? (
-                            <div style={{textAlign: 'center'}}>There are no queeries made yet.</div>
+                            <NoPosts/>
                         ) : (
                             stories.filter(s => s.isFiltered !== undefined ? s.isFiltered : true).map((story) => (
                                 <PostContext.Provider key={'story' + story.postId} value={story}>

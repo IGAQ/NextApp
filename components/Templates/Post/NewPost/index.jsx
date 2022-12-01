@@ -7,8 +7,9 @@ import {PostSetting} from '../../../Atoms/Post/PostSetting';
 import {useContext, useState} from 'react';
 import {Spacer} from '../../../Atoms/Common/Spacer';
 import {PostContext} from '../../../../lib/contexts';
-import { Logo } from '../../../Atoms/Common/Logo';
+import { Logo, SadLogo } from '../../../Atoms/Common/Logo';
 import { PostContent } from '../../../Atoms/Post/PostContent';
+import { Button } from '../../../Atoms/Common/Buttons/Button';
 
 const PostDiv = styled.div`
   display: flex;
@@ -83,8 +84,10 @@ export function SingleNewPost(){
 export function NoPosts() {
     return (
         <PostDiv alignPost='center'>
-            <Logo />
+            <SadLogo />
             <PostContent content='No Posts Related to This Search'/>
+            <Spacer axis="vertical" size={10}/>
+            <Button onClick={() => window.location.href = '/homepage'} size='small' label='Reset'></Button>
         </PostDiv>
     );
 }
