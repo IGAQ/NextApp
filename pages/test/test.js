@@ -1,7 +1,7 @@
-import { WebNav } from '../../components/Organisms/Common/WebNav';
+import { NoPosts } from '../../components/Templates/Post/NewPost';
 
 export default function Test(){
     return (
-        <WebNav />
+        <NoPosts />
     );
 }
