@@ -5,7 +5,7 @@ import {useRouter} from 'next/router';
 import {Text} from '../../../Atoms/Common/Text';
 import {Spacer} from '../../../Atoms/Common/Spacer';
 import {ModalBackdrop} from '../../../../styles/globals';
-
+import { HappyLogo } from '../../../Atoms/Common/Logo';
 export function NewPostModal(props) {
     const r = useRouter();
 
@@ -30,14 +30,15 @@ export function NewPostModal(props) {
                 animate = {{y:-300, opacity:1}} 
                 transiton={{duration: 100, delay:500}}
                 exit={{y:1000, opacity: 0}}>
-                <FlexBox justify = 'flex-end' dir = 'column' align = 'flex-end' flex = '1' padding = '0 0 25px 0' >
+                <FlexBox justify = 'flex-end' dir = 'column' align = 'flex-end' flex = '1' padding = '0 0 15px 0' >
                     <CloseRoundedIcon onClick = {props.onClick}></CloseRoundedIcon>
                 </FlexBox>
+                <HappyLogo height={95} width={95} />
+                <Spacer axis="vertical" size={10}/>
                 <Text weight = "600" color = "#000000" size = "2rem" text  = "What do you want to post today?"/>
                 <Spacer axis="vertical" size={10}/>
                 <Text size = "1rem" text  = "Choose whether you want to post a question or a story"/>
                 <Spacer axis="vertical" size={35}/>
-
                 <FlexBox bgColor = "#F5f5f5" minWidth="50%" padding = "25px 15px" borderRadius = "10px" margin = "0 0 15px 0"  boxShadow = "0px 4px 8px -1px rgb(117 37 37 / 35%)" onClick = {handleQueery}>
                     <div>
                         <Text weight = "500"  display = "inline"textAlign = "center" size = "1.5rem" color = "#000000" text  = "I got a "/>

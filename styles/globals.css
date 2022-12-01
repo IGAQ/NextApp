@@ -24,7 +24,9 @@ textarea{
   border-bottom: 2px solid #ffb6c3;
 }
 
-
+li{
+  margin-left: 0.25em;
+}
 @font-face {
   font-family: 'Heebo';
   src: url(../fonts/heebo-v21-latin-300.woff2) format('woff2'),

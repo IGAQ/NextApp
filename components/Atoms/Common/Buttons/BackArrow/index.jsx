@@ -7,7 +7,7 @@ const ArrowCont = styled.div`
   margin: ${props => props.margin || '0'};
   position: relative;
     top: ${props => props.top || '25px'};
-    left: ${props => props.left || '25px'};
+    padding-left: 0.5em;
 `;
 
 export function BackArrow(props) {
