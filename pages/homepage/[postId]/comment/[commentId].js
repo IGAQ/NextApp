@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {useRouter} from 'next/router';
 import {useEffect, useState} from 'react';
 import {InPageLoader} from '../../../../components/Atoms/Common/Loader';
@@ -7,7 +6,7 @@ import {CommentCard} from '../../../../components/Molecules/Comment/CommentCard'
 import {CommentPrompt} from '../../../../components/Molecules/Comment/CommentPrompt';
 import {ModalAlert} from '../../../../components/Organisms/Common/Modals/ModalAlert';
 import {SingleComment} from '../../../../components/Templates/Comment/SingleComment';
-import {API_SERVER} from '../../../../lib/constants';
+import {PageLoader} from '../../../../components/Atoms/Common/Loader';
 import {
     PostContext,
     UserActionsHandlersContext,
@@ -18,11 +17,20 @@ import * as postService from '../../../../lib/services/postService';
 import {getRecaptchaToken} from '../../../../lib/utils';
 import {UserActionsEnum} from '../../../../lib/constants/userInteractions';
 
-export default function Comment({post, comment}) {
+export default function Comment() {
     const router = useRouter();
+    const {postId} = router.query;
+    const {commentId} = router.query;
+
+    // my god the amount of states
     const [user, userAuthLoaded] = useUser();
     const [isLoadingComments, setIsLoadingComments] = useState(true);
-    const [comments, setComments] = useState([]);
+    const [childComments, setChildComments] = useState([]);
+    const [comment, setComment] = useState(null);
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    const [post, setPost] = useState(null);
 
     const [createPrompt, setCommentPrompt] = useState(false);
 
@@ -34,7 +42,7 @@ export default function Comment({post, comment}) {
 
     const handleCommentClick = async ({commentId}) => {
         // redirect to the comment thread.
-        await router.push(`/homepage/${post.postId}/comments/${commentId}`);
+        await router.push(`/homepage/${postId}/comments/${commentId}`);
     };
 
     const handlePinClick = async ({commentId, isPinning}) => {
@@ -53,7 +61,10 @@ export default function Comment({post, comment}) {
 
     const handleSubmitComment = async ({parentId, commentContent, isPost}) => {
         console.log('submitting comment', parentId, commentContent);
-        const recaptchaToken = await getRecaptchaToken(UserActionsEnum.CreateComment, process.env.NEXT_PUBLIC_RECAPTCHA_KEY);
+        const recaptchaToken = await getRecaptchaToken(
+            UserActionsEnum.CreateComment,
+            process.env.NEXT_PUBLIC_RECAPTCHA_KEY,
+        );
         try {
             return await postService.newCommentOn({
                 postId: parentId,
@@ -67,14 +78,28 @@ export default function Comment({post, comment}) {
     };
 
     useEffect(() => {
-        (async function () {
-            const comments = await postService.getCommentsOfComment(
-                comment.commentId,
-            );
-            setComments([...comments]);
-            setIsLoadingComments(false);
-        })();
-    }, [comment.commentId, pinSuccess, unpinSuccess]);
+        if (commentId !== undefined) {
+            (async function () {
+                const post = await postService.getPostById(postId);
+                setPost(post);
+                const comment = await postService.getCommentById(commentId);
+                setComment(comment);
+                setIsLoading(false);
+            })();
+        }
+    }, [commentId]);
+
+    useEffect(() => {
+        if (commentId !== undefined) {
+            (async function () {
+                const comments = await postService.getCommentsOfComment(
+                    commentId,
+                );
+                setChildComments([...comments]);
+                setIsLoadingComments(false);
+            })();
+        }
+    }, [commentId]);
 
     const flatComments = (comments, nestedLevel = 0, parentId = null) => {
         return comments.reduce((acc, comment) => {
@@ -98,7 +123,7 @@ export default function Comment({post, comment}) {
 
     const renderComments = () => {
         const result = [];
-        const flattenedComments = flatComments(comments);
+        const flattenedComments = flatComments(childComments);
         for (let comment of flattenedComments) {
             const commentComponent = (
                 <PostContext.Provider key={comment.commentId} value={comment}>
@@ -137,76 +162,74 @@ export default function Comment({post, comment}) {
         <InPageLoader />
     ) : (
         <UserContext.Provider value={user}>
-            <div>
-                {error && (
-                    <ModalAlert
-                        onClick={() => setError(null)}
-                        title="Error"
-                        content={error}
-                        moreText="Please try again."
-                    />
-                )}
-                {pinSuccess && (
-                    <ModalAlert
-                        onClick={() => setPinSuccess(false)}
-                        title="Success"
-                        content={'You have successfully pinned a comment'}
-                        moreText="Marked as resolved!"
-                    />
-                )}
-                {unpinSuccess && (
-                    <ModalAlert
-                        onClick={() => setUnpinSuccess(false)}
-                        title="Success"
-                        content={'You have successfully unpinned a comment'}
-                        moreText="Feel free to pin a new comment!"
-                    />
-                )}
-                <PostContext.Provider value={comment}>
-                    <UserActionsHandlersContext.Provider
-                        value={{
-                            data: {
-                                postAuthorId: post.authorUser.userId,
-                            },
-                            handleClickOnPost: () => '',
-                            handleCommentClick: handleCommentClick,
-                            handleTogglePrompt: togglePrompt,
-                            handlePin: handlePinClick,
-                        }}
-                    >
-                        <SingleComment />
-                    </UserActionsHandlersContext.Provider>
-                </PostContext.Provider>
-            </div>
-            {createPrompt && (
-                <UserActionsHandlersContext.Provider
-                    value={{
-                        data: {
-                            parentId: comment.commentId,
-                            isPost: true,
-                            nestedLevel: 0,
-                        },
-                        handleSubmitComment: handleSubmitComment,
-                    }}
-                >
-                    <CommentPrompt />
-                </UserActionsHandlersContext.Provider>
-            )}
+            {isLoading ? (
+                <PageLoader />
+            ) : (
+                <>
+                    <div>
+                        {error && (
+                            <ModalAlert
+                                onClick={() => setError(null)}
+                                title="Error"
+                                content={error}
+                                moreText="Please try again."
+                            />
+                        )}
+                        {pinSuccess && (
+                            <ModalAlert
+                                onClick={() => setPinSuccess(false)}
+                                title="Success"
+                                content={
+                                    'You have successfully pinned a comment'
+                                }
+                                moreText="Marked as resolved!"
+                            />
+                        )}
+                        {unpinSuccess && (
+                            <ModalAlert
+                                onClick={() => setUnpinSuccess(false)}
+                                title="Success"
+                                content={
+                                    'You have successfully unpinned a comment'
+                                }
+                                moreText="Feel free to pin a new comment!"
+                            />
+                        )}
+                        <PostContext.Provider value={comment}>
+                            <UserActionsHandlersContext.Provider
+                                value={{
+                                    data: {
+                                        postAuthorId: post.authorUser.userId,
+                                    },
+                                    handleClickOnPost: () => '',
+                                    handleCommentClick: handleCommentClick,
+                                    handleTogglePrompt: togglePrompt,
+                                    handlePin: handlePinClick,
+                                }}
+                            >
+                                <SingleComment />
+                            </UserActionsHandlersContext.Provider>
+                        </PostContext.Provider>
+                    </div>
+                    {createPrompt && (
+                        <UserActionsHandlersContext.Provider
+                            value={{
+                                data: {
+                                    parentId: comment.commentId,
+                                    isPost: true,
+                                    nestedLevel: 0,
+                                },
+                                handleSubmitComment: handleSubmitComment,
+                            }}
+                        >
+                            <CommentPrompt />
+                        </UserActionsHandlersContext.Provider>
+                    )}
 
-            {isLoadingComments ? <InPageLoader /> : renderComments()}
-            <Spacer size={50} />
+                    {isLoadingComments ? <InPageLoader /> : renderComments()}
+                    <Spacer size={50} />
+                </>
+            )}
         </UserContext.Provider>
     );
-}
-
-export async function getServerSideProps({params}) {
-    const responsePost = await axios.get(
-        `${API_SERVER}/posts/${params.postId}`,
-    );
-    const res = await axios.get(`${API_SERVER}/comments/${params.commentId}`);
-    const comment = res.data;
-    const post = responsePost.data;
-    return {
-        props: {post, comment}, // will be passed to the page component as props
-    };
 }

@@ -1,14 +1,15 @@
-import axios from 'axios';
 import {useRouter} from 'next/router';
 import {useEffect, useState} from 'react';
 import {BackArrow} from '../../../components/Atoms/Common/Buttons/BackArrow';
-import {InPageLoader} from '../../../components/Atoms/Common/Loader';
+import {
+    InPageLoader,
+    PageLoader,
+} from '../../../components/Atoms/Common/Loader';
 import {Spacer} from '../../../components/Atoms/Common/Spacer';
 import {CommentCard} from '../../../components/Molecules/Comment/CommentCard';
 import {CommentPrompt} from '../../../components/Molecules/Comment/CommentPrompt';
 import {ModalAlert} from '../../../components/Organisms/Common/Modals/ModalAlert';
 import {SingleNewPost} from '../../../components/Templates/Post/NewPost';
-import {API_SERVER} from '../../../lib/constants';
 import {
     PostContext,
     UserActionsHandlersContext,
@@ -19,11 +20,14 @@ import * as postService from '../../../lib/services/postService';
 import {getRecaptchaToken} from '../../../lib/utils';
 import {UserActionsEnum} from '../../../lib/constants/userInteractions';
 
-export default function Post({post}) {
+export default function Post() {
     const router = useRouter();
+    const {postId} = router.query;
     const [user, userAuthLoaded] = useUser();
+    const [isLoading, setIsLoading] = useState(true);
     const [isLoadingComments, setIsLoadingComments] = useState(true);
     const [comments, setComments] = useState([]);
+    const [posts, setPosts] = useState(null);
 
     const [createPrompt, setCommentPrompt] = useState(false);
 
@@ -35,7 +39,7 @@ export default function Post({post}) {
 
     const handleCommentClick = async ({commentId}) => {
         // redirect to the comment thread.
-        await router.push(`/homepage/${post.postId}/comment/${commentId}`);
+        await router.push(`/homepage/${postId}/comment/${commentId}`);
     };
 
     const handlePinClick = async ({commentId, isPinning}) => {
@@ -71,12 +75,19 @@ export default function Post({post}) {
     };
 
     useEffect(() => {
-        (async function () {
-            const comments = await postService.getsCommentsOfPost(post.postId);
-            setComments([...comments]);
-            setIsLoadingComments(false);
-        })();
-    }, [post.postId, pinSuccess, unpinSuccess]);
+        if (postId !== undefined) {
+            (async function () {
+                const posts = await postService.getPostById(postId);
+                setPosts(posts);
+                setIsLoading(false);
+                const comments = await postService.getsCommentsOfPost(
+                    posts.postId,
+                );
+                setComments([...comments]);
+                setIsLoadingComments(false);
+            })();
+        }
+    }, [postId]);
 
     const flatComments = (comments, nestedLevel = 0, parentId = null) => {
         return comments.reduce((acc, comment) => {
@@ -108,8 +119,8 @@ export default function Post({post}) {
                         value={{
                             data: {
                                 parentId: comment.commentId,
-                                postId: post.postId,
-                                postAuthorId: post.authorUser.userId,
+                                postId: posts.postId,
+                                postAuthorId: posts.authorUser.userId,
                                 isPost: false,
                                 nestedLevel: comment.nestedLevel,
                             },
@@ -164,45 +175,47 @@ export default function Post({post}) {
                         moreText="Feel free to pin a new comment!"
                     />
                 )}
-                <BackArrow margin = '0' />
-                <PostContext.Provider value={post}>
-                    <UserActionsHandlersContext.Provider
-                        value={{
-                            handleClickOnPost: () => '',
-                            handleCommentClick: handleCommentClick,
-                            handleTogglePrompt: togglePrompt,
-                        }}
-                    >
-                        <SingleNewPost />
-                    </UserActionsHandlersContext.Provider>
-                </PostContext.Provider>
+                {isLoading ? (
+                    <PageLoader />
+                ) : (
+                    <>
+                        <BackArrow margin="0" />
+                        <PostContext.Provider value={posts}>
+                            <UserActionsHandlersContext.Provider
+                                value={{
+                                    handleClickOnPost: () => '',
+                                    handleCommentClick: handleCommentClick,
+                                    handleTogglePrompt: togglePrompt,
+                                }}
+                            >
+                                <SingleNewPost />
+                            </UserActionsHandlersContext.Provider>
+                        </PostContext.Provider>
 
-                {createPrompt && (
-                    <UserActionsHandlersContext.Provider
-                        value={{
-                            data: {
-                                parentId: post.postId,
-                                isPost: true,
-                                nestedLevel: 0,
-                            },
-                            handleSubmitComment: handleSubmitComment,
-                        }}
-                    >
-                        <CommentPrompt />
-                    </UserActionsHandlersContext.Provider>
+                        {createPrompt && (
+                            <UserActionsHandlersContext.Provider
+                                value={{
+                                    data: {
+                                        parentId: posts.postId,
+                                        isPost: true,
+                                        nestedLevel: 0,
+                                    },
+                                    handleSubmitComment: handleSubmitComment,
+                                }}
+                            >
+                                <CommentPrompt />
+                            </UserActionsHandlersContext.Provider>
+                        )}
+
+                        {isLoadingComments ? (
+                            <InPageLoader />
+                        ) : (
+                            renderComments()
+                        )}
+                        <Spacer size={50} />
+                    </>
                 )}
-
-                {isLoadingComments ? <InPageLoader /> : renderComments()}
-                <Spacer size={50} />
             </>
         </UserContext.Provider>
     );
-}
-
-export async function getServerSideProps({params}) {
-    const res = await axios.get(`${API_SERVER}/posts/${params.postId}`);
-    const post = res.data;
-    return {
-        props: {post}, // will be passed to the page component as props
-    };
 }
