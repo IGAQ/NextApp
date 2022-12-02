@@ -44,6 +44,9 @@ export function QueeryStoryTabs({filteringAndSorting,setFilteringAndSorting, onA
             // console.debug('search triggered', searchQuery);
 
             const callback = posts => {
+                if (!posts) {
+                    return;
+                }
                 let shadowed = [...posts];
 
                 return shadowed.map(post => {
