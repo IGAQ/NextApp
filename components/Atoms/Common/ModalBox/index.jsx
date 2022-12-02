@@ -16,6 +16,7 @@ export const ModalBox = styled(motion.div)`
   top: 50%;
   border: ${props => props.border || 'none'};
   padding: ${props => props.padding || '10px'};
-  margin: auto;
+  left: 25%;
+  margin: ${props => props.margin || 'auto'};
 `;
 

@@ -82,13 +82,13 @@ export function SingleNewPost(){
     );
 }
 
-export function NoPosts() {
+export function NoPosts({onClick}) {
     return (
         <PostDiv alignPost='center'>
             <SadLogo />
             <PostContent content='No Posts Related to This Search'/>
             <Spacer axis="vertical" size={10}/>
-            <Button onClick={() => window.location.href = '/homepage'} size='small' label='Reset'></Button>
+            <Button onClick={() => onClick} size='small' label='Create A Post'></Button>
         </PostDiv>
     );
 }

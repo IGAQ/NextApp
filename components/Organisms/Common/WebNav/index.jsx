@@ -33,11 +33,13 @@ const StyledLink = styled.a`
   justify-content: center;
   font-size: 0.85rem;
   padding: 0 15px;
+  cursor: pointer;
 `;
 
 const IconHolder = styled(motion.div)`
   align-items: center;
   margin: ${props => props.margin || '0'};
+  cursor: pointer;
 `;
 
 const Middle = styled.button`
@@ -120,9 +122,9 @@ export function WebNav({notificationBadge}) {
 
     return (
         <WebNavBase>
-            <div onClick={()=> r.push('/homepage')}>
+            <IconHolder onClick={()=> r.push('/homepage')}>
                 <Logo height={95} width={95} />
-            </div>
+            </IconHolder>
             <Spacer axis="horizontal" size={20}/>
 
             <UserActionsHandlersContext.Provider value={{

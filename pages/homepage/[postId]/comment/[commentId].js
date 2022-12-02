@@ -17,6 +17,7 @@ import * as postService from '../../../../lib/services/postService';
 import {getRecaptchaToken} from '../../../../lib/utils';
 import {UserActionsEnum} from '../../../../lib/constants/userInteractions';
 import * as userService from '../../../../lib/services/userService';
+import { BackArrow } from '../../../../components/Atoms/Common/Buttons/BackArrow';
 
 export default function Comment() {
     const router = useRouter();
@@ -198,6 +199,7 @@ export default function Comment() {
                     <InPageLoader />
                 ) : (
                     <PostContext.Provider value={comment}>
+                        <BackArrow />
                         <UserActionsHandlersContext.Provider
                             value={{
                                 data: {
