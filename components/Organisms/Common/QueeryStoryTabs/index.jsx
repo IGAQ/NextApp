@@ -136,7 +136,7 @@ export function QueeryStoryTabs({filteringAndSorting,setFilteringAndSorting, onA
             </StickyDiv>
 
             <Tabs.Panel value="queery">
-                {queeries === null ? (
+                {!queeries ? (
                     <InPageLoader/>
                 ) :
                     <>
@@ -164,7 +164,7 @@ export function QueeryStoryTabs({filteringAndSorting,setFilteringAndSorting, onA
                 }
             </Tabs.Panel>
             <Tabs.Panel value="story">
-                {stories === null ? (
+                {!stories ? (
                     <InPageLoader color='grape'/>
                 ) : (
                     <>
