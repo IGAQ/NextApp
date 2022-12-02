@@ -39,7 +39,7 @@ export function SinglePostBody(){
             <Spacer axis="vertical" size={15}/>
             {content.postTitle && <PostTitle title={content.postTitle} onClick={() => router.push('/homepage/' + content.postId)}/>}
             <Spacer axis="vertical" size={5}/>
-            <SinglePostContent content={content.postContent || content.commentContent}/>
+            <SinglePostContent content={(content.postContent || content.commentContent) ?? '[This post is in pending state. Please come back later for a moderator needs to publish it.]'}/>
             <Spacer axis="vertical" size={35}/>
             {content.postTags && <PostTagBox tags={content.postTags}/>}
         </PostBodyDiv>
