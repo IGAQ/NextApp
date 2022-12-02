@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {Text} from '../../../Atoms/Common/Text';
 import {Spacer} from '../../../Atoms/Common/Spacer';
 import {FlexBox} from '../../../../styles/globals';
+import { ModalAlert } from '../../../Organisms/Common/Modals/ModalAlert';
 
 const Area = styled.textarea`
   font-size: 1rem;
@@ -37,7 +38,7 @@ export function MaxTextArea({
         onChange(e);
         if (value.length > max) {
             //Change this to a toast message
-            alert('Looks like your queery is too long!');
+            <ModalAlert text={tooLong} />;
         }
     };
 

@@ -92,7 +92,7 @@ export function PostForm({onSubmit, postTags, type}) {
                             label="Post title" id="title" placeholder="Enter your title"/>
                         <Spacer axis="vertical" size={25}/>
                         <MaxTextArea onChange={(e) => setContent(e.target.value)} name="content" id="content"
-                            text={content} label="Queery" placeholder="Enter your Queery" maxLength="250"/>
+                            text={content} label="Queery" placeholder="Enter your Queery" maxLength="5000"/>
                         <Spacer axis="vertical" size={25}/>
                         <Breakline/>
                         <Spacer axis="vertical" size={25}/>

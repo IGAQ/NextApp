@@ -42,3 +42,12 @@ export function HappyLogo(props = defaultProps) {
         </LogoDiv>
     );
 }
+
+export function WinkLogo(props = defaultProps) {
+    const {containerHeight, containerWidth, imageAlt, imageHeight = '100', imageWidth = '100'} = props;
+    return (
+        <LogoDiv height={containerHeight} width={containerWidth}>
+            <Image src='/IGAQWink.svg' width={imageWidth} height={imageHeight} alt='Wink IGAQ Logo'/>
+        </LogoDiv>
+    );
+}

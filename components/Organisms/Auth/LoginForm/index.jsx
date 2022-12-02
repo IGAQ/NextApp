@@ -2,12 +2,14 @@ import {FlexBox} from '../../../../styles/globals';
 import {useState} from 'react';
 import {InputArea} from '../../../Molecules/Auth/FormGroup/InputArea';
 import {LoginActionsArea} from '../../../Molecules/Auth/FormGroup/LoginActionsArea';
+import { useRouter } from 'next/router';
 
 // type onSubmitType = ({username: string, password: string}) => void;
 
 export function LoginForm({onLogin}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const r = useRouter();
 
     const handleForgotPassword = async () => {
         console.log('Forgot password');
@@ -21,6 +23,9 @@ export function LoginForm({onLogin}) {
                 <InputArea type='password' label='Password' topSpacerSize={20}
                     onChangeValue={(password) => setPassword(password)} placeholder='Password'/>
                 <LoginActionsArea onLogin={() => onLogin({username, password})} onForgotPassword={handleForgotPassword}/>
+            </FlexBox>
+            <FlexBox onClick={()=> r.push('/signup')} align='flex-start' bgColor='white' margin='10px'>
+                Sign up instead?
             </FlexBox>
         </FlexBox>
     );
