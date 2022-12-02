@@ -98,11 +98,12 @@ export function ReportModal({
     CustomButton,
 
     enableTextIput = true,
+    textInputState,
+    setTextInputState,
 }) {
     return (
         <FlexBox>
             <ModalBox border="5px solid #FF758C" padding={modalBoxPadding} align="stretch"
-                borderRadius="20px"
                 initial={{y: 500}}
                 animate={{y: -300, opacity: 1}}
                 transiton={{duration: 100, delay: 500}}
@@ -114,7 +115,7 @@ export function ReportModal({
                     {enableTextIput && (
                         <>
                             <Spacer axis="vertical" size={15}/>
-                            <TextInput placeholder="Enter your report here" />
+                            <TextInput placeholder="Enter your report here" value={textInputState} onChange={(e) => setTextInputState(e.target.value)} />
                         </>
                     )}{enableMoreText && (
                         <>

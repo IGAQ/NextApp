@@ -111,6 +111,7 @@ export function CustomProfile({
     const [currentSelectedSexuality, setCurrentSelectedSexuality] = useState(null);
     const [availableSexualities, setAvailableSexualities] = useState([]);
     useEffect(() => {
+        console.log(isLoading, userAuthLoaded);
         if (!isLoading || !userAuthLoaded) {
             return;
         }
@@ -118,6 +119,8 @@ export function CustomProfile({
             let sexualities = await sexualityService.getAllSexualities();
             let genders = await genderService.getAllGenders();
             let opennesses = await opennessService.getAllOpennesses();
+
+            console.log(sexualities, genders, opennesses);
 
 
             // --- Genders ---

@@ -104,6 +104,8 @@ function MyApp({Component, pageProps}) {
                     stashToken: data.stashToken,
                 });
             });
+
+            notificationService.syncStash();
         },
     }]);
 

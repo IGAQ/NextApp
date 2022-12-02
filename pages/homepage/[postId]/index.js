@@ -19,6 +19,7 @@ import {useUser} from '../../../lib/hooks/useUser';
 import * as postService from '../../../lib/services/postService';
 import {getRecaptchaToken} from '../../../lib/utils';
 import {UserActionsEnum} from '../../../lib/constants/userInteractions';
+import * as userService from '../../../lib/services/userService';
 
 
 export default function Post() {
@@ -75,6 +76,11 @@ export default function Post() {
         }
     };
 
+    const handleSubmitReport = async ({isPost, id, reason}) => {
+        console.log('submitting report', {isPost, id, reason});
+        return await userService.reportContent({ isPost, id, reason });
+    };
+
     useEffect(() => {
         if (postId !== undefined) {
             (async function () {
@@ -128,6 +134,7 @@ export default function Post() {
                             handleCommentClick: handleCommentClick,
                             handleSubmitComment: handleSubmitComment,
                             handlePin: handlePinClick,
+                            handleSubmitReport: handleSubmitReport,
                         }}
                     >
                         <CommentCard
@@ -187,6 +194,7 @@ export default function Post() {
                                     handleClickOnPost: () => '',
                                     handleCommentClick: handleCommentClick,
                                     handleTogglePrompt: togglePrompt,
+                                    handleSubmitReport: handleSubmitReport,
                                 }}
                             >
                                 <SingleNewPost />

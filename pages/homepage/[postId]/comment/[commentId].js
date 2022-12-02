@@ -16,6 +16,7 @@ import {useUser} from '../../../../lib/hooks/useUser';
 import * as postService from '../../../../lib/services/postService';
 import {getRecaptchaToken} from '../../../../lib/utils';
 import {UserActionsEnum} from '../../../../lib/constants/userInteractions';
+import * as userService from '../../../../lib/services/userService';
 
 export default function Comment() {
     const router = useRouter();
@@ -75,6 +76,11 @@ export default function Comment() {
         } catch (error) {
             setError(error);
         }
+    };
+
+    const handleSubmitReport = async ({isPost, id, reason}) => {
+        console.log('submitting report', isPost, id, reason);
+        return await userService.reportContent({ isPost, id, reason });
     };
 
     useEffect(() => {
@@ -139,6 +145,7 @@ export default function Comment() {
                             handleCommentClick: handleCommentClick,
                             handleSubmitComment: handleSubmitComment,
                             handlePin: handlePinClick,
+                            handleSubmitReport: handleSubmitReport,
                         }}
                     >
                         <CommentCard
@@ -162,69 +169,62 @@ export default function Comment() {
         <InPageLoader />
     ) : (
         <UserContext.Provider value={user}>
-            {isLoading ? (
-                <PageLoader />
-            ) : (
-                <>
-                    <div>
-                        {error && (
-                            <ModalAlert
-                                onClick={() => setError(null)}
-                                title="Error"
-                                content={error}
-                                moreText="Please try again."
-                            />
-                        )}
-                        {pinSuccess && (
-                            <ModalAlert
-                                onClick={() => setPinSuccess(false)}
-                                title="Success"
-                                content={
-                                    'You have successfully pinned a comment'
-                                }
-                                moreText="Marked as resolved!"
-                            />
-                        )}
-                        {unpinSuccess && (
-                            <ModalAlert
-                                onClick={() => setUnpinSuccess(false)}
-                                title="Success"
-                                content={
-                                    'You have successfully unpinned a comment'
-                                }
-                                moreText="Feel free to pin a new comment!"
-                            />
-                        )}
-                        <PostContext.Provider value={comment}>
-                            <UserActionsHandlersContext.Provider
-                                value={{
-                                    data: {
-                                        postAuthorId: post.authorUser.userId,
-                                    },
-                                    handleClickOnPost: () => '',
-                                    handleCommentClick: handleCommentClick,
-                                    handleTogglePrompt: togglePrompt,
-                                    handlePin: handlePinClick,
-                                }}
-                            >
-                                <SingleComment />
-                            </UserActionsHandlersContext.Provider>
-                        </PostContext.Provider>
-                    </div>
-                    {createPrompt && (
-                        <UserActionsHandlersContext.Provider
-                            value={{
-                                data: {
-                                    parentId: comment.commentId,
-                                    isPost: true,
-                                    nestedLevel: 0,
-                                },
-                                handleSubmitComment: handleSubmitComment,
-                            }}
-                        >
-                            <CommentPrompt />
-                        </UserActionsHandlersContext.Provider>
-                    )}
+            <div>
+                {error && (
+                    <ModalAlert
+                        onClick={() => setError(null)}
+                        title="Error"
+                        content={error}
+                        moreText="Please try again."
+                    />
+                )}
+                {pinSuccess && (
+                    <ModalAlert
+                        onClick={() => setPinSuccess(false)}
+                        title="Success"
+                        content={'You have successfully pinned a comment'}
+                        moreText="Marked as resolved!"
+                    />
+                )}
+                {unpinSuccess && (
+                    <ModalAlert
+                        onClick={() => setUnpinSuccess(false)}
+                        title="Success"
+                        content={'You have successfully unpinned a comment'}
+                        moreText="Feel free to pin a new comment!"
+                    />
+                )}
+                <PostContext.Provider value={comment}>
+                    <UserActionsHandlersContext.Provider
+                        value={{
+                            data: {
+                                postAuthorId: post.authorUser.userId,
+                            },
+                            handleClickOnPost: () => '',
+                            handleCommentClick: handleCommentClick,
+                            handleTogglePrompt: togglePrompt,
+                            handlePin: handlePinClick,
+                            handleSubmitReport: handleSubmitReport,
+                        }}
+                    >
+                        <SingleComment />
+                    </UserActionsHandlersContext.Provider>
+                </PostContext.Provider>
+            </div>
+            {createPrompt && (
+                <UserActionsHandlersContext.Provider
+                    value={{
+                        data: {
+                            parentId: comment.commentId,
+                            isPost: true,
+                            nestedLevel: 0,
+                        },
+                        handleSubmitComment: handleSubmitComment,
+                    }}
+                >
+                    <CommentPrompt />
+                </UserActionsHandlersContext.Provider>
+            )}
 
                     {isLoadingComments ? <InPageLoader /> : renderComments()}
                     <Spacer size={50} />

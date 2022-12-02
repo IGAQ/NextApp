@@ -21,10 +21,10 @@ const OutsideLoader = styled.div`
 `;
 
 
-export function InPageLoader({color='pink'}) {
+export function InPageLoader({color='pink', size='xl'}) {
     return (
         <FlexBox>
-            <Loader color={color} size='xl'/>
+            <Loader color={color} size={size}/>
         </FlexBox>
     );
 }
