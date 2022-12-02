@@ -4,6 +4,7 @@ export default function Document() {
     return (
         <Html>
             <Head>
+                <title>IGAQ - I Got A Queery</title>
                 <link rel="icon" type="image/x-icon" href="/IGAQLogo.svg" />
                 <link
                     rel="preload"
@@ -13,13 +14,14 @@ export default function Document() {
                     type="font/ttf"
                 />
                 {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-                <script src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_KEY}`}></script>
+                <script
+                    src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_KEY}`}
+                ></script>
             </Head>
             <body>
-                <Main/>
-                <NextScript/>
+                <Main />
+                <NextScript />
             </body>
         </Html>
     );
 }
-
