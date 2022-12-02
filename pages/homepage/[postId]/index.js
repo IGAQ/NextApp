@@ -78,7 +78,11 @@ export default function Post() {
 
     const handleSubmitReport = async ({isPost, id, reason}) => {
         console.log('submitting report', {isPost, id, reason});
-        return await userService.reportContent({ isPost, id, reason });
+        const recaptchaToken = await getRecaptchaToken(
+            UserActionsEnum.ContentReport,
+            process.env.NEXT_PUBLIC_RECAPTCHA_KEY,
+        );
+        return await userService.reportContent({ isPost, id, reason, googleRecaptchaToken: recaptchaToken });
     };
 
     useEffect(() => {
