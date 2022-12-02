@@ -4,7 +4,6 @@ export default function Document() {
     return (
         <Html>
             <Head>
-                <title>IGAQ - I Got A Queery</title>
                 <link rel="icon" type="image/x-icon" href="/IGAQLogo.svg" />
                 <link
                     rel="preload"
