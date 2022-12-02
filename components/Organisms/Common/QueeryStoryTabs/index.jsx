@@ -44,6 +44,9 @@ export function QueeryStoryTabs({filteringAndSorting,setFilteringAndSorting, onA
             // console.debug('search triggered', searchQuery);
 
             const callback = posts => {
+                if (!posts) {
+                    return;
+                }
                 let shadowed = [...posts];
 
                 return shadowed.map(post => {
@@ -89,6 +92,9 @@ export function QueeryStoryTabs({filteringAndSorting,setFilteringAndSorting, onA
             console.log(appliedFilters);
 
             const callback = posts => {
+                if (!posts) {
+                    return [];
+                }
                 let shadowed = [...posts];
                 shadowed = shadowed.map(s => {s.isFiltered = true; return s;});
                 if (appliedFilters.length > 0) {
@@ -130,11 +136,11 @@ export function QueeryStoryTabs({filteringAndSorting,setFilteringAndSorting, onA
             </StickyDiv>
 
             <Tabs.Panel value="queery">
-                {queeries === null ? (
+                {!queeries ? (
                     <InPageLoader/>
                 ) :
                     <>
-                        {queeries.every(q => q.isFiltered === false) ? (
+                        {queeries.length === 0 || queeries.every(q => q.isFiltered === false) ? (
                             <NoPosts/>
                         ) : (
                             queeries.filter(q => q.isFiltered).map((queery) => (
@@ -158,14 +164,14 @@ export function QueeryStoryTabs({filteringAndSorting,setFilteringAndSorting, onA
                 }
             </Tabs.Panel>
             <Tabs.Panel value="story">
-                {stories === null ? (
+                {!stories ? (
                     <InPageLoader color='grape'/>
                 ) : (
                     <>
-                        {stories.find(s => s.isFiltered === undefined || s.isFiltered === true) === undefined ? (
+                        {stories.length === 0 || stories.find(s => s.isFiltered === undefined || s.isFiltered === true) === undefined ? (
                             <NoPosts/>
                         ) : (
-                            stories.filter(s => s.isFiltered !== undefined ? s.isFiltered : true).map((story) => (
+                            stories.filter(s => s.isFiltered).map((story) => (
                                 <PostContext.Provider key={'story' + story.postId} value={story}>
                                     <UserActionsHandlersContext.Provider value={{
                                         data: {
