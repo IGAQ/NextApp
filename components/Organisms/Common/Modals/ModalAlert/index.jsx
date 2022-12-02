@@ -50,7 +50,7 @@ export function ModalAlert({
 
     return (
         <FlexBox>
-            <ModalBox border="5px solid #FF758C" padding={modalBoxPadding} align="stretch"
+            <ModalBox padding={modalBoxPadding} align="stretch"
                 borderRadius="20px"
                 initial={{y: 500}}
                 animate={{y: -300, opacity: 1}}
