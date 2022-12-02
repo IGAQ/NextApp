@@ -64,6 +64,15 @@ export default function About() {
                     <Text text='Ages 13-19 are the common age group for people to begin exploring their sexuality.' size='0.9em' />
                     <Text text='We also invite members who are more experienced in order to foster a "mentor" kind of environment, where help and advice are more accessible.' size='0.9em' />
                     <Text text='As always, we welcome diversity and do not discriminate against any age, race, or religion.' size='0.9em' />
+                    <Spacer axis='vertical' size={45} />
+                    <Text
+                        text='Meet the team'
+                        size='1.5em'
+                        weight='500' />
+                    <div>
+                        <Text display = 'inline' text='Meet the team behind Queery. Get to know us '  size='0.9em' />
+                        <a href = 'https://igaq.carrd.co/' style = {{display: 'inline'}}><Text color = '#ff758c'display = 'inline' text ='here!' size='0.9em'/> </a>
+                    </div>
                     <Spacer axis='vertical' size={100} />
                 </FlexBox>
             </FlexBox>

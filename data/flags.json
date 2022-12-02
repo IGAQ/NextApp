@@ -1,0 +1,84 @@
+{ "flags":[
+       {
+              "name": "Agender",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 560\"><path d=\"M0 0h800v560H0z\"></path><path fill=\"#b9b9b9\" d=\"M0 80h800v400H0z\"></path><path fill=\"#fff\" d=\"M0 160h800v240H0z\"></path><path fill=\"#b8f483\" d=\"M0 240h800v80H0z\"></path></svg>"
+       },
+       {
+              "name": "Aromantic",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 480\"><path d=\"M0 0h800v480H0z\"></path><path fill=\"#a9a9a9\" d=\"M0 0h800v384H0z\"></path><path fill=\"#fff\" d=\"M0 0h800v288H0z\"></path><path fill=\"#a7d379\" d=\"M0 0h800v192H0z\"></path><path fill=\"#3da542\" d=\"M0 0h800v96H0z\"></path></svg>"
+       },
+       {
+              "name": "Asexual",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 480\"><path fill=\"#fff\" d=\"M0 0h800v480H0z\"></path><path d=\"M0 0h800v120H0z\"></path><path fill=\"purple\" d=\"M0 360h800v120H0z\"></path><path fill=\"#a3a3a3\" d=\"M0 120h800v120H0z\"></path></svg>"
+       },
+       {
+              "name": "Bisexual",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 480\"><g fill-rule=\"evenodd\"><path fill=\"#d60270\" d=\"M0 0h800v192H0z\"></path><path fill=\"#9b4f96\" d=\"M0 192h800v96H0z\"></path><path fill=\"#0038a8\" d=\"M0 288h800v192H0z\"></path></g></svg>"
+       },
+       {
+              "name": "Genderfluid",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 480\"><path fill=\"#333ebd\" d=\"M0 0h800v480H0z\"></path><path d=\"M0 0h800v384H0z\"></path><path fill=\"#be18d6\" d=\"M0 0h800v288H0z\"></path><path fill=\"#fff\" d=\"M0 0h800v192H0z\"></path><path fill=\"#ff75a2\" d=\"M0 0h800v96H0z\"></path></svg>"
+       },
+       {
+              "name": "Genderqueer",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 480\"><path fill=\"#4a8123\" d=\"M0 0h800v480H0z\"></path><path fill=\"#fff\" d=\"M0 0h800v320H0z\"></path><path fill=\"#b57edc\" d=\"M0 0h800v160H0z\"></path></svg>"
+       },
+       {
+              "name": "Intersex",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 900 600\"><path fill=\"#FFD800\" d=\"M0 0h900v600H0z\"></path><circle cx=\"450\" cy=\"300\" r=\"147\" fill=\"none\" stroke-width=\"50\" stroke=\"#7902aa\"></circle></svg>"
+       },
+       {
+              "name": "Labrys Lesbian",
+              "svg":"<svg viewBox=\"0 0 1000 600\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 0h1000v600H0z\" fill=\"#792491\"></path><path d=\"M500 550L211.325 50h577.35z\"></path><path d=\"M479.667 132.374a162.687 162.687 0 01-108.732-62.373 162.687 162.687 0 000 198.075 162.687 162.687 0 01108.732-62.373zm40.672 73.329a162.687 162.687 0 01108.732 62.373 162.687 162.687 0 000-198.075 162.687 162.687 0 01-108.732 62.373zm-4.067-91.571a16.269 8.134 0 00-32.538 0v347.743a16.269 8.134 0 0032.538 0z\" fill=\"#fff\"></path></svg>"
+       },
+       {
+              "name": "Lesbian",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 450\"><path fill=\"#A30262\" d=\"M0 0h800v450H0z\"></path><path fill=\"#D362A4\" d=\"M0 0h800v360H0z\"></path><path fill=\"#FFF\" d=\"M0 0h800v270H0z\"></path><path fill=\"#FF9A56\" d=\"M0 0h800v180H0z\"></path><path fill=\"#D52D00\" d=\"M0 0h800v90H0z\"></path></svg>"
+       },
+       {
+              "name": "Nonbinary",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 240\"><g fill-rule=\"evenodd\"><path d=\"M0 150v30h400v-60H0v30\" fill=\"#9c5cd4\"></path><path d=\"M0 90v30h400V60H0v30\" fill=\"#fff\"></path><path d=\"M0 30v30h400V0H0v30\" fill=\"#fcf434\"></path><path d=\"M0 210v30h400v-60H0v30\" fill=\"#2c2c2c\"></path></g></svg>"
+       },
+       {
+              "name": "Pansexual",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 480\"><path fill=\"#21b1ff\" d=\"M0 0h800v480H0z\"></path><path fill=\"#ffd800\" d=\"M0 0h800v320H0z\"></path><path fill=\"#ff218c\" d=\"M0 0h800v160H0z\"></path></svg>"
+       },
+       {
+              "name": "Philadelphia Pride",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 777 480\"><path fill=\"#750787\" d=\"M0 0h777v480H0z\"></path><path fill=\"#004DFF\" d=\"M0 0h777v420H0z\"></path><path fill=\"#008026\" d=\"M0 0h777v360H0z\"></path><path fill=\"#FFED00\" d=\"M0 0h777v300H0z\"></path><path fill=\"#FF8C00\" d=\"M0 0h777v240H0z\"></path><path fill=\"#E40303\" d=\"M0 0h777v180H0z\"></path><path fill=\"#784F17\" d=\"M0 0h777v120H0z\"></path><path d=\"M0 0h777v60H0z\"></path></svg>"
+       },
+       {
+              "name": "Pink Union Jack",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 300\"><path fill=\"#fa87d2\" d=\"M0 0h600v300H0z\"></path><path d=\"M0 0l600 300m0-300L0 300\" stroke=\"#fff\" stroke-width=\"60\"></path><clipPath id=\"a\"><path d=\"M300 150h300v150zv150H0zH0V0zV0h300z\"></path></clipPath><path d=\"M0 0l600 300m0-300L0 300\" stroke=\"#e00034\" stroke-width=\"40\" clip-path=\"url(#a)\"></path><path d=\"M300 0v300M0 150h600\" stroke=\"#fff\" stroke-width=\"100\"></path><path d=\"M300 0v300M0 150h600\" stroke=\"#e00034\" stroke-width=\"60\"></path></svg>"
+       },
+       {
+              "name": "Polysexual",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 480\"><path fill=\"#1c92f6\" d=\"M0 0h800v480H0z\"></path><path fill=\"#07d569\" d=\"M0 0h800v320H0z\"></path><path fill=\"#f61cb9\" d=\"M0 0h800v160H0z\"></path></svg>"
+       },
+       
+       {
+              "name": "Pride 1978",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 575 350\"><path fill=\"#8e008e\" d=\"M0 0h600v350H0z\"></path><path fill=\"#400098\" d=\"M0 0h600v300H0z\"></path><path fill=\"#00c0c0\" d=\"M0 0h600v250H0z\"></path><path fill=\"#008e00\" d=\"M0 0h600v200H0z\"></path><path fill=\"#ff0\" d=\"M0 0h600v150H0z\"></path><path fill=\"#ff8e00\" d=\"M0 0h600v100H0z\"></path><path fill=\"red\" d=\"M0 0h600v50H0z\"></path></svg>"
+       },
+       
+       {
+              "name": "Pride 1979",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 777 480\"><path fill=\"#750787\" d=\"M0 0h777v480H0z\"></path><path fill=\"#004dff\" d=\"M0 0h777v400H0z\"></path><path fill=\"#008026\" d=\"M0 0h777v320H0z\"></path><path fill=\"#ffed00\" d=\"M0 0h777v240H0z\"></path><path fill=\"#ff8c00\" d=\"M0 0h777v160H0z\"></path><path fill=\"#e40303\" d=\"M0 0h777v80H0z\"></path></svg>"
+       },
+       
+       {
+              "name": "Progress Pride",
+              "svg":"<svg viewBox=\"0 0 500 300\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#751086\" d=\"M0 250h500v50H0z\"></path><path fill=\"#0F54FB\" d=\"M0 200h500v50H0z\"></path><path fill=\"#108028\" d=\"M0 150h500v50H0z\"></path><path fill=\"#FEEC34\" d=\"M0 100h500v50H0z\"></path><path fill=\"#FD8D25\" d=\"M0 50h500v50H0z\"></path><path fill=\"#E20A17\" d=\"M0 0h500v50H0z\"></path><path fill=\"#000\" d=\"M79.907 0l149.906 149.907L79.907 299.813 5 300V0z\"></path><path fill=\"#784F17\" d=\"M39.907 0l149.906 149.907L39.907 299.813l-40 .187V0z\"></path><path fill=\"#5BCEFA\" d=\"M-.047 0l149.814 149.907L-.14 299.813z\"></path><path fill=\"#F5A9B8\" d=\"M-40.093 0l149.906 149.907-149.906 149.906z\"></path><path fill=\"#FFF\" d=\"M-80.093 0L69.813 149.907-80.093 299.813z\"></path></g></svg>"
+       },
+       
+       {
+              "name": "South African Pride",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 720 480\"><path fill=\"#750787\" d=\"M0 0h720v480H0z\"></path><path fill=\"#004DFF\" d=\"M0 0h720v400H0z\"></path><path fill=\"#008026\" d=\"M0 0h720v320H0z\"></path><path fill=\"#FFED00\" d=\"M0 0h720v240H0z\"></path><path fill=\"#FF8C00\" d=\"M0 0h720v160H0z\"></path><path fill=\"#E40303\" d=\"M0 0h720v80H0z\"></path><path fill=\"#FFF\" d=\"M144.222 0l240 160H720v32H374.533l-288-192zm0 480l240-160H720v-32H374.533l-288 192z\"></path><path d=\"M0 57.689L273.467 240 0 422.311v-38.459L215.778 240 0 96.148z\"></path></svg>"
+       },
+       
+       {
+              "name": "Transgender",
+              "svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 480\"><path fill=\"#5BCEFA\" d=\"M0 0h800v480H0z\"></path><path fill=\"#F5A9B8\" d=\"M0 96h800v288H0z\"></path><path fill=\"#FFF\" d=\"M0 192h800v96H0z\"></path></svg>"
+       }
+       ]
+}
