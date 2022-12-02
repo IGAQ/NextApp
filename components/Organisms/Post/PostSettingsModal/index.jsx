@@ -1,11 +1,10 @@
 import {PostSettingsButton} from '../../../Molecules/Post/PostSettingsButton';
 import styled from 'styled-components';
 import {useContext, useState} from 'react';
-import {ModalAlert, ReportModal} from '../../Common/Modals/ModalAlert';
+import {ReportModal} from '../../Common/Modals/ModalAlert';
 import {iconsPaths} from '../../../../lib/constants/iconsPaths';
-import { ReportGmailerrorred } from '@mui/icons-material';
 import {InPageLoader} from '../../../Atoms/Common/Loader';
-import {PostContext, UserActionsHandlersContext} from '../../../../lib/contexts';
+import {UserActionsHandlersContext} from '../../../../lib/contexts';
 
 const SettingsModalDiv = styled.div`
   display: flex;
@@ -16,8 +15,7 @@ const SettingsModalDiv = styled.div`
 `;
 
 export function PostSettingsModal() {
-    const { handleSubmitReport } = useContext(UserActionsHandlersContext);
-    const { isPost, postId } = useContext(PostContext);
+    const { handleSubmitReport, data } = useContext(UserActionsHandlersContext);
 
     const [reportOpen, setReportOpen] = useState(false);
     const [reportText, setReportText] = useState('');
@@ -26,15 +24,15 @@ export function PostSettingsModal() {
 
     const handleReportText = async () => {
         setReportSubmitButton(<InPageLoader size={'xs'}/>);
-        //send info to backend
 
-        console.log(handleSubmitReport);
         try {
-            const result = await handleSubmitReport({isPost, id: postId, reason: reportText});
-
-            console.log('reported result', result);
+            await handleSubmitReport({isPost: data.isPost, id: data.postId, reason: reportText});
 
             setReportSubmitButton('Sent ✅');
+
+            setTimeout(() => {
+                setReportOpen(false);
+            }, 2000);
         } catch (error) {
             console.log(error);
         }

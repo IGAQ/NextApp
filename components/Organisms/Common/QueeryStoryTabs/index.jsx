@@ -10,6 +10,8 @@ import {useRouter} from 'next/router';
 import {eventService} from '../../../../lib/services/eventService';
 import {reportContent} from '../../../../lib/services/userService';
 import * as userService from '../../../../lib/services/userService';
+import {getRecaptchaToken} from '../../../../lib/utils';
+import {UserActionsEnum} from '../../../../lib/constants/userInteractions';
 
 export function QueeryStoryTabs({filteringAndSorting,setFilteringAndSorting, onActiveTabChange}) {
     const router = useRouter();
@@ -30,7 +32,11 @@ export function QueeryStoryTabs({filteringAndSorting,setFilteringAndSorting, onA
 
     const handleSubmitReport = async ({isPost, id, reason}) => {
         console.log('report submit', isPost, id, reason);
-        return await userService.reportContent({ isPost, id, reason });
+        const recaptchaToken = await getRecaptchaToken(
+            UserActionsEnum.ContentReport,
+            process.env.NEXT_PUBLIC_RECAPTCHA_KEY,
+        );
+        return await userService.reportContent({ isPost, id, reason, googleRecaptchaToken: recaptchaToken });
     };
 
     useEffect(() => {
@@ -134,6 +140,10 @@ export function QueeryStoryTabs({filteringAndSorting,setFilteringAndSorting, onA
                             queeries.filter(q => q.isFiltered).map((queery) => (
                                 <PostContext.Provider key={queery.postId} value={queery}>
                                     <UserActionsHandlersContext.Provider value={{
+                                        data: {
+                                            isPost: true,
+                                            postId: queery.postId,
+                                        },
                                         handleClickOnPost: () => handleClickOnPost(queery.postId, 'queery'),
                                         handleTogglePrompt: () => handleTogglePrompt(queery.postId, 'queery'),
                                         handleSubmitReport: handleSubmitReport,
@@ -158,6 +168,10 @@ export function QueeryStoryTabs({filteringAndSorting,setFilteringAndSorting, onA
                             stories.filter(s => s.isFiltered !== undefined ? s.isFiltered : true).map((story) => (
                                 <PostContext.Provider key={'story' + story.postId} value={story}>
                                     <UserActionsHandlersContext.Provider value={{
+                                        data: {
+                                            isPost: true,
+                                            postId: story.postId,
+                                        },
                                         handleClickOnPost: () => handleClickOnPost(story.postId, 'story'),
                                         handleTogglePrompt: () => handleTogglePrompt(story.postId, 'story'),
                                         handleSubmitReport: handleSubmitReport,
