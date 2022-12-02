@@ -12,7 +12,7 @@ import {PostTitle} from '../../components/Molecules/Post/PostTitle';
 import {BackArrow} from '../../components/Atoms/Common/Buttons/BackArrow';
 import {Link} from 'react-scroll';
 
-const Letter = styled.div`  
+export const Letter = styled.div`  
     border-radius: 50%;
     background-color: #A5CEFF;
     padding: 0.75em 1.25em;
