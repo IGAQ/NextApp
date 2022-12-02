@@ -10,6 +10,7 @@ import {PostContext} from '../../../../lib/contexts';
 import { Logo, SadLogo } from '../../../Atoms/Common/Logo';
 import { PostContent } from '../../../Atoms/Post/PostContent';
 import { Button } from '../../../Atoms/Common/Buttons/Button';
+import {eventService} from '../../../../lib/services/eventService';
 
 const PostDiv = styled.div`
   display: flex;
@@ -88,7 +89,9 @@ export function NoPosts({onClick}) {
             <SadLogo />
             <PostContent content='No Posts Related to This Search'/>
             <Spacer axis="vertical" size={10}/>
-            <Button onClick={() => onClick} size='small' label='Create A Post'></Button>
+            <Button onClick={() => {
+                eventService.emit('open-creation-post');
+            }} size='small' label='Create A Post'></Button>
         </PostDiv>
     );
 }

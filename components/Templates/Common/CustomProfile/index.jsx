@@ -278,7 +278,7 @@ export function CustomProfile({
                     <FlexBox align='center' justify='space-between' dir='row' maxWidth='50rem' margin='auto'>
                         <PostTitle title='Pronoun Badge'/>
                         <FlexBox dir='row' justify='center' align='flex-end'  color='#ff758c'>
-                            {(editMode && isLoading) ? <InPageLoader/> : <StyledSwitch defaultValue={isGenderPrivate} onChange={setIsGenderPrivate} />}
+                            {(editMode && isLoading) ? <InPageLoader size={'xs'}/> : <StyledSwitch defaultValue={isGenderPrivate} onChange={setIsGenderPrivate} />}
                             <Spacer size='5'/>
                             <FlexBox align='center' dir='row'>
                                 Hide 
@@ -322,7 +322,7 @@ export function CustomProfile({
                     <FlexBox align='center' justify='space-between' maxWidth='50rem' margin='auto' dir='row'>
                         <PostTitle title='Openness Badge'/>
                         <FlexBox dir='row' align='flex-end' color='#ff758c'>
-                            {(editMode && isLoading) ? <InPageLoader/> : <StyledSwitch defaultValue={isOpennessPrivate} onChange={setIsOpennessPrivate} />}
+                            {(editMode && isLoading) ? <InPageLoader size={'xs'}/> : <StyledSwitch defaultValue={isOpennessPrivate} onChange={setIsOpennessPrivate} />}
                             <Spacer size='5'/>
                             <FlexBox align='center' dir='row'>
                                 Hide 
@@ -366,7 +366,7 @@ export function CustomProfile({
                     <FlexBox align='center' justify='space-between' maxWidth='50rem' margin='auto' dir='row'>
                         <PostTitle title='Sexuality'></PostTitle>
                         <FlexBox dir='row' align='flex-end' color='#ff758c'>
-                            {(editMode && isLoading) ? <InPageLoader/> : <StyledSwitch defaultValue={isSexualityPrivate} onChange={setIsSexualityPrivate} />}
+                            {(editMode && isLoading) ? <InPageLoader size={'xs'}/> : <StyledSwitch defaultValue={isSexualityPrivate} onChange={setIsSexualityPrivate} />}
                             <Spacer size='5'/>
                             <FlexBox align='center' dir='row'>
                                 Hide 
