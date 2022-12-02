@@ -21,6 +21,7 @@ import {useUser} from '../../../../lib/hooks/useUser';
 import {useRouter} from 'next/router';
 import * as userService from '../../../../lib/services/userService';
 import {Spacer} from '../../../Atoms/Common/Spacer';
+import {InputBox} from '../../../Atoms/Common/Inputs/TextInput';
 
 const avatars = [
     {
@@ -87,7 +88,7 @@ export function CustomProfile({
     editMode = false,
 }) {
     const router = useRouter();
-    const [user, userAuthLoaded] = useUser({redirectTo: '/login'});
+    const [user, userAuthLoaded] = useUser({redirectTo: editMode ? '/login' : undefined});
 
     const [isLoading, setIsLoading] = useState(true);
 
@@ -199,7 +200,7 @@ export function CustomProfile({
         })();
     }, [userAuthLoaded]);
 
-    return !user || !userAuthLoaded ? (
+    return editMode && (!user || !userAuthLoaded) ? (
         <PageLoader />
     ) : (
         <>
@@ -240,14 +241,14 @@ export function CustomProfile({
                         buttonText='Gotcha'
                     />
                 )}
-                <FlexBox align='flex-start' marginLeft='3em' maxWidth='50rem' margin='auto'>
-                    <PostTitle title='Introduce yourself!'/>
-                    <input onChange={(e) => setInputBio(e.target.value)} value={inputBio} name="bio"
-                        id="bio" placeholder="Write your bio..." />
+                <FlexBox align='center' marginLeft='3em' maxWidth='50rem' margin='auto'>
+                    <PostTitle padding={'0 0 0 0.5em'}  title='Introduce yourself!'/>
+                    <InputBox label={'Bio'} onChange={(e) => setInputBio(e.target.value)} value={inputBio} name="bio"
+                        placeholder="Write your bio..." />
                 </FlexBox>
                 <div>
                     <FlexBox align='flex-start' maxWidth='50rem' margin='auto'>
-                        <PostTitle title='Avatar Selection'/>
+                        <PostTitle padding={'0 0 0 0.5em'}  title='Avatar Selection'/>
                     </FlexBox>
                     <Background height='auto' color='#FFF'>
                         <Swiper
@@ -276,7 +277,7 @@ export function CustomProfile({
                 </div>
                 <div>
                     <FlexBox align='center' justify='space-between' dir='row' maxWidth='50rem' margin='auto'>
-                        <PostTitle title='Pronoun Badge'/>
+                        <PostTitle padding={'0 0 0 0.5em'}  title='Pronoun Badge'/>
                         <FlexBox dir='row' justify='center' align='flex-end'  color='#ff758c'>
                             {(editMode && isLoading) ? <InPageLoader size={'xs'}/> : <StyledSwitch defaultValue={isGenderPrivate} onChange={setIsGenderPrivate} />}
                             <Spacer size='5'/>
@@ -320,7 +321,7 @@ export function CustomProfile({
                 </div>
                 <div>
                     <FlexBox align='center' justify='space-between' maxWidth='50rem' margin='auto' dir='row'>
-                        <PostTitle title='Openness Badge'/>
+                        <PostTitle padding={'0 0 0 0.5em'}  title='Openness Badge'/>
                         <FlexBox dir='row' align='flex-end' color='#ff758c'>
                             {(editMode && isLoading) ? <InPageLoader size={'xs'}/> : <StyledSwitch defaultValue={isOpennessPrivate} onChange={setIsOpennessPrivate} />}
                             <Spacer size='5'/>
@@ -363,8 +364,8 @@ export function CustomProfile({
                     </Background>
                 </div>
                 <div>
-                    <FlexBox align='center' justify='space-between' maxWidth='50rem' margin='auto' dir='row'>
-                        <PostTitle title='Sexuality'></PostTitle>
+                    <FlexBox  align='center' justify='space-between' maxWidth='50rem' margin='auto' dir='row'>
+                        <PostTitle padding={'0 0 0 0.5em'} title='Sexuality'></PostTitle>
                         <FlexBox dir='row' align='flex-end' color='#ff758c'>
                             {(editMode && isLoading) ? <InPageLoader size={'xs'}/> : <StyledSwitch defaultValue={isSexualityPrivate} onChange={setIsSexualityPrivate} />}
                             <Spacer size='5'/>
@@ -373,11 +374,11 @@ export function CustomProfile({
                             </FlexBox>
                             <Spacer  size='5'/> 
                             <FlexBox align='center' dir='row'>
-                                Sexulatiy
+                                Sexuality
                             </FlexBox>
                         </FlexBox>
                     </FlexBox>
-                    <FlexBox align='flex-start' maxWidth='50rem' margin='auto'>
+                    <FlexBox align='center' maxWidth='50rem' margin='auto'>
                         <Select
                             label="Sexuality"
                             placeholder="Sexuality"
