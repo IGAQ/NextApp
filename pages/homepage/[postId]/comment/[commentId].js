@@ -17,6 +17,7 @@ import {useUser} from '../../../../lib/hooks/useUser';
 import * as postService from '../../../../lib/services/postService';
 import {getRecaptchaToken} from '../../../../lib/utils';
 import {UserActionsEnum} from '../../../../lib/constants/userInteractions';
+import * as userService from '../../../../lib/services/userService';
 
 export default function Comment({post, comment}) {
     const router = useRouter();
@@ -64,6 +65,11 @@ export default function Comment({post, comment}) {
         } catch (error) {
             setError(error);
         }
+    };
+
+    const handleSubmitReport = async ({isPost, id, reason}) => {
+        console.log('submitting report', isPost, id, reason);
+        return await userService.reportContent({ isPost, id, reason });
     };
 
     useEffect(() => {
@@ -114,6 +120,7 @@ export default function Comment({post, comment}) {
                             handleCommentClick: handleCommentClick,
                             handleSubmitComment: handleSubmitComment,
                             handlePin: handlePinClick,
+                            handleSubmitReport: handleSubmitReport,
                         }}
                     >
                         <CommentCard
@@ -172,6 +179,7 @@ export default function Comment({post, comment}) {
                             handleCommentClick: handleCommentClick,
                             handleTogglePrompt: togglePrompt,
                             handlePin: handlePinClick,
+                            handleSubmitReport: handleSubmitReport,
                         }}
                     >
                         <SingleComment />

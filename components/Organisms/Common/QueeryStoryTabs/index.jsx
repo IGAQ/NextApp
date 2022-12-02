@@ -8,6 +8,8 @@ import {PostContext, UserActionsHandlersContext} from '../../../../lib/contexts'
 import * as postService from '../../../../lib/services/postService';
 import {useRouter} from 'next/router';
 import {eventService} from '../../../../lib/services/eventService';
+import {reportContent} from '../../../../lib/services/userService';
+import * as userService from '../../../../lib/services/userService';
 
 export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
     const router = useRouter();
@@ -24,6 +26,11 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
     const handleTogglePrompt = (postId, postType) => {
         console.log('comment clicked', postId, postType);
         router.push(`/homepage/${postId}`);
+    };
+
+    const handleSubmitReport = async ({isPost, id, reason}) => {
+        console.log('report submit', isPost, id, reason);
+        return await userService.reportContent({ isPost, id, reason });
     };
 
     useEffect(() => {
@@ -118,7 +125,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
                     <InPageLoader/>
                 ) :
                     <>
-                        {queeries.length === 0 ? (
+                        {queeries.find(q => q.isFiltered === undefined || q.isFiltered === true) === undefined ? (
                             <NoPosts/>
                         ) : (
                             queeries.filter(q => q.isFiltered !== undefined ? q.isFiltered : true).map((queery) => (
@@ -126,6 +133,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
                                     <UserActionsHandlersContext.Provider value={{
                                         handleClickOnPost: () => handleClickOnPost(queery.postId, 'queery'),
                                         handleTogglePrompt: () => handleTogglePrompt(queery.postId, 'queery'),
+                                        handleSubmitReport: handleSubmitReport,
                                     }}>
                                         <NewPost/>
                                         <Spacer size={10}/>
@@ -141,7 +149,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
                     <InPageLoader color='grape'/>
                 ) : (
                     <>
-                        {stories.length === 0 ? (
+                        {stories.find(s => s.isFiltered === undefined || s.isFiltered === true) === undefined ? (
                             <NoPosts/>
                         ) : (
                             stories.filter(s => s.isFiltered !== undefined ? s.isFiltered : true).map((story) => (
@@ -149,6 +157,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
                                     <UserActionsHandlersContext.Provider value={{
                                         handleClickOnPost: () => handleClickOnPost(story.postId, 'story'),
                                         handleTogglePrompt: () => handleTogglePrompt(story.postId, 'story'),
+                                        handleSubmitReport: handleSubmitReport,
                                     }}>
                                         <NewPost/>
                                         <Spacer size={10}/>
