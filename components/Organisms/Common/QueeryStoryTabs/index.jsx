@@ -89,6 +89,9 @@ export function QueeryStoryTabs({filteringAndSorting,setFilteringAndSorting, onA
             console.log(appliedFilters);
 
             const callback = posts => {
+                if (!posts) {
+                    return [];
+                }
                 let shadowed = [...posts];
                 shadowed = shadowed.map(s => {s.isFiltered = true; return s;});
                 if (appliedFilters.length > 0) {
