@@ -69,7 +69,7 @@ export function SlideMenu({currentTab, onClick, filters, setFilters}) {
         <>
             <AnimatePresence>
                 <SlideMenuBase
-                    initial={{x: 150}}
+                    initial={{x: 20}}
                     animate={{x: 0, opacity: 1}}
                     transiton={{duration: 200, delay: 500, staggerChildren: 0.5}}
                     exit={{x: 1500, opacity: 0}}>
