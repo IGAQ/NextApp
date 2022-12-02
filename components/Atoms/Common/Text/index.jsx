@@ -11,6 +11,7 @@ const Header = styled.p`
   padding: ${props => props.padding};
   width: ${props => props.width};
   border-left: ${props => props.borderLeft};
+  line-height: ${props=> props.lineHeight};
 `;
 
 export function Text({

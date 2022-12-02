@@ -78,8 +78,12 @@ export function MobileNav({notificationBadge}) {
 
     useEffect(() => {
         r.events.on('routeChangeStart', closePostModal);
+
+        eventService.on('open-creation-post', openPostModal);
+
         return () => {
             r.events.off('routeChangeStart', closePostModal);
+            eventService.off('open-creation-post', openPostModal);
         };
     }, [r.events]);
 

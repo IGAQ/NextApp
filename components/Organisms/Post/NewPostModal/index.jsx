@@ -35,7 +35,7 @@ export function NewPostModal(props) {
                 </FlexBox>
                 <HappyLogo height={95} width={95} />
                 <Spacer axis="vertical" size={10}/>
-                <Text weight = "600" color = "#000000" size = "2rem" text  = "What do you want to post today?"/>
+                <Text lineHeight={'1em'} weight = "600" color = "#000000"  size = "2rem" text  = "What do you want to post today?"/>
                 <Spacer axis="vertical" size={10}/>
                 <Text size = "1rem" text  = "Choose whether you want to post a question or a story"/>
                 <Spacer axis="vertical" size={35}/>
