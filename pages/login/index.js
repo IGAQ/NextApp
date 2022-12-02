@@ -51,7 +51,9 @@ export default function Login() {
                 />
             )}
             <Banner bannerBgColor='#DFEEFF' bannerTitle='Welcome back!'/>
+            <FlexBox>Signup Instead?</FlexBox>
             <LoginForm onLogin={handleLogin}/>
+            
         </FlexBox>
     );
 }

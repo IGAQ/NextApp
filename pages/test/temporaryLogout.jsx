@@ -1,9 +1,14 @@
 import Link from 'next/link';
 import {useEffect, useState} from 'react';
 import * as auth from '../../lib/services/authService';
+import { Button } from '../../components/Atoms/Common/Buttons/Button';
+import { WinkLogo } from '../../components/Atoms/Common/Logo';
+import { FlexBox } from '../../styles/globals';
+import { useRouter } from 'next/router';
 
 export default function TemporaryLogout() {
     const [isLoading, setIsLoading] = useState(true);
+    const r = useRouter();
 
     useEffect(() => {
         (async function () {
@@ -16,18 +21,24 @@ export default function TemporaryLogout() {
 
     return (
         <div style={styles.div}>
-            <h1 style={styles.headerTag}>Temporary Logout Page</h1>
+            <h1 style={styles.headerTag}>You have been logged out!</h1>
             {
                 isLoading ?
                     (
-                        <p style={styles.loggingStatusStyles}>Logging out... 🤔</p>
+                        <>
+                            <WinkLogo />
+                            <FlexBox>Logging Out... </FlexBox>
+                        </>
                     )
                     :
                     (
-                        <p style={styles.loggingStatusStyles}>Logged out 😭</p>
+                        <>
+                            <WinkLogo />
+                            <FlexBox>Come Back Soon!</FlexBox>
+                        </>
                     )
             }
-            <Link href='/'><a style={styles.backLink}>Go Back</a></Link>
+            <Button onClick={() => r.push('/login')} label='Login'/>
         </div>
     );
 }
@@ -38,7 +49,6 @@ const styles = {
         marginTop: '5%',
         borderRadius: '5px',
         maxWidth: '600px',
-        backgroundColor: '#1d1d1d',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
