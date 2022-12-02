@@ -6,8 +6,12 @@ import {PostTitle} from '../../components/Molecules/Post/PostTitle';
 import {badgesPaths} from '../../lib/constants/badgesPaths';
 import {useEffect, useState} from 'react';
 import {notificationService} from '../../lib/services/notificationService';
-import {InPageLoader} from '../../components/Atoms/Common/Loader';
+import {InPageLoader, PageLoader} from '../../components/Atoms/Common/Loader';
 import {timeAgo} from '../../lib/utils';
+import {NoNotifications, NoPosts} from '../../components/Templates/Post/NewPost';
+import {useUser} from '../../lib/hooks/useUser';
+import {Loader} from '@mantine/core';
+import {eventService} from '../../lib/services/eventService';
 
 const NotificationDiv = styled(FlexBox)`
   width: 100%;
@@ -20,11 +24,22 @@ const NotificationDiv = styled(FlexBox)`
 
 
 export default function Notifications(props) {
+    const [user, userAuthLoaded] = useUser({ redirectTo: '/login'});
     const [notifications, setNotifications] = useState(null);
 
     useEffect(() => {
         notificationService.load();
         setNotifications([...Object.values(notificationService.notifications)]);
+        eventService.emit('update-notification-badge-number', 0);
+
+        const handleNewNotification = (notification) => {
+            setNotifications((prevState) => [...prevState, notification]);
+        };
+        eventService.on('new-notification', handleNewNotification);
+
+        return () => {
+            eventService.off('new-notification', handleNewNotification);
+        };
     }, []);
 
     let validWildCards = ['uuid', 'post', 'comm', 'text'];
@@ -75,26 +90,36 @@ export default function Notifications(props) {
         }
 
         // analyze the parsed data and render based off of it.
-        result.push(<a href={`/homepage/${parsedData['post'] ?? ''}${parsedData['comm'] ? '/comment/' + parsedData['comm'] : ''}`}>{parsedData['text'] ?? ''}</a>);
+        result.push(<a style={{ color: '#ffb6c3'}} href={`/homepage/${parsedData['post'] ?? ''}${parsedData['comm'] ? '/comment/' + parsedData['comm'] : ''}`}>{parsedData['text'] ?? ''}</a>);
         return renderAnyLinkInMessage(message.slice(currentIndex), {}, 0, result);
     };
 
     const renderNotifications = () => {
-        const notifications = Object.values(notificationService.notifications)
+        const _notifications = Object.values(notifications)
+            .filter(notification => {
+                return notification.subscriberId === user?.userId;
+            })
             .sort((n1, n2) => n2.pushedAt - n1.pushedAt)
             .map(notification => {
                 notification.timeTitle = timeAgo(notification.pushedAt);
+                if (!notification.wasSeen) {
+                    notification.wasSeen = true;
+                    notification.seenAt = Date.now();
+                }
                 return notification;
             });
 
+        notificationService.save();
+
+
         const grouped = {};
-        notifications.map(notification => {
+        _notifications.map(notification => {
             if (!grouped[notification.timeTitle]) {
                 grouped[notification.timeTitle] = [];
             }
 
             // render any links
-            notification.message = renderAnyLinkInMessage(notification.message);
+            notification.renderedMessage = renderAnyLinkInMessage(notification.message);
 
             grouped[notification.timeTitle].push(notification);
         });
@@ -102,11 +127,11 @@ export default function Notifications(props) {
         const result = [];
         for (const timeTitle in grouped) {
             result.push(
-                <FlexBox align="flex-start" bgColor='#DFEEFF'>
+                <FlexBox align="flex-center" bgColor='#DFEEFF'>
                     <Text weight="500" size="1.25rem" padding={'0.2em 1em 0.2em 0.5em'} textAlign="left" text={timeTitle}/>
                     {grouped[timeTitle].map(notification => (
                         <NotificationBox key={notification.notificationId} AvaPic={notification.avatar ?? badgesPaths.avatars.profile2}
-                            text={notification.message}/>
+                            text={notification.renderedMessage}/>
                     ))}
                 </FlexBox>
             );
@@ -114,7 +139,9 @@ export default function Notifications(props) {
         return result;
     };
 
-    return (
+    return !user || !userAuthLoaded ? (
+        <PageLoader/>
+    ) : (
         <NotificationDiv>
             <PostTitle title="Notifications"/>
             <FlexBox align="stretch">
@@ -122,7 +149,9 @@ export default function Notifications(props) {
                     <InPageLoader/>
                 ) : (
                     <>
-                        {renderNotifications()}
+                        {notifications.length > 0 ? renderNotifications() : (
+                            <NoNotifications />
+                        )}
                     </>
                 )}
             </FlexBox>
