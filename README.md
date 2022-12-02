@@ -6,7 +6,9 @@ I Got A Queery (IGAQ) provides a safe space for the members of the LGBTQ+ commun
 
 ![IGAQ Mockups](https://user-images.githubusercontent.com/91351147/202382084-1be51ba4-3478-443e-922a-2099512b8fd3.png)
 
+
 # Our Team Members
+![IGAQTeam](https://user-images.githubusercontent.com/91351147/205259426-3ffb7c10-f040-4b91-ba98-be498059ea7e.svg)
 - [William Chu](https://github.com/williamchuu) - UX/UI Designer & Graphic Designer 
 - [Madison Cafik-Irwin](https://github.com/MadiMagpie) - UX/UI Designer & Front End Developer 
 - [Melysa Nguyen](https://github.com/melysan) - UX/UI Designer & Graphic Designer 
