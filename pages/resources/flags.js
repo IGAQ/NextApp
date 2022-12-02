@@ -1,19 +1,12 @@
-import styled from 'styled-components';
-import { StickyDiv } from '../homepage';
 import { ScrollToTopButton } from '../../components/Atoms/Common/ScrollToTopButton';
 import { useState, useEffect, useRef } from 'react';
 import {PostTitle} from '../../components/Molecules/Post/PostTitle';
 import {BackArrow} from '../../components/Atoms/Common/Buttons/BackArrow';
-import {Link} from 'react-scroll';
 import { Spacer } from '../../components/Atoms/Common/Spacer';
 import { Text } from '../../components/Atoms/Common/Text';
 import { FlexBox } from '../../styles/globals';
 import path from 'path';
 import fsPromises from 'fs/promises';
-import Letter from './flags';
-import Image from 'next/image';
-import { renderToStaticMarkup } from 'react-dom/server';
-import { IoReturnUpBack } from 'react-icons/io5';
 
 
 function DisplayFlag (svg){
@@ -62,11 +55,14 @@ export default function Flag(props) {
                         <Spacer size = '35' />
                         <ScrollToTopButton isVisible={scrolledEnough} />
                         <Spacer size = '15' />
-                        <FlexBox align = 'flex-start' maxWidth = '50em'>
+                        <FlexBox align = 'flex-start' maxWidth = '100em'>
                             
                             {flags.map(flag => 
                                 <div key = {flag.name}>
-                                    <div>
+                                    <div style={{
+                                        height: '200px',
+                                        width: '200px',
+                                    }}>
                                         <Text weight = '500' size = '1.25em' text = {flag.name}></Text>
                                         <Spacer size = '5' />
                                         {DisplayFlag(flag.svg)}
