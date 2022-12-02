@@ -66,7 +66,7 @@ export default function Dashboard() {
                 <>
                     {pendingPosts.map((post) => {
                         return (
-                            <tr>
+                            <tr key={post.postId}>
                                 <td>{post.postTitle}</td>
                                 <td>{post.authorUser.username}</td>
                                 <td>
