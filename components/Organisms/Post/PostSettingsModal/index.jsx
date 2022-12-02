@@ -26,7 +26,7 @@ export function PostSettingsModal() {
         setReportSubmitButton(<InPageLoader size={'xs'}/>);
 
         try {
-            await handleSubmitReport({isPost: data.isPost, id: data.postId, reason: reportText});
+            await handleSubmitReport({isPost: data.isPost, id: (data.postId || data.commentId) ?? '', reason: reportText});
 
             setReportSubmitButton('Sent ✅');
 
