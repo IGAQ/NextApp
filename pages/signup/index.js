@@ -9,6 +9,7 @@ import {useUser} from '../../lib/hooks/useUser';
 import {PageLoader} from '../../components/Atoms/Common/Loader';
 import {getRecaptchaToken} from '../../lib/utils';
 import {UserActionsEnum} from '../../lib/constants/userInteractions';
+import {Spacer} from '../../components/Atoms/Common/Spacer';
 
 export default function Signup() {
     const router = useRouter();
@@ -54,6 +55,7 @@ export default function Signup() {
                 />
             )}
             <Banner bannerTitle='Join our safe space!'/>
+            <Spacer size={20} />
             <RegisterForm onRegister={handleRegister}/>
         </FlexBox>
     );
