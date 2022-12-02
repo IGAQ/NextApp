@@ -140,7 +140,7 @@ export function QueeryStoryTabs({filteringAndSorting,setFilteringAndSorting, onA
                     <InPageLoader/>
                 ) :
                     <>
-                        {queeries.every(q => q.isFiltered === false) ? (
+                        {queeries.length === 0 || queeries.every(q => q.isFiltered === false) ? (
                             <NoPosts/>
                         ) : (
                             queeries.filter(q => q.isFiltered).map((queery) => (
@@ -168,10 +168,10 @@ export function QueeryStoryTabs({filteringAndSorting,setFilteringAndSorting, onA
                     <InPageLoader color='grape'/>
                 ) : (
                     <>
-                        {stories.find(s => s.isFiltered === undefined || s.isFiltered === true) === undefined ? (
+                        {stories.length === 0 || stories.find(s => s.isFiltered === undefined || s.isFiltered === true) === undefined ? (
                             <NoPosts/>
                         ) : (
-                            stories.filter(s => s.isFiltered !== undefined ? s.isFiltered : true).map((story) => (
+                            stories.filter(s => s.isFiltered).map((story) => (
                                 <PostContext.Provider key={'story' + story.postId} value={story}>
                                     <UserActionsHandlersContext.Provider value={{
                                         data: {
