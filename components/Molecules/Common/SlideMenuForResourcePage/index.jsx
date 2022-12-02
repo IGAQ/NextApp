@@ -16,7 +16,7 @@ const SlideMenuBase = styled(motion.div)`
   justify-content: center;
   align-items: stretch;
   min-width: 20em;
-  left: 1.5em;
+  right: 1.5em;
   background-color: #FFFFFF;
   padding: 2rem;
   z-index: 15;
@@ -52,7 +52,7 @@ export function SlideMenuForResourcePage({onClick, filters, setFilters}) {
     return (
         <AnimatePresence>
             <SlideMenuBase
-                initial={{x: 150}}
+                initial={{x: 20}}
                 animate={{x: 0, opacity: 1}}
                 transiton={{duration: 200, delay: 500, staggerChildren: 0.5}}
                 exit={{x: 1500, opacity: 0}}>
