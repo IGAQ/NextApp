@@ -14,6 +14,7 @@ import {
 } from '../../lib/contexts';
 import {SlideMenu} from '../../components/Molecules/Common/SlideMenu';
 import {eventService} from '../../lib/services/eventService';
+import {BackArrow} from '../../components/Atoms/Common/Buttons/BackArrow';
 
 export const StickyDiv = styled.div`
     position: sticky;
@@ -105,6 +106,7 @@ export default function Homepage(props) {
         <PageLoader />
     ) : (
         <>
+            <BackArrow margin="0" />
             <UserContext.Provider value={user}>
                 <StickyDiv top={0} zIndex={4}>
                     <FilterContext.Provider value={{handleAppliedFilters}}>
