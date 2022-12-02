@@ -12,10 +12,10 @@ width: ${props => props.size === 'short' ? '5rem' : props.size === 'long' ? '25e
 min-width: fit-content;
 font-family: 'Heebo', sans-serif;
 font-weight: 600;
-margin : ${props => props.margin || '0'};
+margin : ${props => props.margin || '0 0 0 0'};
 `;
 
-export const Button = ({ length, bgColor, padding, colour, label, ...props }) => {
+export const Button = ({ length, bgColor, margin, padding, colour, label, ...props }) => {
     return (
         <StyledButton
             type = "submit"

@@ -33,7 +33,7 @@ export function ResourceCard({title, content, tags, onClick}) {
 
     return (
         <>
-            <FlexBox bgColor="#FFF" padding="15px 60px">
+            <FlexBox bgColor="#FFF" padding="25px 10%" borderRadius = "10px">
                 {/* <SavedResourceContext.Provider value={{handleSave, setIsSaved, isSaved}}> */}
                 {!isSaved && <StyledUnsaved size={25} onClick={handleSave}/>}
                 {isSaved && <StyledSaved size={25} onClick={handleSave}/>}

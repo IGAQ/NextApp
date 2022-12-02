@@ -65,7 +65,7 @@ export function PostSettingsModal() {
                 />
             )}
             <SettingsModalDiv>
-                <PostSettingsButton onOpen={() => setReportOpen(true)}/>
+                <PostSettingsButton icon = {iconsPaths.reportIcon} onOpen={() => setReportOpen(true)}/>
                 <PostSettingsButton setType="Save" icon={iconsPaths.saveIcon} on/>
             </SettingsModalDiv>
         </>

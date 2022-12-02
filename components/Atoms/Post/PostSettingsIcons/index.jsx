@@ -7,8 +7,8 @@ const SettingsIcons = styled(Icon)`
   margin: 0.5rem;
 `;
 
-export function PostSettingsIcons({size=1}) {
+export function PostSettingsIcons({size=1, icon}) {
     return (
-        <SettingsIcons icon={iconsPaths.reportIcon} size={size}/>
+        <SettingsIcons icon={icon} size={size}/>
     );
 }

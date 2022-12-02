@@ -33,6 +33,8 @@ export default function Help() {
                     <Spacer axis='vertical' size={20} />
                 </FlexBox>
             </FlexBox>
+            <Spacer axis='vertical' size={55} />
+
         </FlexBox>
     );
 }

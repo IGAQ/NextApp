@@ -391,6 +391,7 @@ export function CustomProfile({
                     <Button size='large' color='white' type='submit' label={editMode ? 'Save Changes' : 'Set up Profile'}></Button>
                 </FlexBox>
             </form>
+            <Spacer size='45'/>
         </>
     );
 } 

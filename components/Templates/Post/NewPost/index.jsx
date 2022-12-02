@@ -21,6 +21,7 @@ const PostDiv = styled.div`
   background-color: #fff;
   max-width: 50em;
   margin: auto;
+  border-radius: 10px;
 `;
 
 const Toprightdiv = styled.div`

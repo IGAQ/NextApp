@@ -11,7 +11,6 @@ import { useRouter } from 'next/router';
 import {SlideMenuForResourcePage} from '../../components/Molecules/Common/SlideMenuForResourcePage';
 import {InPageLoader} from '../../components/Atoms/Common/Loader';
 import {ScrollToTopButton} from '../../components/Atoms/Common/ScrollToTopButton';
-import {eventService} from '../../lib/services/eventService';
 
 export default function Resources(props) {
     const r = useRouter();
@@ -110,22 +109,9 @@ export default function Resources(props) {
             setResources(callback);
         }
     };
-
-    function handleResourceClick({resource}) {
-        r.push({
-            pathname: '/resources/[resourceID]',
-            query: {
-                title: resource.title, 
-                id: resource.id,
-                content: resource.content,
-                tags: resource.tags,
-                author: resource.author,
-            },
-        });
-    }
     return (
-        <FlexBox align="stretch" bgColor="#A5CEFF">
-            <PostTitle title="Resources"/>
+        <FlexBox align='stretch' bgColor='#A5CEFF'>
+            <PostTitle title='Resources'/>
             <FilterContext.Provider value={{handleAppliedFilters}}>
                 {filterMenu && <SlideMenuForResourcePage filters={filters} setFilters={setFilters} onClick = {handleCloseFilter} />}
             </FilterContext.Provider>
@@ -134,34 +120,37 @@ export default function Resources(props) {
                 handleOpenFilter,
                 handleSearchTermChange,
             }}>
-                <SearchAndFilter />
-            </UserActionsHandlersContext.Provider>
-            <Spacer axis="vertical" size={55}/>
-            <FlexBox align="stretch" flex="1" bgColor="#DFEEFF">
-                <FlexBox margin="10px 0 0 0" dir="row" padding="15px 0" justify-content="space-between" bgColor="#FFF"
-                    boxShadow="0 2px 4px -1px rgb(117 37 37 / 35%)">
-                    <Button size="short" color="#000000" label="LGBTQA+ Terms" backgroundColor="#A5CEFF"/>
-                    <Spacer axis="horizontal" size={15}/>
-                    <Button size="short" color="#000000" label="LGBTQA+ Flags" backgroundColor="#A5CEFF"/>
+                <FlexBox style = {{alignSelf: 'center'}} align = 'stretch' minWidth = '50%' maxWidth ='85%'>
+                    <SearchAndFilter  />
                 </FlexBox>
-                <Spacer axis="vertical" size={25}/>
-                <FlexBox margin="0" align="stretch" flex="1">
-                    {isLoading ? (
-                        <InPageLoader/>
-                    ) : resources.filter(r => r.isFiltered !== undefined ? r.isFiltered : true).map((resource) => (
+            </UserActionsHandlersContext.Provider>
+            <Spacer axis='vertical' size={55}/>
+            <FlexBox flex='1' bgColor='#DFEEFF'>
+                <FlexBox margin='10px 0 0 0' dir='row' padding='15px 0' justify-content='space-between' bgColor='#FFF'
+                    boxShadow='0 2px 4px -1px rgb(117 37 37 / 35%)' minWidth = '100%'>
+                    <Button color='#000000' label='LGBTQA+ Terms' backgroundColor='#A5CEFF' onClick = {()=> r.push({pathname: '/resources/terms'})}/>
+                    <Spacer axis='horizontal' size={30}/>
+                    <Button color='#000000' label='LGBTQA+ Flags' backgroundColor='#A5CEFF'onClick = {()=> r.push({pathname: '/resources/flags'})}/>
+                </FlexBox>
+                <Spacer axis='vertical' size={25}/>
+                <FlexBox width = '100%' maxWidth = '50em'>
+                    <FlexBox margin='0' align='stretch' flex='1'>
+                        {isLoading ? (
+                            <InPageLoader/>
+                        ) : resources.filter(r => r.isFiltered !== undefined ? r.isFiltered : true).map((resource) => (
 
-                        <ResourceCard
-                            key={resource.title}
-                            title={resource.title}
-                            content={resource.content}
-                            tags={resource.tags}
-                            onClick = {() => r.push('resources/' + resource.id)}
-                        />
-                    ))}
+                            <ResourceCard
+                                key={resource.title}
+                                title={resource.title}
+                                content={resource.content}
+                                tags={resource.tags}
+                                onClick = {() => r.push('resources/' + resource.id)}
+                            />
+                        ))}
+                    </FlexBox>
                 </FlexBox>
             </FlexBox>
-            <Spacer axis="vertical" size={25}/>
-
+            <Spacer axis='vertical' size={25}/>
         </FlexBox>
 
 
