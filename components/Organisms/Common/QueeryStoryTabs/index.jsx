@@ -11,7 +11,7 @@ import {eventService} from '../../../../lib/services/eventService';
 import {reportContent} from '../../../../lib/services/userService';
 import * as userService from '../../../../lib/services/userService';
 
-export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
+export function QueeryStoryTabs({filteringAndSorting,setFilteringAndSorting, onActiveTabChange}) {
     const router = useRouter();
 
     const [stories, setStories] = useState(null);
@@ -66,7 +66,8 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
 
     useEffect(() => {
         (async function () {
-            const posts = await postService.getPosts(activeTab);
+            let posts = await postService.getPosts(activeTab);
+            posts = posts.map(p => {p.isFiltered = true; return p;});
             if (activeTab === 'queery') {
                 setQueeries([...posts]);
             } else {
@@ -79,10 +80,11 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
         if (filteringAndSorting) {
             const applicableFilters = { ...filteringAndSorting.filters['_common'], ...filteringAndSorting.filters[activeTab]};
             const appliedFilters = Object.keys(applicableFilters).filter((key) => applicableFilters[key]);
+            console.log(appliedFilters);
 
             const callback = posts => {
-                const shadowed = [...posts];
-                shadowed.forEach(s => {s.isFiltered = undefined; return s;});
+                let shadowed = [...posts];
+                shadowed = shadowed.map(s => {s.isFiltered = true; return s;});
                 if (appliedFilters.length > 0) {
                     for (let post of shadowed) {
                         const postTags = post.postTags.map((tag) => tag.tagName.trim().toLowerCase());
@@ -98,6 +100,7 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
                 return [...shadowed];
             };
 
+            setFilteringAndSorting(null);
             if (activeTab === 'queery') {
                 setQueeries(callback);
             } else {
@@ -125,10 +128,10 @@ export function QueeryStoryTabs({filteringAndSorting, onActiveTabChange}) {
                     <InPageLoader/>
                 ) :
                     <>
-                        {queeries.find(q => q.isFiltered === undefined || q.isFiltered === true) === undefined ? (
+                        {queeries.every(q => q.isFiltered === false) ? (
                             <NoPosts/>
                         ) : (
-                            queeries.filter(q => q.isFiltered !== undefined ? q.isFiltered : true).map((queery) => (
+                            queeries.filter(q => q.isFiltered).map((queery) => (
                                 <PostContext.Provider key={queery.postId} value={queery}>
                                     <UserActionsHandlersContext.Provider value={{
                                         handleClickOnPost: () => handleClickOnPost(queery.postId, 'queery'),

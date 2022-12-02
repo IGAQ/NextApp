@@ -76,7 +76,7 @@ export function ModalAlert({
 }
 
 export function ReportModal({   
-    onClick,
+    onSubmit,
     cancelClick,
 
     modalBoxPadding = '25px 50px 50px 50px',
@@ -125,10 +125,15 @@ export function ReportModal({
                     )}
                     
                     <Spacer axis="vertical" size={25}/>
-                    {CustomButton ? <CustomButton/> : <FlexBox dir='row'> <Button backgroundColor='#eee' c size='short' label='Cancel' color='black' onClick={cancelClick}/> <Spacer size={20}/> <Button size="short" label={buttonText} onClick={onClick}/> </FlexBox>}
+                    {CustomButton ? <CustomButton/> : (
+                        <FlexBox dir='row'> <Button backgroundColor='#eee' c size='short' label='Cancel' color='black' onClick={cancelClick}/>
+                            <Spacer size={20}/>
+                            <Button size="short" label={buttonText} onClick={onSubmit}/>
+                        </FlexBox>
+                    )}
                 </FlexBox>
             </ModalBox>
-            <ModalBackdrop onClick={onClick}/>
+            <ModalBackdrop onClick={cancelClick}/>
         </FlexBox>
     );
 }

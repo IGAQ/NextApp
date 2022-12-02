@@ -114,6 +114,7 @@ export function SlideMenu({currentTab, onClick, filters, setFilters}) {
                                 <Checkbox color="red" size="md"
                                     value='casual'
                                     label='Casual'
+                                    checked={filters['_common']['casual']}
                                     onChange={() => handleFilterChange('_common', 'casual', !filters['_common']['casual'])}
                                     styles={(theme) => ({
                                         input: {
@@ -125,6 +126,7 @@ export function SlideMenu({currentTab, onClick, filters, setFilters}) {
                                 <Checkbox color="red" size="md"
                                     value='serious'
                                     label='Serious'
+                                    checked={filters['_common']['serious']}
                                     onChange={() => handleFilterChange('_common', 'serious', !filters['_common']['serious'])}
                                     styles={(theme) => ({
                                         input: {
@@ -136,6 +138,7 @@ export function SlideMenu({currentTab, onClick, filters, setFilters}) {
                                 <Checkbox color="red" size="md"
                                     value='advice'
                                     label='Advice'
+                                    checked={filters['queery']['advice']}
                                     onChange={() => handleFilterChange('queery', 'advice', !filters['queery']['advice'])}
                                     styles={(theme) => ({
                                         input: {
@@ -147,6 +150,7 @@ export function SlideMenu({currentTab, onClick, filters, setFilters}) {
                                 <Checkbox color="red" size="md"
                                     value='general'
                                     label='General'
+                                    checked={filters['queery']['general']}
                                     onChange={() => handleFilterChange('queery', 'general', !filters['queery']['general'])}
                                     styles={(theme) => ({
                                         input: {
@@ -158,6 +162,7 @@ export function SlideMenu({currentTab, onClick, filters, setFilters}) {
                                 <Checkbox color="red" size="md"
                                     value='discussion'
                                     label='Discussion'
+                                    checked={filters['queery']['discussion']}
                                     onChange={() => handleFilterChange('queery', 'discussion', !filters['queery']['discussion'])}
                                     styles={(theme) => ({
                                         input: {
@@ -169,6 +174,7 @@ export function SlideMenu({currentTab, onClick, filters, setFilters}) {
                                 <Checkbox color="red" size="md"
                                     value='trigger'
                                     label='Trigger'
+                                    checked={filters['_common']['trigger']}
                                     onChange={() => handleFilterChange('_common', 'trigger', !filters['_common']['trigger'])}
                                     styles={(theme) => ({
                                         input: {
@@ -182,6 +188,7 @@ export function SlideMenu({currentTab, onClick, filters, setFilters}) {
                                 <Checkbox color="red" size="md"
                                     value='casual'
                                     label='Casual'
+                                    checked={filters['_common']['casual']}
                                     onChange={() => handleFilterChange('_common', 'casual', !filters['_common']['casual'])}
                                     styles={(theme) => ({
                                         input: {
@@ -193,6 +200,7 @@ export function SlideMenu({currentTab, onClick, filters, setFilters}) {
                                 <Checkbox color="red" size="md"
                                     value='serious'
                                     label='Serious'
+                                    checked={filters['_common']['serious']}
                                     onChange={() => handleFilterChange('_common', 'serious', !filters['_common']['serious'])}
                                     styles={(theme) => ({
                                         input: {
@@ -204,6 +212,7 @@ export function SlideMenu({currentTab, onClick, filters, setFilters}) {
                                 <Checkbox color="red" size="md"
                                     value='trigger'
                                     label='Trigger'
+                                    checked={filters['_common']['trigger']}
                                     onChange={() => handleFilterChange('_common', 'trigger', !filters['_common']['trigger'])}
                                     styles={(theme) => ({
                                         input: {
@@ -215,6 +224,7 @@ export function SlideMenu({currentTab, onClick, filters, setFilters}) {
                                 <Checkbox color="red" size="md"
                                     value='inspiring'
                                     label='Inspiring'
+                                    checked={filters['story']['inspiring']}
                                     onChange={() => handleFilterChange('story', 'inspiring', !filters['story']['inspiring'])}
                                     styles={(theme) => ({
                                         input: {
@@ -226,6 +236,7 @@ export function SlideMenu({currentTab, onClick, filters, setFilters}) {
                                 <Checkbox color="red" size="md"
                                     value='vent'
                                     label='Vent'
+                                    checked={filters['story']['vent']}
                                     onChange={() => handleFilterChange('story', 'vent', !filters['story']['vent'])}
                                     styles={(theme) => ({
                                         input: {
@@ -237,6 +248,7 @@ export function SlideMenu({currentTab, onClick, filters, setFilters}) {
                                 <Checkbox color="red" size="md"
                                     value='drama'
                                     label='Drama'
+                                    checked={filters['story']['drama']}
                                     onChange={() => handleFilterChange('story', 'drama', !filters['story']['drama'])}
                                     styles={(theme) => ({
                                         input: {
