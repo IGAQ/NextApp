@@ -63,7 +63,11 @@ export default function Profile(props) {
                     <ProfileBio />
                     <Spacer axis="vertical" size={25} />
                     <FlexBox>
-                        <Button size="long" label="View Post History" />
+                        <Button
+                            size="long"
+                            label="View Post History"
+                            onClick={() => r.push('/profile/history')}
+                        />
                         <Spacer axis="vertical" size={25} />
                         <Button size="long" label="Saved Resources" />
                         <Spacer axis="vertical" size={25} />
