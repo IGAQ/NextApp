@@ -28,7 +28,7 @@
         "i": "^0.3.7",
         "list-react-files": "^0.2.0",
         "lottie-react": "^2.3.1",
-        "moment": "^2.29.4",
+        "moment-timezone": "^0.5.39",
         "next": "12.3.1",
         "next-http-proxy-middleware": "^1.2.4",
         "npm": "^8.19.2",
