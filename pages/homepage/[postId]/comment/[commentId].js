@@ -138,7 +138,7 @@ export default function Comment() {
                             data: {
                                 parentId: comment.commentId,
                                 postId: post.postId,
-                                postAuthorId: post.authorUser.userId,
+                                postAuthorId: post?.authorUser?.userId,
                                 isPost: false,
                                 nestedLevel: comment.nestedLevel,
                             },
@@ -194,22 +194,26 @@ export default function Comment() {
                         moreText="Feel free to pin a new comment!"
                     />
                 )}
-                <PostContext.Provider value={comment}>
-                    <UserActionsHandlersContext.Provider
-                        value={{
-                            data: {
-                                postAuthorId: post.authorUser.userId,
-                            },
-                            handleClickOnPost: () => '',
-                            handleCommentClick: handleCommentClick,
-                            handleTogglePrompt: togglePrompt,
-                            handlePin: handlePinClick,
-                            handleSubmitReport: handleSubmitReport,
-                        }}
-                    >
-                        <SingleComment />
-                    </UserActionsHandlersContext.Provider>
-                </PostContext.Provider>
+                {!comment ? (
+                    <InPageLoader />
+                ) : (
+                    <PostContext.Provider value={comment}>
+                        <UserActionsHandlersContext.Provider
+                            value={{
+                                data: {
+                                    postAuthorId: post.authorUser.userId,
+                                },
+                                handleClickOnPost: () => '',
+                                handleCommentClick: handleCommentClick,
+                                handleTogglePrompt: togglePrompt,
+                                handlePin: handlePinClick,
+                                handleSubmitReport: handleSubmitReport,
+                            }}
+                        >
+                            <SingleComment />
+                        </UserActionsHandlersContext.Provider>
+                    </PostContext.Provider>
+                )}
             </div>
             {createPrompt && (
                 <UserActionsHandlersContext.Provider
@@ -225,11 +229,10 @@ export default function Comment() {
                     <CommentPrompt />
                 </UserActionsHandlersContext.Provider>
             )}
-
-                    {isLoadingComments ? <InPageLoader /> : renderComments()}
-                    <Spacer size={50} />
-                </>
-            )}
+            <>
+                {(isLoadingComments || isLoading) ? <InPageLoader /> : renderComments()}
+                <Spacer size={50} />
+            </>
         </UserContext.Provider>
     );
 }

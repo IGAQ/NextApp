@@ -44,7 +44,7 @@ export function PostSettingsModal() {
         <>
             {reportOpen && (
                 <ReportModal
-                    onClick={() => handleReportText()}
+                    onSubmit={() => handleReportText()}
                     cancelClick = {() => setReportOpen(false)}
                     title={''}
 

@@ -134,6 +134,7 @@ export default function Homepage(props) {
                 <Spacer size={10} />
                 <QueeryStoryTabs
                     filteringAndSorting={filteringAndSorting}
+                    setFilteringAndSorting={setFilteringAndSorting}
                     onActiveTabChange={handleActiveTabChange}
                 />
             </UserContext.Provider>
