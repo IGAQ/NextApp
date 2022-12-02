@@ -6,6 +6,7 @@ const PostTitleDiv = styled.div`
   margin: .6em 0 .6em 0;
   text-align: ${props => props.textAlight || 'left'};
   padding: ${props => props.padding || '0'};
+  cursor: pointer;
 `;
 
 export function PostTitle({title = 'Title', ...otherProps}) {

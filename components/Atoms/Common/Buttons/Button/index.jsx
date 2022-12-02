@@ -13,6 +13,7 @@ min-width: fit-content;
 font-family: 'Heebo', sans-serif;
 font-weight: 600;
 margin : ${props => props.margin || '0 0 0 0'};
+cursor: pointer;
 `;
 
 export const Button = ({ length, bgColor, margin, padding, colour, label, ...props }) => {

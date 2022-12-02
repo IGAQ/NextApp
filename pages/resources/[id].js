@@ -14,7 +14,7 @@ import {getAllResources} from '../../data/resources';
 const Author = styled(FlexBox)`
  position: relative;
  bottom: 0em;
- 
+
 `;
 
 const QueeryLogo = styled.div`
@@ -54,30 +54,35 @@ export default function ResourceID({resource}){
     return(
         <>
             {resource.map(rs =>(
-                <><FlexBox key = {rs.id} align="stretch" bgColor="#DEEEFF">
+                <>
+                    
+                    <FlexBox key = {rs.id} align="stretch" bgColor="#FFF">
 
-                    <BackArrow />
-                    {/* {!isSaved && <StyledUnsaved size={25} onClick={props.onClick}/>}
+                    
+                        {/* {!isSaved && <StyledUnsaved size={25} onClick={props.onClick}/>}
                         {isSaved && <StyledSaved size={25} onClick={props.onClick}/>}                 */}
-                    <FlexBox>
-                        <PostTitle padding="0 1.5em " title={rs.title} />
-                        <Spacer axis="vertical" size={25} />
+                        <FlexBox bgColor='#A5CEFF'>
+                            <BackArrow margin='0px' left='unset' maxWidth='100%'/>
+                            <PostTitle padding="0 1.5em " title={rs.title} />
+                            <Spacer axis="vertical" size={25} />
+                       
+                            <FlexBox>
+                                <PostTagBox tags = {rs.tags}/>
+                            </FlexBox> 
+                        </FlexBox>
+                    
+                        <FlexBox padding="2em 5em" maxWidth='60em' margin='0 auto'>
+                            {rs.content}
+                        </FlexBox><Spacer axis="vertical" size={25} />
+                        <Author dir="row" bgColor="#DEEEFF" padding="1em">
+                            <Queery>
+                                <QueeryLogo />
+                            </Queery>
+                            <Spacer axis="horizontal" size={15} />
+                            <Text size="1.5rem" text={rs.author} />
+                        </Author>
                     </FlexBox>
-                    <FlexBox>
-                        <PostTagBox tags = {rs.tags}/>
-                    </FlexBox>
-                </FlexBox>
-                <FlexBox padding="2em 5em">
-                    {rs.content}
-                </FlexBox><Spacer axis="vertical" size={25} />
-                <Author dir="row" bgColor="#DFEEFF" padding="1em">
-                    <Queery>
-                        <QueeryLogo />
-                    </Queery>
-                    <Spacer axis="horizontal" size={15} />
-                    <Text size="1.5rem" text={rs.author} />
-                </Author>
-                <Spacer axis="vertical" size={25} /></>
+                </>
             ))}
             
             
