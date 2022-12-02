@@ -6,12 +6,9 @@ import {PageLoader} from '../components/Atoms/Common/Loader';
 import {WebNav} from '../components/Organisms/Common/WebNav';
 import Router from 'next/router';
 import React, {useEffect, useState} from 'react';
-import {StickyDiv2} from '../styles/globals';
+import {StickyDiv2 } from '../styles/globals';
 import {usePusher} from '../lib/hooks/usePusher';
-import {
-    PusherChannelType,
-    PusherEventTypes,
-} from '../lib/constants/pusherEventTypes';
+import {PusherChannelType, PusherEventTypes} from '../lib/constants/pusherEventTypes';
 import {eventService} from '../lib/services/eventService';
 import {useUser} from '../lib/hooks/useUser';
 import {notificationService} from '../lib/services/notificationService';
@@ -88,41 +85,30 @@ function MyApp({Component, pageProps}) {
         return () => handlePage();
     }, [r.pathname]);
 
-    const isReady = usePusher(user, [
-        {
-            channelName: PusherChannelType.IGAQ_Notification,
-            requiredAuth: true,
-            bindingsCallback: (igaqNotificationChannel) => {
-                igaqNotificationChannel.bind(
-                    'pusher:subscription_succeeded',
-                    () => {
-                        console.log('bind was successful');
-                    },
-                );
-                igaqNotificationChannel.bind('pusher:error', (e) => {
-                    console.log('pusher:error', e);
+    const isReady = usePusher(user, [{
+        channelName: PusherChannelType.IGAQ_Notification,
+        requiredAuth: true,
+        bindingsCallback: (igaqNotificationChannel) => {
+            igaqNotificationChannel.bind('pusher:subscription_succeeded', () => {
+                console.log('bind was successful');
+            });
+            igaqNotificationChannel.bind('pusher:error', (e) => {
+                console.log('pusher:error', e);
+            });
+
+            igaqNotificationChannel.bind(PusherEventTypes.UserReceivesNotification, (data) => {
+                notificationService.push({
+                    subscriberId: data.subscriberId,
+                    username: data.username,
+                    avatar: data.avatar,
+                    message: data.composedMessage,
+                    stashToken: data.stashToken,
                 });
+            });
 
-                igaqNotificationChannel.bind(
-                    PusherEventTypes.UserReceivesNotification,
-                    (data) => {
-                        console.log(
-                            PusherEventTypes.UserReceivesNotification,
-                            data,
-                        );
-                        notificationService.push({
-                            username: data.username,
-                            avatar: data.avatar,
-                            message: data.composedMessage,
-                            stashToken: data.stashToken,
-                        });
-                    },
-                );
-
-                notificationService.syncStash();
-            },
+            notificationService.syncStash();
         },
-    ]);
+    }]);
 
     const [notificationBadge, setNotificationBadge] = useState(0);
     useEffect(() => {

@@ -19,7 +19,7 @@ const PostDiv = styled.div`
   justify-content: center;
   width: 100%;
   padding: 2.25rem;
-  background-color: #fff;
+  background-color: ${props => props.backgroundColor ?? '#fff'};
   max-width: 50em;
   margin: auto;
   border-radius: 10px;
@@ -94,4 +94,12 @@ export function NoPosts({onClick}) {
             }} size='small' label='Create A Post'></Button>
         </PostDiv>
     );
+}
+
+export function NoNotifications() {
+    return <PostDiv backgroundColor={'rgba(255,255,255,0.55)'} alignPost='center'>
+        <SadLogo />
+        <PostContent content="It's so quiet here..."/>
+        <Spacer axis="vertical" size={10}/>
+    </PostDiv>;
 }
