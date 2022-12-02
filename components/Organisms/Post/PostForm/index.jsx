@@ -97,8 +97,8 @@ export function PostForm({onSubmit, postTags, type}) {
                         <Breakline/>
                         <Spacer axis="vertical" size={25}/>
                         <FlexBox>
-                            <LabelledSwitch checked={anonymous} setChecked={() => setAnonymous(!anonymous)}
-                                label='Post anonymously'></LabelledSwitch>
+                            {/*<LabelledSwitch checked={anonymous} setChecked={() => setAnonymous(!anonymous)}*/}
+                            {/*    label='Post anonymously'></LabelledSwitch>*/}
                             <Spacer axis="vertical" size={35}/>
                             <RadioGroup tone={tone} setTone={setTone}/>
                             <Spacer axis="vertical" size={35}/>
@@ -165,8 +165,8 @@ export function PostForm({onSubmit, postTags, type}) {
                             <Spacer axis="vertical" size={35}/>
                             <ChipGroup onChange={setTag} postTags={postTags}/>
                             <Spacer axis="vertical" size={35}/>
-                            <LabelledSwitch checked={anonymous} setChecked={() => setAnonymous(!anonymous)}
-                                label='Post anonymously'></LabelledSwitch>
+                            {/*<LabelledSwitch checked={anonymous} setChecked={() => setAnonymous(!anonymous)}*/}
+                            {/*    label='Post anonymously'></LabelledSwitch>*/}
                         </FlexBox>
                         <Spacer axis="vertical" size={35}/>
                         <StyledSubmitButton text="Submit Story"/>
