@@ -1,6 +1,6 @@
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import {FlexBox } from '../../../../styles/globals';
-import {ModalBox} from '../../../Atoms/Common/ModalBox';
+import {ModalBox, ResponsiveModal} from '../../../Atoms/Common/ModalBox';
 import {useRouter} from 'next/router';
 import {Text} from '../../../Atoms/Common/Text';
 import {Spacer} from '../../../Atoms/Common/Spacer';
@@ -24,10 +24,11 @@ export function NewPostModal(props) {
     }
 
     return (
-        <FlexBox>
-            <ModalBox bgColor="#ffffff" minWidth="50%" padding = "25px 50px 50px 50px" align = "stretch" borderRadius = "20px"
-                initial= {{y:500}}
-                animate = {{y:-300, opacity:1}} 
+        <FlexBox style={{ width: "100vw", height: "100vh", position: "absolute", top: 0, zIndex: 99 }}>
+            <ResponsiveModal padding="0 10% 0 10%" paddingMd="0 30% 0 30%">
+            <ModalBox flex="1" maxWidth="100%"  bgColor="#ffffff" margin="0" position="unset" minWidth="50%" padding = "25px 50px 50px 50px" align = "stretch" borderRadius = "20px"
+                initial= {{y:1000}}
+                animate = {{y:0, opacity:1}} 
                 transiton={{duration: 100, delay:500}}
                 exit={{y:1000, opacity: 0}}>
                 <FlexBox justify = 'flex-end' dir = 'column' align = 'flex-end' flex = '1' padding = '0 0 15px 0' >
@@ -58,6 +59,7 @@ export function NewPostModal(props) {
 
                 </FlexBox>
             </ModalBox>
+            </ResponsiveModal>
             <ModalBackdrop onClick = {props.onClick}/>
         </FlexBox>
     );

@@ -19,3 +19,15 @@ export const ModalBox = styled(motion.div)`
   margin: ${props => props.margin || 'auto'};
 `;
 
+export const ResponsiveModal = styled('div')`
+display: flex;
+width: 100%;
+justify-content: center;
+align-items: center;
+
+padding: ${props => props.padding || ''};
+
+@media only screen and (min-width: 768px) {
+  padding: ${props => props.paddingMd || ''};
+}
+`;
